@@ -1,0 +1,172 @@
+.wrapper {
+  padding-top: 100px;
+  background-color: rgb(255, 255, 255);
+}
+
+.form_container {
+  background-color: rgb(213, 213, 213);
+  position: relative;
+  border: 2px solid blue;
+  max-width: 500px;
+  margin: auto;
+  height: 620px;
+  padding: 20px 30px;
+}
+.form_container .slider_container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  color: white;
+  border-radius: 40px;
+  box-shadow: inset 1px 1px 3px 1px black, inset -1px -1px 3px 1px gray;
+}
+.form_container .slider_container .link {
+  margin: 0;
+  border: 0;
+  padding: 8px 20px;
+  display: inline-flex;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  position: relative;
+  z-index: 1;
+}
+.form_container .slider_container .slider {
+  position: absolute;
+  background: linear-gradient(to right, red, hotpink);
+  background: rgb(23, 161, 23);
+  height: 100%;
+  margin: 0;
+  top: 0;
+  left: 0;
+  border-radius: 30px;
+  width: 50%;
+  transition: 0.3s;
+}
+.form_container form {
+  width: calc(100% - 60px);
+  position: absolute;
+  margin: 0;
+  border: 1px solid black;
+}
+.form_container form .input_field {
+  width: 100%;
+  position: relative;
+  margin-bottom: 15px;
+}
+.form_container form .input_field input {
+  height: 55px;
+  width: 100%;
+  border: 0;
+  outline: none;
+  border-radius: 5px;
+  background-color: white;
+  padding-top: 15px;
+  padding-left: 10px;
+  font-size: 20px;
+  color: rgb(48, 48, 48);
+}
+.form_container form .input_field label {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 55px;
+  bottom: 0;
+  left: 10px;
+  text-transform: uppercase;
+}
+.form_container form .input_field label .label {
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 1px;
+  font-family: sans-serif;
+  position: absolute;
+  transition: all 0.2s ease;
+  color: rgb(48, 48, 48);
+  left: 0px;
+  top: 55%;
+  transform: translateY(-50%);
+}
+.form_container form .input_field label .label .star {
+  display: inline-block;
+  top: -5px;
+  right: -1px;
+  position: relative;
+  color: red;
+  font-size: 12px;
+}
+.form_container form .submit_btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  border: 1px solid rgb(95, 95, 95);
+  outline: 0;
+  border-radius: 5px;
+  background: rgb(23, 161, 23);
+}
+.form_container .register_form .captcha_wrapper {
+  border: 1px solid rgb(95, 95, 95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  padding: 10px;
+}
+.form_container .register_form .captcha_wrapper .captcha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.form_container .register_form .captcha_wrapper .captcha input[type=checkbox] {
+  height: 25px;
+  width: 25px;
+}
+.form_container .register_form .captcha_wrapper .captcha label {
+  margin-left: 10px;
+}
+.form_container .register_form .captcha_wrapper .captcha_img {
+  margin-left: 20px;
+  height: 40px;
+  width: 40px;
+  background-color: red;
+}
+.form_container .login_form {
+  left: 500px;
+}
+.form_container .login_form .etc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+.form_container .login_form .etc .remember {
+  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form_container .login_form .etc .remember input[type=checkbox] {
+  height: 16px;
+  width: 16px;
+}
+.form_container .login_form .etc .remember label {
+  margin-left: 5px;
+}
+.form_container .login_form .etc .forget {
+  margin-right: 5px;
+}
+
+.common {
+  position: absolute;
+  bottom: 0;
+}/*# sourceMappingURL=auth.module.css.map */
