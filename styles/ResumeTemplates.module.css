@@ -1,0 +1,113 @@
+.sec {
+  min-height: 300px;
+  border: 2px solid white;
+}
+.sec * {
+  border: 2px solid white;
+  padding: 10px;
+}
+
+.hero {
+  padding-top: 90px;
+}
+
+.container {
+  margin: auto;
+  max-width: 1400px;
+  width: 100%;
+}
+
+.content {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: white;
+}
+.content * {
+  border: 1px solid white;
+  padding: 5px;
+}
+.content .resume {
+  font-size: 22px;
+  width: 60%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  text-align: center;
+}
+.content .resume .resumeSec {
+  min-height: 300px;
+  margin: 10px;
+}
+.content .resume .resumeSec .secTitle {
+  width: 100%;
+  margin: 20px 0;
+}
+.content .resume .resumeSec .data_container1, .content .resume .resumeSec .data_container2 {
+  min-height: 200px;
+}
+.content .resume .resumeSec .data_container2 {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.content .resume .resumeSec .data_container2 a {
+  margin: 10px;
+}
+.content .resume .resumeSec .data_container2 a span {
+  background-color: black;
+  color: wheat;
+  font-size: 30px;
+}
+.technicalSkill {
+  margin: 10px;
+  background-color: black;
+  color: white;
+  padding: 10px;
+}
+
+.secTitleInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  background-color: rgb(71, 71, 71);
+}
+.secTitleInput input {
+  color: white;
+}
+.secTitleInput .icon {
+  padding: 0;
+  font-size: 30px;
+}
+
+.addNewItems {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.addNewItems .plus {
+  border: 5px solid rgb(13, 0, 255);
+  color: blue;
+  border-radius: 50%;
+  font-size: 45px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+}
+.addNewItems .dashLine {
+  display: inline-flex;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border: none;
+  border-bottom: 5px dotted rgb(255, 255, 255);
+  width: 200px;
+  height: 0px;
+}/*# sourceMappingURL=ResumeTemplates.module.css.map */

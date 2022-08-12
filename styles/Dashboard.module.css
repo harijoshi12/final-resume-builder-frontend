@@ -1,0 +1,23 @@
+.sec {
+  min-height: 300px;
+  border: 2px solid white;
+}
+.sec * {
+  border: 2px solid white;
+  padding: 10px;
+}
+
+.hero {
+  padding-top: 90px;
+}
+
+.container {
+  margin: auto;
+  max-width: 1400px;
+  width: 100%;
+}
+
+.content {
+  max-width: 1200px;
+  margin: auto;
+}/*# sourceMappingURL=Dashboard.module.css.map */
