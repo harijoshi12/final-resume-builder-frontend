@@ -1,3 +1,14 @@
+import React from 'react'
+
+const  ResumeTemplates = () => {
+  return (
+    <div> ResumeTemplates</div>
+  )
+}
+
+export default ResumeTemplates
+
+
 // import React, { useEffect, useRef, useState } from "react";
 // import { v4 as uuidv4} from 'uuid'
 // import Layout from "../../UI/Layout";
