@@ -9,9 +9,11 @@ $light: rgb(209, 209, 209);
   background-color: rgb(213, 213, 213);
   position: relative;
   border: 2px solid blue;
+  border-radius: 50px;
   max-width: 500px;
   margin: auto;
-  height: 620px;
+  overflow: hidden;
+  height: 690px;
   padding: 20px 30px;
   *{
     // border: 1px solid rgb(0, 0, 0);
@@ -20,21 +22,25 @@ $light: rgb(209, 209, 209);
   }
 
   .slider_container{
-    margin-bottom: 20px;
+    margin: 20px 0;
+    margin-bottom: 30px;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    overflow: hidden;
     position: relative;
     // background-color: red;
     color: white;
-    border-radius: 40px;
+    border-radius: 50px;
     box-shadow: inset 1px 1px 3px 1px black, inset -1px -1px 3px 1px gray;
     .link{
       margin: 0;
       border: 0;
-
-      padding: 8px 20px;
+      // background-color: red;
+      width: 100%;
+      // border: 2px solid white;
+      padding: 13px 20px;
+      
       display: inline-flex;
+      justify-content: center;
       cursor: pointer;
       text-decoration: none;
       color: black;
@@ -59,11 +65,12 @@ $light: rgb(209, 209, 209);
     width: calc(100% - 60px);
     position: absolute;
     margin: 0;
-    border: 1px solid black;
+    // border: 1px solid black;
+    transition: all 0.3s ease-in-out;
     .input_field{
       width: 100%;
       position: relative;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       input{
         height: 55px;
         width: 100%;
@@ -109,9 +116,9 @@ $light: rgb(209, 209, 209);
       }
     }
     .submit_btn{
-      margin-top: 20px;
+      margin-top: 26px;
       width: 100%;
-      padding: 10px;
+      padding: 13px;
       font-size: 20px;
       border: 1px solid rgb(95, 95, 95);
       outline: 0;
@@ -121,7 +128,7 @@ $light: rgb(209, 209, 209);
     }
   }
   .register_form{
-    // left: 500px
+    left: 500px;
     .captcha_wrapper{
       border: 1px solid rgb(95, 95, 95);
       display: flex;
@@ -152,7 +159,7 @@ $light: rgb(209, 209, 209);
     }
   }
   .login_form{
-    left: 500px;
+    left: 30px;
     .etc{
       display: flex;
       justify-content: space-between;

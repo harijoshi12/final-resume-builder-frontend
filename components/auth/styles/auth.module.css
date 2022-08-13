@@ -7,26 +7,30 @@
   background-color: rgb(213, 213, 213);
   position: relative;
   border: 2px solid blue;
+  border-radius: 50px;
   max-width: 500px;
   margin: auto;
-  height: 620px;
+  overflow: hidden;
+  height: 690px;
   padding: 20px 30px;
 }
 .form_container .slider_container {
-  margin-bottom: 20px;
+  margin: 20px 0;
+  margin-bottom: 30px;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  overflow: hidden;
   position: relative;
   color: white;
-  border-radius: 40px;
+  border-radius: 50px;
   box-shadow: inset 1px 1px 3px 1px black, inset -1px -1px 3px 1px gray;
 }
 .form_container .slider_container .link {
   margin: 0;
   border: 0;
-  padding: 8px 20px;
+  width: 100%;
+  padding: 13px 20px;
   display: inline-flex;
+  justify-content: center;
   cursor: pointer;
   text-decoration: none;
   color: black;
@@ -50,12 +54,12 @@
   width: calc(100% - 60px);
   position: absolute;
   margin: 0;
-  border: 1px solid black;
+  transition: all 0.3s ease-in-out;
 }
 .form_container form .input_field {
   width: 100%;
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 .form_container form .input_field input {
   height: 55px;
@@ -99,14 +103,17 @@
   font-size: 12px;
 }
 .form_container form .submit_btn {
-  margin-top: 20px;
+  margin-top: 26px;
   width: 100%;
-  padding: 10px;
+  padding: 13px;
   font-size: 20px;
   border: 1px solid rgb(95, 95, 95);
   outline: 0;
   border-radius: 5px;
   background: rgb(23, 161, 23);
+}
+.form_container .register_form {
+  left: 500px;
 }
 .form_container .register_form .captcha_wrapper {
   border: 1px solid rgb(95, 95, 95);
@@ -141,7 +148,7 @@
   background-color: red;
 }
 .form_container .login_form {
-  left: 500px;
+  left: 30px;
 }
 .form_container .login_form .etc {
   display: flex;
@@ -167,6 +174,53 @@
 }
 
 .common {
+  padding: 20px 0;
   position: absolute;
-  bottom: 0;
+  top: 387px;
+  width: calc(100% - 60px);
+  transition: all 0.3s ease-in-out;
+}
+.common .social_divider {
+  margin: auto;
+  width: 85%;
+  border: 0;
+  border-bottom: 2px solid rgb(64, 64, 64);
+  position: relative;
+}
+.common .social_divider span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: -14px;
+  transform: translateX(-50%);
+  background-color: white;
+  height: 30px;
+  width: 30px;
+  padding-right: 2px;
+  padding-bottom: 2px;
+  border-radius: 50%;
+}
+.common .social_logins .google_auth {
+  background-color: rgba(255, 25, 0, 0.982);
+  width: 100%;
+  padding: 15px;
+  font-size: 22px;
+  color: white;
+  border-radius: 5px;
+  margin: 25px 0;
+  margin-top: 35px;
+  text-align: center;
+}
+.common .social_logins .google_auth span {
+  margin-right: 6px;
+}
+.common p {
+  text-align: center;
+  font-size: 13px;
+}
+.common p span {
+  color: blue;
 }/*# sourceMappingURL=auth.module.css.map */

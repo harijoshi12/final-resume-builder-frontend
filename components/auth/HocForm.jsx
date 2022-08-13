@@ -7,9 +7,9 @@ const HocForm = (Form)=>{
     const password2Ref = useRef(null)
     useEffect(()=>{
       const inputs = [emailRef, password1Ref, password2Ref]
+
       inputs.forEach(input=>{
         if(input.current){
-          console.log(input)
           const label = input.current.nextElementSibling.firstElementChild
           input.current.addEventListener('focus',()=>{
             label.style.transform = `translateY(-25px)`
@@ -29,9 +29,10 @@ const HocForm = (Form)=>{
           })
         }
       })
+
     })
     return(
-      <Form emailRef={emailRef} password1Ref={password1Ref} password2Ref={password2Ref}/>
+      <Form {...props} emailRef={emailRef} password1Ref={password1Ref} password2Ref={password2Ref}/>
     )
   }
   return NewForm

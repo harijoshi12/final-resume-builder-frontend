@@ -171,7 +171,7 @@ function Header({setIsMousein}) {
             <Link href='/dashboard'><a ref={link3}>Dashboard</a></Link>
             <Link href='/editor'><a ref={link4}>Editor</a></Link>
             <Link href='/view-resume'><a ref={link5}>View Resume</a></Link>
-            <Link href='/login'><a>Login/Register</a></Link>
+            <Link href='/login-register'><a>Login/Register</a></Link>
           </nav>
           <div ref={burger} className={toggleMenu ? "burger toggle": "burger"} onClick={()=>{
             setToggleMenu(!toggleMenu)

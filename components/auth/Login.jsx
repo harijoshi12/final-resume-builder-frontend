@@ -4,10 +4,17 @@ import HocForm from './HocForm'
 import InputField from './InputField'
 import styles from './styles/auth.module.css'
 const Login = (props) => {
-
-  const {emailRef, password1Ref} = props
+  const {emailRef, password1Ref, isLoginForm} = props
+  const loginFormRef =  useRef(null)
+  useEffect(()=>{
+    if(isLoginForm){
+      loginFormRef.current.style.left = "30px"
+    } else{
+      loginFormRef.current.style.left = "-440px"
+    }
+  },[isLoginForm])
   return (
-    <form action="" className={styles.login_form}>
+    <form ref={loginFormRef} action="" className={styles.login_form}>
       <InputField inputRef={emailRef} isStar={true}  type="email" name="email_login" id_htmlFor="id_email_login" label="E-mail" ></InputField>
       
       <InputField inputRef={password1Ref} isStar={true}  type="password" name="password_login" id_htmlFor="id_password_login" label="Password" ></InputField>

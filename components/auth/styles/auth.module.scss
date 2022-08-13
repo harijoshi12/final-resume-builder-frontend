@@ -1,6 +1,58 @@
 @import './form';
 
 .common{
+  padding: 20px 0;
   position: absolute;
-  bottom: 0;
+  top: 387px;
+  // border: 2px solid black;
+  width: calc(100% - 60px);
+  transition: all 0.3s ease-in-out;
+
+  .social_divider{
+    margin: auto;
+    width: 85%;
+    border: 0;
+    border-bottom: 2px solid rgb(64, 64, 64);
+    position: relative;
+    span{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      text-align: center;
+      left: 50%;
+      top: -14px;
+      transform: translateX(-50%);
+      background-color: white;
+      height: 30px;
+      width: 30px;
+      padding-right: 2px;
+      padding-bottom: 2px;
+      border-radius: 50%;
+    }
+  }
+  .social_logins{
+    // display: flex;
+    .google_auth{
+      background-color: rgba(255, 25, 0, 0.982);
+      width: 100%;
+      padding: 15px;
+      font-size: 22px;
+      color: white;
+      border-radius: 5px;
+      margin: 25px 0;
+      margin-top: 35px;
+      text-align: center;
+      span{
+        margin-right: 6px;
+      }
+    }
+  }
+  p{
+    text-align: center;
+    font-size: 13px;
+    span{
+      color: blue;
+    }
+  }
 }
