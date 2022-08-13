@@ -1,5 +1,5 @@
 import React, {useRef } from 'react'
-import styles from '../../../styles/Template1.module.css'
+import styles from './styles/Template1.module.css'
 
 import { contactDetails, techSkills, progLangs, projectData, langs, education, myJourneyData, interests } from './data'
 

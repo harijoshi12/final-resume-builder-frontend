@@ -1,4 +1,5 @@
-import styles from '../../../styles/Template1.module.css'
+import styles from './styles/Template1.module.css'
+
 
 export const PersonalInfo = () => {
     return (
