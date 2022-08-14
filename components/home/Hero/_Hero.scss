@@ -1,0 +1,54 @@
+.hero{
+  background: rgb(255,255,255);
+  background-image:linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6) 40%,rgba(255, 255, 255, 0) 65%, rgba(254,254,254,0) 100%), url(../media/images/triangles-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  .container{
+    background:  url(../media/images/me.png)  ;
+    background-position: 110% 100% ;
+    background-size: 40% ;
+    background-repeat: no-repeat;
+    height: 550px;
+    min-height: 30vh;
+    max-width: 100%;
+    .content{
+      padding-right: 15%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+     .left_section{
+      width: 55%;
+      h1{
+        text-transform: capitalize;
+        font-size: 43px;
+        font-weight: bold;
+        line-height: 60px;
+        padding: 20px 0;
+      }
+      p{
+        padding:20px 0;
+        font-size: 22px;
+        line-height: 35px;
+      }
+      button{
+        margin: 20px 0;
+        padding: 15px 35px;
+        font-size: 25px;
+        background-color: rgb(255, 217, 0);
+      }
+    }
+    .right_section{
+       width: 45%;
+
+     } 
+    }
+  }
+}
+@media screen and (min-width: "1400px") {
+  .hero{
+    .container{
+      background-position: 110% 25%;
+    }
+  }
+}

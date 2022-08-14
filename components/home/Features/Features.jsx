@@ -3,7 +3,7 @@ import styles from '../../../styles/Home.module.css'
 
 const Features = () => {
   return (
-    <section className={`${styles.sec} ${styles.hero}`}>
+    <section className={`${styles.sec} ${styles.features}`}>
       <div className={styles.container}>
         <div className={styles.content}>
           Features section

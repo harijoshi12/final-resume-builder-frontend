@@ -3,7 +3,7 @@ import styles from '../../../styles/Home.module.css'
 
 const Procedure = () => {
   return (
-    <section className={`${styles.sec} ${styles.hero}`}>
+    <section className={`${styles.sec} ${styles.procedure}`}>
       <div className={styles.container}>
         <div className={styles.content}>
           Procedure section
