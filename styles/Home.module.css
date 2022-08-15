@@ -3,6 +3,8 @@
 }
 .home_main {
   background-color: rgb(237, 237, 237);
+  overflow: hidden;
+  font-family: sans-serif;
 }
 
 .hero {
@@ -17,6 +19,7 @@
 
 .content {
   max-width: 1200px;
+  padding: 70px 30px;
   margin: auto;
 }
 
@@ -30,25 +33,27 @@
           clip-path: polygon(0 0, 100% 0%, 100% 86%, 48% 100%, 0 86%);
 }
 .hero .container {
+  padding: 10px;
+  padding-top: 50px;
   padding-bottom: 150px;
-  background: url(../media/images/me.png);
-  background-position: 130% -60px;
-  background-size: 50%;
-  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 30vh;
   max-width: 100%;
-  padding-top: 50px;
 }
 .hero .container .content {
   padding-top: 50px;
-  padding-right: 120px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 .hero .container .content .left_section {
   min-height: 450px;
-  width: 55%;
+  min-width: 300px;
+  flex-basis: 55%;
+  max-width: 100%;
+  flex-grow: 1;
   font-family: sans-serif;
   letter-spacing: 1px;
   display: flex;
@@ -79,8 +84,7 @@
   color: white;
 }
 .hero .container .content .right_section {
-  width: 40%;
-  margin-left: -25px;
+  width: 45%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -122,18 +126,27 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  border: 2px solid white;
   width: 283px;
 }
 
-@media screen and (min-width: 1400px) {
-  .hero .container {
-    background-position: 110% 25%;
+@media screen and (max-width: 768px) {
+  .hero {
+    background-image: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.05) 65%, rgba(254, 254, 254, 0) 100%), url(../media/images/triangles-bg.png);
+  }
+  .hero .container .content {
+    flex-direction: column;
+  }
+  .hero .container .content .left_section {
+    margin-bottom: 30px;
+    align-items: center;
+    text-align: center;
+  }
+  .hero .container .content .left_section h1 {
+    font-size: 50px;
   }
 }
 .features {
   background-color: transparent;
-  font-family: sans-serif;
   color: rgb(32, 32, 32);
   background-color: rgb(237, 237, 237);
 }
@@ -144,37 +157,42 @@
   color: rgb(48, 48, 48);
 }
 .features .content {
-  padding: 70px 50px;
+  padding: 70px 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(../media/images/resumebg.svg);
-  background-size: 550px;
-  background-position: left center;
-  background-repeat: no-repeat;
 }
 .features .content .left_section {
-  width: 52%;
+  flex-basis: 55%;
+  max-height: 600px;
+  background-image: url(../media/images/resumebg.svg);
+  background-size: 100%;
+  background-position: left center;
+  background-repeat: no-repeat;
+  min-height: 600px;
 }
 .features .content .right_section {
-  width: 48%;
+  flex-basis: 45%;
+  padding-left: 15px;
 }
 .features .content .right_section .feature {
   background-color: rgb(199, 199, 199);
-  margin: 10px;
-  padding: 20px;
+  margin: 25px 0;
+  padding: 20px 10px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgb(128, 128, 128);
 }
-.features .content .right_section .feature > span {
+.features .content .right_section .feature h2 {
+  margin: 10px 0;
+  display: inline-flex;
+  color: rgb(24, 24, 24);
+}
+.features .content .right_section .feature h2 > span {
   position: relative;
-  bottom: -8px;
+  margin-right: 10px;
   display: inline-flex;
   color: darkgreen;
   font-size: 30px;
-}
-.features .content .right_section .feature h2 {
-  margin: 10px;
-  display: inline-flex;
-  color: rgb(24, 24, 24);
 }
 .features .content .right_section .feature p {
   margin-left: 43px;
@@ -185,19 +203,42 @@
   font-style: italic;
 }
 
+@media screen and (min-width: 1300px) {
+  .features .container .content .left_section {
+    min-height: 600px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .features .container .content {
+    flex-direction: column;
+  }
+  .features .container .content .left_section {
+    width: 100%;
+    min-height: 80vw;
+  }
+  .features .container .content .right_section {
+    padding: 0;
+  }
+}
 .procedure {
   background-color: blue;
 }
 .procedure .container {
   padding-bottom: 70px;
 }
+.procedure .container .sec_title {
+  padding-top: 50px;
+  text-align: center;
+  font-size: 40px;
+  color: rgb(225, 225, 225);
+}
 .procedure .content {
-  background-image: url(../media/images/desktop-with-resume.svg);
-  height: 850px;
-  padding: 70px 0;
-  background-repeat: no-repeat;
-  background-position: bottom center;
   background-size: 750px;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .procedure .content .top_section {
   display: flex;
@@ -206,19 +247,21 @@
   width: 33%;
   background-color: rgb(199, 199, 199);
   margin: 10px;
-  padding: 20px;
+  padding: 20px 10px;
+  box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.4);
+  border: 1px solid rgb(76, 76, 76);
 }
-.procedure .content .top_section .step > span {
+.procedure .content .top_section .step h2 {
+  margin: 10px 0;
+  display: inline-flex;
+  color: rgb(24, 24, 24);
+}
+.procedure .content .top_section .step h2 > span {
+  margin-right: 10px;
   position: relative;
-  bottom: -8px;
   display: inline-flex;
   color: darkgreen;
   font-size: 30px;
-}
-.procedure .content .top_section .step h2 {
-  margin: 10px;
-  display: inline-flex;
-  color: rgb(24, 24, 24);
 }
 .procedure .content .top_section .step p {
   margin-left: 43px;
@@ -227,4 +270,37 @@
 }
 .procedure .content .top_section .step p span {
   font-style: italic;
+}
+.procedure .content .bottom_section {
+  background-image: url(../media/images/desktop-with-resume.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  background-size: 75%;
+  min-height: 53vw;
+}
+
+@media screen and (min-width: 1300px) {
+  .procedure .container .content .bottom_section {
+    min-height: 630px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .procedure .container .content {
+    padding-bottom: 0;
+  }
+  .procedure .container .content .top_section {
+    margin-bottom: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .procedure .container .content .top_section .step {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .container .content {
+    padding: 50px 10px;
+  }
 }/*# sourceMappingURL=Home.module.css.map */

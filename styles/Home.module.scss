@@ -9,6 +9,8 @@
 }
 .home_main{
   background-color: rgb(237, 237, 237);
+  overflow: hidden;
+  font-family: sans-serif;
 }
 .hero {
   padding-top: 70px;
@@ -20,6 +22,7 @@
 }
 .content {
   max-width: 1200px;
+  padding: 70px 30px ;
   margin: auto;
 }
 
@@ -27,3 +30,12 @@
 @import '../components/home/Features/Features';
 @import '../components/home/Procedure/Procedure';
 @import '../components/home/Testimonial/Testimonial';
+
+@media screen and (max-width: "576px") {
+  .container{
+
+    .content{
+      padding: 50px 10px;   
+    }
+  }
+}

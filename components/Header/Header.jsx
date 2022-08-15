@@ -164,7 +164,7 @@ function Header({setIsMousein}) {
           <div ref={progress} className="progress"></div>
         </div>
         <div className="nav_wrapper">
-          <div className='logo'>Logo</div>
+          <div className='logo'><Link href='/'><a>Meta <span>Resume</span></a></Link></div>
           <nav ref={nav} className={toggleMenu ? "toggle": ""}>
             <Link href='/'><a ref={link1}>Home</a></Link>
             <Link href='/resume-templates'><a ref={link2}>Templates</a></Link>

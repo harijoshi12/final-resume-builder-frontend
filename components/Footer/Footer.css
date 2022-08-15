@@ -18,6 +18,10 @@ footer .copyright {
   padding: 15px 0;
   color: rgb(170, 170, 170);
 }
+footer .copyright a {
+  color: rgb(171, 184, 255);
+  text-decoration: underline;
+}
 footer .copyright .heart {
   width: 15px;
   display: inline-flex;

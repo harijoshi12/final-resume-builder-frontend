@@ -1,6 +1,5 @@
 .features{
   background-color: transparent;
-  font-family: sans-serif;
   color: rgb(32, 32, 32);
   background-color: rgb(237, 237, 237);
   *{
@@ -9,7 +8,6 @@
   .container{
     .sec_title{
       margin-top: 80px;
-      // background-color: yellow;
       text-align: center;
       font-size: 40px;
       color: rgb(48, 48, 48);
@@ -19,35 +17,39 @@
     }
   }
   .content{
-    padding: 70px 50px ;
+    padding: 70px 30px ;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(../media/images/resumebg.svg);
-    background-size: 550px;
-    background-position: left center;
-    background-repeat: no-repeat;
     .left_section{
-      width: 52%;
+      flex-basis: 55%;
+      max-height: 600px;
+      background-image: url(../media/images/resumebg.svg);
+      background-size: 100%;
+      background-position: left center;
+      background-repeat: no-repeat;
+      min-height: 600px;
     }
     .right_section{
-      width: 48%;
+      flex-basis: 45%;
+      padding-left: 15px;
       .feature{
         background-color: rgb(199, 199, 199);
-        margin: 10px;
-        padding: 20px;
-   
-        >span{
-          position: relative;
-          bottom: -8px;
-          display: inline-flex;
-          color: darkgreen;
-          font-size: 30px;
-        }
+        margin: 25px 0;
+        padding: 20px 10px;
+        box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgb(128, 128, 128);
         h2{
-          margin: 10px;
+          margin: 10px 0;
           display: inline-flex;
           color: rgb(24, 24, 24);
+          >span{
+            position: relative;
+            margin-right: 10px;
+            display: inline-flex;
+            color: darkgreen;
+            font-size: 30px;
+          }
         }
         p{
           margin-left: 43px;
@@ -56,6 +58,33 @@
           span{
             font-style: italic;
           }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: "1300px") {
+  .features{
+    .container{
+      .content{
+        .left_section{
+          min-height: 600px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: "768px") {
+  .features{
+    .container{
+      .content{
+        flex-direction: column;
+        .left_section{
+          width: 100%;
+          min-height: 80vw;
+        }
+        .right_section{
+          padding: 0;
         }
       }
     }

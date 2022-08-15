@@ -12,21 +12,22 @@ const Features = () => {
             <div className={styles.imgbox}></div>
           </div>
           <div className={styles.right_section}>
+            
             <div className={styles.feature}>
-              <span><BsCheckLg/></span> 
-              <h2>5+ Professional Resume Templates</h2>
+              <h2> <span><BsCheckLg/></span>  5+ Professional Resume Templates</h2>
               <p>Modern and progessional templates which can be customized to your liking</p>
             </div>
+
             <div className={styles.feature}>
-              <span><BsCheckLg/></span> 
-              <h2>Fast and easy to use</h2>
+              <h2> <span><BsCheckLg/></span> Fast and easy to use</h2>
               <p>Our free resume builder lets you easily and quickly create a resume using our powerfull resume builder</p>
             </div>
+
             <div className={styles.feature}>
-              <span><BsCheckLg/></span> 
-              <h2>Download your resume as pdf</h2>
+              <h2> <span><BsCheckLg/></span> Download your resume as pdf</h2>
               <p>Download your resume as pdf with <span>selectable text</span> and <span>clickable link</span></p>
             </div>
+
           </div>
         </div>
       </div>

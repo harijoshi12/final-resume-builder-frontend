@@ -5,36 +5,44 @@
   background-color: blue;
   .container{
     padding-bottom: 70px;
+    .sec_title{
+      padding-top: 50px;
+      text-align: center;
+      font-size: 40px;
+      color: rgb(225, 225, 225);
+    }
     .content{
 
     }
   }
   .content{
-    background-image: url(../media/images/desktop-with-resume.svg);
-    height: 850px;
-    padding: 70px 0;
-    background-repeat: no-repeat;
-    background-position:bottom center;
     background-size: 750px;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     .top_section{
       display: flex;
+
       .step{
         width: 33%;
         background-color: rgb(199, 199, 199);
         margin: 10px;
-        padding: 20px;
-   
-        >span{
-          position: relative;
-          bottom: -8px;
-          display: inline-flex;
-          color: darkgreen;
-          font-size: 30px;
-        }
+        padding: 20px 10px;
+        box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.4);
+        border: 1px solid rgb(76, 76, 76);
         h2{
-          margin: 10px;
+          margin: 10px 0;
           display: inline-flex;
           color: rgb(24, 24, 24);
+          >span{
+            margin-right: 10px;
+            position: relative;
+            display: inline-flex;
+            color: darkgreen;
+            font-size: 30px;
+          }
         }
         p{
           margin-left: 43px;
@@ -42,6 +50,45 @@
           line-height: 27px;
           span{
             font-style: italic;
+          }
+        }
+      }
+    }
+    .bottom_section{
+      background-image: url(../media/images/desktop-with-resume.svg);
+      background-repeat: no-repeat;
+      background-position:center;
+      width: 100%;
+      background-size: 75%;
+      min-height: 53vw;
+    }
+  }
+}
+@media screen and (min-width: "1300px") {
+  .procedure{
+    .container{
+      .content{
+        .top_section{
+        }
+        .bottom_section{
+          min-height: 630px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: "768px") {
+  .procedure{
+    .container{
+      .content{
+        padding-bottom: 0;
+        .top_section{
+          margin-bottom: 30px;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .step{
+            width: 100%;
           }
         }
       }
