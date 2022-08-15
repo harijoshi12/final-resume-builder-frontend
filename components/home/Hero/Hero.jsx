@@ -7,12 +7,16 @@ const Hero = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.left_section}>
-            <h1>Make a job-winning resume in minutes with our Simple yet powerfull Resume Builder</h1>
-            <p>create your resume easily with our free builder & professional teplates</p>
+            <h1>The Best free online Resume Builder</h1>
+            <p>Build your brand-new resume in as little as 5 minutes</p>
             <button>Create Your Resume</button>
           </div>
           <div className={styles.right_section}>
-            <div className={styles.imgbox}></div>
+            <div className={styles.resumebg}>
+              <div className={styles.first}></div>
+              <div className={styles.second}></div>
+              <div className={styles.imgbox}></div>
+            </div>
           </div>
         </div>
       </div>

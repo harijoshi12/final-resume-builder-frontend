@@ -1,15 +1,17 @@
 
 .sec {
   min-height: 300px;
-  border: 2px solid white;
+  // border: 2px solid white;
   *{
     // border: 2px solid white;
     // padding: 10px;
   }
 }
-
+.home_main{
+  background-color: rgb(237, 237, 237);
+}
 .hero {
-  padding-top: 90px;
+  padding-top: 70px;
 }
 .container {
   margin: auto;

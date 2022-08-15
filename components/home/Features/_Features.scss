@@ -1,0 +1,63 @@
+.features{
+  background-color: transparent;
+  font-family: sans-serif;
+  color: rgb(32, 32, 32);
+  background-color: rgb(237, 237, 237);
+  *{
+    // border: 2px solid;
+  }
+  .container{
+    .sec_title{
+      margin-top: 80px;
+      // background-color: yellow;
+      text-align: center;
+      font-size: 40px;
+      color: rgb(48, 48, 48);
+    }
+    .content{
+
+    }
+  }
+  .content{
+    padding: 70px 50px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../media/images/resumebg.svg);
+    background-size: 550px;
+    background-position: left center;
+    background-repeat: no-repeat;
+    .left_section{
+      width: 52%;
+    }
+    .right_section{
+      width: 48%;
+      .feature{
+        background-color: rgb(199, 199, 199);
+        margin: 10px;
+        padding: 20px;
+   
+        >span{
+          position: relative;
+          bottom: -8px;
+          display: inline-flex;
+          color: darkgreen;
+          font-size: 30px;
+        }
+        h2{
+          margin: 10px;
+          display: inline-flex;
+          color: rgb(24, 24, 24);
+        }
+        p{
+          margin-left: 43px;
+          font-size: 20px;
+          line-height: 27px;
+          span{
+            font-style: italic;
+          }
+        }
+      }
+    }
+  }
+}

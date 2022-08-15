@@ -1,14 +1,9 @@
 .sec {
-  min-height: 300px;
   border: 2px solid white;
 }
 .sec * {
   border: 2px solid white;
   padding: 10px;
-}
-
-.hero {
-  padding-top: 90px;
 }
 
 .container {

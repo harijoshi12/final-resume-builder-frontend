@@ -1,0 +1,50 @@
+.procedure{
+  *{
+    // border: 1px solid 
+  };
+  background-color: blue;
+  .container{
+    padding-bottom: 70px;
+    .content{
+
+    }
+  }
+  .content{
+    background-image: url(../media/images/desktop-with-resume.svg);
+    height: 850px;
+    padding: 70px 0;
+    background-repeat: no-repeat;
+    background-position:bottom center;
+    background-size: 750px;
+    .top_section{
+      display: flex;
+      .step{
+        width: 33%;
+        background-color: rgb(199, 199, 199);
+        margin: 10px;
+        padding: 20px;
+   
+        >span{
+          position: relative;
+          bottom: -8px;
+          display: inline-flex;
+          color: darkgreen;
+          font-size: 30px;
+        }
+        h2{
+          margin: 10px;
+          display: inline-flex;
+          color: rgb(24, 24, 24);
+        }
+        p{
+          margin-left: 43px;
+          font-size: 20px;
+          line-height: 27px;
+          span{
+            font-style: italic;
+          }
+        }
+      }
+    }
+  }
+}

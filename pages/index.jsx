@@ -17,11 +17,11 @@ export default function Home() {
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <Layout>
-      <main>
+      <main className={styles.home_main}>
         <Hero/>
         <Features/>
         <Procedure/>
-        <Testimonial/>
+        {/* <Testimonial/> */}
       </main>
     </Layout>
   </Fragment>

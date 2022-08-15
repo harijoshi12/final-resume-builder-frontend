@@ -1,10 +1,11 @@
 .pseudo_header {
   position: fixed;
   top: 0;
-  background: rgba(10, 10, 10, 0.5);
+  background: rgb(247, 247, 247);
   width: 100%;
   height: 75px;
   z-index: 100;
+  box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.5);
 }
 
 .nav-overlay {
@@ -35,15 +36,15 @@ header {
 }
 header .progress_wrapper {
   position: absolute;
-  bottom: -7px;
+  bottom: -8px;
   left: 0;
   width: 100%;
-  background-color: rgba(10, 10, 10, 0.5);
+  background-color: white;
 }
 header .progress_wrapper .progress {
   width: 0%;
   height: 7px;
-  background-color: rgb(4, 226, 226);
+  background-color: orangered;
   transition: width 0.2s ease;
 }
 header .nav_wrapper {
@@ -66,7 +67,7 @@ header .nav_wrapper .logo {
   z-index: 400;
 }
 header .nav_wrapper .logo a {
-  color: white;
+  color: rgb(0, 0, 0);
 }
 header .nav_wrapper .logo a span {
   font-weight: 200;
@@ -83,7 +84,7 @@ header nav #nav_resumeMaker span {
   padding: 6px 10px;
 }
 header nav a {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   white-space: nowrap;
   font-size: 16px;
   font-weight: 700;
