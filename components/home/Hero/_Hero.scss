@@ -11,7 +11,7 @@
   .container{
     padding: 10px;
     padding-top: 50px;
-    padding-bottom: 150px;
+    padding-bottom: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,6 +112,7 @@
     background-image:linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 40%,rgba(255, 255, 255, 0.05) 65%, rgba(254,254,254,0) 100%), url(../media/images/triangles-bg.png);
 
     .container{
+      padding-bottom: 150px;
       .content{
         flex-direction: column;
         .left_section{

@@ -35,7 +35,7 @@
 .hero .container {
   padding: 10px;
   padding-top: 50px;
-  padding-bottom: 150px;
+  padding-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,6 +133,9 @@
   .hero {
     background-image: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.05) 65%, rgba(254, 254, 254, 0) 100%), url(../media/images/triangles-bg.png);
   }
+  .hero .container {
+    padding-bottom: 150px;
+  }
   .hero .container .content {
     flex-direction: column;
   }
@@ -197,7 +200,7 @@
 .features .content .right_section .feature p {
   margin-left: 43px;
   font-size: 20px;
-  line-height: 27px;
+  line-height: 28px;
 }
 .features .content .right_section .feature p span {
   font-style: italic;
@@ -266,7 +269,7 @@
 .procedure .content .top_section .step p {
   margin-left: 43px;
   font-size: 20px;
-  line-height: 27px;
+  line-height: 28px;
 }
 .procedure .content .top_section .step p span {
   font-style: italic;
@@ -297,6 +300,263 @@
   }
   .procedure .container .content .top_section .step {
     width: 100%;
+  }
+}
+.contact .container {
+  background-color: rgb(237, 237, 237);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+.contact .content {
+  position: relative;
+  padding: 0px;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.4);
+}
+.contact .content_left {
+  margin: 0;
+  width: 350px;
+  align-self: stretch;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  position: relative;
+}
+.contact .content_left .imgbox {
+  border: 3px solid blue;
+  border: 0;
+  position: absolute;
+  bottom: -34px;
+  left: -80px;
+  width: 400px;
+  height: 546px;
+  transform: rotateZ(10deg);
+  background-size: 100%;
+  background-image: url(../media/images/contact/contact.png);
+  background-position: 50% 40%;
+  background-repeat: no-repeat;
+}
+.contact .content_right {
+  margin: 0;
+  padding-left: 20px;
+  width: calc(100% - 300px);
+}
+.contact .content_right .title {
+  position: relative;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 50px;
+  color: rgb(48, 48, 48);
+  font-style: normal;
+  font-family: sans-serif;
+  font-weight: 500;
+  padding-left: 0;
+  margin-bottom: 10px;
+  margin-top: 50px;
+}
+.contact .content_right form {
+  padding-bottom: 50px;
+  padding-right: 50px;
+}
+.contact .content_right form .row:first-child .input_field:first-child {
+  margin-right: 10px;
+}
+.contact .content_right form .row:first-child .input_field:last-child {
+  margin-left: 10px;
+}
+.contact .content_right form .row {
+  display: flex;
+  margin-bottom: 20px;
+}
+.contact .content_right form .row .input_field {
+  width: 100%;
+  position: relative;
+}
+.contact .content_right form .row .input_field input {
+  height: 55px;
+  width: 100%;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  border-bottom: 2px solid rgb(48, 48, 48);
+  padding-top: 15px;
+  padding-left: 3px;
+  font-size: 22px;
+  color: rgb(48, 48, 48);
+}
+.contact .content_right form .row .input_field label {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 55px;
+  bottom: 0;
+  left: 0;
+  text-transform: uppercase;
+}
+.contact .content_right form .row .input_field label span {
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 1px;
+  font-family: sans-serif;
+  position: absolute;
+  transition: all 0.2s ease;
+  color: rgb(48, 48, 48);
+  left: 3px;
+  top: 55%;
+  transform: translateY(-50%);
+}
+.contact .content_right form .row .textarea {
+  margin-top: 20px;
+}
+.contact .content_right form .row .textarea textarea {
+  resize: none;
+  padding-top: 0;
+  padding-left: 3px;
+  width: 100%;
+  height: 140px;
+  border: 0;
+  font-size: 20px;
+  border-bottom: 2px solid rgb(48, 48, 48);
+  outline: none;
+  background-color: transparent;
+  color: rgb(48, 48, 48);
+}
+.contact .content_right form .row .textarea label {
+  position: absolute;
+  width: 100%;
+  height: 170px;
+  bottom: 0;
+  left: 0;
+  text-transform: uppercase;
+}
+.contact .content_right form .row .textarea label span {
+  top: 33px;
+  transform: translateY(0%);
+}
+.contact .content_right button {
+  border: 0;
+  outline: none;
+  position: relative;
+  font-size: 20px;
+  letter-spacing: 2px;
+  display: block;
+  width: 95%;
+  padding: 17px;
+  border-radius: 40px;
+  margin: auto;
+  margin-top: 40px;
+  background-color: rgb(24, 24, 24);
+  color: rgb(209, 209, 209);
+  box-shadow: 0 20px 20px 5px rgba(0, 0, 0, 0.6);
+}
+
+@media screen and (max-width: 992px) {
+  .contact .content_left {
+    margin: 0;
+    width: 350px;
+    align-self: stretch;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    position: relative;
+  }
+  .contact .content_left .imgbox {
+    border: 3px solid blue;
+    border: 0;
+    left: -100px;
+    width: 400px;
+    height: 570px;
+  }
+  .contact .content_right {
+    width: calc(100% - 200px);
+  }
+}
+@media screen and (max-width: 768px) {
+  .contact .content_left {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+  }
+  .contact .content_left .imgbox {
+    border: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 75%;
+    background-position: 50% 20%;
+    box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.8);
+    transform: rotateZ(0);
+  }
+  .contact .content_right {
+    margin: 0;
+    padding-left: 0px;
+    width: 100%;
+  }
+  .contact .content_right .title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 40px;
+  }
+  .contact .content_right form {
+    padding: 50px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .contact .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .contact .container .content {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .contact .content_left {
+    width: 100%;
+    height: 100%;
+  }
+  .contact .content_left .imgbox {
+    background-size: 90%;
+    background-position: 50% 0px;
+  }
+  .contact .content_right .title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 40px;
+  }
+  .contact .content_right form {
+    padding: 50px 15px;
+    padding-top: 5px;
+  }
+  .contact .content_right form .row:first-child .input_field:first-child {
+    margin-right: 0px;
+    margin-bottom: 10px;
+  }
+  .contact .content_right form .row:first-child .input_field:last-child {
+    margin-left: 0px;
+    margin-top: 10px;
+  }
+  .contact .content_right form .row {
+    display: flex;
+    margin-bottom: 20px;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 450px) {
+  .contact.sec .content_left .imgbox {
+    background-size: 90%;
+    background-position: 50% 100px;
   }
 }
 @media screen and (max-width: 576px) {

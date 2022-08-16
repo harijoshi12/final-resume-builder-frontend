@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Fragment } from 'react'
+import Contact from '../components/home/Contact/Contact'
 import Features from '../components/home/Features/Features'
 import Hero from '../components/home/Hero/Hero'
 import Procedure from '../components/home/Procedure/Procedure'
@@ -22,6 +23,7 @@ export default function Home() {
         <Features/>
         <Procedure/>
         {/* <Testimonial/> */}
+        <Contact/>
       </main>
     </Layout>
   </Fragment>
