@@ -179,11 +179,15 @@
   padding-left: 15px;
 }
 .features .content .right_section .feature {
-  background-color: rgb(199, 199, 199);
+  background-color: rgb(247, 247, 247);
   margin: 25px 0;
   padding: 20px 10px;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.4);
   border: 1px solid rgb(128, 128, 128);
+  transition: all 0.2s ease;
+}
+.features .content .right_section .feature:hover {
+  transform: scale(1.03);
 }
 .features .content .right_section .feature h2 {
   margin: 10px 0;
@@ -230,7 +234,7 @@
   padding-bottom: 70px;
 }
 .procedure .container .sec_title {
-  padding-top: 50px;
+  padding-top: 70px;
   text-align: center;
   font-size: 40px;
   color: rgb(225, 225, 225);
@@ -245,14 +249,19 @@
 }
 .procedure .content .top_section {
   display: flex;
+  margin-bottom: 30px;
 }
 .procedure .content .top_section .step {
   width: 33%;
-  background-color: rgb(199, 199, 199);
+  background-color: rgb(247, 247, 247);
   margin: 10px;
   padding: 20px 10px;
   box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.4);
   border: 1px solid rgb(76, 76, 76);
+  transition: all 0.2s ease;
+}
+.procedure .content .top_section .step:hover {
+  transform: scale(1.03);
 }
 .procedure .content .top_section .step h2 {
   margin: 10px 0;
@@ -318,7 +327,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(247, 247, 247);
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.4);
 }
 .contact .content_left {

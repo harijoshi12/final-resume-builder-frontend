@@ -6,7 +6,7 @@
   .container{
     padding-bottom: 70px;
     .sec_title{
-      padding-top: 50px;
+      padding-top: 70px;
       text-align: center;
       font-size: 40px;
       color: rgb(225, 225, 225);
@@ -24,14 +24,18 @@
     flex-direction: column;
     .top_section{
       display: flex;
-
+      margin-bottom: 30px;
       .step{
         width: 33%;
-        background-color: rgb(199, 199, 199);
+        background-color: rgb(247, 247, 247);
         margin: 10px;
         padding: 20px 10px;
         box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.4);
         border: 1px solid rgb(76, 76, 76);
+        transition: all 0.2s ease;
+        &:hover{
+          transform: scale(1.03);
+        }
         h2{
           margin: 10px 0;
           display: inline-flex;

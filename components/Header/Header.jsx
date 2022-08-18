@@ -169,9 +169,8 @@ function Header({setIsMousein}) {
             <Link href='/'><a ref={link1}>Home</a></Link>
             <Link href='/resume-templates'><a ref={link2}>Templates</a></Link>
             <Link href='/dashboard'><a ref={link3}>Dashboard</a></Link>
-            <Link href='/editor'><a ref={link4}>Editor</a></Link>
             <Link href='/view-resume'><a ref={link5}>View Resume</a></Link>
-            <Link href='/login-register'><a>Login/Register</a></Link>
+            <Link href='/login-register'><a className='login_register'>Login/Register</a></Link>
           </nav>
           <div ref={burger} className={toggleMenu ? "burger toggle": "burger"} onClick={()=>{
             setToggleMenu(!toggleMenu)
@@ -179,8 +178,6 @@ function Header({setIsMousein}) {
             <div className="line line1"></div>
             <div className="line line2"></div>
             <div className="line line3"></div>
-            <div className="b-child burger-active"></div>
-            <div className="b-child burger-inactive"></div>
           </div>
         </div>
       </header>

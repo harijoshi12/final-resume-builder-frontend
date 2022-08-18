@@ -17,13 +17,13 @@ const Contact = (props) => {
       input.current.addEventListener('focus',()=>{
         label.style.transform = `translateY(-30px)`
         label.style.fontSize = `13px`
-        label.style.color = `rgb(0,255,187)`
+        label.style.color = `orangered`
       })
       input.current.addEventListener('blur',()=>{
         if(input.current.value !== ""){
           label.style.transform = `translateY(-30px)`
           label.style.fontSize = `13px`
-          label.style.color = `rgb(0,255,187)`
+          label.style.color = `orangered`
         } else{
           label.style.transform = `translateY(-50%)`
           label.style.fontSize = `16px`

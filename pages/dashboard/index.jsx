@@ -1,19 +1,15 @@
 import React from 'react'
-import Link from 'next/link'
 import Layout from '../../UI/Layout'
 import styles from '../../styles/Dashboard.module.css'
+import Resume from '../../components/resume-template/common/Resume'
 function Dashboard() {
   return (
     <Layout>
-      <main>
-        <section className={`${styles.sec} ${styles.hero}`}>
-          <div className={styles.container}>
-            <div className={styles.content}>
-              Dashboard page
-              <Link href='/dashboard/2'><a>Editor</a></Link>
-            </div>
-          </div>
-        </section>
+      <main className={styles.dashboardPage}>
+        <div className={styles.desktopView}>
+          <Resume/>
+        </div>
+        <button className={styles.downloadBtn}>Downlaod Resme</button>
       </main>  
     </Layout>
   )
