@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { AiFillDelete } from "react-icons/ai";
-import { MdDone } from "react-icons/md";
 import styles from '../Resume.module.css'
 
 import { SingleInput } from './ItemsInput';
