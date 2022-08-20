@@ -247,13 +247,13 @@ export const projects = [
         id: 1,
         title: "Portfolio Website",
         tech: "React, Firebase",
-        desc: "Lorem ipsum dolor sit, amet consectetur  corrupti officiis eaque."
+        desc: "Lorem ipsum dolor sit, amet consectetur  Lorem ipsum dolor sit, amet consectetur  corrupti corrupti officiis eaque."
     },
     {
         id: 2,
         title: "Resume Maker",
         tech: "React, Firebase",
-        desc: "Lorem ipsum dolor sit, amet consectetur  corrupti officiis eaque."
+        desc: "Lorem ipsum dolor sit, amet consectetur Lorem ipsum dolor sit, amet consectetur  corrupti  corrupti officiis eaque."
     },
     // {
     //     id: 3,
@@ -265,14 +265,14 @@ export const projects = [
         id: 4,
         title: "Social Networking Website",
         tech: "MERN stack",
-        desc: "Lorem ipsum dolor sit, amet consectetur  corrupti officiis eaque."
+        desc: "Lorem ipsum dolor sit, amet consectetur Lorem ipsum dolor sit, amet consectetur  corrupti corrupti officiis eaque."
     },
-    {
-        id: 5,
-        title: "Blockchain Project",
-        tech: "Etherium, Solidity",
-        desc: "Lorem ipsum dolor sit, amet consectetur  corrupti officiis eaque."
-    },
+    // {
+    //     id: 5,
+    //     title: "Blockchain Project",
+    //     tech: "Etherium, Solidity",
+    //     desc: "Lorem ipsum dolor sit, amet consectetur Lorem ipsum dolor sit, amet consectetur  corrupti corrupti officiis eaque."
+    // },
     // {
     //     id: 6,
     //     title: "Artificial Intelligence",

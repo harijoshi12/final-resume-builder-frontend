@@ -28,7 +28,7 @@ const SecItem = (props) => {
 
   const inputRef = useRef(null)
 
-  const handleClickItemTitle = () => {
+  const handleClickItem = () => {
     setEdit(!edit)
     setPlusEl(true)
   }
@@ -61,15 +61,15 @@ const SecItem = (props) => {
   }, [edit])
 
   let childComponent
-  if(secId === "1"){(childComponent = <PersonalInfo itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
-  if(secId === "2"){edit?(childComponent = <TechSkillInput/>):(childComponent = <TechnicalSkill itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
-  if(secId === "3"){(childComponent = <ProgLang itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} onChangeHandler={onChangeHandler} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} inputRef={inputRef} edit={edit} {...data}/>)}
-  if(secId === "4"){edit?(childComponent = <MyJourneyInput/>):(childComponent = <MyJourney itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
-  if(secId === "5"){(childComponent = <ContactDetail itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
-  if(secId === "6"){edit?(childComponent = <ProjectInput/>):(childComponent = <Project itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
-  if(secId === "7"){(childComponent = <Lang itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
-  if(secId === "8"){edit?(childComponent = <EducationInput/>):(childComponent = <Edu itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
-  if(secId === "9"){edit?(childComponent = <InterestInput/>):(childComponent = <Interest itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
+  if(secId === "1"){(childComponent = <PersonalInfo itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+  if(secId === "2"){edit?(childComponent = <TechSkillInput/>):(childComponent = <TechnicalSkill itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+  if(secId === "3"){(childComponent = <ProgLang itemTitle={itemTitle} handleClickItem={handleClickItem} onChangeHandler={onChangeHandler} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} inputRef={inputRef} edit={edit} {...data}/>)}
+  if(secId === "4"){edit?(childComponent = <MyJourneyInput/>):(childComponent = <MyJourney itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+  if(secId === "5"){(childComponent = <ContactDetail itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+  if(secId === "6"){edit?(childComponent = <ProjectInput/>):(childComponent = <Project itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+  if(secId === "7"){(childComponent = <Lang itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+  if(secId === "8"){edit?(childComponent = <EducationInput/>):(childComponent = <Edu itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+  if(secId === "9"){edit?(childComponent = <InterestInput/>):(childComponent = <Interest itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
   return (< >{childComponent}</>)
 }
 
@@ -96,7 +96,6 @@ const PersonalInfo = (props) => {
 };
 
 const ContactDetail = (props) => {
-  // console.log("contact= ",props.dataArray)
   return (
     <a  rel="noopener noreferrer" target="_blank">
       <span>{props.icon}</span> <span>{props.info}</span>
@@ -104,17 +103,17 @@ const ContactDetail = (props) => {
   );
 };
 
-const TechnicalSkill = ({ itemTitle, handleClickItemTitle }) => {
-  return <span className={styles.technicalSkill} onClick={handleClickItemTitle} >{itemTitle}</span>;
+const TechnicalSkill = ({ itemTitle, handleClickItem }) => {
+  return <span className={styles.technicalSkill} onClick={handleClickItem} >{itemTitle}</span>;
 };
 
-const ProgLang = ({ title, itemTitle, level, inputRef, handleClickItemTitle, handleEditItemTitle, handleDeleteItemTitle, onChangeHandler, edit }) => {
+const ProgLang = ({ title, itemTitle, level, inputRef, handleClickItem, handleEditItemTitle, handleDeleteItemTitle, onChangeHandler, edit }) => {
   return (
     <div className={styles.progLang}>
       {
         edit? (
         <ProgLangInput className={"progLangInput"}/>) :(
-          <span className={styles.title} onClick={handleClickItemTitle} >{itemTitle}</span>
+          <span className={styles.title} onClick={handleClickItem} >{itemTitle}</span>
         )
       } 
       <span className={styles.progressBarOuter}>
@@ -152,46 +151,39 @@ const Edu = ({ title, institute, time, place, cgpa }) => {
   );
 };
 
-function Project({ title, tech, desc }) {
+function Project({ title, tech, desc, handleClickItem  }) {
   return (
     <div className={styles.projectItem}>
       <h2 className={styles.title}>
-        <span>{title}</span>
+        <span onClick={handleClickItem}>{title}</span>
         <span>|</span>
-        <span>{tech}</span>
+        <span onClick={handleClickItem}>{tech}</span>
       </h2>
-      <p className={styles.desc}>{desc}</p>
+      <div className={styles.desc} onClick={handleClickItem}><p>{desc}</p>      
+      <div className={styles.link}>
+        <button className={styles.git_link}>Github</button>
+        <button className={styles.liveDemo_link}>Live Demo</button>
+      </div>
+      </div>
     </div>
   );
 }
 
 function MyJourney(props) {
-  const { time, jobTitle, companyName, desc, handleClickItemTitle } = props;
+  const { time, jobTitle, companyName, desc, handleClickItem } = props;
   return (
     <div className={styles.myJourneyItem}>
-      <span className={styles.time} onClick={handleClickItemTitle}>{time}</span>
-      <h1 className={styles.title} onClick={handleClickItemTitle}>
+      <span className={styles.time} onClick={handleClickItem}>{time}</span>
+      <h1 className={styles.title} onClick={handleClickItem}>
         <span></span>
-        <span onClick={handleClickItemTitle}>{jobTitle}</span> | <span onClick={handleClickItemTitle}>{companyName}</span>
+        <span onClick={handleClickItem}>{jobTitle}</span> | <span onClick={handleClickItem}>{companyName}</span>
       </h1>
-      <p className={styles.desc} onClick={handleClickItemTitle}>{desc}</p>
+      <p className={styles.desc} onClick={handleClickItem}>{desc}</p>
     </div>
   );
 }
 
-const Interest = ({ itemTitle, handleClickItemTitle }) => {
-  return <span className={styles.interest} onClick={handleClickItemTitle}>{itemTitle}</span>
+const Interest = ({ itemTitle, handleClickItem }) => {
+  return <span className={styles.interest} onClick={handleClickItem}>{itemTitle}</span>
 };
 
-
-const NewPersonalInfo = HocItems(PersonalInfo)
-const NewContactDetail = HocItems(ContactDetail)
-const NewTechnicalSkill = HocItems(TechnicalSkill)
-const NewProgLang = HocItems(ProgLang)
-const NewLang = HocItems(Lang)
-const NewEdu = HocItems(Edu)
-const NewProject = HocItems(Project)
-const NewMyJourney = HocItems(MyJourney)
-const NewInterest = HocItems(Interest)
-
-export {NewContactDetail, NewPersonalInfo, NewEdu, NewLang, NewProgLang, NewProject, NewTechnicalSkill, NewMyJourney, NewInterest}

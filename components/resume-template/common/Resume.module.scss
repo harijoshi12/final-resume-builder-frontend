@@ -331,6 +331,19 @@ $generalfontfamily: 'Roboto', sans-serif;
                 font-weight: 500;
                 padding: 10px;
                 margin-left: 25px;
+                .link{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: 5px;
+                    button{
+                        background-color: rgb(200, 200, 200);
+                        color: $lightTextColor;
+                        padding: 2px 20px;
+                        letter-spacing: 2px;
+                        font-weight: bold;
+                    }
+                }
             }
         }
     }

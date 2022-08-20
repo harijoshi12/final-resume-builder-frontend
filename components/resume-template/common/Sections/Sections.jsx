@@ -3,8 +3,6 @@ import {v4 as uuidv4} from 'uuid'
 import AddItems from '../AddItem/AddItem'
 import SecItem from '../Items/Items'
 import SecTitle from '../SectionTitles/SectionTitles'
-// Higher Order Component
-
 
 // custom style
 import styles from '../Resume.module.css'
@@ -14,8 +12,6 @@ const Section = (props)=>{
   const [plusEl, setPlusEl] = useState(false)
   const [items, setItems] = useState(data)
   const [addNewItem, setAddNewItem] = useState(false)
-//  console.log("data= ", data)
-//   console.log("items= ",items)
 
   const addNewItemHandler = ()=>{
     const itemsarr = items.map(d=> ({...d, isLast: false }))

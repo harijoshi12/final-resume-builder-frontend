@@ -32,7 +32,6 @@
 }
 
 .resume form {
-  padding: 1px 0;
   padding-right: 3px;
 }
 .resume form .input_fields {
@@ -79,6 +78,7 @@
   background-color: rgb(40, 40, 40);
   margin-bottom: 15px;
   display: flex;
+  padding: 1px 0;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -98,7 +98,7 @@
   font-size: 32px;
   height: 25px;
   width: 25px;
-  margin-right: 5px;
+  margin: 0 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -116,6 +116,7 @@
   justify-content: center;
   align-items: center;
   margin: 5px;
+  padding: 1px 0;
 }
 .techSkillInput input, .interestInput input, .progLangInput input {
   width: 175px;
@@ -138,6 +139,7 @@
   background-color: white;
 }
 .interestInput input {
+  width: 145px;
   background-color: rgb(255, 255, 255);
   color: rgb(43, 52, 61);
 }
@@ -154,7 +156,7 @@
   text-align: left;
   width: 100%;
   border: 0;
-  background-color: rgb(234, 234, 234);
+  background-color: rgb(255, 255, 255);
   text-transform: uppercase;
 }
 .progLangInput span {
@@ -167,12 +169,13 @@ form.myJourneyInput {
   font-family: "Roboto", sans-serif;
   border: 1px solid black;
   display: flex;
+  align-items: flex-start;
+  justify-content: center;
   width: 100%;
-  padding: 1px;
   margin: 5px 0;
 }
 form.myJourneyInput .input_fields {
-  padding: 5px;
+  padding: 0 5px;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -222,8 +225,8 @@ form.myJourneyInput .input_fields .main_details .top input:last-child {
 form.myJourneyInput .input_fields .main_details textarea {
   height: 100%;
   width: 100%;
-  max-width: 340px;
-  min-width: 340px;
+  max-width: 348px;
+  min-width: 348px;
   max-height: 70px;
   min-height: 70px;
 }
@@ -234,6 +237,81 @@ form.myJourneyInput .icons {
   margin: 3px;
 }
 form.myJourneyInput .icons span {
+  margin: 3px;
+}
+
+form.projectInput {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5px;
+  font-family: "Roboto", sans-serif;
+  border: 1px solid white;
+  margin-bottom: 30px;
+}
+form.projectInput .input_fields {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+form.projectInput .input_fields input {
+  padding: 4px;
+  border: 1px solid white;
+}
+form.projectInput .input_fields .top {
+  margin-bottom: 4px;
+  background-color: rgb(90, 90, 90);
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  justify-content: flex-;
+  align-items: center;
+  margin-right: -3px;
+}
+form.projectInput .input_fields .top input {
+  font-size: 18px;
+  width: 50%;
+}
+form.projectInput .input_fields .top input:first-child {
+  background-color: rgb(200, 200, 200);
+}
+form.projectInput .input_fields .top input:last-child {
+  background-color: rgb(90, 90, 90);
+  color: white;
+}
+form.projectInput .input_fields .bottom {
+  background-color: rgb(235, 235, 235);
+  padding: 5px 10px;
+  margin-left: auto;
+}
+form.projectInput .input_fields .bottom textarea {
+  background-color: rgb(235, 235, 235);
+  height: 100%;
+  width: 100%;
+  max-width: 350px;
+  min-width: 350px;
+  max-height: 70px;
+  min-height: 70px;
+}
+form.projectInput .input_fields .bottom .links {
+  display: flex;
+  justify-content: space-between;
+}
+form.projectInput .input_fields .bottom .links input {
+  text-align: center;
+  width: 130px;
+  margin: 0px;
+  border: 1px solid black;
+  background-color: rgb(200, 200, 200);
+}
+form.projectInput .icons {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin: 3px;
+}
+form.projectInput .icons span {
   margin: 3px;
 }
 
@@ -518,6 +596,19 @@ form.myJourneyInput .icons span {
   font-weight: 500;
   padding: 10px;
   margin-left: 25px;
+}
+.right .projects .projectItem .desc .link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+.right .projects .projectItem .desc .link button {
+  background-color: rgb(200, 200, 200);
+  color: rgb(49, 51, 42);
+  padding: 2px 20px;
+  letter-spacing: 2px;
+  font-weight: bold;
 }
 .right .langs .lang {
   display: inline-flex;

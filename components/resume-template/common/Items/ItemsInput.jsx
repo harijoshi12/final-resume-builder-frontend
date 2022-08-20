@@ -142,13 +142,19 @@ export const ProjectInput = (props) =>{
   const inputRef2 = useRef(null)
   const inputRef3 = useRef(null)
   return(
-    <>
-      <input type="text"  ref={inputRef1} name={fieldCode.ProjectTitle} value="" onChange={(e) => onChangeHandler(e)} />
-      <input type="text"  ref={inputRef2} name={fieldCode.ProjectTechStack} value="" onChange={(e) => onChangeHandler(e)} />
-      <textarea  cols="30" rows="10"  ref={inputRef3} name={fieldCode.ProjectDescription} value="" onChange={(e) => onChangeHandler(e)} />
-      <input type="text"  ref={inputRef3} name={fieldCode.ProjectGitLink} value="" onChange={(e) => onChangeHandler(e)} />
-      <input type="text"  ref={inputRef3} name={fieldCode.ProjectLiveDemo} value="" onChange={(e) => onChangeHandler(e)} />
-    </>
+    <CommonForm secId="6" className="projectInput">
+      <div className={styles.top}>
+        <input type="text"  ref={inputRef1} name={fieldCode.ProjectTitle} value="Project Name" onChange={(e) => onChangeHandler(e)} />
+        <input type="text"  ref={inputRef2} name={fieldCode.ProjectTechStack} value="TechStack Used" onChange={(e) => onChangeHandler(e)} />
+      </div>
+      <div className={styles.bottom}>
+        <textarea  ref={inputRef3} name={fieldCode.ProjectDescription} value="Description" onChange={(e) => onChangeHandler(e)} />
+        <div className={styles.links}>
+          <input type="text"  ref={inputRef3} name={fieldCode.ProjectGitLink} value="Github link" onChange={(e) => onChangeHandler(e)} />
+          <input type="text"  ref={inputRef3} name={fieldCode.ProjectLiveDemo} value="Live Demo link" onChange={(e) => onChangeHandler(e)} />
+        </div>
+      </div>
+    </CommonForm>
   )
 }
 
@@ -180,5 +186,9 @@ export const EducationInput = (props) =>{
 
 export const InterestInput = (props) => {
   const inputRef = useRef(null)
-  return (<input ref={inputRef} name={fieldCode.Interest} value={itemTitle} onChange={(e) => onChangeHandler(e)} />)
+  return (
+    <CommonForm secId="9" className="interestInput">
+      <input ref={inputRef} name={fieldCode.Interest} value="Interest" onChange={(e) => onChangeHandler(e)} />
+    </CommonForm>
+  )
 }
