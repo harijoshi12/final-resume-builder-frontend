@@ -1,19 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from '../Resume.module.css'
 
-import { SingleInput } from './ItemsInput';
+import { EducationInput, InterestInput, MyJourneyInput, NameInput, ProfessionInput, ProfSummaryInput, ProgLangInput, ProjectInput, TechSkillInput } from './ItemsInput';
 
 // import HOC
 import HocItems from './HocItems';
 
 const SecItem = (props) => {
-  const { secId, className, secTitle, itemData1, itemData2, itemData3, data, dataArray, setDataArray, addNewItem, setPlusEl } = props
+  const { secId, data, className, secTitle, itemData1, itemData2, itemData3, dataArray, setDataArray, addNewItem, setPlusEl } = props
   const title = data.title
   const [edit, setEdit] = useState(false)
   const [itemTitle, setItemTitle] = useState(title)
 
   useEffect(()=>{
-    if(data.isLast){
+    if(dataArray.isLast){
       if(addNewItem){
         setEdit(true)
       } else{
@@ -47,38 +47,37 @@ const SecItem = (props) => {
     if (itemTitle === "") {
       setItemTitle(itemData1)
     }else{
-      setDataArray(dataArray.map(d=>d.id === data.id? {...d, title:itemTitle}: d))
+      setDataArray(dataArray.map(d=>d.id === dataArray.id? {...d, title:itemTitle}: d))
     }
   }
 
   const handleDeleteItemTitle = (e)=>{
-    setDataArray(dataArray.filter(d=>d.id != data.id))
+    setDataArray(dataArray.filter(d=>d.id != dataArray.id))
     setPlusEl(false)
   }
  
   useEffect(() => {
     inputRef.current?.focus()
   }, [edit])
-  let inputItem = (secId === "2" ||secId==="9") ? <SingleInput itemTitle={itemTitle} inputRef={inputRef} handleDeleteItemTitle={handleDeleteItemTitle} onChangeHandler={onChangeHandler} handleEditItemTitle={handleEditItemTitle} className={secId==="2"? `techSkillInput`: "interestInput"}/> : null
 
   let childComponent
-  if(secId === "1"){edit?(childComponent = inputItem):(childComponent = <PersonalInfo itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
-  if(secId === "2"){edit?(childComponent = inputItem):(childComponent = <TechnicalSkill itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
+  if(secId === "1"){(childComponent = <PersonalInfo itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
+  if(secId === "2"){edit?(childComponent = <TechSkillInput/>):(childComponent = <TechnicalSkill itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
   if(secId === "3"){(childComponent = <ProgLang itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} onChangeHandler={onChangeHandler} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} inputRef={inputRef} edit={edit} {...data}/>)}
-  if(secId === "4"){edit?(childComponent = inputItem):(childComponent = <MyJourney itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
-  if(secId === "5"){edit?(childComponent = inputItem):(childComponent = <ContactDetail itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
-  if(secId === "6"){edit?(childComponent = inputItem):(childComponent = <Project itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
-  if(secId === "7"){edit?(childComponent = inputItem):(childComponent = <Lang itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
-  if(secId === "8"){edit?(childComponent = inputItem):(childComponent = <Edu itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
-  if(secId === "9"){edit?(childComponent = inputItem):(childComponent = <Interest itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
-
+  if(secId === "4"){edit?(childComponent = <MyJourneyInput/>):(childComponent = <MyJourney itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
+  if(secId === "5"){(childComponent = <ContactDetail itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
+  if(secId === "6"){edit?(childComponent = <ProjectInput/>):(childComponent = <Project itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
+  if(secId === "7"){(childComponent = <Lang itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
+  if(secId === "8"){edit?(childComponent = <EducationInput/>):(childComponent = <Edu itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
+  if(secId === "9"){edit?(childComponent = <InterestInput/>):(childComponent = <Interest itemTitle={itemTitle} handleClickItemTitle={handleClickItemTitle} {...data}/>)}
   return (< >{childComponent}</>)
 }
 
 export default SecItem
 
-const PersonalInfo = ({resumeTitle, imgsrc, name, profession, tagline}) => {
-  
+const PersonalInfo = (props) => {
+  const {resumeTitle,edit, imgsrc, name, profession, tagline} = props
+  console.log("perinfo= ",props.dataArray)
   return (
     <>
       <h1 className={styles.resumeTitle}>{resumeTitle}</h1>
@@ -86,17 +85,18 @@ const PersonalInfo = ({resumeTitle, imgsrc, name, profession, tagline}) => {
         <div className={styles.imgboxInner}>
           <div className={styles.imgbox}></div>
           <div className={styles.myinfo}>
-            <h1 className={styles.myName}>{name}</h1>
-            <h2 className={styles.profession}>{profession}</h2>
+            {edit?<NameInput/>:<h1 className={styles.myName}>{name}</h1>}
+            {edit?<ProfessionInput/>:<h2 className={styles.profession}>{profession}</h2>}
           </div>
         </div>
       </div>
-      <h2 className={styles.tagline}>"{tagline}"</h2>
+      {edit?<ProfSummaryInput/>:<h2 className={styles.tagline}>"{tagline}"</h2>}
     </>
   );
 };
 
 const ContactDetail = (props) => {
+  // console.log("contact= ",props.dataArray)
   return (
     <a  rel="noopener noreferrer" target="_blank">
       <span>{props.icon}</span> <span>{props.info}</span>
@@ -113,7 +113,7 @@ const ProgLang = ({ title, itemTitle, level, inputRef, handleClickItemTitle, han
     <div className={styles.progLang}>
       {
         edit? (
-        <SingleInput itemTitle={itemTitle} inputRef={inputRef} handleDeleteItemTitle={handleDeleteItemTitle} onChangeHandler={onChangeHandler} handleEditItemTitle={handleEditItemTitle} className={"progLangInput"}/>) :(
+        <ProgLangInput className={"progLangInput"}/>) :(
           <span className={styles.title} onClick={handleClickItemTitle} >{itemTitle}</span>
         )
       } 
@@ -166,15 +166,15 @@ function Project({ title, tech, desc }) {
 }
 
 function MyJourney(props) {
-  const { time, jobTitle, companyName, desc } = props;
+  const { time, jobTitle, companyName, desc, handleClickItemTitle } = props;
   return (
     <div className={styles.myJourneyItem}>
-      <span className={styles.time}>{time}</span>
-      <h1 className={styles.title}>
+      <span className={styles.time} onClick={handleClickItemTitle}>{time}</span>
+      <h1 className={styles.title} onClick={handleClickItemTitle}>
         <span></span>
-        <span>{jobTitle}</span> | <span>{companyName}</span>
+        <span onClick={handleClickItemTitle}>{jobTitle}</span> | <span onClick={handleClickItemTitle}>{companyName}</span>
       </h1>
-      <p className={styles.desc}>{desc}</p>
+      <p className={styles.desc} onClick={handleClickItemTitle}>{desc}</p>
     </div>
   );
 }

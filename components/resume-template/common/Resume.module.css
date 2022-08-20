@@ -32,12 +32,49 @@
 }
 
 .resume form {
-  padding: 2px 0;
+  padding: 1px 0;
+  padding-right: 3px;
+}
+.resume form .input_fields {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .resume form input {
   border: 1px solid black;
   margin: 0 2px;
 }
+.resume form .icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.resume form .icons span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: white;
+  color: green;
+  font-size: 22px;
+  padding: 3px;
+  margin: 0 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.resume form .icons span:hover {
+  transform: scale(1.1);
+}
+.resume form .icons span:first-child {
+  color: green;
+}
+.resume form .icons span:last-child {
+  color: red;
+}
+
 .secTitleInput {
   background-color: rgb(40, 40, 40);
   margin-bottom: 15px;
@@ -59,6 +96,8 @@
 .secTitleInput span {
   color: green;
   font-size: 32px;
+  height: 25px;
+  width: 25px;
   margin-right: 5px;
   display: flex;
   justify-content: center;
@@ -74,6 +113,8 @@
 
 .techSkillInput, .interestInput, .progLangInput {
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
   margin: 5px;
 }
 .techSkillInput input, .interestInput input, .progLangInput input {
@@ -81,31 +122,8 @@
   font-size: 18px;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
-  padding: 5px 0;
+  padding: 3px 0;
   text-align: center;
-}
-.techSkillInput span, .interestInput span, .progLangInput span {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  border: 1px solid black;
-  background-color: white;
-  color: green;
-  font-size: 22px;
-  padding: 3px;
-  margin: 0 3px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.techSkillInput span:hover, .interestInput span:hover, .progLangInput span:hover {
-  transform: scale(1.1);
-}
-.techSkillInput span:first-child, .interestInput span:first-child, .progLangInput span:first-child {
-  color: green;
-}
-.techSkillInput span:last-child, .interestInput span:last-child, .progLangInput span:last-child {
-  color: red;
 }
 
 .techSkillInput {
@@ -125,22 +143,98 @@
 }
 
 .progLangInput {
-  width: 29%;
+  width: 30%;
   margin: 0;
-  padding: 0px;
-  background-color: rgb(186, 186, 186);
+  margin-right: 2px;
+  background-color: rgb(43, 52, 61);
 }
 .progLangInput input {
   font-size: 15px;
   padding: 5px 0;
   text-align: left;
   width: 100%;
+  border: 0;
   background-color: rgb(234, 234, 234);
   text-transform: uppercase;
 }
 .progLangInput span {
   margin: 0 1px;
   color: green;
+}
+
+form.myJourneyInput {
+  background-color: rgb(43, 52, 61);
+  font-family: "Roboto", sans-serif;
+  border: 1px solid black;
+  display: flex;
+  width: 100%;
+  padding: 1px;
+  margin: 5px 0;
+}
+form.myJourneyInput .input_fields {
+  padding: 5px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+form.myJourneyInput .input_fields input, form.myJourneyInput .input_fields textarea, form.myJourneyInput .input_fields label {
+  padding: 4px;
+  margin: 4px 0;
+}
+form.myJourneyInput .input_fields .inputYear {
+  padding-right: 10px;
+  width: 32%;
+  text-align: center;
+}
+form.myJourneyInput .input_fields .inputYear input {
+  width: 100%;
+}
+form.myJourneyInput .input_fields .inputYear .present {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+form.myJourneyInput .input_fields .inputYear .present input {
+  height: 20px;
+  width: 20px;
+}
+form.myJourneyInput .input_fields .main_details {
+  padding: 0 10px;
+}
+form.myJourneyInput .input_fields .main_details .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+form.myJourneyInput .input_fields .main_details .top input:first-child {
+  font-size: 20px;
+  font-weight: bold;
+  width: 54%;
+  background-color: rgb(43, 52, 61);
+  color: white;
+}
+form.myJourneyInput .input_fields .main_details .top input:last-child {
+  width: 45%;
+  font-size: 18px;
+}
+form.myJourneyInput .input_fields .main_details textarea {
+  height: 100%;
+  width: 100%;
+  max-width: 340px;
+  min-width: 340px;
+  max-height: 70px;
+  min-height: 70px;
+}
+form.myJourneyInput .icons {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin: 3px;
+}
+form.myJourneyInput .icons span {
+  margin: 3px;
 }
 
 .resume {

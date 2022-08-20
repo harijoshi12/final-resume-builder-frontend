@@ -171,11 +171,11 @@ $generalfontfamily: 'Roboto', sans-serif;
         .progLang{
             // background-color: yellow;
             margin: 10px 0;
-          
             display: flex;
             justify-content: space-between;
             align-items: center;
             .title{
+                // background-color: blue;
                 font-size: 18px;
                 font-weight: 700;
                 color: $lightTextColor;

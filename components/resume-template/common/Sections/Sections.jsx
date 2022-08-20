@@ -9,13 +9,13 @@ import SecTitle from '../SectionTitles/SectionTitles'
 // custom style
 import styles from '../Resume.module.css'
 
-// items
-import {NewContactDetail, NewPersonalInfo, NewEdu, NewLang, NewProgLang, NewProject, NewTechnicalSkill, NewMyJourney, NewInterest} from '../Items/Items'
 const Section = (props)=>{
   const {secId,  secTitleName, itemData1, itemData2, itemData3, data, className} = props
   const [plusEl, setPlusEl] = useState(false)
   const [items, setItems] = useState(data)
   const [addNewItem, setAddNewItem] = useState(false)
+//  console.log("data= ", data)
+//   console.log("items= ",items)
 
   const addNewItemHandler = ()=>{
     const itemsarr = items.map(d=> ({...d, isLast: false }))
@@ -29,10 +29,9 @@ const Section = (props)=>{
         secId === "1" || secId === "5" ? null : <SecTitle setPlusEl={setPlusEl}  secTitleName={secTitleName}/>
       }
       
-      {items.map(data => <SecItem secId={secId} className={className} secTitleName={secTitleName} itemData1={itemData1} itemData2={itemData2} itemData3={itemData3} data={data}  key={data.id}  dataArray={items} setDataArray={setItems} addNewItem={addNewItem} setPlusEl={setPlusEl} />)}
+      {items.map(d => <SecItem secId={secId} className={className} secTitleName={secTitleName} itemData1={itemData1} itemData2={itemData2} itemData3={itemData3}   key={d.id} data={d} dataArray={items} setDataArray={setItems} addNewItem={addNewItem} setPlusEl={setPlusEl} />)}
       {
         plusEl?(
-          // <div  onMouseDown={()=>{addNewItemHandler()}}></div>
           <AddItems addNewItemHandler={addNewItemHandler} />
         ):null
       }

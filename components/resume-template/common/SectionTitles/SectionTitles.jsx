@@ -4,6 +4,7 @@ import { MdOutlineDownloadDone } from "react-icons/md";
 // custom styles
 import styles from '../Resume.module.css'
 
+import { fieldCode } from '../constants/typeCodes';
 
 const SecTitle = ({setPlusEl, secTitleName})=>{
   const [edit, setEdit] = useState(false)
@@ -18,7 +19,6 @@ const SecTitle = ({setPlusEl, secTitleName})=>{
 
   const handleClickSecTitle= ()=>{
     setEdit(!edit)
-
   }
 
   const inputRef = useRef(null)
@@ -31,7 +31,7 @@ const SecTitle = ({setPlusEl, secTitleName})=>{
 
   const handleEditSecTitle = (e)=>{
     e.preventDefault()
-    setEdit(!edit)
+    // setEdit(!edit)
     if(secTitle === ""){
       setSecTitle(secTitleName)
     }
@@ -45,7 +45,7 @@ const SecTitle = ({setPlusEl, secTitleName})=>{
       {
         edit?(
           <form className={styles.secTitleInput} onSubmit={(e)=>{handleEditSecTitle(e)}} onBlur={(e)=>{handleEditSecTitle(e)}}>
-            <input ref={inputRef} value={secTitle} onChange={(e)=>onChangeHandler(e)} />
+            <input name={fieldCode.SecTitle} ref={inputRef} value={secTitle} onChange={(e)=>onChangeHandler(e)} />
             <span className={styles.icon} onClick={(e) => handleEditSecTitle(e)}><MdOutlineDownloadDone /></span>
           </form>
         ):(

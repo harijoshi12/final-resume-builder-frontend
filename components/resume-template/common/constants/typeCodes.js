@@ -7,18 +7,19 @@ export const fontsize = ['small', 'medium', 'large']
 export const fontFamily = ['Roboto', 'Quicksand', 'Merriweather' ]
 
 export const fieldCode = {
+  // section title
+  SecTitle: "STIT",
+  
   // personal info
-  FirstName: "FNAM",
-  LastName: "LNAM",
+  Name: "NAME",
   Profession:"PROF",
+  ImageUrl: "IMGU",
   ProfSummary:"PRSU",
   
   // contact details
-  Email: "EMAI",
+  Email: "EMAL",
   Phone: "PHON",
-  AddressCountry: "ACNT",
-  AddressState: "ASTA",
-  AddressCity: "ACTY",
+  Address: "ADRS",
   // other contact details
   Website: "WBST",
   Linkedin: "LNKD",

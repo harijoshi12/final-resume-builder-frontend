@@ -57,22 +57,22 @@ export const contactDetails =[
 ]
 
 export const techSkills = [
-    {
-        id: 1,
-        title: "React"
-    },
-    {
-        id: 2,
-        title: "React Native"
-    },
-    {
-        id: 3,
-        title: "Next.js"
-    },
-    {
-        id: 4,
-        title: "SASS"
-    },
+    // {
+    //     id: 1,
+    //     title: "React"
+    // },
+    // {
+    //     id: 2,
+    //     title: "React Native"
+    // },
+    // {
+    //     id: 3,
+    //     title: "Next.js"
+    // },
+    // {
+    //     id: 4,
+    //     title: "SASS"
+    // },
     // {
     //     id: 5,
     //     title: "Bootstrap"
@@ -153,36 +153,36 @@ export const progLangs = [
        title: "Html/Css",
        level:  9
     },
-    {
-       id: 2,
-       title: "JavaScript",
-       level:  9
-    },
-    {
-       id: 3,
-       title: "Python",
-       level:  8
-    },
-    {
-       id: 6,
-       title: "Java",
-       level:  8
-    },
+    // {
+    //    id: 2,
+    //    title: "JavaScript",
+    //    level:  9
+    // },
+    // {
+    //    id: 3,
+    //    title: "Python",
+    //    level:  8
+    // },
+    // {
+    //    id: 6,
+    //    title: "Java",
+    //    level:  8
+    // },
     {
        id: 4,
        title: "SQL",
        level:  8
     },
-    {
-       id: 5,
-       title: "C++",
-       level:  7
-    },
-    {
-        id: 10,
-        title: "TypeScript",
-        level:  7
-     },
+    // {
+    //    id: 5,
+    //    title: "C++",
+    //    level:  7
+    // },
+    // {
+    //     id: 10,
+    //     title: "TypeScript",
+    //     level:  7
+    //  },
     {
        id: 7,
        title: "GoLang",
