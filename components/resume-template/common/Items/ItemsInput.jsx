@@ -107,7 +107,6 @@ const ContactOption = ({ type, fieldName, label, icon})=>{
         (<input type={type} name={fieldName} id={`id_${fieldName}`} required />): 
         (<input type={type} name={fieldName} id={`id_${fieldName}`} />)
         }
-        
         <label htmlFor={`id_${fieldName}`}><span >{label}</span></label>
       </div>
     </div>
@@ -168,19 +167,23 @@ export const EducationInput = (props) =>{
   const inputRef6 = useRef(null)
   const inputRef7 = useRef(null)
   return(
-    <>
-      <input ref={inputRef1} name={fieldCode.StudyProgram} value="" onChange={(e) => onChangeHandler(e)} />
-      <input ref={inputRef2} name={fieldCode.Institution} value="" onChange={(e) => onChangeHandler(e)} />
-      <div className={styles.inputYear}>
-        <input type="number" ref={inputRef3} name={fieldCode.StudyStartDate} id="" placeholder="yyyy" onChange={(e) => onChangeHandler(e)}/>
-        <span>-</span>
-        <input type="number" id="" ref={inputRef4} name={fieldCode.StudyEndDate} placeholder="yyyy" onChange={(e) => onChangeHandler(e)}/>
-        <label htmlFor="present"></label>
-        <input type="checkbox"ref={inputRef5} name={fieldCode.StudyPresent} id="present" />
+    <CommonForm secId="8" className="educationInput">
+      <div className={styles.top}>
+        <input ref={inputRef1} name={fieldCode.StudyProgram} value="Study Program" onChange={(e) => onChangeHandler(e)} />
+        <input ref={inputRef2} name={fieldCode.Institution} value="Institution" onChange={(e) => onChangeHandler(e)} />
       </div>
-      <input type="text"  ref={inputRef6} name={fieldCode.StudyPlace} value={itemTitle} onChange={(e) => onChangeHandler(e)} />
-      <input type="number" ref={inputRef7} name={fieldCode.Cgpa} id="" placeholder="yyyy" onChange={(e) => onChangeHandler(e)}/>
-    </>
+      <div className={styles.inputYear}>
+        <input type="text" ref={inputRef3} name={fieldCode.StudyStartDate} id="" placeholder="yyyy" onChange={(e) => onChangeHandler(e)}/>
+        <span>to</span>
+        <input type="text" id="" ref={inputRef4} name={fieldCode.StudyEndDate} placeholder="yyyy" onChange={(e) => onChangeHandler(e)}/>
+        <input type="checkbox"ref={inputRef5} name={fieldCode.StudyPresent} id="present" />
+        <label htmlFor="present">Present</label>
+      </div>
+      <div className={styles.bottom}>
+        <input type="number" ref={inputRef7} name={fieldCode.Cgpa} id="" placeholder="CGPA/Percentage" onChange={(e) => onChangeHandler(e)}/>
+        <input type="text" placeholder="Study Place"  ref={inputRef6} name={fieldCode.StudyPlace} value="" onChange={(e) => onChangeHandler(e)} />
+      </div>
+    </CommonForm>
   )
 }
 

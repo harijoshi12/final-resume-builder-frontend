@@ -232,14 +232,14 @@ export const education = [
         place: "Nainital, Uttarakhand, India",
         cgpa: "67%"
     },
-    // {
-    //     id: 2,
-    //     title: "Mechanical Engineering",
-    //     institute: "Govt. Polytechnic Nainital",
-    //     time: "2012-2015",
-    //     place: "Nainital, Uttarakhand, India",
-    //     cgpa: "67%"
-    // }
+    {
+        id: 2,
+        title: "Mechanical Engineering",
+        institute: "Govt. Polytechnic Nainital",
+        time: "2012-2015",
+        place: "Nainital, Uttarakhand, India",
+        cgpa: "67%"
+    }
 ]
 
 export const projects = [

@@ -135,17 +135,17 @@ const Lang = ({ title, level }) => {
   );
 };
 
-const Edu = ({ title, institute, time, place, cgpa }) => {
+const Edu = ({ title, institute, time, place, cgpa, handleClickItem }) => {
   return (
     <div className={styles.edu}>
       <div className={styles.r1}>
-        <span className={styles.title}>{title}</span> <span> | </span>
-        <span className={styles.institute}>{institute}</span>
+        <span className={styles.title} onClick={handleClickItem}>{title}</span> <span> | </span>
+        <span className={styles.institute} onClick={handleClickItem}>{institute}</span>
       </div>
       <div className={styles.r2}>
-        {cgpa ? <span className={styles.cgpa}>{cgpa}</span>:null}{cgpa?"|":null}
-        {time?<span className={styles.time}>{time}</span>:null}{time?"|":null}
-        {place?<span className={styles.place}> {place}</span>:null}
+        {cgpa ? <span className={styles.cgpa} onClick={handleClickItem}>{cgpa}</span>:null}{cgpa?"|":null}
+        {time?<span className={styles.time} onClick={handleClickItem}>{time}</span>:null}{time?"|":null}
+        {place?<span className={styles.place} onClick={handleClickItem}>{place}</span>:null}
       </div>
     </div>
   );

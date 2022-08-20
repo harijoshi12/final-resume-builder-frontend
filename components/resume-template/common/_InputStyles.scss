@@ -37,7 +37,7 @@ $generalfontfamily: 'Roboto', sans-serif;
         color: green;
         font-size: 22px;
         padding: 3px;
-        margin: 0 3px;
+        margin: 3px;
         cursor: pointer;
         transition: all 0.2s ease;
         &:hover{
@@ -146,22 +146,14 @@ $generalfontfamily: 'Roboto', sans-serif;
   }
 }
 
-form.myJourneyInput{
+.myJourneyInput{
   background-color: $lightTextBg1;
   font-family: $generalfontfamily;
   border: 1px solid black;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
   margin: 5px 0;
   .input_fields{
     padding:  0 5px ;
     background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
     input, textarea, label{
       padding: 4px;
       margin: 4px 0;
@@ -186,9 +178,6 @@ form.myJourneyInput{
     .main_details{
       padding: 0 10px;
       .top{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         input{
 
         }
@@ -214,37 +203,15 @@ form.myJourneyInput{
       }
     }
   }
- .icons{
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
-    margin: 3px;
-    span{
-      margin: 3px;
-    }
-  }
 }
 
-form.projectInput{
-  // background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 5px ;
+.projectInput{
+  padding: 5px;
   font-family: $generalfontfamily;
   border: 1px solid white;
   margin-bottom: 30px;
-  *{
-    // border: 1px solid;
-    // margin: 3px;
-    // padding: 3px;
-  }
   .input_fields{
-    // background-color: yellow;
-    display: flex;
-    justify-content: center;
     flex-direction: column;
-    width: 100%;
     input{
       padding: 4px;
       border: 1px solid white;
@@ -252,15 +219,12 @@ form.projectInput{
     .top{
       margin-bottom: 4px;
       background-color: $lightRight;
-      width: 100%;
-      display: flex;
-      gap: 20px;
-      justify-content: flex-;
-      align-items: center;
       margin-right: -3px;
       input{
         font-size: 18px;
+        padding: 2px;
         width: 50%;
+        font-weight: bold;
       }
       input:first-child{
         background-color: rgb(200, 200, 200);
@@ -296,6 +260,24 @@ form.projectInput{
       }
     }
   }
+}
+
+.educationInput, .projectInput, .myJourneyInput{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  .input_fields{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    .top{
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
   .icons{
     flex-direction: column;
     justify-content: flex-start;
@@ -305,5 +287,80 @@ form.projectInput{
       margin: 3px;
     }
   }
-  
+}
+
+.educationInput{
+  // border: 1px solid white;
+  padding: 2px;
+  margin-bottom: 20px;
+  background-color: $lightTextBg1;
+  *{
+    // border: 1px solid black;
+  }
+  .input_fields{
+    border: 1px solid white;
+    padding: 5px;
+    flex-direction: column;
+    background-color: $lightRight;
+    input{
+      padding: 4px;
+    }
+    .top{
+      margin-bottom: 5px;
+      input{
+        padding: 4px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      input:first-child{
+        width: 50%;
+        background-color: white;
+        color: $lightTextBg1;
+      }
+      input:last-child{
+        width: 50%;
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+      }
+    }
+    .inputYear{
+      width: 100%;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+      input[type=text]{
+        width: 120px;
+      }
+      span{
+        margin: 4px;
+      }
+      input[type=checkbox]{
+        height: 20px;
+        width: 20px;
+        margin-left: 15px;
+      }
+      label{
+        margin-left: 5px;
+        margin-right: 10px;
+        font-size: 17px;
+        font-weight: bold;
+      }
+    }
+    .bottom{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      input:first-child{
+        width: 30%;
+      }
+      input:last-child{
+        width: 70%;
+      }
+    }
+  }
 }

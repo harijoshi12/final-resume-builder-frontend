@@ -60,7 +60,7 @@
   color: green;
   font-size: 22px;
   padding: 3px;
-  margin: 0 3px;
+  margin: 3px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -164,65 +164,52 @@
   color: green;
 }
 
-form.myJourneyInput {
+.myJourneyInput {
   background-color: rgb(43, 52, 61);
   font-family: "Roboto", sans-serif;
   border: 1px solid black;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
   margin: 5px 0;
 }
-form.myJourneyInput .input_fields {
+.myJourneyInput .input_fields {
   padding: 0 5px;
   background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
 }
-form.myJourneyInput .input_fields input, form.myJourneyInput .input_fields textarea, form.myJourneyInput .input_fields label {
+.myJourneyInput .input_fields input, .myJourneyInput .input_fields textarea, .myJourneyInput .input_fields label {
   padding: 4px;
   margin: 4px 0;
 }
-form.myJourneyInput .input_fields .inputYear {
+.myJourneyInput .input_fields .inputYear {
   padding-right: 10px;
   width: 32%;
   text-align: center;
 }
-form.myJourneyInput .input_fields .inputYear input {
+.myJourneyInput .input_fields .inputYear input {
   width: 100%;
 }
-form.myJourneyInput .input_fields .inputYear .present {
+.myJourneyInput .input_fields .inputYear .present {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-form.myJourneyInput .input_fields .inputYear .present input {
+.myJourneyInput .input_fields .inputYear .present input {
   height: 20px;
   width: 20px;
 }
-form.myJourneyInput .input_fields .main_details {
+.myJourneyInput .input_fields .main_details {
   padding: 0 10px;
 }
-form.myJourneyInput .input_fields .main_details .top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-form.myJourneyInput .input_fields .main_details .top input:first-child {
+.myJourneyInput .input_fields .main_details .top input:first-child {
   font-size: 20px;
   font-weight: bold;
   width: 54%;
   background-color: rgb(43, 52, 61);
   color: white;
 }
-form.myJourneyInput .input_fields .main_details .top input:last-child {
+.myJourneyInput .input_fields .main_details .top input:last-child {
   width: 45%;
   font-size: 18px;
 }
-form.myJourneyInput .input_fields .main_details textarea {
+.myJourneyInput .input_fields .main_details textarea {
   height: 100%;
   width: 100%;
   max-width: 348px;
@@ -230,62 +217,44 @@ form.myJourneyInput .input_fields .main_details textarea {
   max-height: 70px;
   min-height: 70px;
 }
-form.myJourneyInput .icons {
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
-  margin: 3px;
-}
-form.myJourneyInput .icons span {
-  margin: 3px;
-}
 
-form.projectInput {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+.projectInput {
   padding: 5px;
   font-family: "Roboto", sans-serif;
   border: 1px solid white;
   margin-bottom: 30px;
 }
-form.projectInput .input_fields {
-  display: flex;
-  justify-content: center;
+.projectInput .input_fields {
   flex-direction: column;
-  width: 100%;
 }
-form.projectInput .input_fields input {
+.projectInput .input_fields input {
   padding: 4px;
   border: 1px solid white;
 }
-form.projectInput .input_fields .top {
+.projectInput .input_fields .top {
   margin-bottom: 4px;
   background-color: rgb(90, 90, 90);
-  width: 100%;
-  display: flex;
-  gap: 20px;
-  justify-content: flex-;
-  align-items: center;
   margin-right: -3px;
 }
-form.projectInput .input_fields .top input {
+.projectInput .input_fields .top input {
   font-size: 18px;
+  padding: 2px;
   width: 50%;
+  font-weight: bold;
 }
-form.projectInput .input_fields .top input:first-child {
+.projectInput .input_fields .top input:first-child {
   background-color: rgb(200, 200, 200);
 }
-form.projectInput .input_fields .top input:last-child {
+.projectInput .input_fields .top input:last-child {
   background-color: rgb(90, 90, 90);
   color: white;
 }
-form.projectInput .input_fields .bottom {
+.projectInput .input_fields .bottom {
   background-color: rgb(235, 235, 235);
   padding: 5px 10px;
   margin-left: auto;
 }
-form.projectInput .input_fields .bottom textarea {
+.projectInput .input_fields .bottom textarea {
   background-color: rgb(235, 235, 235);
   height: 100%;
   width: 100%;
@@ -294,25 +263,115 @@ form.projectInput .input_fields .bottom textarea {
   max-height: 70px;
   min-height: 70px;
 }
-form.projectInput .input_fields .bottom .links {
+.projectInput .input_fields .bottom .links {
   display: flex;
   justify-content: space-between;
 }
-form.projectInput .input_fields .bottom .links input {
+.projectInput .input_fields .bottom .links input {
   text-align: center;
   width: 130px;
   margin: 0px;
   border: 1px solid black;
   background-color: rgb(200, 200, 200);
 }
-form.projectInput .icons {
+
+.educationInput, .projectInput, .myJourneyInput {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.educationInput .input_fields, .projectInput .input_fields, .myJourneyInput .input_fields {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.educationInput .input_fields .top, .projectInput .input_fields .top, .myJourneyInput .input_fields .top {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.educationInput .icons, .projectInput .icons, .myJourneyInput .icons {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
   margin: 3px;
 }
-form.projectInput .icons span {
+.educationInput .icons span, .projectInput .icons span, .myJourneyInput .icons span {
   margin: 3px;
+}
+
+.educationInput {
+  padding: 2px;
+  margin-bottom: 20px;
+  background-color: rgb(43, 52, 61);
+}
+.educationInput .input_fields {
+  border: 1px solid white;
+  padding: 5px;
+  flex-direction: column;
+  background-color: rgb(90, 90, 90);
+}
+.educationInput .input_fields input {
+  padding: 4px;
+}
+.educationInput .input_fields .top {
+  margin-bottom: 5px;
+}
+.educationInput .input_fields .top input {
+  padding: 4px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.educationInput .input_fields .top input:first-child {
+  width: 50%;
+  background-color: white;
+  color: rgb(43, 52, 61);
+}
+.educationInput .input_fields .top input:last-child {
+  width: 50%;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+}
+.educationInput .input_fields .inputYear {
+  width: 100%;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.educationInput .input_fields .inputYear input[type=text] {
+  width: 120px;
+}
+.educationInput .input_fields .inputYear span {
+  margin: 4px;
+}
+.educationInput .input_fields .inputYear input[type=checkbox] {
+  height: 20px;
+  width: 20px;
+  margin-left: 15px;
+}
+.educationInput .input_fields .inputYear label {
+  margin-left: 5px;
+  margin-right: 10px;
+  font-size: 17px;
+  font-weight: bold;
+}
+.educationInput .input_fields .bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.educationInput .input_fields .bottom input:first-child {
+  width: 30%;
+}
+.educationInput .input_fields .bottom input:last-child {
+  width: 70%;
 }
 
 .resume {
