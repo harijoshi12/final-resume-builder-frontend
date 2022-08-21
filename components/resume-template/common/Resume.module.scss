@@ -172,6 +172,20 @@ $generalfontfamily: 'Roboto', sans-serif;
         *{
             // border: 1px solid;
         }
+        .marking{
+            position: relative;
+            width: 70%;
+            margin-left: auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 4px ;
+            margin-bottom: -7px;
+            span{
+                width: 2px;
+                height: 7px;
+                background-color: $lightSecTitle;
+            }
+        }
         span{
             display: inline-flex;
         }

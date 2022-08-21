@@ -14,7 +14,6 @@ const Section = (props)=>{
   const [items, setItems] = useState(data)
   const [addNewItem, setAddNewItem] = useState(false)
   const [showContactInput, setShowContactInput] = useState(false)
-  console.log("show1= ", showContactInput)
   const addNewItemHandler = ()=>{
     const itemsarr = items.map(d=> ({...d, isLast: false }))
     setItems([...itemsarr, {id:uuidv4(), title: `${itemData1}`, isLast: true}])
@@ -28,9 +27,16 @@ const Section = (props)=>{
       }
       {
       (secId==="5" && showContactInput)? <ContactInput/>:
+      secId==="3"?(
+        <div className={`${styles[className]} ${styles.secContent}`}>
+        <div className={styles.marking}><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        {items.map(d => <SecItem secId={secId} className={className} secTitleName={secTitleName} itemData1={itemData1} itemData2={itemData2} itemData3={itemData3}   key={d.id} data={d} dataArray={items} setDataArray={setItems} addNewItem={addNewItem} setPlusEl={setPlusEl} setShowContactInput={setShowContactInput} />)}
+      </div>
+      ):(
       <div className={`${styles[className]} ${styles.secContent}`}>
         {items.map(d => <SecItem secId={secId} className={className} secTitleName={secTitleName} itemData1={itemData1} itemData2={itemData2} itemData3={itemData3}   key={d.id} data={d} dataArray={items} setDataArray={setItems} addNewItem={addNewItem} setPlusEl={setPlusEl} setShowContactInput={setShowContactInput} />)}
       </div>
+      )
       }
       {
         plusEl?(

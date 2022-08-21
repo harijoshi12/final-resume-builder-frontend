@@ -558,37 +558,58 @@ $generalfontfamily: 'Roboto', sans-serif;
   }
   .delete{
     font-size: 18px;
-    
     color: red;
     border-radius: 50%;
     padding: 3px;
     background-color: white;
     &:hover{
-      transform: scale(1.03);
+      transform:  scale(1.03);
     }
   }
 }
+
 .progLangLevel{
   position: relative;
-  .value{
-
+  &:hover{
+    .thumb{
+      transform: translateY(-50%) scale(1.3);
+    }
   }
-  .thumb{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    background-color: $lightTextBg1;
-    width: 30px;
-    height: 30px;
-    border: 1px solid white;
-    border-radius:50%;
-  }
-  input{
-    left: 0;
-    top: 90%;
-    // transform: translateY(-50%);
-    position: absolute;
+  form{
+    background-color: transparent;
     width: 100%;
+    height: fit-content;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    .value{
+      
+    }
+    .thumb{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      background-color: $lightTextBg1;
+      width: 20px;
+      height: 20px;
+      border: 1px solid white;
+      border-radius:50%;
+      z-index: 10;
+      pointer-events: none;
+      transition: transform 0.2s ease;
+      // visibility: hidden;
+    }
+    input{
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute;
+      width: 100%;
+      border: 0;
+      outline: none;
+      appearance: none;
+      background-color: transparent;
+    }
   }
 }

@@ -89,12 +89,26 @@ export const ProgLangInput = (props) => {
 }
 
 export const ProgLangLevel = ({level})=> {
+  const innerRef = useRef(null)
+  const outerRef = useRef(null)
+  const thumbRef = useRef(null)
+  const inputRef = useRef(null)
+  useEffect(()=>{
+    inputRef.current.value = level * 10 - 1
+  })
+  const handleSlide =(e)=>{
+    let width = outerRef.current.clientWidth-17
+    let value = e.target.value
+    innerRef.current.style.width = `${value*(width+8)/100}px`
+    thumbRef.current.style.left = `${value*width/100}px`
+  }
   return(
-      <span className={`${styles.outer} ${styles.progLangLevel}`}>
-        <span className={styles.value}></span>
-        <span className={styles.inner} style={{ width: `${level * 10}%` }}></span>
-        <span className={styles.thumb} style={{left: `calc(${10 * 10}% - 15px)`}}></span>
-      <input type="range" name={fieldCode.ProgrammingLanguageLevel} id="" />
+      <span ref={outerRef} className={`${styles.outer} ${styles.progLangLevel}`}>
+        <form action="">
+          <span ref={innerRef} className={styles.inner} style={{ width: `${level * 10}%` }}></span>
+          <span ref={thumbRef} className={styles.thumb} style={{left: `calc(${level * 10}% - 15px)`}}></span>
+          <input onInput={(e)=>handleSlide(e)} ref={inputRef} type="range" name={fieldCode.ProgrammingLanguageLevel}  id="" />
+        </form>
       </span>
   )
 }

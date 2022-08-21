@@ -124,7 +124,9 @@ const TechnicalSkill = ({ itemTitle, handleClickItem }) => {
 };
 
 const ProgLang = ({ title, itemTitle, level, inputRef, handleClickItem, handleEditItemTitle, handleDeleteItemTitle, onChangeHandler, edit }) => {
+  
   return (
+
     <div className={styles.progLang}>
       {
         edit? (
