@@ -39,6 +39,9 @@ $generalfontfamily: 'Roboto', sans-serif;
     .resumeSec{
         padding: 10px 25px ;
         padding-bottom: 15px;
+        .secContent{
+
+        }
     }
     .left{
         .resumeSec{
@@ -95,18 +98,22 @@ $generalfontfamily: 'Roboto', sans-serif;
                 align-items: center;
                 padding: 25px 30px;
                 padding-right: 5px;
-                .imgbox{
-                    min-width: 160px;
-                    min-height: 180px;
-                    background-color: rgb(208, 208, 208);
-                    border: 1px solid white;
-                    overflow: hidden;
-                    // background-image: url(../../media/images/dp.png);
-                    background-position: 44% 32%;
-                    background-repeat: no-repeat;
-                    background-size: 170%;
-                    img{
-                        width: 300px;
+                .imgbox_wrapper{
+                    position: relative;
+                    background-color: blue;
+                    .imgbox{
+                        min-width: 160px;
+                        min-height: 180px;
+                        background-color: rgb(208, 208, 208);
+                        border: 1px solid white;
+                        overflow: hidden;
+                        // background-image: url(../../media/images/dp.png);
+                        background-position: 44% 32%;
+                        background-repeat: no-repeat;
+                        background-size: 170%;
+                        img{
+                            width: 300px;
+                        }
                     }
                 }
                 .myinfo{
@@ -125,7 +132,7 @@ $generalfontfamily: 'Roboto', sans-serif;
                         color: rgb(240, 240, 240);
                         font-size: 30px;
                         font-weight: 500;
-                        font-family: mer;
+                        // font-family: ;
                     }
                 }
             }
@@ -185,13 +192,12 @@ $generalfontfamily: 'Roboto', sans-serif;
                 font-family: $generalfontfamily;
                 margin-left: 2px;
             }
-            .progressBarOuter{
+            .outer{
                 padding: 1px;
                 border: 2px solid black;
                 width: 70%;
-
             }
-            .progressBarInner{
+            .inner{
                 background-color: $lightTextBg1;
                 height: 10px;
                 width: 100%;
@@ -261,7 +267,7 @@ $generalfontfamily: 'Roboto', sans-serif;
         font-weight: 400;
         color: rgb(230, 230, 230);
         font-family: sans-serif;
-        padding: 30px;
+        // padding: 30px;
         a{
             display: flex;
             line-height: 37px;
@@ -349,15 +355,20 @@ $generalfontfamily: 'Roboto', sans-serif;
     }
     
     .langs{
-        
+        >.secContent{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
         .lang{
+            position: relative;
             display: inline-flex;
             justify-content: center;
             align-items: flex-start;
             flex-direction: column;
             text-align: left;
             margin: 5px 0;
-            width: 49%;
+            width: 48%;
             font-family: $generalfontfamily;
             span{
                 display: inline;
@@ -381,9 +392,7 @@ $generalfontfamily: 'Roboto', sans-serif;
                 }
             }
         }
-        .lang:nth-child(odd){
-            margin-left: 5px;
-        }
+
     }
 
     .edus{

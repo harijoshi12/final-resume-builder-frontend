@@ -8,9 +8,8 @@
 }
 .dashboardPage .desktopView {
   overflow-x: auto;
-  overflow-y: hidden;
   border: 1px solid gray;
-  background-color: yellow;
+  background-color: gray;
   padding: 10px;
   width: 100%;
   max-width: 1400px;

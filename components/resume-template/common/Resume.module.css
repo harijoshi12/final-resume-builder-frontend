@@ -275,36 +275,36 @@
   background-color: rgb(200, 200, 200);
 }
 
-.educationInput, .projectInput, .myJourneyInput {
+.educationInput, .projectInput, .myJourneyInput, .langInput {
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
-.educationInput .input_fields, .projectInput .input_fields, .myJourneyInput .input_fields {
+.educationInput .input_fields, .projectInput .input_fields, .myJourneyInput .input_fields, .langInput .input_fields {
   display: flex;
   justify-content: center;
   width: 100%;
 }
-.educationInput .input_fields .top, .projectInput .input_fields .top, .myJourneyInput .input_fields .top {
+.educationInput .input_fields .top, .projectInput .input_fields .top, .myJourneyInput .input_fields .top, .langInput .input_fields .top {
   width: 100%;
   display: flex;
   gap: 10px;
   justify-content: center;
   align-items: center;
 }
-.educationInput .icons, .projectInput .icons, .myJourneyInput .icons {
+.educationInput .icons, .projectInput .icons, .myJourneyInput .icons, .langInput .icons {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
   margin: 3px;
 }
-.educationInput .icons span, .projectInput .icons span, .myJourneyInput .icons span {
+.educationInput .icons span, .projectInput .icons span, .myJourneyInput .icons span, .langInput .icons span {
   margin: 3px;
 }
 
 .educationInput {
   padding: 2px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   background-color: rgb(43, 52, 61);
 }
 .educationInput .input_fields {
@@ -372,6 +372,226 @@
 }
 .educationInput .input_fields .bottom input:last-child {
   width: 70%;
+}
+
+.langInput {
+  display: inline-flex;
+  width: 48%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 2px;
+  background-color: rgb(43, 52, 61);
+  margin-top: 10px;
+}
+.langInput .input_fields {
+  background-color: rgb(90, 90, 90);
+  flex-direction: column;
+  padding: 5px 2px;
+  border: 1px solid white;
+}
+.langInput .input_fields > input {
+  padding: 4px;
+  font-size: 18px;
+  width: 100%;
+}
+.langInput .input_fields .group {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5px;
+  background-color: rgb(200, 200, 200);
+}
+.langInput .input_fields .group input {
+  display: none;
+}
+.langInput .input_fields .group label {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-grow: 1;
+  width: 100%;
+  padding: 3px;
+  transition: all 0.2s ease;
+}
+.langInput .input_fields .group label:hover {
+  background-color: orangered;
+  color: white;
+}
+
+.contactInput {
+  border: 1px solid white;
+}
+.contactInput .save_discard {
+  background-color: rgb(43, 52, 61);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.contactInput .save_discard button {
+  cursor: pointer;
+  width: 40%;
+  font-size: 20px;
+  padding: 7px 20px;
+  border-radius: 5px;
+  border: 0;
+  outline: none;
+  transition: all 0.2s ease;
+  color: white;
+}
+.contactInput .save_discard button:hover {
+  transform: scale(1.05);
+}
+.contactInput .save_discard .discard {
+  background-color: red;
+}
+.contactInput .save_discard .save {
+  background-color: green;
+}
+.contactInput .contactOptions .contact_option:last-child {
+  border: 0;
+}
+.contactInput .contactOptions .contact_option {
+  padding: 5px 20px;
+  display: flex;
+  margin: 3px 0;
+  border-bottom: 2px solid rgb(43, 52, 61);
+  justify-content: flex-start;
+  align-items: center;
+}
+.contactInput .contactOptions .contact_option input[type=checkbox] {
+  height: 35px;
+  width: 35px;
+}
+.contactInput .contactOptions .contact_option span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  margin: 0 15px;
+}
+.contactInput .contactOptions .contact_option .input {
+  padding: 4px;
+  font-size: 20px;
+  width: 100%;
+}
+
+.professionInput, .nameInput {
+  border: 1px solid white;
+  margin-right: auto;
+  margin-left: auto;
+  width: 260px;
+  padding: 4px;
+  font-family: "Ubuntu", sans-serif;
+}
+.professionInput input, .nameInput input {
+  color: rgb(185, 185, 185);
+  background-color: rgb(40, 40, 40);
+  padding: 4px;
+  text-align: center;
+  width: 100%;
+  font-size: 30px;
+}
+
+.nameInput {
+  margin-top: -17px;
+  margin-bottom: 18px;
+}
+
+.professionInput {
+  width: 300px;
+}
+.professionInput input {
+  font-size: 25px;
+  color: white;
+}
+
+.profSummaryInput {
+  padding-top: 5px;
+  margin-left: 35px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.profSummaryInput textarea {
+  font-size: 20px;
+  border: 3px solid rgb(43, 52, 61);
+  margin: 0;
+  width: 520px;
+  max-width: 520px;
+  min-width: 520px;
+  height: 83px;
+  max-height: 83px;
+  min-height: 83px;
+}
+
+.imgInput {
+  position: absolute;
+  background-color: rgb(90, 90, 90);
+  color: white;
+  border: 1px solid black;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 30px;
+}
+.imgInput * {
+  display: inline-flex;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.imgInput label {
+  margin-right: 15px;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+.imgInput label .upload {
+  font-size: 18px;
+  margin-right: 5px;
+}
+.imgInput label:hover {
+  color: cyan;
+  transform: scale(1.03);
+}
+.imgInput input {
+  display: none;
+}
+.imgInput .delete {
+  font-size: 18px;
+  color: red;
+  border-radius: 50%;
+  padding: 3px;
+  background-color: white;
+}
+.imgInput .delete:hover {
+  transform: scale(1.03);
+}
+
+.progLangLevel {
+  position: relative;
+}
+.progLangLevel .thumb {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  background-color: rgb(43, 52, 61);
+  width: 30px;
+  height: 30px;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+.progLangLevel input {
+  left: 0;
+  top: 90%;
+  position: absolute;
+  width: 100%;
 }
 
 .resume {
@@ -457,7 +677,11 @@
   padding: 25px 30px;
   padding-right: 5px;
 }
-.left .personalInfo.resumeSec .imgboxOuter .imgboxInner .imgbox {
+.left .personalInfo.resumeSec .imgboxOuter .imgboxInner .imgbox_wrapper {
+  position: relative;
+  background-color: blue;
+}
+.left .personalInfo.resumeSec .imgboxOuter .imgboxInner .imgbox_wrapper .imgbox {
   min-width: 160px;
   min-height: 180px;
   background-color: rgb(208, 208, 208);
@@ -467,7 +691,7 @@
   background-repeat: no-repeat;
   background-size: 170%;
 }
-.left .personalInfo.resumeSec .imgboxOuter .imgboxInner .imgbox img {
+.left .personalInfo.resumeSec .imgboxOuter .imgboxInner .imgbox_wrapper .imgbox img {
   width: 300px;
 }
 .left .personalInfo.resumeSec .imgboxOuter .imgboxInner .myinfo {
@@ -487,7 +711,6 @@
   color: rgb(240, 240, 240);
   font-size: 30px;
   font-weight: 500;
-  font-family: mer;
 }
 .left .personalInfo.resumeSec .tagline {
   padding: 15px 0;
@@ -531,12 +754,12 @@
   font-family: "Roboto", sans-serif;
   margin-left: 2px;
 }
-.left .progLangs .progLang .progressBarOuter {
+.left .progLangs .progLang .outer {
   padding: 1px;
   border: 2px solid black;
   width: 70%;
 }
-.left .progLangs .progLang .progressBarInner {
+.left .progLangs .progLang .inner {
   background-color: rgb(43, 52, 61);
   height: 10px;
   width: 100%;
@@ -599,7 +822,6 @@
   font-weight: 400;
   color: rgb(230, 230, 230);
   font-family: sans-serif;
-  padding: 30px;
 }
 .right .contactDetails a {
   display: flex;
@@ -669,14 +891,20 @@
   letter-spacing: 2px;
   font-weight: bold;
 }
+.right .langs > .secContent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
 .right .langs .lang {
+  position: relative;
   display: inline-flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   text-align: left;
   margin: 5px 0;
-  width: 49%;
+  width: 48%;
   font-family: "Roboto", sans-serif;
 }
 .right .langs .lang span {
@@ -698,9 +926,6 @@
 }
 .right .langs .lang .level:hover {
   background-color: rgb(221, 221, 221);
-}
-.right .langs .lang:nth-child(odd) {
-  margin-left: 5px;
 }
 .right .edus .edu {
   font-family: "Roboto", sans-serif;

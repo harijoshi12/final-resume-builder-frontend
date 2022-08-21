@@ -6,6 +6,7 @@ import { CgSmartphone, CgWebsite } from 'react-icons/cg';
 import { IoLocationSharp } from 'react-icons/io5';
 import { BsLinkedin, BsStackOverflow } from 'react-icons/bs';
 import { FaQuora } from 'react-icons/fa';
+import { IoMdCloudUpload } from 'react-icons/io';
 
 import styles from '../Resume.module.css'
 
@@ -27,22 +28,45 @@ export const CommonForm= (props)=>{
 
 export const NameInput = (props) => {
   const inputRef = useRef(null)
-  return (<input ref={inputRef} name={fieldCode.Name} value={itemTitle} onChange={(e) => onChangeHandler(e)} />)
+  return (
+    <div className={styles.nameInput}>
+      <input ref={inputRef} name={fieldCode.Name} placeholder="Your Name" />
+    </div>
+  )
 }
 
 export const ProfessionInput = (props) => {
   const inputRef = useRef(null)
-  return (<input ref={inputRef} name={fieldCode.Profession} value={itemTitle} onChange={(e) => onChangeHandler(e)} />)
+  return (
+    <div className={styles.professionInput}>
+      <input ref={inputRef} name={fieldCode.Profession} placeholder="Profession" />
+    </div>
+  )
 }
 
 export const ProfSummaryInput = (props) => {
   const inputRef = useRef(null)
-  return (<textarea  cols="30" rows="10" ref={inputRef} name={fieldCode.ProfSummary} value={itemTitle} onChange={(e) => onChangeHandler(e)} />)
+  return (
+    <div className={styles.profSummaryInput}>
+      <textarea  cols="30" rows="10" ref={inputRef} name={fieldCode.ProfSummary} placeholder="About You"/>
+    </div>
+  )
 }
 
 export const ImageInput = (props) => {
   const inputRef = useRef(null)
-  return (<input type="file" ref={inputRef} name={fieldCode.ImageUrl} value={itemTitle} onChange={(e) => onChangeHandler(e)} />)
+  return (
+    <div className={styles.imgInput}>
+      <label htmlFor="imgUpload">
+      <span className={styles.upload}><IoMdCloudUpload/></span>
+      Upload Photo
+      </label>
+      <input type="file" id='imgUpload' ref={inputRef} name={fieldCode.ImageUrl} />
+      <span className={styles.delete}>
+        <AiFillDelete/>
+      </span>
+    </div>
+  )
 }
 
 export const TechSkillInput = (props) => {
@@ -59,8 +83,19 @@ export const ProgLangInput = (props) => {
   const inputRef = useRef(null)
   return (
     <CommonForm secId="3" className={className}>  
-     <input ref={inputRef} name={fieldCode.ProgrammingLanguage} value="" onChange={(e) => onChangeHandler(e)}/>
+     <input ref={inputRef} name={fieldCode.ProgrammingLanguage}  onChange={(e) => onChangeHandler(e)}/>
     </CommonForm>
+  )
+}
+
+export const ProgLangLevel = ({level})=> {
+  return(
+      <span className={`${styles.outer} ${styles.progLangLevel}`}>
+        <span className={styles.value}></span>
+        <span className={styles.inner} style={{ width: `${level * 10}%` }}></span>
+        <span className={styles.thumb} style={{left: `calc(${10 * 10}% - 15px)`}}></span>
+      <input type="range" name={fieldCode.ProgrammingLanguageLevel} id="" />
+      </span>
   )
 }
 
@@ -96,19 +131,16 @@ export const MyJourneyInput = (props) =>{
   )
 }
 
-const ContactOption = ({ type, fieldName, label, icon})=>{
+const ContactOption = ({ type, fieldName, placeholder, label, icon})=>{
   return(
     <div className={styles.contact_option}>
       <input type="checkbox" name={`${fieldName}Check`} id="" />
       <span>{icon}</span>
-      <div className={styles.input_field}>
         {
         fieldName==="EMAL"? 
-        (<input type={type} name={fieldName} id={`id_${fieldName}`} required />): 
-        (<input type={type} name={fieldName} id={`id_${fieldName}`} />)
+        (<input className={styles.input} type={type} placeholder={placeholder} name={fieldName} id={`id_${fieldName}`} required={false} />): 
+        (<input className={styles.input} type={type} placeholder={placeholder} name={fieldName} id={`id_${fieldName}`} />)
         }
-        <label htmlFor={`id_${fieldName}`}><span >{label}</span></label>
-      </div>
     </div>
   )
 }
@@ -116,20 +148,21 @@ const ContactOption = ({ type, fieldName, label, icon})=>{
 export const ContactInput = (props)=>{
 
   return(
-    <div className={styles.contactInputPopUp}>
+    <div className={styles.contactInput}>
+
       <div className={styles.save_discard}>
         <button className={styles.discard}>discard</button>
         <button className={styles.save}>save</button>
       </div>
       <div className={styles.contactOptions}>
-        <ContactOption type={"email"} fieldName={fieldCode.Email} icon={MdEmail} />
-        <ContactOption type={"number"} fieldName={fieldCode.Phone} icon={CgSmartphone} />
-        <ContactOption type={"text"} fieldName={fieldCode.Address} icon={IoLocationSharp} />
-        <ContactOption type={"text"} fieldName={fieldCode.Website} icon={CgWebsite} />
-        <ContactOption type={"text"} fieldName={fieldCode.Github} icon={AiFillGithub} />
-        <ContactOption type={"text"} fieldName={fieldCode.Linkedin} icon={BsLinkedin} />
-        <ContactOption type={"text"} fieldName={fieldCode.StackOverflow} icon={BsStackOverflow} />
-        <ContactOption type={"text"} fieldName={fieldCode.Quora} icon={FaQuora} />
+        <ContactOption type={"email"} placeholder="E-mail" fieldName={fieldCode.Email} icon={<MdEmail/>} />
+        <ContactOption type={"number"} placeholder="Phone" fieldName={fieldCode.Phone} icon={<CgSmartphone/>} />
+        <ContactOption type={"text"} placeholder="Address" fieldName={fieldCode.Address} icon={<IoLocationSharp/>} />
+        <ContactOption type={"text"} placeholder="Website" fieldName={fieldCode.Website} icon={<CgWebsite/>} />
+        <ContactOption type={"text"} placeholder="Github" fieldName={fieldCode.Github} icon={<AiFillGithub/>} />
+        <ContactOption type={"text"} placeholder="Linkedin" fieldName={fieldCode.Linkedin} icon={<BsLinkedin/>} />
+        <ContactOption type={"text"} placeholder="StackOverflow" fieldName={fieldCode.StackOverflow} icon={<BsStackOverflow/>} />
+        <ContactOption type={"text"} placeholder="Quora" fieldName={fieldCode.Quora} icon={<FaQuora/>} />
       </div>
     </div>
   )
@@ -152,6 +185,30 @@ export const ProjectInput = (props) =>{
           <input type="text"  ref={inputRef3} name={fieldCode.ProjectGitLink} value="Github link" onChange={(e) => onChangeHandler(e)} />
           <input type="text"  ref={inputRef3} name={fieldCode.ProjectLiveDemo} value="Live Demo link" onChange={(e) => onChangeHandler(e)} />
         </div>
+      </div>
+    </CommonForm>
+  )
+}
+
+const RadioGroup =({id, value})=>{
+  return(
+    <>
+    <input type="radio" name={fieldCode.LanguageLevel} id={id} value={value} />
+    <label htmlFor={id}>{value}</label>
+    </>
+  )
+}
+
+export const LangInput =(props)=>{
+  return(
+    <CommonForm secId="7" className="langInput">
+      <input type="text" name={fieldCode.Language} placeholder="Language" value={""} />
+      <div className={styles.group}>
+        <RadioGroup id={"option1"} value="1/5"/>
+        <RadioGroup id={"option2"} value="2/5"/>
+        <RadioGroup id={"option3"} value="3/5"/>
+        <RadioGroup id={"option4"} value="4/5"/>
+        <RadioGroup id={"option5"} value="5/5"/>
       </div>
     </CommonForm>
   )

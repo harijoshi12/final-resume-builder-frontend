@@ -262,7 +262,7 @@ $generalfontfamily: 'Roboto', sans-serif;
   }
 }
 
-.educationInput, .projectInput, .myJourneyInput{
+.educationInput, .projectInput, .myJourneyInput, .langInput{
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -292,7 +292,7 @@ $generalfontfamily: 'Roboto', sans-serif;
 .educationInput{
   // border: 1px solid white;
   padding: 2px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   background-color: $lightTextBg1;
   *{
     // border: 1px solid black;
@@ -362,5 +362,233 @@ $generalfontfamily: 'Roboto', sans-serif;
         width: 70%;
       }
     }
+  }
+}
+
+.langInput{
+  display: inline-flex;
+  width: 48%;
+  height: fit-content;
+  padding: 2px;
+  background-color: $lightTextBg1;
+  margin-top: 10px;
+  *{
+    // border: 1px solid black;
+  }
+  .input_fields{
+    background-color: $lightRight;
+    flex-direction: column;
+    padding: 5px 2px;
+    border: 1px solid white;
+    >input{
+      padding: 4px;
+      font-size: 18px;
+      width: 100%;
+    }
+    .group{
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 5px;
+      background-color: rgb(200, 200, 200);
+      input{
+        display: none;
+      }
+      label{
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        flex-grow: 1;
+        width: 100%;
+        // border: 1px solid;
+        padding: 3px;
+        transition: all 0.2s ease;
+        &:hover{
+          background-color: orangered;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.contactInput{
+  border: 1px solid white;
+  *{
+    // border: 1px solid black;
+  }
+  .save_discard{
+    background-color: $lightTextBg1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    button{
+      cursor: pointer;
+      width: 40%;
+      font-size: 20px;
+      padding: 7px 20px;
+      border-radius: 5px;
+      border: 0;
+      outline: none;
+      transition: all 0.2s ease;
+      color: white;
+      &:hover{
+        transform: scale(1.05);
+      }
+    }
+    .discard{
+      background-color: red;
+    }
+    .save{
+      background-color: green;
+    }
+
+  }
+  .contactOptions{
+    // padding: 10px 0;
+    .contact_option:last-child{
+      border: 0;
+    }
+    .contact_option{
+      padding: 5px 20px;
+      display: flex;
+      margin: 3px 0;
+      border-bottom: 2px solid $lightTextBg1;
+      justify-content: flex-start;
+      align-items: center;
+      input[type=checkbox]{
+        height: 35px;
+        width: 35px;
+      }
+      span{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        margin: 0 15px;
+      }
+      .input{
+        padding: 4px;
+        font-size: 20px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.professionInput, .nameInput{
+  border: 1px solid white;
+  margin-right: auto;
+  margin-left: auto;
+  width: 260px;
+  padding: 4px;
+  font-family: 'Ubuntu', sans-serif;
+  input{
+    color: rgb(185, 185, 185);
+    background-color: $lightSecTitle;
+    padding: 4px;
+    text-align: center;
+    width: 100%;
+    font-size: 30px;
+
+  }
+}
+.nameInput{
+  margin-top: -17px;
+  margin-bottom: 18px;
+}
+.professionInput{
+  width: 300px;
+  input{
+    font-size: 25px;
+    color: white;
+  }
+}
+.profSummaryInput{
+  padding-top: 5px;
+  margin-left: 35px;
+  height: fit-content;
+  textarea{
+    font-size: 20px;
+    border: 3px solid $lightTextBg1;
+    margin: 0;
+    width: 520px;
+    max-width: 520px;
+    min-width: 520px;
+    height: 83px;
+    max-height: 83px;
+    min-height: 83px;
+  }
+}
+.imgInput{
+  position: absolute;
+  background-color: $lightRight;
+  color: white;
+  border: 1px solid black;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 30px;
+  *{
+    display: inline-flex;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  label{
+    margin-right: 15px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    .upload{
+      font-size: 18px;
+      margin-right: 5px;
+    }
+    &:hover{
+      color: cyan;
+      transform: scale(1.03);
+    }
+  }
+  input{
+    display: none;
+  }
+  .delete{
+    font-size: 18px;
+    
+    color: red;
+    border-radius: 50%;
+    padding: 3px;
+    background-color: white;
+    &:hover{
+      transform: scale(1.03);
+    }
+  }
+}
+.progLangLevel{
+  position: relative;
+  .value{
+
+  }
+  .thumb{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    background-color: $lightTextBg1;
+    width: 30px;
+    height: 30px;
+    border: 1px solid white;
+    border-radius:50%;
+  }
+  input{
+    left: 0;
+    top: 90%;
+    // transform: translateY(-50%);
+    position: absolute;
+    width: 100%;
   }
 }

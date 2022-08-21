@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from '../Resume.module.css'
 
-import { EducationInput, InterestInput, MyJourneyInput, NameInput, ProfessionInput, ProfSummaryInput, ProgLangInput, ProjectInput, TechSkillInput } from './ItemsInput';
+import { ContactInput, EducationInput, ImageInput, InterestInput, LangInput, MyJourneyInput, NameInput, ProfessionInput, ProfSummaryInput, ProgLangInput, ProgLangLevel, ProjectInput, TechSkillInput } from './ItemsInput';
 
 // import HOC
 import HocItems from './HocItems';
 
 const SecItem = (props) => {
-  const { secId, data, className, secTitle, itemData1, itemData2, itemData3, dataArray, setDataArray, addNewItem, setPlusEl } = props
+  const { secId, data, className, secTitle, itemData1, itemData2, itemData3, dataArray, setDataArray, addNewItem, setPlusEl, setShowContactInput } = props
   const title = data.title
   const [edit, setEdit] = useState(false)
   const [itemTitle, setItemTitle] = useState(title)
@@ -62,13 +62,21 @@ const SecItem = (props) => {
 
   let childComponent
   if(secId === "1"){(childComponent = <PersonalInfo itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+
   if(secId === "2"){edit?(childComponent = <TechSkillInput/>):(childComponent = <TechnicalSkill itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+
   if(secId === "3"){(childComponent = <ProgLang itemTitle={itemTitle} handleClickItem={handleClickItem} onChangeHandler={onChangeHandler} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} inputRef={inputRef} edit={edit} {...data}/>)}
+
   if(secId === "4"){edit?(childComponent = <MyJourneyInput/>):(childComponent = <MyJourney itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
-  if(secId === "5"){(childComponent = <ContactDetail itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+
+  if(secId === "5"){(childComponent = <ContactDetail itemTitle={itemTitle} handleClickItem={handleClickItem} setShowContactInput={setShowContactInput} {...data}/>)}
+
   if(secId === "6"){edit?(childComponent = <ProjectInput/>):(childComponent = <Project itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
-  if(secId === "7"){(childComponent = <Lang itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+
+  if(secId === "7"){edit?(childComponent = <LangInput/>):(childComponent = <Lang itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+
   if(secId === "8"){edit?(childComponent = <EducationInput/>):(childComponent = <Edu itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+
   if(secId === "9"){edit?(childComponent = <InterestInput/>):(childComponent = <Interest itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
   return (< >{childComponent}</>)
 }
@@ -76,29 +84,37 @@ const SecItem = (props) => {
 export default SecItem
 
 const PersonalInfo = (props) => {
-  const {resumeTitle,edit, imgsrc, name, profession, tagline} = props
+  const [editName, setEditName] = useState(false)
+  const [editProf, setEditProf] = useState(false)
+  const [editProfSummary, setEditProfSummary] = useState(false)
+  const [editImage, setEditImage] = useState(false)
+  const {resumeTitle, imgsrc, name, profession, tagline} = props
   console.log("perinfo= ",props.dataArray)
   return (
     <>
       <h1 className={styles.resumeTitle}>{resumeTitle}</h1>
       <div className={styles.imgboxOuter}>
         <div className={styles.imgboxInner}>
-          <div className={styles.imgbox}></div>
+            <div className={styles.imgbox_wrapper}>
+              {editImage?<ImageInput/>:null}  
+              <div className={styles.imgbox} onClick={()=>setEditImage(true)}>
+            </div>
+          </div>
           <div className={styles.myinfo}>
-            {edit?<NameInput/>:<h1 className={styles.myName}>{name}</h1>}
-            {edit?<ProfessionInput/>:<h2 className={styles.profession}>{profession}</h2>}
+            {editName?<NameInput/>:<h1 className={styles.myName} onClick={()=>setEditName(true)}>{name}</h1>}
+            {editProf?<ProfessionInput/>:<h2 className={styles.profession}onClick={()=>setEditProf(true)}>{profession}</h2>}
           </div>
         </div>
       </div>
-      {edit?<ProfSummaryInput/>:<h2 className={styles.tagline}>"{tagline}"</h2>}
+      {editProfSummary?<ProfSummaryInput/>:<h2 className={styles.tagline} onClick={()=>setEditProfSummary(true)}>"{tagline}"</h2>}
     </>
   );
 };
 
-const ContactDetail = (props) => {
+const ContactDetail = ({icon,info, setShowContactInput, handleClickItem}) => {
   return (
-    <a  rel="noopener noreferrer" target="_blank">
-      <span>{props.icon}</span> <span>{props.info}</span>
+    <a rel="noopener noreferrer" target="_blank">
+      <span onClick={()=>setShowContactInput(true)}>{icon}</span> <span onClick={()=>setShowContactInput(true)}>{info}</span>
     </a>
   );
 };
@@ -116,21 +132,22 @@ const ProgLang = ({ title, itemTitle, level, inputRef, handleClickItem, handleEd
           <span className={styles.title} onClick={handleClickItem} >{itemTitle}</span>
         )
       } 
-      <span className={styles.progressBarOuter}>
+      {/* <span className={styles.outer}>
         <span
-          className={styles.progressBarInner}
+          className={styles.inner}
           style={{ width: `${level * 10}%` }}
         ></span>
-      </span>
+      </span> */}
+      <ProgLangLevel level={level}/>
     </div>
   );
 };
 
-const Lang = ({ title, level }) => {
+const Lang = ({ title, level, handleClickItem }) => {
   return (
     <div className={styles.lang}>
-      <span className={styles.title}>{title}</span>
-      <span className={styles.level}>{level}</span>
+      <span className={styles.title} onClick={handleClickItem}>{title}</span>
+      <span className={styles.level} onClick={handleClickItem}>{level}</span>
     </div>
   );
 };

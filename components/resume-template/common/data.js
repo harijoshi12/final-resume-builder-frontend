@@ -211,16 +211,16 @@ export const langs = [
         title: "English",
         level: "Professional Working Proficiency"
     },
-    // {
-    //     id: 3,
-    //     title: "Urdu",
-    //     level: "Professional Working Proficiency"
-    // },
-    // {
-    //     id: 4,
-    //     title: "Sanskrit",
-    //     level: "Professional Working Proficiency"
-    // }
+    {
+        id: 3,
+        title: "Urdu",
+        level: "Professional Working Proficiency"
+    },
+    {
+        id: 4,
+        title: "Sanskrit",
+        level: "Professional Working Proficiency"
+    }
 ]
 
 export const education = [
