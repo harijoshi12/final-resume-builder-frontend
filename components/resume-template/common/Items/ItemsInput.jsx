@@ -94,40 +94,29 @@ export const ProgLangLevel = ({level})=> {
   const thumbRef = useRef(null)
   const inputRef = useRef(null)
   useEffect(()=>{
-    // let left = innerRef.current.offsetLeft
-    // let width = outerRef.current.clientWidth
-    // let val = left/width*100
-    // console.log("left= ",left,"width= ", width,"val= ", val)
-    // inputRef.current.value = (left/width)*100
-    let wo = outerRef.current.offsetWidth
-    let wi = innerRef.current.offsetWidth
-    let wip = inputRef.current.offsetWidth
-    console.log("wo= ", wo, "wi= ", wi, "wip= ", wip)
+    // let value = innerRef.current.offsetWidth
+    // let width = inputRef.current.clientWidth-10
+
+    // innerRef.current.style.width = `${value}%`
+    // thumbRef.current.style.left = `${value/100*width - 5}px`
   })
   const handleSlide =(e)=>{
-    let width = inputRef.current.clientWidth-10
+    let width = inputRef.current.clientWidth
     let value = e.target.value
-    // innerRef.current.style.width = `${value*(width+8)/100}px`
-    // thumbRef.current.style.left = `${value*width/100}px`
     innerRef.current.style.width = `${value}%`
-    thumbRef.current.style.left = `${value/100*width - 5}px`
+    thumbRef.current.style.left = `${value/100*width - 10}px`
 
-
-    let wo = outerRef.current.offsetWidth
-    let wi = innerRef.current.offsetWidth
-    let wip = inputRef.current.offsetWidth
-    console.log("wo= ", wo, "wi= ", wi, "wip= ", wip)
-    // let left = innerRef.current.offsetWidth
-    // let width1 = outerRef.current.clientWidth
-    // let val = left/width*100
-    // console.log("left= ",left,"width= ", width1,"val= ", val)
+    // let wo = outerRef.current.offsetWidth
+    // let wi = innerRef.current.offsetWidth
+    // let wip = inputRef.current.offsetWidth
+    // console.log("wo= ", wo, "wi= ", wi, "wip= ", wip)
   }
   return(
       <span ref={outerRef} className={`${styles.outer} ${styles.progLangLevel}`}>
         <form action="">
           <span ref={innerRef} className={styles.inner} style={{ width: `${level * 10}%` }}></span>
           <span ref={thumbRef} className={styles.thumb} style={{left: `calc(${level * 10}% - 15px)`}}></span>
-          <input onInput={(e)=>handleSlide(e)} ref={inputRef} type="range" name={fieldCode.ProgrammingLanguageLevel}  id="" />
+          <input onInput={(e)=>handleSlide(e)} ref={inputRef} type="range" step={"5"} name={fieldCode.ProgrammingLanguageLevel}  id="" />
         </form>
       </span>
   )
