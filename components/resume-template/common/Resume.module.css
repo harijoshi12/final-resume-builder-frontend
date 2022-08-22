@@ -578,6 +578,7 @@
 }
 .progLangLevel:hover .thumb {
   transform: translateY(-50%) scale(1.3);
+  visibility: visible;
 }
 .progLangLevel form {
   background-color: transparent;
@@ -602,19 +603,39 @@
   z-index: 10;
   pointer-events: none;
   transition: transform 0.2s ease;
+  visibility: hidden;
 }
 .progLangLevel form input {
+  cursor: ew-resize;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
   position: absolute;
-  width: 100%;
+  width: calc(100% - 2px);
   border: 0;
   outline: none;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   background-color: transparent;
+}
+.progLangLevel form input::-webkit-slider-thumb {
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  visibility: hidden;
+}
+.progLangLevel form input::-moz-range-thumb {
+  visibility: hidden;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: 0;
+  outline: none;
 }
 
 .resume {

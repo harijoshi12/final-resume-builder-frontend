@@ -14,7 +14,7 @@ import { fieldCode } from '../constants/typeCodes';
 
 export const CommonForm= (props)=>{
   const {secId, className,children} = props
-  console.log("chid= ", children)
+  // console.log("chid= ", children)
   return(
     <form className={styles[className]} onSubmit={(e) => { handleEditItemTitle(e) }} onBlur={(e) => { handleEditItemTitle(e) }}>
       <div className={styles.input_fields}>{children}</div>
@@ -94,13 +94,33 @@ export const ProgLangLevel = ({level})=> {
   const thumbRef = useRef(null)
   const inputRef = useRef(null)
   useEffect(()=>{
-    inputRef.current.value = level * 10 - 1
+    // let left = innerRef.current.offsetLeft
+    // let width = outerRef.current.clientWidth
+    // let val = left/width*100
+    // console.log("left= ",left,"width= ", width,"val= ", val)
+    // inputRef.current.value = (left/width)*100
+    let wo = outerRef.current.offsetWidth
+    let wi = innerRef.current.offsetWidth
+    let wip = inputRef.current.offsetWidth
+    console.log("wo= ", wo, "wi= ", wi, "wip= ", wip)
   })
   const handleSlide =(e)=>{
-    let width = outerRef.current.clientWidth-17
+    let width = inputRef.current.clientWidth-10
     let value = e.target.value
-    innerRef.current.style.width = `${value*(width+8)/100}px`
-    thumbRef.current.style.left = `${value*width/100}px`
+    // innerRef.current.style.width = `${value*(width+8)/100}px`
+    // thumbRef.current.style.left = `${value*width/100}px`
+    innerRef.current.style.width = `${value}%`
+    thumbRef.current.style.left = `${value/100*width - 5}px`
+
+
+    let wo = outerRef.current.offsetWidth
+    let wi = innerRef.current.offsetWidth
+    let wip = inputRef.current.offsetWidth
+    console.log("wo= ", wo, "wi= ", wi, "wip= ", wip)
+    // let left = innerRef.current.offsetWidth
+    // let width1 = outerRef.current.clientWidth
+    // let val = left/width*100
+    // console.log("left= ",left,"width= ", width1,"val= ", val)
   }
   return(
       <span ref={outerRef} className={`${styles.outer} ${styles.progLangLevel}`}>
