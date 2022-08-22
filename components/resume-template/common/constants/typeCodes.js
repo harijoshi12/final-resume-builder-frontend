@@ -9,11 +9,11 @@ export const fontFamily = ['Roboto', 'Quicksand', 'Merriweather' ]
 export const fieldCode = {
   // section title
   SecTitle: "STIT",
-  
+  ResumeTitle: "RTIT",
   // personal info
   Name: "NAME",
   Profession:"PROF",
-  ImageUrl: "IMGU",
+  ImageSrc: "IMGS",
   ProfSummary:"PRSU",
   
   // contact details

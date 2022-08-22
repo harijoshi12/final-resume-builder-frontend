@@ -3,17 +3,23 @@ import styles from '../Resume.module.css'
 
 import { ContactInput, EducationInput, ImageInput, InterestInput, LangInput, MyJourneyInput, NameInput, ProfessionInput, ProfSummaryInput, ProgLangInput, ProgLangLevel, ProjectInput, TechSkillInput } from './ItemsInput';
 
-// import HOC
-import HocItems from './HocItems';
-
 const SecItem = (props) => {
   const { secId, data, className, secTitle, itemData1, itemData2, itemData3, dataArray, setDataArray, addNewItem, setPlusEl, setShowContactInput } = props
   const title = data.title
   const [edit, setEdit] = useState(false)
-  const [itemTitle, setItemTitle] = useState(title)
+
+  // technicalSkill, proglang, interest
+  // const [itemData.title, setItemData] = useState(title)
+
+  // myJourney
+  const [itemData, setItemData] = useState(data)
+  // console.log("jd= ",journeyData)
+
+
+
 
   useEffect(()=>{
-    if(dataArray.isLast){
+    if(data.isLast){
       if(addNewItem){
         setEdit(true)
       } else{
@@ -34,7 +40,7 @@ const SecItem = (props) => {
   }
 
   const onChangeHandler = (e) => {
-    setItemTitle(e.target.value)
+    setItemData(prev=>({...prev, title: e.target.value }))
     if (e.target.value === "") {
       inputRef.current.placeholder = itemData1
     }
@@ -44,15 +50,17 @@ const SecItem = (props) => {
     e.preventDefault()
     setPlusEl(false)
     setEdit(!edit)
-    if (itemTitle === "") {
-      setItemTitle(itemData1)
+    if (itemData.title === "") {
+      setItemData(prev=>({...prev, title: itemData1 }))
     }else{
-      setDataArray(dataArray.map(d=>d.id === dataArray.id? {...d, title:itemTitle}: d))
+      setDataArray(dataArray.map(d=>d.id === dataArray.id? {...d, title:itemData.title}: d))
     }
   }
 
   const handleDeleteItemTitle = (e)=>{
-    setDataArray(dataArray.filter(d=>d.id != dataArray.id))
+    setDataArray(dataArray.filter(d=>{
+      return(d.id != data.id)
+    }))
     setPlusEl(false)
   }
  
@@ -61,23 +69,23 @@ const SecItem = (props) => {
   }, [edit])
 
   let childComponent
-  if(secId === "1"){(childComponent = <PersonalInfo itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+  if(secId === "1"){(childComponent = <PersonalInfo handleClickItem={handleClickItem} {...itemData}/>)}
 
-  if(secId === "2"){edit?(childComponent = <TechSkillInput/>):(childComponent = <TechnicalSkill itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+  if(secId === "2"){edit?(childComponent = <TechSkillInput {...itemData} onChangeHandler={onChangeHandler} handleClickItem={handleClickItem} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} inputRef={inputRef}/>):(childComponent = <TechnicalSkill  handleClickItem={handleClickItem} {...itemData}/>)}
 
-  if(secId === "3"){(childComponent = <ProgLang itemTitle={itemTitle} handleClickItem={handleClickItem} onChangeHandler={onChangeHandler} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} inputRef={inputRef} edit={edit} {...data}/>)}
+  if(secId === "3"){(childComponent = <ProgLang handleClickItem={handleClickItem} onChangeHandler={onChangeHandler} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} inputRef={inputRef} edit={edit} {...itemData}/>)}
 
-  if(secId === "4"){edit?(childComponent = <MyJourneyInput/>):(childComponent = <MyJourney itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+  if(secId === "4"){edit?(childComponent = <MyJourneyInput {...itemData} />):(childComponent = <MyJourney handleClickItem={handleClickItem} {...itemData}/>)}
 
-  if(secId === "5"){(childComponent = <ContactDetail itemTitle={itemTitle} handleClickItem={handleClickItem} setShowContactInput={setShowContactInput} {...data}/>)}
+  if(secId === "5"){(childComponent = <ContactDetail  handleClickItem={handleClickItem} setShowContactInput={setShowContactInput} {...itemData}/>)}
 
-  if(secId === "6"){edit?(childComponent = <ProjectInput/>):(childComponent = <Project itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+  if(secId === "6"){edit?(childComponent = <ProjectInput {...itemData} />):(childComponent = <Project  handleClickItem={handleClickItem} {...itemData}/>)}
 
-  if(secId === "7"){edit?(childComponent = <LangInput/>):(childComponent = <Lang itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+  if(secId === "7"){edit?(childComponent = <LangInput {...itemData} />):(childComponent = <Lang  handleClickItem={handleClickItem} {...itemData}/>)}
 
-  if(secId === "8"){edit?(childComponent = <EducationInput/>):(childComponent = <Edu itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+  if(secId === "8"){edit?(childComponent = <EducationInput {...itemData}/>):(childComponent = <Edu  handleClickItem={handleClickItem} {...itemData}/>)}
 
-  if(secId === "9"){edit?(childComponent = <InterestInput/>):(childComponent = <Interest itemTitle={itemTitle} handleClickItem={handleClickItem} {...data}/>)}
+  if(secId === "9"){edit?(childComponent = <InterestInput {...itemData} onChangeHandler={onChangeHandler}  handleClickItem={handleClickItem} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} inputRef={inputRef}/>):(childComponent = <Interest  handleClickItem={handleClickItem} {...itemData}/>)}
   return (< >{childComponent}</>)
 }
 
@@ -89,7 +97,6 @@ const PersonalInfo = (props) => {
   const [editProfSummary, setEditProfSummary] = useState(false)
   const [editImage, setEditImage] = useState(false)
   const {resumeTitle, imgsrc, name, profession, tagline} = props
-  console.log("perinfo= ",props.dataArray)
   return (
     <>
       <h1 className={styles.resumeTitle}>{resumeTitle}</h1>
@@ -119,27 +126,23 @@ const ContactDetail = ({icon,info, setShowContactInput, handleClickItem}) => {
   );
 };
 
-const TechnicalSkill = ({ itemTitle, handleClickItem }) => {
-  return <span className={styles.technicalSkill} onClick={handleClickItem} >{itemTitle}</span>;
+const TechnicalSkill = (props) => {
+  const {handleClickItem, title} = props
+  // console.log(props)
+  return <span className={styles.technicalSkill} onClick={handleClickItem} >{title}</span>;
 };
 
-const ProgLang = ({ title, itemTitle, level, inputRef, handleClickItem, handleEditItemTitle, handleDeleteItemTitle, onChangeHandler, edit }) => {
+const ProgLang = ({ title,  level, inputRef, handleClickItem, handleEditItemTitle, handleDeleteItemTitle, onChangeHandler, edit }) => {
   
   return (
 
     <div className={styles.progLang}>
       {
         edit? (
-        <ProgLangInput className={"progLangInput"}/>) :(
-          <span className={styles.title} onClick={handleClickItem} >{itemTitle}</span>
+        <ProgLangInput className={"progLangInput"} inputRef={inputRef} onChangeHandler={onChangeHandler} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle}/>) :(
+          <span className={styles.title} onClick={handleClickItem} >{title}</span>
         )
       } 
-      {/* <span className={styles.outer}>
-        <span
-          className={styles.inner}
-          style={{ width: `${level * 10}%` }}
-        ></span>
-      </span> */}
       <ProgLangLevel level={level}/>
     </div>
   );
@@ -189,20 +192,20 @@ function Project({ title, tech, desc, handleClickItem  }) {
 }
 
 function MyJourney(props) {
-  const { time, jobTitle, companyName, desc, handleClickItem } = props;
+  const { jobStartDate,jobEndDate, jobTitle, jobCompany, jobDescription, handleClickItem } = props;
   return (
     <div className={styles.myJourneyItem}>
-      <span className={styles.time} onClick={handleClickItem}>{time}</span>
+      <span className={styles.time} onClick={handleClickItem}>{jobStartDate}-{jobEndDate}</span>
       <h1 className={styles.title} onClick={handleClickItem}>
         <span></span>
-        <span onClick={handleClickItem}>{jobTitle}</span> | <span onClick={handleClickItem}>{companyName}</span>
+        <span onClick={handleClickItem}>{jobTitle}</span> | <span onClick={handleClickItem}>{jobCompany}</span>
       </h1>
-      <p className={styles.desc} onClick={handleClickItem}>{desc}</p>
+      <p className={styles.desc} onClick={handleClickItem}>{jobDescription}</p>
     </div>
   );
 }
 
-const Interest = ({ itemTitle, handleClickItem }) => {
-  return <span className={styles.interest} onClick={handleClickItem}>{itemTitle}</span>
+const Interest = ({title, handleClickItem }) => {
+  return <span className={styles.interest} onClick={handleClickItem}>{title}</span>
 };
 

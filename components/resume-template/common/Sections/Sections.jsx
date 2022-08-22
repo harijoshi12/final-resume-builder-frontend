@@ -18,6 +18,7 @@ const Section = (props)=>{
     const itemsarr = items.map(d=> ({...d, isLast: false }))
     setItems([...itemsarr, {id:uuidv4(), title: `${itemData1}`, isLast: true}])
     setAddNewItem(true)
+    console.log("tp= ", addNewItem)
   }
 
   return(

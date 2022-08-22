@@ -5,6 +5,7 @@ import { GrLinkedin } from "react-icons/gr"
 import { FaGithub } from "react-icons/fa"
 import { CgWebsite } from "react-icons/cg"
 
+import { fieldCode } from "./constants/typeCodes"
 
 export const personalInfo=[
     {
@@ -290,24 +291,27 @@ export const projects = [
 export const myJourney = [
     {
         id:3,
-        time: "2020-present",
+        jobStartDate: "2020",
+        jobEndDate: "present",
         jobTitle: "Self-Taught Developer",
-        companyName: "Freelancer",
-        desc: "i learned coding from 0 to intermediate & advance level by watching tutorials, reading books & taking some paid courses"
+        jobCompany: "Freelancer",
+        jobDescription: "i learned coding from 0 to intermediate & advance level by watching tutorials, reading books & taking some paid courses"
     },
     {
         id:2,
-        time:"2017-2020",
+        jobStartDate:"2017",
+        jobEndDate:"2020",
         jobTitle: "Teacher",
-        companyName: "Hari Coaching Classes",
-        desc: "Opened my own coaching institute where i taught Physics & Maths to B.Sc. students"
+        jobCompany: "Hari Coaching Classes",
+        jobDescription: "Opened my own coaching institute where i taught Physics & Maths to B.Sc. students"
     },
     {
         id:1,
-        time:"2016-2017",
+        jobStartDate:"2016",
+        jobEndDate:"2017",
         jobTitle: "Mechanical Engineer",
-        companyName: "keihnfie",
-        desc: "worked as CNC programer & operator"
+        jobCompany: "keihnfie",
+        jobDescription: "worked as CNC programer & operator"
     }
 ]
 

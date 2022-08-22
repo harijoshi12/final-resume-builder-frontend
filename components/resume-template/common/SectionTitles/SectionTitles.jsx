@@ -31,7 +31,7 @@ const SecTitle = ({setPlusEl, secTitleName})=>{
 
   const handleEditSecTitle = (e)=>{
     e.preventDefault()
-    // setEdit(!edit)
+    setEdit(!edit)
     if(secTitle === ""){
       setSecTitle(secTitleName)
     }
