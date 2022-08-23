@@ -10,340 +10,331 @@ import { fieldCode } from "./constants/typeCodes"
 export const personalInfo=[
     {
         id: 1,
-        resumeTitle: "Are we a good fit?",
-        imgSrc: "link",
-        name: "Hari Joshi",
-        profession: "FullStack Developer",
-        tagline: "I am a quick lerner, my strength is my learning ability. I follow practical as well as new unconventional imaginative approach for finding solution to a problem"
+        [fieldCode.RESUMETITLE]: "Are we a good fit?",
+        [fieldCode.IMAGESRC]: "link",
+        [fieldCode.NAME]: "Hari Joshi",
+        [fieldCode.PROFESSION]: "FullStack Developer",
+        [fieldCode.TAGLINE]: "I am a quick lerner, my strength is my learning ability. I follow practical as well as new unconventional imaginative approach for finding solution to a problem"
     }
 ]
 
-export const contactDetails =[
-    {
-        id: 1,
-        icon: <IoIosMail/>,
-        info: "mr.hariprasdjoshi@gmail.com",
-        link: "mailto:mr.hariprasdjoshi@gmail.com"
-    },
-    {
-        id: 2,
-        icon: <BsFillTelephoneFill/>,
-        info: "9634090498, 7906519104",
-        link: "tel:+9634090498"
-    },
-    {
-        id: 3,
-        icon: <IoLocationSharp/>,
-        info: "Dehradun, India",
-        link: "https://goo.gl/maps/pvYsfgd7Kv9RYVut9"
-    },
-    {
-        id: 4,
-        icon: <GrLinkedin/>,
-        info: "linkedin.com/in/harijoshi123",
-        link: "https://www.linkedin.com/in/harijoshi123/"
-    },
-    {
-        id: 5,
-        icon: <FaGithub/>,
-        info: "github.com/harijoshi12",
-        link: "https://github.com/harijoshi12"
-    },
-    {
-        id: 6,
-        icon: <CgWebsite/>,
-        info: "harijoshi.tech",
-        link: "https://www.harijoshi.tech/"
-    }
-]
+export const contactDetails ={
+    [fieldCode.EMAIL]: "mr.hariprasdjoshi@gmail.com",
+    [fieldCode.PHONE]: "7906519104",
+    [fieldCode.ADDRESS]: "Dehradun, India",
+    [fieldCode.WEBSITE]: "harijoshi.tech",
+    [fieldCode.LINKEDIN]: "linkedin.com/in/harijoshi123",
+    [fieldCode.GITHUB]: "github.com/harijoshi12",
+    // [fieldCode.STACKOVERFLOW]: "stackoverflow",
+    // [fieldCode.QUORA]: "quora",
+    // [fieldCode.MEDIUM]: "medium",
+}
+
 
 export const techSkills = [
     // {
     //     id: 1,
-    //     title: "React"
+    //     [fieldCode.TECHSKILL]: "React"
     // },
     // {
     //     id: 2,
-    //     title: "React Native"
+    //     [fieldCode.TECHSKILL]: "React Native"
     // },
     // {
     //     id: 3,
-    //     title: "Next.js"
+    //     [fieldCode.TECHSKILL]: "Next.js"
     // },
     // {
     //     id: 4,
-    //     title: "SASS"
-    // },
-    // {
-    //     id: 5,
-    //     title: "Bootstrap"
-    // },
-    // {
-    //     id: 6,
-    //     title: "TailWind"
+    //     [fieldCode.TECHSKILL]: "SASS"
     // },
     {
+        id: 5,
+        [fieldCode.TECHSKILL]: "Bootstrap"
+    },
+    {
+        id: 6,
+        [fieldCode.TECHSKILL]: "TailWind"
+    },
+    {
         id: 7,
-        title: "Git & Github"
+        [fieldCode.TECHSKILL]: "Git & Github"
     },
     {
         id: 8,
-        title: "Node.js"
+        [fieldCode.TECHSKILL]: "Node.js"
     },
-    {
-        id: 9,
-        title: "Mongodb"
-    },
-    {
-        id: 10,
-        title: "Express.js"
-    },
-    {
-        id: 11,
-        title: "Django"
-    },
+    // {
+    //     id: 9,
+    //     [fieldCode.TECHSKILL]: "Mongodb"
+    // },
+    // {
+    //     id: 10,
+    //     [fieldCode.TECHSKILL]: "Express.js"
+    // },
+    // {
+    //     id: 11,
+    //     [fieldCode.TECHSKILL]: "Django"
+    // },
     {
         id: 12,
-        title: "PostgreSQL"
+        [fieldCode.TECHSKILL]: "PostgreSQL"
     },
     {
         id: 13,
-        title: "DSA"
+        [fieldCode.TECHSKILL]: "DSA"
     },
-    // {
-    //     id: 18,
-    //     title: "AWS"
-    // },
+    {
+        id: 18,
+        [fieldCode.TECHSKILL]: "AWS"
+    },
     {
         id: 14,
-        title: "Blockchain Development"
+        [fieldCode.TECHSKILL]: "Blockchain Development"
     },
-    {
-        id: 16,
-        title: "Linux"
-    },
+    // {
+    //     id: 16,
+    //     [fieldCode.TECHSKILL]: "Linux"
+    // },
     // {
     //     id: 17,
-    //     title: "Computer Networking"
+    //     [fieldCode.TECHSKILL]: "Computer Networking"
+    // },
+    // {
+    //     id: 15,
+    //     [fieldCode.TECHSKILL]: "Wordpress Theme & Plugin Development"
     // },
     {
-        id: 15,
-        title: "Wordpress Theme & Plugin Development"
+        id: 19,
+        [fieldCode.TECHSKILL]:"Cyber Security"
     },
     // {
-    //     id: 19,
-    //     title:"Cyber Security"
-    // },
-    // {
     //     id: 20,
-    //     title:"Unity"
+    //     [fieldCode.TECHSKILL]:"Unity"
     // },
     // {
     //     id: 21,
-    //     title:"Blender"
+    //     [fieldCode.TECHSKILL]:"Blender"
     // },
-    // {
-    //     id: 22,
-    //     title:"IOT"
-    // }
+    {
+        id: 22,
+        [fieldCode.TECHSKILL]:"IOT"
+    }
 ]
 
 export const progLangs = [
     {
        id: 1,
-       title: "Html/Css",
-       level:  9
+       [fieldCode.PROGLANG]: "Html/Css",
+       [fieldCode.PROGLANGLEVEL]:  9
     },
-    // {
-    //    id: 2,
-    //    title: "JavaScript",
-    //    level:  9
-    // },
-    // {
-    //    id: 3,
-    //    title: "Python",
-    //    level:  8
-    // },
-    // {
-    //    id: 6,
-    //    title: "Java",
-    //    level:  8
-    // },
+    {
+       id: 2,
+       [fieldCode.PROGLANG]: "JavaScript",
+       [fieldCode.PROGLANGLEVEL]:  9
+    },
+    {
+       id: 3,
+       [fieldCode.PROGLANG]: "Python",
+       [fieldCode.PROGLANGLEVEL]:  8
+    },
+    {
+       id: 6,
+       [fieldCode.PROGLANG]: "Java",
+       [fieldCode.PROGLANGLEVEL]:  8
+    },
     {
        id: 4,
-       title: "SQL",
-       level:  8
+       [fieldCode.PROGLANG]: "SQL",
+       [fieldCode.PROGLANGLEVEL]:  8
     },
-    // {
-    //    id: 5,
-    //    title: "C++",
-    //    level:  7
-    // },
+    {
+       id: 5,
+       [fieldCode.PROGLANG]: "C++",
+       [fieldCode.PROGLANGLEVEL]:  7
+    },
     // {
     //     id: 10,
-    //     title: "TypeScript",
-    //     level:  7
+    //     [fieldCode.PROGLANG]: "TypeScript",
+    //     [fieldCode.PROGLANGLEVEL]:  7
     //  },
-    {
-       id: 7,
-       title: "GoLang",
-       level:  6
-    },
-    {
-       id: 8,
-       title: "Solidity",
-       level:  6
-    },
+    // {
+    //    id: 7,
+    //    [fieldCode.PROGLANG]: "GoLang",
+    //    [fieldCode.PROGLANGLEVEL]:  6
+    // },
+    // {
+    //    id: 8,
+    //    [fieldCode.PROGLANG]: "Solidity",
+    //    [fieldCode.PROGLANGLEVEL]:  6
+    // },
     // {
     //    id: 9,
-    //    title: "Php",
-    //    level:  6
+    //    [fieldCode.PROGLANG]: "Php",
+    //    [fieldCode.PROGLANGLEVEL]:  6
     // }
 ]
 
 export const langs = [
     {
         id: 1,
-        title: "Hindi",
-        level: "Native or Bilingual Proficiency"
+        [fieldCode.LANGUAGE]: "Hindi",
+        [fieldCode.LANGUAGELEVEL]: "Native or Bilingual Proficiency"
     },
     {
         id: 2,
-        title: "English",
-        level: "Professional Working Proficiency"
+        [fieldCode.LANGUAGE]: "English",
+        [fieldCode.LANGUAGELEVEL]: "Professional Working Proficiency"
     },
     // {
     //     id: 3,
-    //     title: "Urdu",
-    //     level: "Professional Working Proficiency"
+    //     [fieldCode.LANGUAGE]: "Urdu",
+    //     [fieldCode.LANGUAGELEVEL]: "Professional Working Proficiency"
     // },
     // {
     //     id: 4,
-    //     title: "Sanskrit",
-    //     level: "Professional Working Proficiency"
+    //     [fieldCode.LANGUAGE]: "Sanskrit",
+    //     [fieldCode.LANGUAGELEVEL]: "Professional Working Proficiency"
     // }
 ]
 
 export const education = [
     {
         id: 1,
-        title: "Mechanical Engineering",
-        institute: "Govt. Polytechnic Nainital",
-        time: "2012-2015",
-        place: "Nainital, Uttarakhand, India",
-        cgpa: "67%"
+        [fieldCode.STUDYPROGRAM]: "Mechanical Engineering",
+        [fieldCode.INSTITUTION]: "Govt. Polytechnic Nainital",
+        [fieldCode.STUDYSTARTDATE]: "2012",
+        [fieldCode.STUDYENDDATE]: "2015",
+        [fieldCode.STUDYPLACE]: "Nainital, Uttarakhand, India",
+        [fieldCode.CGPA]: "67%"
     },
     // {
     //     id: 2,
-    //     title: "Mechanical Engineering",
-    //     institute: "Govt. Polytechnic Nainital",
-    //     time: "2012-2015",
-    //     place: "Nainital, Uttarakhand, India",
-    //     cgpa: "67%"
+    //     [fieldCode.STUDYPROGRAM]: "Mechanical Engineering",
+    //     [fieldCode.INSTITUTION]: "Govt. Polytechnic Nainital",
+    //     [fieldCode.STUDYSTARTDATE]: "2012",
+    //     [fieldCode.STUDYENDDATE]: "2015",
+    //     [fieldCode.STUDYPLACE]: "Nainital, Uttarakhand, India",
+    //     [fieldCode.CGPA]: "67%"
     // }
 ]
 
 export const projects = [
     {
         id: 1,
-        title: "Portfolio Website",
-        tech: "React, Firebase",
-        desc: "Lorem ipsum dolor sit, amet consectetur  Lorem ipsum dolor sit, amet consectetur  corrupti corrupti officiis eaque."
+        [fieldCode.PROJECTTITLE]: "Portfolio Website",
+        [fieldCode.PROJECTTECHSTACK]: "React, Firebase",
+        [fieldCode.PROJECTDESC]: "Lorem ipsum dolor sit, amet consectetur  Lorem ipsum dolor sit, amet consectetur  corrupti corrupti officiis eaque.",
+        [fieldCode.PROJECTGITLINK]: "React, Firebase",
+        [fieldCode.PROJECTLIVEDEMO]: "React, Firebase",
     },
     {
         id: 2,
-        title: "Resume Maker",
-        tech: "React, Firebase",
-        desc: "Lorem ipsum dolor sit, amet consectetur Lorem ipsum dolor sit, amet consectetur  corrupti  corrupti officiis eaque."
+        [fieldCode.PROJECTTITLE]: "Resume Maker",
+        [fieldCode.PROJECTTECHSTACK]: "React, Firebase",
+        [fieldCode.PROJECTDESC]: "Lorem ipsum dolor sit, amet consectetur Lorem ipsum dolor sit, amet consectetur  corrupti  corrupti officiis eaque.",
+        [fieldCode.PROJECTGITLINK]: "React, Firebase",
+        [fieldCode.PROJECTLIVEDEMO]: "React, Firebase",
     },
     // {
     //     id: 3,
-    //     title: "E-Commerce",
-    //     tech: "React, Django, PostgreSQL",
-    //     desc: "Lorem ipsum dolor sit, amet consectetur  corrupti officiis eaque."
+    //     [fieldCode.PROJECTTITLE]: "E-Commerce",
+    //     [fieldCode.PROJECTTECHSTACK]: "React, Django, PostgreSQL",
+    //     [fieldCode.PROJECTDESC]: "Lorem ipsum dolor sit, amet consectetur  corrupti officiis eaque.",
+    //     [fieldCode.PROJECTGITLINK]: "React, Django, PostgreSQL",
+    //     [fieldCode.PROJECTLIVEDEMO]: "React, Django, PostgreSQL",
     // },
-    {
-        id: 4,
-        title: "Social Networking Website",
-        tech: "MERN stack",
-        desc: "Lorem ipsum dolor sit, amet consectetur Lorem ipsum dolor sit, amet consectetur  corrupti corrupti officiis eaque."
-    },
+    // {
+    //     id: 4,
+    //     [fieldCode.PROJECTTITLE]: "Social Networking Website",
+    //     [fieldCode.PROJECTTECHSTACK]: "MERN stack",
+    //     [fieldCode.PROJECTDESC]: "Lorem ipsum dolor sit, amet consectetur Lorem ipsum dolor sit, amet consectetur  corrupti corrupti officiis eaque.",
+    //     [fieldCode.PROJECTGITLINK]: "MERN stack",
+    //     [fieldCode.PROJECTLIVEDEMO]: "MERN stack",
+    // },
     // {
     //     id: 5,
-    //     title: "Blockchain Project",
-    //     tech: "Etherium, Solidity",
-    //     desc: "Lorem ipsum dolor sit, amet consectetur Lorem ipsum dolor sit, amet consectetur  corrupti corrupti officiis eaque."
+    //     [fieldCode.PROJECTTITLE]: "Blockchain Project",
+    //     [fieldCode.PROJECTTECHSTACK]: "Etherium, Solidity",
+    //     [fieldCode.PROJECTDESC]: "Lorem ipsum dolor sit, amet consectetur Lorem ipsum dolor sit, amet consectetur  corrupti corrupti officiis eaque.",
+    //     [fieldCode.PROJECTGITLINK]: "Etherium, Solidity",
+    //     [fieldCode.PROJECTLIVEDEMO]: "Etherium, Solidity",
     // },
     // {
     //     id: 6,
-    //     title: "Artificial Intelligence",
-    //     tech: "Tensorflow",
-    //     desc: "Lorem ipsum dolor sit, amet consectetur  corrupti officiis eaque."
+    //     [fieldCode.PROJECTTITLE]: "Artificial Intelligence",
+    //     [fieldCode.PROJECTTECHSTACK]: "Tensorflow",
+    //     [fieldCode.PROJECTDESC]: "Lorem ipsum dolor sit, amet consectetur  corrupti officiis eaque.",
+    //     [fieldCode.PROJECTGITLINK]: "Tensorflow",
+    //     [fieldCode.PROJECTLIVEDEMO]: "Tensorflow",
     // },
-    // {
-    //     id: 7,
-    //     title: "Android App",
-    //     tech: "React Native, Firebase",
-    //     desc: "Lorem ipsum dolor sit, amet consectetur  corrupti officiis eaque."
-    // }
+    {
+        id: 7,
+        [fieldCode.PROJECTTITLE]: "Android App",
+        [fieldCode.PROJECTTECHSTACK]: "React Native, Firebase",
+        [fieldCode.PROJECTDESC]: "Lorem ipsum dolor sit, amet consectetur  corrupti officiis eaque.",
+        [fieldCode.PROJECTGITLINK]: "React Native, Firebase",
+        [fieldCode.PROJECTLIVEDEMO]: "React Native, Firebase",
+    }
 ]
 
 export const myJourney = [
     {
         id:3,
-        jobStartDate: "2020",
-        jobEndDate: "present",
-        jobTitle: "Self-Taught Developer",
-        jobCompany: "Freelancer",
-        jobDescription: "i learned coding from 0 to intermediate & advance level by watching tutorials, reading books & taking some paid courses"
+        [fieldCode.JOBSTARTDATE]: "2020",
+        [fieldCode.JOBENDDATE]: "present",
+        [fieldCode.JOBTITLE]: "Self-Taught Developer",
+        [fieldCode.JOBPRESENT]: "Self-Taught Developer",
+        [fieldCode.JOBCOMPANY]: "Freelancer",
+        [fieldCode.JOBDESC]: "i learned coding from 0 to intermediate & advance level by watching tutorials, reading books & taking some paid courses"
     },
     {
         id:2,
-        jobStartDate:"2017",
-        jobEndDate:"2020",
-        jobTitle: "Teacher",
-        jobCompany: "Hari Coaching Classes",
-        jobDescription: "Opened my own coaching institute where i taught Physics & Maths to B.Sc. students"
+        [fieldCode.JOBSTARTDATE]:"2017",
+        [fieldCode.JOBENDDATE]:"2020",
+        [fieldCode.JOBTITLE]: "Teacher",
+        [fieldCode.JOBPRESENT]: "Teacher",
+        [fieldCode.JOBCOMPANY]: "Hari Coaching Classes",
+        [fieldCode.JOBDESC]: "Opened my own coaching institute where i taught Physics & Maths to B.Sc. students"
     },
     {
         id:1,
-        jobStartDate:"2016",
-        jobEndDate:"2017",
-        jobTitle: "Mechanical Engineer",
-        jobCompany: "keihnfie",
-        jobDescription: "worked as CNC programer & operator"
+        [fieldCode.JOBSTARTDATE]:"2016",
+        [fieldCode.JOBENDDATE]:"2017",
+        [fieldCode.JOBTITLE]: "Mechanical Engineer",
+        [fieldCode.JOBPRESENT]: "Mechanical Engineer",
+        [fieldCode.JOBCOMPANY]: "keihnfie",
+        [fieldCode.JOBDESC]: "worked as CNC programer & operator"
     }
 ]
 
 export const interests = [
-    // {
-    //     id:1,
-    //     title: "Coding"
-    // },
-
+    {
+        id:1,
+        [fieldCode.INTEREST]: "Coding"
+    },
     {
         id:2,
-        title: "Solving Puzzles"
+        [fieldCode.INTEREST]: "Solving Puzzles"
     },
     {
         id:5,
-        title: "Listning Audio Books"
+        [fieldCode.INTEREST]: "Listning Audio Books"
     },
     {
         id:3,
-        title: "Reading Science & Technology related Articles"
+        [fieldCode.INTEREST]: "Reading Science & Technology related Articles"
     },
     {
         id:4,
-        title: "Watching Ted Talks & Documentries"
+        [fieldCode.INTEREST]: "Watching Ted Talks & Documentries"
     },
-    
     {
         id:6,
-        title: "Exercising"
+        [fieldCode.INTEREST]: "Exercising"
     },
     {
         id:7,
-        title: "Learning New Skills"
+        [fieldCode.INTEREST]: "Learning New Skills"
     },
 ]

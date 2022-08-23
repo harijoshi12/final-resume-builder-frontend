@@ -447,17 +447,18 @@ $generalfontfamily: 'Roboto', sans-serif;
 
   }
   .contactOptions{
-    // padding: 10px 0;
     .contact_option:last-child{
       border: 0;
     }
     .contact_option{
       padding: 5px 20px;
       display: flex;
-      margin: 3px 0;
-      border-bottom: 2px solid $lightTextBg1;
       justify-content: flex-start;
       align-items: center;
+      border-bottom: 1px solid hsl(0, 0%, 20%);
+      &:hover{
+        background-color: hsl(0, 0%, 30%);
+      }
       input[type=checkbox]{
         height: 35px;
         width: 35px;

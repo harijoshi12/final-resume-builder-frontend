@@ -1,22 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { AiFillDelete, AiFillGithub, AiFillMediumCircle } from "react-icons/ai";
+import { MdDone, MdEmail } from "react-icons/md";
+import { CgSmartphone, CgWebsite } from 'react-icons/cg';
+import { IoLocationSharp } from 'react-icons/io5';
+import { BsLinkedin, BsStackOverflow } from 'react-icons/bs';
+import { FaQuora } from 'react-icons/fa';
 import styles from '../Resume.module.css'
+
 
 import { ContactInput, EducationInput, ImageInput, InterestInput, LangInput, MyJourneyInput, NameInput, ProfessionInput, ProfSummaryInput, ProgLangInput, ProgLangLevel, ProjectInput, TechSkillInput } from './ItemsInput';
 
 const SecItem = (props) => {
-  const { secId, data, className, secTitle, itemData1, itemData2, itemData3, dataArray, setDataArray, addNewItem, setPlusEl, setShowContactInput } = props
-  const title = data.title
+  const { secId, data, className, secTitle, itemData1, itemData2, itemData3, dataArray, setDataArray, addNewItem, setPlusEl, showContactInput ,setShowContactInput } = props
   const [edit, setEdit] = useState(false)
 
-  // technicalSkill, proglang, interest
-  // const [itemData.title, setItemData] = useState(title)
-
-  // myJourney
   const [itemData, setItemData] = useState(data)
-  // console.log("jd= ",journeyData)
-
-
-
 
   useEffect(()=>{
     if(data.isLast){
@@ -40,6 +38,7 @@ const SecItem = (props) => {
   }
 
   const onChangeHandler = (e) => {
+    console.log("first= ", [e.target.value])
     setItemData(prev=>({...prev, title: e.target.value }))
     if (e.target.value === "") {
       inputRef.current.placeholder = itemData1
@@ -73,11 +72,11 @@ const SecItem = (props) => {
 
   if(secId === "2"){edit?(childComponent = <TechSkillInput {...itemData} onChangeHandler={onChangeHandler} handleClickItem={handleClickItem} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} inputRef={inputRef}/>):(childComponent = <TechnicalSkill  handleClickItem={handleClickItem} {...itemData}/>)}
 
-  if(secId === "3"){(childComponent = <ProgLang handleClickItem={handleClickItem} onChangeHandler={onChangeHandler} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} inputRef={inputRef} edit={edit} {...itemData}/>)}
+  if(secId === "3"){(childComponent = <ProgLang {...itemData} handleClickItem={handleClickItem} onChangeHandler={onChangeHandler} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} inputRef={inputRef} edit={edit} {...itemData}/>)}
 
-  if(secId === "4"){edit?(childComponent = <MyJourneyInput {...itemData} />):(childComponent = <MyJourney handleClickItem={handleClickItem} {...itemData}/>)}
+  if(secId === "4"){edit?(childComponent = <MyJourneyInput {...itemData} setItemData={setItemData}/>):(childComponent = <MyJourney handleClickItem={handleClickItem} {...itemData}/>)}
 
-  if(secId === "5"){(childComponent = <ContactDetail  handleClickItem={handleClickItem} setShowContactInput={setShowContactInput} {...itemData}/>)}
+  if(secId === "5"){return}
 
   if(secId === "6"){edit?(childComponent = <ProjectInput {...itemData} />):(childComponent = <Project  handleClickItem={handleClickItem} {...itemData}/>)}
 
@@ -96,7 +95,7 @@ const PersonalInfo = (props) => {
   const [editProf, setEditProf] = useState(false)
   const [editProfSummary, setEditProfSummary] = useState(false)
   const [editImage, setEditImage] = useState(false)
-  const {resumeTitle, imgsrc, name, profession, tagline} = props
+  const {resumeTitle,name,profession, imagesrc, tagline } = props
   return (
     <>
       <h1 className={styles.resumeTitle}>{resumeTitle}</h1>
@@ -118,73 +117,100 @@ const PersonalInfo = (props) => {
   );
 };
 
-const ContactDetail = ({icon,info, setShowContactInput, handleClickItem}) => {
-  return (
+const ContactItem = ({setShowContactInput, icon, info})=>{
+  return(
     <a rel="noopener noreferrer" target="_blank">
-      <span onClick={()=>setShowContactInput(true)}>{icon}</span> <span onClick={()=>setShowContactInput(true)}>{info}</span>
+      <span onClick={()=>setShowContactInput(true)}>{icon}</span> 
+      <span onClick={()=>setShowContactInput(true)}>{info}</span>
     </a>
+  )
+}
+export const ContactDetails = (props) => {
+  const {email, phone, address, website, linkedin, github, stackoverflow, quora, medium, setShowContactInput }= props
+  return (
+    <>
+      {email && <ContactItem setShowContactInput={setShowContactInput} info={email} icon={<MdEmail/>} />}
+
+      {phone && <ContactItem setShowContactInput={setShowContactInput} info={phone} icon={<CgSmartphone/>} />}
+
+      {address && <ContactItem setShowContactInput={setShowContactInput} info={address} icon={<IoLocationSharp/>}/>}
+
+      {website && <ContactItem setShowContactInput={setShowContactInput} info={website} icon={<CgWebsite/>}/>}
+
+      {linkedin && <ContactItem setShowContactInput={setShowContactInput} info={linkedin} icon={<BsLinkedin/>}/>}
+
+      {github && <ContactItem setShowContactInput={setShowContactInput} info={github} icon={<AiFillGithub/>}/>}
+
+      {stackoverflow && <ContactItem setShowContactInput={setShowContactInput} info={stackoverflow} icon={<BsStackOverflow/>}/>}
+
+      {quora && <ContactItem setShowContactInput={setShowContactInput} info={quora} icon={<FaQuora/>}/>}
+
+      {medium && <ContactItem setShowContactInput={setShowContactInput} info={email} icon={<AiFillMediumCircle/>}/>}
+
+    </>
   );
 };
 
 const TechnicalSkill = (props) => {
-  const {handleClickItem, title} = props
+  const {handleClickItem, techSkill} = props
   // console.log(props)
-  return <span className={styles.technicalSkill} onClick={handleClickItem} >{title}</span>;
+  return <span className={styles.technicalSkill} onClick={handleClickItem} >{techSkill}</span>;
 };
 
-const ProgLang = ({ title,  level, inputRef, handleClickItem, handleEditItemTitle, handleDeleteItemTitle, onChangeHandler, edit }) => {
+const ProgLang = ({ progLang,  progLangLevel, inputRef, handleClickItem, handleEditItemTitle, handleDeleteItemTitle, onChangeHandler, edit }) => {
   
   return (
 
     <div className={styles.progLang}>
       {
         edit? (
-        <ProgLangInput className={"progLangInput"} inputRef={inputRef} onChangeHandler={onChangeHandler} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle}/>) :(
-          <span className={styles.title} onClick={handleClickItem} >{title}</span>
+        <ProgLangInput title={title} inputRef={inputRef} onChangeHandler={onChangeHandler} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle}/>) :(
+          <span className={styles.title} onClick={handleClickItem} >{progLang}</span>
         )
       } 
-      <ProgLangLevel level={level}/>
+      <ProgLangLevel level={progLangLevel}/>
     </div>
   );
 };
 
-const Lang = ({ title, level, handleClickItem }) => {
+const Lang = ({ language, languageLevel, handleClickItem }) => {
   return (
     <div className={styles.lang}>
-      <span className={styles.title} onClick={handleClickItem}>{title}</span>
-      <span className={styles.level} onClick={handleClickItem}>{level}</span>
+      <span className={styles.title} onClick={handleClickItem}>{language}</span>
+      <span className={styles.level} onClick={handleClickItem}>{languageLevel}</span>
     </div>
   );
 };
 
-const Edu = ({ title, institute, time, place, cgpa, handleClickItem }) => {
+const Edu = ({ studyProgram, institution, studyStartDate,studyEndDate,studyPlace, cgpa, handleClickItem }) => {
+  let time = studyStartDate || studyEndDate 
   return (
     <div className={styles.edu}>
       <div className={styles.r1}>
-        <span className={styles.title} onClick={handleClickItem}>{title}</span> <span> | </span>
-        <span className={styles.institute} onClick={handleClickItem}>{institute}</span>
+        <span className={styles.title} onClick={handleClickItem}>{studyProgram}</span> <span> | </span>
+        <span className={styles.institute} onClick={handleClickItem}>{institution}</span>
       </div>
       <div className={styles.r2}>
         {cgpa ? <span className={styles.cgpa} onClick={handleClickItem}>{cgpa}</span>:null}{cgpa?"|":null}
-        {time?<span className={styles.time} onClick={handleClickItem}>{time}</span>:null}{time?"|":null}
-        {place?<span className={styles.place} onClick={handleClickItem}>{place}</span>:null}
+        {time?<span className={styles.time} onClick={handleClickItem}>{studyStartDate}-{studyEndDate}</span>:null}{time?"|":null}
+        {studyPlace?<span className={styles.place} onClick={handleClickItem}>{studyPlace}</span>:null}
       </div>
     </div>
   );
 };
 
-function Project({ title, tech, desc, handleClickItem  }) {
+function Project({ projectTitle, projectTechStack, projectDesc, projectGitLink, projectLiveDemo ,handleClickItem  }) {
   return (
     <div className={styles.projectItem}>
       <h2 className={styles.title}>
-        <span onClick={handleClickItem}>{title}</span>
+        <span onClick={handleClickItem}>{projectTitle}</span>
         <span>|</span>
-        <span onClick={handleClickItem}>{tech}</span>
+        <span onClick={handleClickItem}>{projectTechStack}</span>
       </h2>
-      <div className={styles.desc} onClick={handleClickItem}><p>{desc}</p>      
+      <div className={styles.desc} onClick={handleClickItem}><p>{projectDesc}</p>      
       <div className={styles.link}>
-        <button className={styles.git_link}>Github</button>
-        <button className={styles.liveDemo_link}>Live Demo</button>
+        <button className={styles.git_link}><a href={projectGitLink}>Github</a></button>
+        <button className={styles.liveDemo_link}><a href={projectLiveDemo}>Live Demo</a></button>
       </div>
       </div>
     </div>
@@ -192,7 +218,7 @@ function Project({ title, tech, desc, handleClickItem  }) {
 }
 
 function MyJourney(props) {
-  const { jobStartDate,jobEndDate, jobTitle, jobCompany, jobDescription, handleClickItem } = props;
+  const { jobStartDate,jobEndDate, jobTitle, jobCompany, jobDesc, handleClickItem } = props;
   return (
     <div className={styles.myJourneyItem}>
       <span className={styles.time} onClick={handleClickItem}>{jobStartDate}-{jobEndDate}</span>
@@ -200,12 +226,12 @@ function MyJourney(props) {
         <span></span>
         <span onClick={handleClickItem}>{jobTitle}</span> | <span onClick={handleClickItem}>{jobCompany}</span>
       </h1>
-      <p className={styles.desc} onClick={handleClickItem}>{jobDescription}</p>
+      <p className={styles.desc} onClick={handleClickItem}>{jobDesc}</p>
     </div>
   );
 }
 
-const Interest = ({title, handleClickItem }) => {
-  return <span className={styles.interest} onClick={handleClickItem}>{title}</span>
+const Interest = ({interest, handleClickItem }) => {
+  return <span className={styles.interest} onClick={handleClickItem}>{interest}</span>
 };
 

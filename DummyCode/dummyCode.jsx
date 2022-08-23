@@ -69,3 +69,23 @@
 // }
 
 // export default HocForm
+
+
+
+// import { fieldCode } from '../constants/typeCodes';
+// const {RESUMETITLE, SECTITLE, NAME, PROFESSION, IMAGESRC, TAGLINE, EMAIL, PHONE, ADDRESS, WEBSITE, LINKEDIN, GITHUB, STACKOVERFLOW, QUORA, MEDIUM, TECHSKILL, PROGLANG, PROGLANGLEVEL, JOBSTARTDATE, JOBENDDATE, JOBPRESENT, JOBTITLE, JOBCOMPANY, JOBDESC, PROJECTTITLE, PROJECTDESC, PROJECTTECHSTACK, PROJECTGITLINK, PROJECTLIVEDEMO, LANGUAGE, LANGUAGELEVEL, STUDYPROGRAM, INSTITUTION, CGPA, STUDYSTARTDATE, STUDYENDDATE, STUDYPRESENT, STUDYPLACE, INTEREST } = fieldCode
+
+
+// {
+//   icon: <IoIosMail/>,
+//   icon: <BsFillTelephoneFill/>,
+//   link: "tel:+9634090498"
+//   icon: <IoLocationSharp/>,
+//   link: "https://goo.gl/maps/pvYsfgd7Kv9RYVut9"
+//   icon: <GrLinkedin/>,
+//   link: "https://www.linkedin.com/in/harijoshi123/"
+//   icon: <FaGithub/>,
+//   link: "https://github.com/harijoshi12"
+//   icon: <CgWebsite/>,
+//   link: "https://www.harijoshi.tech/"
+// }

@@ -277,14 +277,15 @@ $generalfontfamily: 'Roboto', sans-serif;
     width: 45%;
     background-color: $lightRight;
     .contactDetails{
-        font-size: 24px;
+        font-size: 22px;
         font-weight: 400;
         color: rgb(230, 230, 230);
         font-family: sans-serif;
-        // padding: 30px;
+        padding-top: 20px;
+        padding-left: 30px;
         a{
             display: flex;
-            line-height: 37px;
+            line-height: 35px;
             color: white;
             transition: all 0.2s ease;
             // &:hover{

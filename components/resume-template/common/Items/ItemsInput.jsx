@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 
-import { AiFillDelete, AiFillGithub } from "react-icons/ai";
+import { AiFillDelete, AiFillGithub, AiFillMediumCircle } from "react-icons/ai";
 import { MdDone, MdEmail } from "react-icons/md";
 import { CgSmartphone, CgWebsite } from 'react-icons/cg';
 import { IoLocationSharp } from 'react-icons/io5';
@@ -71,7 +71,6 @@ export const ImageInput = (props) => {
 
 export const TechSkillInput = (props) => {
   const {title,  inputRef, handleEditItemTitle, handleDeleteItemTitle, onChangeHandler} = props
-  console.log("props= ", props)
   return (
     <CommonForm inputRef={inputRef} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} secId="2" className="techSkillInput" >  
      <input ref={inputRef} name={fieldCode.TechSkill} value={title} onChange={(e) => onChangeHandler(e)} />
@@ -80,10 +79,10 @@ export const TechSkillInput = (props) => {
 }
 
 export const ProgLangInput = (props) => {
-  const {className, inputRef, itemTitle, handleDeleteItemTitle, handleEditItemTitle, onChangeHandler} = props
+  const {title, inputRef, itemTitle, handleDeleteItemTitle, handleEditItemTitle, onChangeHandler} = props
   return (
-    <CommonForm inputRef={inputRef} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle}  secId="3" className={className}>  
-     <input value={itemTitle} ref={inputRef} name={fieldCode.ProgrammingLanguage}  onChange={(e) => onChangeHandler(e)}/>
+    <CommonForm inputRef={inputRef} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle}  secId="3" className="progLangInput">  
+     <input value={title} ref={inputRef} name={fieldCode.ProgrammingLanguage}  onChange={(e) => onChangeHandler(e)}/>
     </CommonForm>
   )
 }
@@ -93,7 +92,6 @@ export const ProgLangLevel = ({level})=> {
   const outerRef = useRef(null)
   const thumbRef = useRef(null)
   const inputRef = useRef(null)
-
   const handleSlide =(e)=>{
     let width = inputRef.current.clientWidth
     let value = e.target.value
@@ -101,18 +99,22 @@ export const ProgLangLevel = ({level})=> {
     thumbRef.current.style.left = `${value/100*width - 10}px`
   }
   return(
-      <span ref={outerRef} className={`${styles.outer} ${styles.progLangLevel}`}>
-        <form action="">
-          <span ref={innerRef} className={styles.inner} style={{ width: `${level * 10}%` }}></span>
-          <span ref={thumbRef} className={styles.thumb} style={{left: `calc(${level * 10}% - 15px)`}}></span>
-          <input onInput={(e)=>handleSlide(e)} ref={inputRef} type="range" step={"5"} name={fieldCode.ProgrammingLanguageLevel}  id="" />
-        </form>
-      </span>
+    <span ref={outerRef} className={`${styles.outer} ${styles.progLangLevel}`}>
+      <form action="">
+        <span ref={innerRef} className={styles.inner} style={{ width: `${level * 10}%` }}></span>
+        <span ref={thumbRef} className={styles.thumb} style={{left: `calc(${level * 10}% - 15px)`}}></span>
+        <input onInput={(e)=>handleSlide(e)} ref={inputRef} type="range" step={"5"} name={fieldCode.ProgrammingLanguageLevel}  id="" />
+      </form>
+    </span>
   )
 }
 
 export const MyJourneyInput = (props) =>{
-  const { jobStartDate,jobEndDate, jobTitle, jobCompany, jobDescription,  handleDeleteItemTitle, handleEditItemTitle, onChangeHandler} = props
+  const { jobStartDate,jobEndDate, jobTitle, jobCompany, jobDescription,  handleDeleteItemTitle, handleEditItemTitle, setItemData} = props
+
+  const onChangeHandler = (e) => {
+    setItemData(prev=>({...prev, [e.target.name]: e.target.value }))
+  }
 
   const inputRef1 = useRef(null)
   const inputRef2 = useRef(null)
@@ -144,39 +146,43 @@ export const MyJourneyInput = (props) =>{
   )
 }
 
-const ContactOption = ({ type, fieldName, placeholder, label, icon})=>{
+const ContactOption = ({ type, fieldName, placeholder, value, icon})=>{
   return(
     <div className={styles.contact_option}>
-      <input type="checkbox" name={`${fieldName}Check`} id="" />
+      <input checked={value} type="checkbox" name={`${fieldName}Check`} id="" />
       <span>{icon}</span>
-        {
-        fieldName==="EMAL"? 
-        (<input className={styles.input} type={type} placeholder={placeholder} name={fieldName} id={`id_${fieldName}`} required={false} />): 
-        (<input className={styles.input} type={type} placeholder={placeholder} name={fieldName} id={`id_${fieldName}`} />)
-        }
+      <input className={styles.input} value={value} type={type} placeholder={placeholder} name={fieldName} id={`id_${fieldName}`} required={fieldName === fieldCode.EMAIL} />
     </div>
   )
 }
 
 export const ContactInput = (props)=>{
-
+  const {setShowContactInput, setDataArray, email, phone, address, website, linkedin, github, stackoverflow, quora, medium } = props
+  const onDiscardHandler =()=>{
+    setShowContactInput(false)
+  }
+  const onSubmitHandler =(e)=>{
+    e.preventDefault()
+    setShowContactInput(false)
+  }
   return(
-    <div className={styles.contactInput}>
+    <form className={styles.contactInput} onSubmit={(e)=>onSubmitHandler(e)}>
       <div className={styles.save_discard}>
-        <button className={styles.discard}>discard</button>
-        <button className={styles.save}>save</button>
+        <button className={styles.discard} onClick={()=>onDiscardHandler} >discard</button>
+        <button type="submit" className={styles.save}>save</button>
       </div>
       <div className={styles.contactOptions}>
-        <ContactOption type={"email"} placeholder="E-mail" fieldName={fieldCode.Email} icon={<MdEmail/>} />
-        <ContactOption type={"number"} placeholder="Phone" fieldName={fieldCode.Phone} icon={<CgSmartphone/>} />
-        <ContactOption type={"text"} placeholder="Address" fieldName={fieldCode.Address} icon={<IoLocationSharp/>} />
-        <ContactOption type={"text"} placeholder="Website" fieldName={fieldCode.Website} icon={<CgWebsite/>} />
-        <ContactOption type={"text"} placeholder="Github" fieldName={fieldCode.Github} icon={<AiFillGithub/>} />
-        <ContactOption type={"text"} placeholder="Linkedin" fieldName={fieldCode.Linkedin} icon={<BsLinkedin/>} />
-        <ContactOption type={"text"} placeholder="StackOverflow" fieldName={fieldCode.StackOverflow} icon={<BsStackOverflow/>} />
-        <ContactOption type={"text"} placeholder="Quora" fieldName={fieldCode.Quora} icon={<FaQuora/>} />
+        <ContactOption type={"email"} value={email} placeholder="E-mail" fieldName={fieldCode.EMAIL} icon={<MdEmail/>} />
+        <ContactOption type={"number"} value={phone} placeholder="Phone" fieldName={fieldCode.PHONE} icon={<CgSmartphone/>} />
+        <ContactOption type={"text"} value={address} placeholder="Address" fieldName={fieldCode.ADDRESS} icon={<IoLocationSharp/>} />
+        <ContactOption type={"text"} value={website} placeholder="Website" fieldName={fieldCode.WEBSITE} icon={<CgWebsite/>} />
+        <ContactOption type={"text"} value={linkedin} placeholder="Linkedin" fieldName={fieldCode.LINKEDIN} icon={<BsLinkedin/>} />
+        <ContactOption type={"text"} value={github} placeholder="Github" fieldName={fieldCode.GITHUB} icon={<AiFillGithub/>} />
+        <ContactOption type={"text"} value={stackoverflow} placeholder="StackOverflow" fieldName={fieldCode.STACKOVERFLOW} icon={<BsStackOverflow/>} />
+        <ContactOption type={"text"} value={quora} placeholder="Quora" fieldName={fieldCode.QUORA} icon={<FaQuora/>} />
+        <ContactOption type={"text"} value={medium} placeholder="Medium" fieldName={fieldCode.MEDIUM} icon={<AiFillMediumCircle/>} />
       </div>
-    </div>
+    </form>
   )
 }
 
@@ -257,10 +263,10 @@ export const EducationInput = (props) =>{
 }
 
 export const InterestInput = (props) => {
-  const {itemTitle,  inputRef, handleEditItemTitle, handleDeleteItemTitle, onChangeHandler} = props
+  const {title, inputRef, handleEditItemTitle, handleDeleteItemTitle, onChangeHandler} = props
   return (
     <CommonForm inputRef={inputRef} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} secId="9" className="interestInput">
-      <input ref={inputRef} name={fieldCode.Interest} value={itemTitle} onChange={(e) => onChangeHandler(e)} />
+      <input ref={inputRef} name={fieldCode.Interest} value={title} onChange={(e) => onChangeHandler(e)} />
     </CommonForm>
   )
 }

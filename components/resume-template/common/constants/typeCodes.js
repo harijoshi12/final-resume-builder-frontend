@@ -7,63 +7,63 @@ export const fontsize = ['small', 'medium', 'large']
 export const fontFamily = ['Roboto', 'Quicksand', 'Merriweather' ]
 
 export const fieldCode = {
+  RESUMETITLE: "resumeTitle",
   // section title
-  SecTitle: "STIT",
-  ResumeTitle: "RTIT",
+  SECTITLE: "secTitle",
   // personal info
-  Name: "NAME",
-  Profession:"PROF",
-  ImageSrc: "IMGS",
-  ProfSummary:"PRSU",
+  NAME: "name",
+  PROFESSION:"profession",
+  IMAGESRC: "imageSrc",
+  TAGLINE:"tagline",
   
   // contact details
-  Email: "EMAL",
-  Phone: "PHON",
-  Address: "ADRS",
+  EMAIL: "email",
+  PHONE: "phone",
+  ADDRESS: "address",
   // other contact details
-  Website: "WBST",
-  Linkedin: "LNKD",
-  Github: "GITH",
-  StackOverflow: "STAC",
-  Quora: "QUOR",
-  Medium: "MEDI",
+  WEBSITE: "website",
+  LINKEDIN: "linkedin",
+  GITHUB: "github",
+  STACKOVERFLOW: "stackoverflow",
+  QUORA: "quora",
+  MEDIUM: "medium",
 
   // techskills
-  TechSkill: "TECH",
+  TECHSKILL: "techSkill",
   
   // programming languages
-  ProgrammingLanguage: "PRLG",
-  ProgrammingLanguageLevel: "PRLV",
+  PROGLANG: "progLang",
+  PROGLANGLEVEL: "progLangLevel",
 
   // my journey / work experience
-  JobStartDate: "JSTD",
-  JobEndDate: "EDDT",
-  JobPresent: "IJPR",
-  JobTitle: "JTIT",
-  JobCompany: "JCMP",
-  JobDescription: "JDES",
+  JOBSTARTDATE: "jobStartDate",
+  JOBENDDATE: "jobEndDate",
+  JOBPRESENT: "jobPresent",
+  JOBTITLE: "jobTitle",
+  JOBCOMPANY: "jobCompany",
+  JOBDESC: "jobDesc",
 
   // projects
-  ProjectTitle: "PTIT",
-  ProjectTechStack: "PTST",
-  ProjectDescription: "PDES",
-  ProjectGitLink: "PGTL",
-  ProjectLiveDemo: "PLDL",
+  PROJECTTITLE: "projectTitle",
+  PROJECTTECHSTACK: "projectTechStack",
+  PROJECTDESC: "projectDesc",
+  PROJECTGITLINK: "projectGitLink",
+  PROJECTLIVEDEMO: "projectLiveDemo",
   
   // languages
-  Language: "LANG",
-  LanguageLevel: "LLEV",
+  LANGUAGE: "language",
+  LANGUAGELEVEL: "languageLevel",
 
   // education
-  StudyProgram: "STPG",
-  Institution: "INST",
-  Cgpa: "CGPA",
-  StudyStartDate: "STSD",
-  StudyEndDate: "STED",
-  StudyPresent: "STPR",
-  StudyPlace: "STPL",
+  STUDYPROGRAM: "studyProgram",
+  INSTITUTION: "institution",
+  CGPA: "cgpa",
+  STUDYSTARTDATE: "studyStartDate",
+  STUDYENDDATE: "studyEndDate",
+  STUDYPRESENT: "studyPresent",
+  STUDYPLACE: "studyPlace",
 
 
   // interests
-  Interest: "INRS"
+  INTEREST: "interest"
 }
