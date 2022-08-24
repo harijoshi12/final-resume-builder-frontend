@@ -214,6 +214,7 @@ export const education = [
         [fieldCode.INSTITUTION]: "Govt. Polytechnic Nainital",
         [fieldCode.STUDYSTARTDATE]: "2012",
         [fieldCode.STUDYENDDATE]: "2015",
+        [fieldCode.STUDYPRESENT]: false,
         [fieldCode.STUDYPLACE]: "Nainital, Uttarakhand, India",
         [fieldCode.CGPA]: "67%"
     },
@@ -223,6 +224,7 @@ export const education = [
     //     [fieldCode.INSTITUTION]: "Govt. Polytechnic Nainital",
     //     [fieldCode.STUDYSTARTDATE]: "2012",
     //     [fieldCode.STUDYENDDATE]: "2015",
+    //     [fieldCode.STUDYPRESENT]: false,
     //     [fieldCode.STUDYPLACE]: "Nainital, Uttarakhand, India",
     //     [fieldCode.CGPA]: "67%"
     // }

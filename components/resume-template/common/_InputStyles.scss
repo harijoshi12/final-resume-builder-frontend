@@ -342,11 +342,18 @@ $generalfontfamily: 'Roboto', sans-serif;
         width: 20px;
         margin-left: 15px;
       }
-      label{
+      label, .present{
         margin-left: 5px;
         margin-right: 10px;
         font-size: 17px;
         font-weight: bold;
+      }
+      .present{
+        background-color: white;
+        color: $lightSecTitle;
+        padding: 2px 10px;
+        width: 120px;
+        margin: 0;
       }
     }
     .bottom{
@@ -496,10 +503,12 @@ $generalfontfamily: 'Roboto', sans-serif;
 
   }
 }
+
 .nameInput{
   margin-top: -17px;
   margin-bottom: 18px;
 }
+
 .professionInput{
   width: 300px;
   input{
@@ -507,6 +516,7 @@ $generalfontfamily: 'Roboto', sans-serif;
     color: white;
   }
 }
+
 .profSummaryInput{
   padding-top: 5px;
   margin-left: 35px;
@@ -523,6 +533,7 @@ $generalfontfamily: 'Roboto', sans-serif;
     min-height: 83px;
   }
 }
+
 .imgInput{
   position: absolute;
   background-color: $lightRight;

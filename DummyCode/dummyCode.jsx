@@ -90,3 +90,10 @@
 //   icon: <CgWebsite/>,
 //   link: "https://www.harijoshi.tech/"
 // }
+
+
+    // if (itemData.title === "") {
+    //   setItemData(prev=>({...prev, title: itemData1 }))
+    // }else{
+    //   setDataArray(dataArray.map(d=>d.id === data.id? {...d, title:itemData.title}: d))
+    // }

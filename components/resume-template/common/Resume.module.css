@@ -354,11 +354,18 @@
   width: 20px;
   margin-left: 15px;
 }
-.educationInput .input_fields .inputYear label {
+.educationInput .input_fields .inputYear label, .educationInput .input_fields .inputYear .present {
   margin-left: 5px;
   margin-right: 10px;
   font-size: 17px;
   font-weight: bold;
+}
+.educationInput .input_fields .inputYear .present {
+  background-color: white;
+  color: rgb(40, 40, 40);
+  padding: 2px 10px;
+  width: 120px;
+  margin: 0;
 }
 .educationInput .input_fields .bottom {
   display: flex;
@@ -848,6 +855,11 @@
   text-align: right;
 }
 .left .myJourney .myJourneyItem .title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  word-break: break-all;
+  white-space: wrap;
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 10px;
@@ -863,6 +875,9 @@
   top: 7px;
   border: 1px solid rgb(255, 255, 255);
   background-color: rgb(43, 52, 61);
+}
+.left .myJourney .myJourneyItem .title > .divider {
+  margin: 0 7px;
 }
 .left .myJourney .myJourneyItem .title span:nth-child(2) {
   color: white;
@@ -880,14 +895,15 @@
 .right .contactDetails {
   font-size: 22px;
   font-weight: 400;
+  letter-spacing: 1px;
   color: rgb(230, 230, 230);
   font-family: sans-serif;
   padding-top: 20px;
-  padding-left: 30px;
+  padding-left: 40px;
 }
 .right .contactDetails a {
   display: flex;
-  line-height: 35px;
+  line-height: 30px;
   color: white;
   transition: all 0.2s ease;
 }
@@ -945,6 +961,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 5px;
+  text-decoration: underline;
 }
 .right .projects .projectItem .desc .link button {
   background-color: rgb(200, 200, 200);

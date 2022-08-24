@@ -13,14 +13,35 @@ import styles from '../Resume.module.css'
 import { fieldCode } from '../constants/typeCodes';
 
 export const CommonForm= (props)=>{
-  const {secId, handleEditItemTitle, handleDeleteItemTitle, className,children} = props
+  const {secId, newEditFinishHandler, handleDeleteItem, className,children} = props
+  const formRef = useRef(null)
+
+  const onSubmitHandler =(e)=>{
+    e.preventDefault()
+    newEditFinishHandler()
+  }
+
+  useEffect(()=>{
+    function handleClickOutside(e){
+      if(formRef.current && !formRef.current.contains(e.target)){
+        newEditFinishHandler()
+        console.log("click outside")
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('touchstart', handleClickOutside)
+    return()=>{
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('touchstart', handleClickOutside)
+    }
+  })
 
   return(
-    <form className={styles[className]} onSubmit={(e) => { handleEditItemTitle(e) }} onBlur={(e) => { handleEditItemTitle(e) }}>
+    <form ref={formRef} className={styles[className]} onSubmit={(e) => { onSubmitHandler(e) }}>
       <div className={styles.input_fields}>{children}</div>
       <div className={styles.icons}>
-        <span className={styles.icon} onMouseDown={(e) => handleEditItemTitle(e)}><MdDone /></span>
-        <span className={styles.icon} onMouseDown={(e) => handleDeleteItemTitle(e)}><AiFillDelete /></span>
+        <span className={styles.icon} onClick={(e) => onSubmitHandler(e)}><MdDone /></span>
+        <span className={styles.icon} onClick={(e) => handleDeleteItem(e)}><AiFillDelete /></span>
       </div>
     </form>
   )
@@ -70,24 +91,33 @@ export const ImageInput = (props) => {
 }
 
 export const TechSkillInput = (props) => {
-  const {title,  inputRef, handleEditItemTitle, handleDeleteItemTitle, onChangeHandler} = props
+  const {title,  inputRef, onSubmitHandler, handleDeleteItemTitle, onChangeHandler} = props
   return (
-    <CommonForm inputRef={inputRef} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} secId="2" className="techSkillInput" >  
+    <CommonForm inputRef={inputRef} handleDeleteItemTitle={handleDeleteItemTitle} onSubmitHandler={onSubmitHandler} secId="2" className="techSkillInput" >  
      <input ref={inputRef} name={fieldCode.TECHSKILL} value={title} onChange={(e) => onChangeHandler(e)} />
     </CommonForm>
   )
 }
 
 export const ProgLangInput = (props) => {
-  const {title, inputRef, itemTitle, handleDeleteItemTitle, handleEditItemTitle, onChangeHandler} = props
+  const {progLang, inputRef, handleDeleteItem, editFinishHandler, onChangeHandler, setItemData} = props
+  
+  const newEditFinishHandler=()=>{
+    editFinishHandler()
+    if(progLang === ""){
+      setItemData(prev=>({...prev, progLang: "Programming Language"}))
+    }
+  }
   return (
-    <CommonForm inputRef={inputRef} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle}  secId="3" className="progLangInput">  
-     <input value={title} ref={inputRef} name={fieldCode.PROGLANG}  onChange={(e) => onChangeHandler(e)}/>
+    <CommonForm  newEditFinishHandler={newEditFinishHandler} handleDeleteItem={handleDeleteItem} secId="3" className="progLangInput">  
+     <input value={progLang} placeholder='Programming Language' ref={inputRef} name={fieldCode.PROGLANG}  onChange={(e) => onChangeHandler(e)}/>
     </CommonForm>
   )
 }
 
-export const ProgLangLevel = ({level})=> {
+export const ProgLangLevel = (props)=> {
+  const {progLangLevel, setItemData} = props
+  const level = progLangLevel
   const innerRef = useRef(null)
   const outerRef = useRef(null)
   const thumbRef = useRef(null)
@@ -98,48 +128,62 @@ export const ProgLangLevel = ({level})=> {
     innerRef.current.style.width = `${value}%`
     thumbRef.current.style.left = `${value/100*width - 10}px`
   }
+
+  const onChangeHandler = (e) => {
+    setItemData(prev=>({...prev, [e.target.name]: e.target.value/10 }))
+  }
   return(
     <span ref={outerRef} className={`${styles.outer} ${styles.progLangLevel}`}>
       <form action="">
         <span ref={innerRef} className={styles.inner} style={{ width: `${level * 10}%` }}></span>
         <span ref={thumbRef} className={styles.thumb} style={{left: `calc(${level * 10}% - 15px)`}}></span>
-        <input onInput={(e)=>handleSlide(e)} ref={inputRef} type="range" step={"5"} name={fieldCode.PROGLANGLEVEL}  id="" />
+        <input value={level*10} onInput={(e)=>handleSlide(e)} ref={inputRef} type="range" step={"5"} name={fieldCode.PROGLANGLEVEL} onChange={(e) => onChangeHandler(e)} id="" />
       </form>
     </span>
   )
 }
 
 export const MyJourneyInput = (props) =>{
-  const { jobStartDate,jobEndDate, jobTitle, jobCompany, jobDescription,  handleDeleteItemTitle, handleEditItemTitle, setItemData} = props
+  const {inputRef, jobStartDate,jobEndDate, jobPresent,jobTitle, jobCompany, jobDesc,  handleDeleteItem,  setItemData, editFinishHandler, onChangeHandler} = props
 
-  const onChangeHandler = (e) => {
-    setItemData(prev=>({...prev, [e.target.name]: e.target.value }))
+  const onChangeHandlerTc =(e)=>{
+    setItemData(prev=>({...prev, [e.target.name]: e.target.checked}))
+  }
+  const newEditFinishHandler=()=>{
+    editFinishHandler()
+    if(jobTitle === ""){
+      setItemData(prev=>({...prev, jobTitle: "Job Title"}))
+    }
+    if(jobCompany === ""){
+      setItemData(prev=>({...prev, jobCompany: "Company Name/workPlace"}))
+    }
   }
 
-  const inputRef1 = useRef(null)
-  const inputRef2 = useRef(null)
-  const inputRef3 = useRef(null)
-  const inputRef4 = useRef(null)
-  const inputRef5 = useRef(null)
-  const inputRef6 = useRef(null)
   return(
     <>
-      <CommonForm handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} secId="4" className="myJourneyInput">
+      <CommonForm newEditFinishHandler={newEditFinishHandler} handleDeleteItem={handleDeleteItem}  secId="4" className="myJourneyInput">
         <div className={styles.inputYear}>
-          <input value={jobStartDate} type="text" ref={inputRef3} name={fieldCode.JOBSTARTDATE} id="" placeholder="yyyy" onChange={(e) => onChangeHandler(e)}/>
+          <input value={jobStartDate} type="text" name={fieldCode.JOBSTARTDATE} id="" placeholder="yyyy" onChange={(e) => onChangeHandler(e)}/>
           <span>to</span>
-          <input value={jobEndDate} type="text" id="" ref={inputRef4} name={fieldCode.JOBENDDATE} placeholder="yyyy" onChange={(e) => onChangeHandler(e)}/>
+          {
+            jobPresent? (
+              <span className={styles.present}>Present</span>
+            ):(
+              <input value={jobEndDate} type="text" id="" name={fieldCode.JOBENDDATE} placeholder="yyyy" onChange={(e) => onChangeHandler(e)}/>
+            )
+          }
+
           <div className={styles.present}>
-            <input  type="checkbox"ref={inputRef5} name={fieldCode.JOBPRESENT} id="present" />
+            <input  type="checkbox" checked={jobPresent} name={fieldCode.JOBPRESENT} id="present" onChange={(e)=>onChangeHandlerTc(e)}/>
             <label htmlFor="present">present</label>
           </div>
         </div>
         <div className={styles.main_details}>
           <div className={styles.top}>
-            <input value={jobTitle} ref={inputRef1} name={fieldCode.JOBTITLE} placeholder="Title/Position" onChange={(e) => onChangeHandler(e)} />
-            <input value={jobCompany} ref={inputRef2} name={fieldCode.JOBCOMPANY} placeholder="Workplace/Company" onChange={(e) => onChangeHandler(e)} />
+            <input value={jobTitle} ref={inputRef} name={fieldCode.JOBTITLE} placeholder="Title/Position" onChange={(e) => onChangeHandler(e)} />
+            <input value={jobCompany} name={fieldCode.JOBCOMPANY} placeholder="Workplace/Company" onChange={(e) => onChangeHandler(e)} />
           </div>
-          <textarea value={jobDescription}  type="text"  ref={inputRef6} name={fieldCode.JOBDESC} placeholder="Description/Achievements" onChange={(e) => onChangeHandler(e)} />
+          <textarea value={jobDesc}  type="text" name={fieldCode.JOBDESC} placeholder="Description/Achievements" onChange={(e) => onChangeHandler(e)} />
         </div>
       </CommonForm>
     </>
@@ -152,9 +196,9 @@ const ContactOption = ({ type, fieldName, placeholder, value, checkVal, icon, se
   }
   const onChangeHandlerTc = (e)=>{
     if(fieldName ==="email"){
-      setItems(prev=>({...prev, [e.target.name]: true}))
+      setItems(prev=>({...prev, [e.target.name] : true}))
     }else{
-      setItems(prev=>({...prev, [e.target.name]:e.target.checked}))
+      setItems(prev=>({...prev, [e.target.name] : e.target.checked}))
     }
   }
   return(
@@ -168,12 +212,9 @@ const ContactOption = ({ type, fieldName, placeholder, value, checkVal, icon, se
 
 export const ContactInput = (props)=>{
   const {dataArray,setShowContactInput, setDataArray } = props
-  console.log("props= ",props)
   const [items, setItems] = useState({...dataArray})
 
   const {email, emailChecked, phone, phoneChecked, address, addressChecked, website, websiteChecked, linkedin, linkedinChecked, github, githubChecked, stackoverflow, stackoverflowChecked, quora, quoraChecked, medium, mediumChecked} = items
-
-  console.log("items= ",items)
 
   const onDiscardHandler =()=>{
     setDataArray({...dataArray})
@@ -215,21 +256,29 @@ export const ContactInput = (props)=>{
 }
 
 export const ProjectInput = (props) =>{
-  const { itemTitle, className , handleDeleteItemTitle, handleEditItemTitle, onChangeHandler} = props
-  const inputRef1 = useRef(null)
-  const inputRef2 = useRef(null)
-  const inputRef3 = useRef(null)
+  const {inputRef, projectTitle, projectTechStack, projectDesc, projectGitLink, projectLiveDemo, handleDeleteItem, setItemData, editFinishHandler, onChangeHandler} = props
+
+  const newEditFinishHandler=()=>{
+    editFinishHandler()
+    if(projectTitle === ""){
+      setItemData(prev=>({...prev, projectTitle: "Project Title"}))
+    }
+    if(projectTechStack === ""){
+      setItemData(prev=>({...prev, projectTechStack: "TechStack used"}))
+    }
+  }
+
   return(
-    <CommonForm secId="6" className="projectInput">
+    <CommonForm newEditFinishHandler={newEditFinishHandler} handleDeleteItem={handleDeleteItem}  secId="6" className="projectInput">
       <div className={styles.top}>
-        <input type="text"  ref={inputRef1} name={fieldCode.ProjectTitle} value="Project Name" onChange={(e) => onChangeHandler(e)} />
-        <input type="text"  ref={inputRef2} name={fieldCode.ProjectTechStack} value="TechStack Used" onChange={(e) => onChangeHandler(e)} />
+        <input type="text" placeholder='Project Title'  ref={inputRef} name={fieldCode.PROJECTTITLE} value={projectTitle} onChange={(e) => onChangeHandler(e)} />
+        <input type="text" placeholder='TechStack used'  name={fieldCode.PROJECTTECHSTACK} value={projectTechStack} onChange={(e) => onChangeHandler(e)} />
       </div>
       <div className={styles.bottom}>
-        <textarea  ref={inputRef3} name={fieldCode.ProjectDescription} value="Description" onChange={(e) => onChangeHandler(e)} />
+        <textarea name={fieldCode.PROJECTDESC} placeholder='Project Description' value={projectDesc} onChange={(e) => onChangeHandler(e)} />
         <div className={styles.links}>
-          <input type="text"  ref={inputRef3} name={fieldCode.ProjectGitLink} value="Github link" onChange={(e) => onChangeHandler(e)} />
-          <input type="text"  ref={inputRef3} name={fieldCode.ProjectLiveDemo} value="Live Demo link" onChange={(e) => onChangeHandler(e)} />
+          <input type="text" placeholder='Github link' name={fieldCode.PROJECTGITLINK} value={projectGitLink} onChange={(e) => onChangeHandler(e)} />
+          <input type="text" placeholder='Live-Demo link' name={fieldCode.PROJECTLIVEDEMO} value={projectLiveDemo} onChange={(e) => onChangeHandler(e)} />
         </div>
       </div>
     </CommonForm>
@@ -239,7 +288,7 @@ export const ProjectInput = (props) =>{
 const RadioGroup =({id, value})=>{
   return(
     <>
-    <input type="radio" name={fieldCode.LanguageLevel} id={id} value={value} />
+    <input type="radio" name={fieldCode.LANGUAGELEVEL} id={id} value={value} />
     <label htmlFor={id}>{value}</label>
     </>
   )
@@ -261,40 +310,59 @@ export const LangInput =(props)=>{
 }
 
 export const EducationInput = (props) =>{
-  const { itemTitle, handleDeleteItemTitle, handleEditItemTitle, onChangeHandler} = props
-  const inputRef1 = useRef(null)
-  const inputRef2 = useRef(null)
-  const inputRef3 = useRef(null)
-  const inputRef4 = useRef(null)
-  const inputRef5 = useRef(null)
-  const inputRef6 = useRef(null)
-  const inputRef7 = useRef(null)
+  const {inputRef,setItemData ,studyProgram, institution, cgpa, studyStartDate, studyEndDate, studyPresent, studyPlace, handleDeleteItem, editFinishHandler, onChangeHandler} = props
+
+  const onChangeHandlerTc =(e)=>{
+    setItemData(prev=>({...prev, [e.target.name]: e.target.checked}))
+  }
+  const newEditFinishHandler=()=>{
+    editFinishHandler()
+    if(studyProgram === ""){
+      setItemData(prev=>({...prev, studyProgram: "Study Program"}))
+    }
+    if(institution === ""){
+      setItemData(prev=>({...prev, institution: "Institution/Place of Education"}))
+    }
+  }
+
   return(
-    <CommonForm secId="8" className="educationInput">
+    <CommonForm secId="8" newEditFinishHandler={newEditFinishHandler} className="educationInput" handleDeleteItem={handleDeleteItem}>
       <div className={styles.top}>
-        <input ref={inputRef1} name={fieldCode.StudyProgram} value="Study Program" onChange={(e) => onChangeHandler(e)} />
-        <input ref={inputRef2} name={fieldCode.Institution} value="Institution" onChange={(e) => onChangeHandler(e)} />
+        <input ref={inputRef} name={fieldCode.STUDYPROGRAM} placeholder="Study Program" value={studyProgram} onChange={(e) => onChangeHandler(e)} />
+        <input  name={fieldCode.INSTITUTION} placeholder="Institution/Place of Education" value={institution} onChange={(e) => onChangeHandler(e)} />
       </div>
       <div className={styles.inputYear}>
-        <input type="text" ref={inputRef3} name={fieldCode.StudyStartDate} id="" placeholder="yyyy" onChange={(e) => onChangeHandler(e)}/>
+        <input type="text"  name={fieldCode.STUDYSTARTDATE} id="" placeholder="yyyy" value={studyStartDate} onChange={(e) => onChangeHandler(e)}/>
         <span>to</span>
-        <input type="text" id="" ref={inputRef4} name={fieldCode.StudyEndDate} placeholder="yyyy" onChange={(e) => onChangeHandler(e)}/>
-        <input type="checkbox"ref={inputRef5} name={fieldCode.StudyPresent} id="present" />
+        {
+        studyPresent?  (<span className={styles.present}>Present</span>
+        ):(
+        <input type="text" id=""  name={fieldCode.STUDYENDDATE} placeholder="yyyy" value={studyEndDate} onChange={(e) => onChangeHandler(e)}/>) 
+      }
+        <input type="checkbox" checked={studyPresent}  name={fieldCode.STUDYPRESENT} id="present" onChange={(e)=>onChangeHandlerTc(e)}/>
         <label htmlFor="present">Present</label>
       </div>
       <div className={styles.bottom}>
-        <input type="number" ref={inputRef7} name={fieldCode.Cgpa} id="" placeholder="CGPA/Percentage" onChange={(e) => onChangeHandler(e)}/>
-        <input type="text" placeholder="Study Place"  ref={inputRef6} name={fieldCode.StudyPlace} value="" onChange={(e) => onChangeHandler(e)} />
+        <input type="text"  name={fieldCode.CGPA} id="" placeholder="CGPA/Percentage" value={cgpa} onChange={(e) => onChangeHandler(e)}/>
+        <input type="text" placeholder="Study Place" name={fieldCode.STUDYPLACE} value={studyPlace} onChange={(e) => onChangeHandler(e)} />
       </div>
     </CommonForm>
   )
 }
 
 export const InterestInput = (props) => {
-  const {title, inputRef, handleEditItemTitle, handleDeleteItemTitle, onChangeHandler} = props
+  const {interest, inputRef, setItemData, handleDeleteItem, onChangeHandler, editFinishHandler} = props
+
+  const newEditFinishHandler=()=>{
+    editFinishHandler()
+    if(interest === ""){
+      setItemData(prev=>({...prev, interest: "interest"}))
+    }
+  }
+
   return (
-    <CommonForm inputRef={inputRef} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} secId="9" className="interestInput">
-      <input ref={inputRef} name={fieldCode.Interest} value={title} onChange={(e) => onChangeHandler(e)} />
+    <CommonForm newEditFinishHandler={newEditFinishHandler} handleDeleteItem={handleDeleteItem} secId="9" className="interestInput">
+      <input placeholder='Interest' ref={inputRef} name={fieldCode.INTEREST} value={interest} onChange={(e) => onChangeHandler(e)}/>
     </CommonForm>
   )
 }

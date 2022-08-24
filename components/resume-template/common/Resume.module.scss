@@ -244,6 +244,11 @@ $generalfontfamily: 'Roboto', sans-serif;
                 text-align: right;
             }
             .title{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                word-break: break-all;
+                white-space: wrap;
                 font-size: 20px;
                 font-weight: 700;
                 margin-bottom: 10px;
@@ -258,6 +263,9 @@ $generalfontfamily: 'Roboto', sans-serif;
                     top: 7px;
                     border: 1px solid rgb(255, 255, 255);
                     background-color: $lightTextBg1;
+                }
+                >.divider{
+                    margin: 0 7px;
                 }
                 span:nth-child(2){
                     color: white;
@@ -279,15 +287,17 @@ $generalfontfamily: 'Roboto', sans-serif;
     .contactDetails{
         font-size: 22px;
         font-weight: 400;
+        letter-spacing: 1px;
         color: rgb(230, 230, 230);
         font-family: sans-serif;
         padding-top: 20px;
-        padding-left: 30px;
+        padding-left: 40px;
         a{
             display: flex;
-            line-height: 35px;
+            line-height: 30px;
             color: white;
             transition: all 0.2s ease;
+
             // &:hover{
             //     span:last-child{
             //         transform: translateY(-3px);
@@ -357,6 +367,7 @@ $generalfontfamily: 'Roboto', sans-serif;
                     justify-content: space-between;
                     align-items: center;
                     margin-top: 5px;
+                    text-decoration: underline;
                     button{
                         background-color: rgb(200, 200, 200);
                         color: $lightTextColor;
