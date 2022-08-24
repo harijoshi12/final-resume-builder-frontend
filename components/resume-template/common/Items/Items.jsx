@@ -126,27 +126,27 @@ const ContactItem = ({setShowContactInput, icon, info})=>{
   )
 }
 export const ContactDetails = (props) => {
-  const {email, phone, address, website, linkedin, github, stackoverflow, quora, medium, setShowContactInput }= props
+  const {setShowContactInput, setDataArray, email, emailChecked, phone, phoneChecked, address, addressChecked, website, websiteChecked, linkedin, linkedinChecked, github, githubChecked, stackoverflow, stackoverflowChecked, quora, quoraChecked, medium, mediumChecked }= props
+
   return (
     <>
-      {email && <ContactItem setShowContactInput={setShowContactInput} info={email} icon={<MdEmail/>} />}
+      {email &&  emailChecked && <ContactItem setShowContactInput={setShowContactInput} info={email} icon={<MdEmail/>} />}
 
-      {phone && <ContactItem setShowContactInput={setShowContactInput} info={phone} icon={<CgSmartphone/>} />}
+      {phone &&  phoneChecked && <ContactItem setShowContactInput={setShowContactInput} info={phone} icon={<CgSmartphone/>} />}
 
-      {address && <ContactItem setShowContactInput={setShowContactInput} info={address} icon={<IoLocationSharp/>}/>}
+      {address && addressChecked && <ContactItem setShowContactInput={setShowContactInput} info={address} icon={<IoLocationSharp/>}/>}
 
-      {website && <ContactItem setShowContactInput={setShowContactInput} info={website} icon={<CgWebsite/>}/>}
+      {website && websiteChecked && <ContactItem setShowContactInput={setShowContactInput} info={website} icon={<CgWebsite/>}/>}
 
-      {linkedin && <ContactItem setShowContactInput={setShowContactInput} info={linkedin} icon={<BsLinkedin/>}/>}
+      {linkedin && linkedinChecked && <ContactItem setShowContactInput={setShowContactInput} info={linkedin} icon={<BsLinkedin/>}/>}
 
-      {github && <ContactItem setShowContactInput={setShowContactInput} info={github} icon={<AiFillGithub/>}/>}
+      {github && githubChecked && <ContactItem setShowContactInput={setShowContactInput} info={github} icon={<AiFillGithub/>}/>}
 
-      {stackoverflow && <ContactItem setShowContactInput={setShowContactInput} info={stackoverflow} icon={<BsStackOverflow/>}/>}
+      {stackoverflow && stackoverflowChecked && <ContactItem setShowContactInput={setShowContactInput} info={stackoverflow} icon={<BsStackOverflow/>}/>}
 
-      {quora && <ContactItem setShowContactInput={setShowContactInput} info={quora} icon={<FaQuora/>}/>}
+      {quora && quoraChecked && <ContactItem setShowContactInput={setShowContactInput} info={quora} icon={<FaQuora/>}/>}
 
-      {medium && <ContactItem setShowContactInput={setShowContactInput} info={email} icon={<AiFillMediumCircle/>}/>}
-
+      {medium && mediumChecked && <ContactItem setShowContactInput={setShowContactInput} info={email} icon={<AiFillMediumCircle/>}/>}
     </>
   );
 };

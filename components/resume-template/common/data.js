@@ -28,6 +28,15 @@ export const contactDetails ={
     // [fieldCode.STACKOVERFLOW]: "stackoverflow",
     // [fieldCode.QUORA]: "quora",
     // [fieldCode.MEDIUM]: "medium",
+    [fieldCode.EMAILCHECKED]: true,
+    [fieldCode.PHONECHECKED]: true,
+    [fieldCode.ADDRESSCHECKED]: true,
+    [fieldCode.WEBSITECHECKED]: true,
+    [fieldCode.LINKEDINCHECKED]: true,
+    [fieldCode.GITHUBCHECKED]: false,
+    [fieldCode.STACKOVERFLOWCHECKED]: false,
+    [fieldCode.QUORACHECKED]: false,
+    [fieldCode.MEDIUMCHECKED]: false,
 }
 
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { AiFillDelete, AiFillGithub, AiFillMediumCircle } from "react-icons/ai";
 import { MdDone, MdEmail } from "react-icons/md";
@@ -30,7 +30,7 @@ export const NameInput = (props) => {
   const inputRef = useRef(null)
   return (
     <div className={styles.nameInput}>
-      <input ref={inputRef} name={fieldCode.Name} placeholder="Your Name" />
+      <input ref={inputRef} name={fieldCode.NAME} placeholder="Your Name" />
     </div>
   )
 }
@@ -39,7 +39,7 @@ export const ProfessionInput = (props) => {
   const inputRef = useRef(null)
   return (
     <div className={styles.professionInput}>
-      <input ref={inputRef} name={fieldCode.Profession} placeholder="Profession" />
+      <input ref={inputRef} name={fieldCode.PROFESSION} placeholder="Profession" />
     </div>
   )
 }
@@ -48,7 +48,7 @@ export const ProfSummaryInput = (props) => {
   const inputRef = useRef(null)
   return (
     <div className={styles.profSummaryInput}>
-      <textarea  cols="30" rows="10" ref={inputRef} name={fieldCode.ProfSummary} placeholder="About You"/>
+      <textarea  cols="30" rows="10" ref={inputRef} name={fieldCode.TAGLINE} placeholder="About You"/>
     </div>
   )
 }
@@ -61,7 +61,7 @@ export const ImageInput = (props) => {
       <span className={styles.upload}><IoMdCloudUpload/></span>
       Upload Photo
       </label>
-      <input type="file" id='imgUpload' ref={inputRef} name={fieldCode.ImageUrl} />
+      <input type="file" id='imgUpload' ref={inputRef} name={fieldCode.IMAGESRC} />
       <span className={styles.delete}>
         <AiFillDelete/>
       </span>
@@ -73,7 +73,7 @@ export const TechSkillInput = (props) => {
   const {title,  inputRef, handleEditItemTitle, handleDeleteItemTitle, onChangeHandler} = props
   return (
     <CommonForm inputRef={inputRef} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} secId="2" className="techSkillInput" >  
-     <input ref={inputRef} name={fieldCode.TechSkill} value={title} onChange={(e) => onChangeHandler(e)} />
+     <input ref={inputRef} name={fieldCode.TECHSKILL} value={title} onChange={(e) => onChangeHandler(e)} />
     </CommonForm>
   )
 }
@@ -82,7 +82,7 @@ export const ProgLangInput = (props) => {
   const {title, inputRef, itemTitle, handleDeleteItemTitle, handleEditItemTitle, onChangeHandler} = props
   return (
     <CommonForm inputRef={inputRef} handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle}  secId="3" className="progLangInput">  
-     <input value={title} ref={inputRef} name={fieldCode.ProgrammingLanguage}  onChange={(e) => onChangeHandler(e)}/>
+     <input value={title} ref={inputRef} name={fieldCode.PROGLANG}  onChange={(e) => onChangeHandler(e)}/>
     </CommonForm>
   )
 }
@@ -103,7 +103,7 @@ export const ProgLangLevel = ({level})=> {
       <form action="">
         <span ref={innerRef} className={styles.inner} style={{ width: `${level * 10}%` }}></span>
         <span ref={thumbRef} className={styles.thumb} style={{left: `calc(${level * 10}% - 15px)`}}></span>
-        <input onInput={(e)=>handleSlide(e)} ref={inputRef} type="range" step={"5"} name={fieldCode.ProgrammingLanguageLevel}  id="" />
+        <input onInput={(e)=>handleSlide(e)} ref={inputRef} type="range" step={"5"} name={fieldCode.PROGLANGLEVEL}  id="" />
       </form>
     </span>
   )
@@ -126,61 +126,89 @@ export const MyJourneyInput = (props) =>{
     <>
       <CommonForm handleDeleteItemTitle={handleDeleteItemTitle} handleEditItemTitle={handleEditItemTitle} secId="4" className="myJourneyInput">
         <div className={styles.inputYear}>
-          <input value={jobStartDate} type="text" ref={inputRef3} name={fieldCode.JobStartDate} id="" placeholder="yyyy" onChange={(e) => onChangeHandler(e)}/>
+          <input value={jobStartDate} type="text" ref={inputRef3} name={fieldCode.JOBSTARTDATE} id="" placeholder="yyyy" onChange={(e) => onChangeHandler(e)}/>
           <span>to</span>
-          <input value={jobEndDate} type="text" id="" ref={inputRef4} name={fieldCode.JobEndDate} placeholder="yyyy" onChange={(e) => onChangeHandler(e)}/>
+          <input value={jobEndDate} type="text" id="" ref={inputRef4} name={fieldCode.JOBENDDATE} placeholder="yyyy" onChange={(e) => onChangeHandler(e)}/>
           <div className={styles.present}>
-            <input  type="checkbox"ref={inputRef5} name={fieldCode.JobPresent} id="present" />
+            <input  type="checkbox"ref={inputRef5} name={fieldCode.JOBPRESENT} id="present" />
             <label htmlFor="present">present</label>
           </div>
         </div>
         <div className={styles.main_details}>
           <div className={styles.top}>
-            <input value={jobTitle} ref={inputRef1} name={fieldCode.JobTitle} placeholder="Title/Position" onChange={(e) => onChangeHandler(e)} />
-            <input value={jobCompany} ref={inputRef2} name={fieldCode.JobCompany} placeholder="Workplace/Company" onChange={(e) => onChangeHandler(e)} />
+            <input value={jobTitle} ref={inputRef1} name={fieldCode.JOBTITLE} placeholder="Title/Position" onChange={(e) => onChangeHandler(e)} />
+            <input value={jobCompany} ref={inputRef2} name={fieldCode.JOBCOMPANY} placeholder="Workplace/Company" onChange={(e) => onChangeHandler(e)} />
           </div>
-          <textarea value={jobDescription}  type="text"  ref={inputRef6} name={fieldCode.JobDescription} placeholder="Description/Achievements" onChange={(e) => onChangeHandler(e)} />
+          <textarea value={jobDescription}  type="text"  ref={inputRef6} name={fieldCode.JOBDESC} placeholder="Description/Achievements" onChange={(e) => onChangeHandler(e)} />
         </div>
       </CommonForm>
     </>
   )
 }
 
-const ContactOption = ({ type, fieldName, placeholder, value, icon})=>{
+const ContactOption = ({ type, fieldName, placeholder, value, checkVal, icon, setItems})=>{
+  const onChangeHandler = (e)=>{
+    setItems(prev=>({...prev, [e.target.name]:e.target.value}))
+  }
+  const onChangeHandlerTc = (e)=>{
+    if(fieldName ==="email"){
+      setItems(prev=>({...prev, [e.target.name]: true}))
+    }else{
+      setItems(prev=>({...prev, [e.target.name]:e.target.checked}))
+    }
+  }
   return(
     <div className={styles.contact_option}>
-      <input checked={value} type="checkbox" name={`${fieldName}Check`} id="" />
+      <input checked={checkVal}  type="checkbox" name={`${fieldName}Checked`} id="" onChange={(e)=>onChangeHandlerTc(e)}/>
       <span>{icon}</span>
-      <input className={styles.input} value={value} type={type} placeholder={placeholder} name={fieldName} id={`id_${fieldName}`} required={fieldName === fieldCode.EMAIL} />
+      <input className={styles.input} value={value} type={type} placeholder={placeholder} name={fieldName} id={`id_${fieldName}`} required={fieldName === fieldCode.EMAIL || checkVal} onChange={(e)=>onChangeHandler(e)}/>
     </div>
   )
 }
 
 export const ContactInput = (props)=>{
-  const {setShowContactInput, setDataArray, email, phone, address, website, linkedin, github, stackoverflow, quora, medium } = props
+  const {dataArray,setShowContactInput, setDataArray } = props
+  console.log("props= ",props)
+  const [items, setItems] = useState({...dataArray})
+
+  const {email, emailChecked, phone, phoneChecked, address, addressChecked, website, websiteChecked, linkedin, linkedinChecked, github, githubChecked, stackoverflow, stackoverflowChecked, quora, quoraChecked, medium, mediumChecked} = items
+
+  console.log("items= ",items)
+
   const onDiscardHandler =()=>{
+    setDataArray({...dataArray})
     setShowContactInput(false)
   }
   const onSubmitHandler =(e)=>{
     e.preventDefault()
+    setDataArray(prev=>({...items}))
     setShowContactInput(false)
   }
+  
   return(
     <form className={styles.contactInput} onSubmit={(e)=>onSubmitHandler(e)}>
       <div className={styles.save_discard}>
-        <button className={styles.discard} onClick={()=>onDiscardHandler} >discard</button>
+        <button type="button" className={styles.discard} onClick={()=>onDiscardHandler()} >discard</button>
         <button type="submit" className={styles.save}>save</button>
       </div>
       <div className={styles.contactOptions}>
-        <ContactOption type={"email"} value={email} placeholder="E-mail" fieldName={fieldCode.EMAIL} icon={<MdEmail/>} />
-        <ContactOption type={"number"} value={phone} placeholder="Phone" fieldName={fieldCode.PHONE} icon={<CgSmartphone/>} />
-        <ContactOption type={"text"} value={address} placeholder="Address" fieldName={fieldCode.ADDRESS} icon={<IoLocationSharp/>} />
-        <ContactOption type={"text"} value={website} placeholder="Website" fieldName={fieldCode.WEBSITE} icon={<CgWebsite/>} />
-        <ContactOption type={"text"} value={linkedin} placeholder="Linkedin" fieldName={fieldCode.LINKEDIN} icon={<BsLinkedin/>} />
-        <ContactOption type={"text"} value={github} placeholder="Github" fieldName={fieldCode.GITHUB} icon={<AiFillGithub/>} />
-        <ContactOption type={"text"} value={stackoverflow} placeholder="StackOverflow" fieldName={fieldCode.STACKOVERFLOW} icon={<BsStackOverflow/>} />
-        <ContactOption type={"text"} value={quora} placeholder="Quora" fieldName={fieldCode.QUORA} icon={<FaQuora/>} />
-        <ContactOption type={"text"} value={medium} placeholder="Medium" fieldName={fieldCode.MEDIUM} icon={<AiFillMediumCircle/>} />
+        <ContactOption type={"email"} value={email} checkVal={emailChecked} placeholder="E-mail" fieldName={fieldCode.EMAIL} icon={<MdEmail/>} setItems={setItems}/>
+
+        <ContactOption type={"number"} value={phone} checkVal={phoneChecked} placeholder="Phone" fieldName={fieldCode.PHONE} icon={<CgSmartphone/>} setItems={setItems}/>
+
+        <ContactOption type={"text"} value={address} checkVal={addressChecked} placeholder="Address" fieldName={fieldCode.ADDRESS} icon={<IoLocationSharp/>} setItems={setItems}/>
+
+        <ContactOption type={"text"} value={website} checkVal={websiteChecked} placeholder="Website" fieldName={fieldCode.WEBSITE} icon={<CgWebsite/>} setItems={setItems}/>
+
+        <ContactOption type={"text"} value={linkedin} checkVal={linkedinChecked} placeholder="Linkedin" fieldName={fieldCode.LINKEDIN} icon={<BsLinkedin/>} setItems={setItems}/>
+
+        <ContactOption type={"text"} value={github} checkVal={githubChecked} placeholder="Github" fieldName={fieldCode.GITHUB} icon={<AiFillGithub/>} setItems={setItems}/>
+
+        <ContactOption type={"text"} value={stackoverflow} checkVal={stackoverflowChecked} placeholder="StackOverflow" fieldName={fieldCode.STACKOVERFLOW} icon={<BsStackOverflow/>} setItems={setItems}/>
+
+        <ContactOption type={"text"} value={quora} checkVal={quoraChecked} placeholder="Quora" fieldName={fieldCode.QUORA} icon={<FaQuora/>} setItems={setItems}/>
+
+        <ContactOption type={"text"} value={medium} checkVal={mediumChecked} placeholder="Medium" fieldName={fieldCode.MEDIUM} icon={<AiFillMediumCircle/>} setItems={setItems}/>
       </div>
     </form>
   )

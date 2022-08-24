@@ -11,22 +11,31 @@ export const fieldCode = {
   // section title
   SECTITLE: "secTitle",
   // personal info
-  NAME: "name",
+  NAME: "userName",
   PROFESSION:"profession",
   IMAGESRC: "imageSrc",
   TAGLINE:"tagline",
   
   // contact details
   EMAIL: "email",
+  EMAILCHECKED: "emailChecked",
   PHONE: "phone",
+  PHONECHECKED: "phoneChecked",
   ADDRESS: "address",
+  ADDRESSCHECKED: "addressChecked",
   // other contact details
   WEBSITE: "website",
+  WEBSITECHECKED: "websiteChecked",
   LINKEDIN: "linkedin",
+  LINKEDINCHECKED: "linkedinChecked",
   GITHUB: "github",
+  GITHUBCHECKED: "githubChecked",
   STACKOVERFLOW: "stackoverflow",
+  STACKOVERFLOWCHECKED: "stackoverflowChecked",
   QUORA: "quora",
+  QUORACHECKED: "quoraChecked",
   MEDIUM: "medium",
+  MEDIUMCHECKED: "mediumChecked",
 
   // techskills
   TECHSKILL: "techSkill",

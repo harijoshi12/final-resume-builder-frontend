@@ -24,9 +24,9 @@ const Section = (props)=>{
   let contactSec
   if(secId === "5"){
     if(showContactInput){
-      contactSec = <ContactInput setShowContactInput={setShowContactInput} {...items}  setDataArray={setItems}/>
+      contactSec = <ContactInput setShowContactInput={setShowContactInput} dataArray={items} setDataArray={setItems}/>
     }else{
-      contactSec = <ContactDetails setShowContactInput={setShowContactInput} {...items} setDataArray={setItems}/>
+      contactSec = <ContactDetails setShowContactInput={setShowContactInput} {...items} />
     }
   }
   return(

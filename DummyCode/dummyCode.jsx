@@ -77,6 +77,7 @@
 
 
 // {
+  // link: "mailto:mr.hariprasdjoshi@gmail.com"
 //   icon: <IoIosMail/>,
 //   icon: <BsFillTelephoneFill/>,
 //   link: "tel:+9634090498"
