@@ -1,8 +1,9 @@
 import React from 'react'
+import Resume from '../../components/viewResume/Template1/Resume'
 
 const DownloadResume = () => {
   return (
-    <main>your Resume looks like this</main>
+    <Resume/>
   )
 }
 

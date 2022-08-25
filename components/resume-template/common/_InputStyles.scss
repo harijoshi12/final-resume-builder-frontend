@@ -11,7 +11,6 @@ $generalfontfamily: 'Roboto', sans-serif;
 
 .resume{
   form{
-    padding-right: 3px;
     .input_fields{
       display: flex;
       justify-content: center;
@@ -44,17 +43,17 @@ $generalfontfamily: 'Roboto', sans-serif;
           transform: scale(1.1);
         }
       }
-      span:first-child{
+      .save{
         color: green;
       }
-      span:last-child{ 
+      .delete{ 
         color: red;
       }
     }
   }
 }
 
-.secTitleInput{
+.secTitleInput, .nameInput, .professionInput, .profSummaryInput{
   background-color: $lightSecTitle;
   margin-bottom: 15px;
   display: flex;
@@ -65,7 +64,7 @@ $generalfontfamily: 'Roboto', sans-serif;
   input{
     width: 100%;
     font-size: 22px;
-    background-color: hsl(210, 17%, 10%);
+    background-color: hsl(210, 17%, 25%);
     color: white;
     padding:2px 0;
     letter-spacing: 2px;
@@ -77,7 +76,7 @@ $generalfontfamily: 'Roboto', sans-serif;
     font-size: 32px;
     height: 25px;
     width: 25px;
-    margin: 0 5px;
+    margin: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -487,12 +486,11 @@ $generalfontfamily: 'Roboto', sans-serif;
 }
 
 .professionInput, .nameInput{
-  border: 1px solid white;
   margin-right: auto;
   margin-left: auto;
   width: 260px;
-  padding: 4px;
   font-family: 'Ubuntu', sans-serif;
+  background-color: rgb(255, 255, 255);
   input{
     color: rgb(185, 185, 185);
     background-color: $lightSecTitle;
@@ -518,19 +516,26 @@ $generalfontfamily: 'Roboto', sans-serif;
 }
 
 .profSummaryInput{
-  padding-top: 5px;
-  margin-left: 35px;
+  padding: 0;
+  margin-left: 37px;
+  margin-top: 3px;
   height: fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: flex-start;
   textarea{
+    border: 0;
+    outline: 0;
     font-size: 20px;
     border: 3px solid $lightTextBg1;
     margin: 0;
-    width: 520px;
-    max-width: 520px;
-    min-width: 520px;
+    width: 492px;
+    max-width: 492px;
+    min-width: 492px;
     height: 83px;
     max-height: 83px;
     min-height: 83px;
+    padding: 3px;
   }
 }
 

@@ -1,9 +1,10 @@
 import React from 'react'
 import styles from './Resume.module.css'
-import Section from './Sections/Sections'
+import Section from './components/Section'
 
-// data
-import {personalInfo, contactDetails, techSkills, progLangs, projects, langs, education, myJourney, interests} from './data'
+// secData
+import { personalInfo, contactDetails, techSkills, progLangs, projects, langs, education, myJourney, interests} from '../../resume-template/common/data'
+
 
 const Resume = () => {
   return (

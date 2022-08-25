@@ -45,7 +45,7 @@ const SecTitle = ({setPlusEl, secTitleName})=>{
       {
         edit?(
           <form className={styles.secTitleInput} onSubmit={(e)=>{handleEditSecTitle(e)}} onBlur={(e)=>{handleEditSecTitle(e)}}>
-            <input name={fieldCode.SecTitle} ref={inputRef} value={secTitle} onChange={(e)=>onChangeHandler(e)} />
+            <input name={fieldCode.SECTITLE} ref={inputRef} value={secTitle} onChange={(e)=>onChangeHandler(e)} />
             <span className={styles.icon} onClick={(e) => handleEditSecTitle(e)}><MdDone /></span>
           </form>
         ):(

@@ -11,13 +11,13 @@ import styles from '../Resume.module.css'
 import { EducationInput, ImageInput, InterestInput, LangInput, MyJourneyInput, NameInput, ProfessionInput, ProfSummaryInput, ProgLangInput, ProgLangLevel, ProjectInput, TechSkillInput } from './ItemsInput';
 
 const SecItem = (props) => {
-  const { secId, data, dataArray, setDataArray, addNewItem, setPlusEl} = props
+  const { secId, itemData, secData, setSecData, addNewItem, setPlusEl} = props
   const [edit, setEdit] = useState(false)
 
-  const [itemData, setItemData] = useState(data)
+  const [newItemData, setNewItemData] = useState(itemData)
 
   useEffect(()=>{
-    if(data.isLast){
+    if(itemData.isLast){
       if(addNewItem){
         setEdit(true)
       } else{
@@ -38,7 +38,7 @@ const SecItem = (props) => {
   }
 
   const onChangeHandler = (e) => {
-    setItemData(prev=>({...prev, [e.target.name]: e.target.value }))
+    setNewItemData(prev=>({...prev, [e.target.name]: e.target.value }))
   }
 
   const editFinishHandler = () => {
@@ -47,8 +47,8 @@ const SecItem = (props) => {
   }
 
   const handleDeleteItem = (e)=>{
-    setDataArray(dataArray.filter(d=>{
-      return(d.id != data.id)
+    setSecData(secData.filter(d=>{
+      return(d.id != itemData.id)
     }))
     setPlusEl(false)
   }
@@ -58,23 +58,23 @@ const SecItem = (props) => {
   }, [edit])
 
   let childComponent
-  if(secId === "1"){(childComponent = <PersonalInfo handleClickItem={handleClickItem} {...itemData}/>)}
+  if(secId === "1"){(childComponent = <PersonalInfo {...newItemData} setItemData={setNewItemData} onChangeHandler={onChangeHandler} inputRef={inputRef} />)}
 
-  if(secId === "2"){edit?(childComponent = <TechSkillInput {...itemData} onChangeHandler={onChangeHandler} handleClickItem={handleClickItem} handleDeleteItem={handleDeleteItem} editFinishHandler={editFinishHandler} inputRef={inputRef}/>):(childComponent = <TechnicalSkill  handleClickItem={handleClickItem} {...itemData}/>)}
+  if(secId === "2"){edit?(childComponent = <TechSkillInput {...newItemData} setItemData={setNewItemData} onChangeHandler={onChangeHandler} handleDeleteItem={handleDeleteItem} editFinishHandler={editFinishHandler} inputRef={inputRef}/>):(childComponent = <TechnicalSkill  handleClickItem={handleClickItem} {...newItemData}/>)}
 
-  if(secId === "3"){(childComponent = <ProgLang {...itemData} setItemData={setItemData} handleClickItem={handleClickItem} onChangeHandler={onChangeHandler} handleDeleteItem={handleDeleteItem} editFinishHandler={editFinishHandler} inputRef={inputRef} edit={edit} />)}
+  if(secId === "3"){(childComponent = <ProgLang {...newItemData} setItemData={setNewItemData} handleClickItem={handleClickItem} onChangeHandler={onChangeHandler} handleDeleteItem={handleDeleteItem} editFinishHandler={editFinishHandler} inputRef={inputRef} edit={edit} />)}
 
-  if(secId === "4"){edit?(childComponent = <MyJourneyInput {...itemData} setItemData={setItemData} onChangeHandler={onChangeHandler} handleDeleteItem={handleDeleteItem} editFinishHandler={editFinishHandler} inputRef={inputRef}/>):(childComponent = <MyJourney handleClickItem={handleClickItem} {...itemData}/>)}
+  if(secId === "4"){edit?(childComponent = <MyJourneyInput {...newItemData} setItemData={setNewItemData} onChangeHandler={onChangeHandler} handleDeleteItem={handleDeleteItem} editFinishHandler={editFinishHandler} inputRef={inputRef}/>):(childComponent = <MyJourney handleClickItem={handleClickItem} {...newItemData}/>)}
 
   if(secId === "5"){return}
 
-  if(secId === "6"){edit?(childComponent = <ProjectInput {...itemData} setItemData={setItemData} onChangeHandler={onChangeHandler} handleDeleteItem={handleDeleteItem} editFinishHandler={editFinishHandler} inputRef={inputRef}/>):(childComponent = <Project  handleClickItem={handleClickItem} {...itemData}/>)}
+  if(secId === "6"){edit?(childComponent = <ProjectInput {...newItemData} setItemData={setNewItemData} onChangeHandler={onChangeHandler} handleDeleteItem={handleDeleteItem} editFinishHandler={editFinishHandler} inputRef={inputRef}/>):(childComponent = <Project  handleClickItem={handleClickItem} {...newItemData}/>)}
 
-  if(secId === "7"){edit?(childComponent = <LangInput {...itemData} />):(childComponent = <Lang  handleClickItem={handleClickItem} {...itemData}/>)}
+  if(secId === "7"){edit?(childComponent = <LangInput {...newItemData} />):(childComponent = <Lang  handleClickItem={handleClickItem} {...newItemData}/>)}
 
-  if(secId === "8"){edit?(childComponent = <EducationInput {...itemData} setItemData={setItemData} onChangeHandler={onChangeHandler} handleDeleteItem={handleDeleteItem} editFinishHandler={editFinishHandler} inputRef={inputRef}/>):(childComponent = <Edu  handleClickItem={handleClickItem} {...itemData}/>)}
+  if(secId === "8"){edit?(childComponent = <EducationInput {...newItemData} setItemData={setNewItemData} onChangeHandler={onChangeHandler} handleDeleteItem={handleDeleteItem} editFinishHandler={editFinishHandler} inputRef={inputRef}/>):(childComponent = <Edu  handleClickItem={handleClickItem} {...newItemData}/>)}
 
-  if(secId === "9"){edit?(childComponent = <InterestInput {...itemData} setItemData={setItemData} onChangeHandler={onChangeHandler} handleDeleteItem={handleDeleteItem} editFinishHandler={editFinishHandler} inputRef={inputRef}/>):(childComponent = <Interest  handleClickItem={handleClickItem} {...itemData}/>)}
+  if(secId === "9"){edit?(childComponent = <InterestInput {...newItemData} setItemData={setNewItemData} onChangeHandler={onChangeHandler} handleDeleteItem={handleDeleteItem} editFinishHandler={editFinishHandler} inputRef={inputRef}/>):(childComponent = <Interest  handleClickItem={handleClickItem} {...newItemData}/>)}
   return (< >{childComponent}</>)
 }
 
@@ -85,24 +85,28 @@ const PersonalInfo = (props) => {
   const [editProf, setEditProf] = useState(false)
   const [editProfSummary, setEditProfSummary] = useState(false)
   const [editImage, setEditImage] = useState(false)
-  const {resumeTitle,name,profession, imagesrc, tagline } = props
+  const isInfo = true
+  const {resumeTitle,userName,profession, imagesrc, tagline, inputRef, setItemData, onChangeHandler } = props
+  console.log("up=", props)
   return (
     <>
       <h1 className={styles.resumeTitle}>{resumeTitle}</h1>
       <div className={styles.imgboxOuter}>
         <div className={styles.imgboxInner}>
             <div className={styles.imgbox_wrapper}>
-              {editImage?<ImageInput/>:null}  
+              {editImage? <ImageInput editImage={editImage} setEditImage={setEditImage} inputRef={inputRef} setItemData={setItemData} onChangeHandler={onChangeHandler}/>:null}
               <div className={styles.imgbox} onClick={()=>setEditImage(true)}>
             </div>
           </div>
           <div className={styles.myinfo}>
-            {editName?<NameInput/>:<h1 className={styles.myName} onClick={()=>setEditName(true)}>{name}</h1>}
-            {editProf?<ProfessionInput/>:<h2 className={styles.profession}onClick={()=>setEditProf(true)}>{profession}</h2>}
+
+            {editName?<NameInput editName={editName} setEditName={setEditName} isInfo={isInfo} inputRef={inputRef} userName={userName} setItemData={setItemData} onChangeHandler={onChangeHandler}/>:<h1 className={styles.myName} onClick={()=>setEditName(true)}>{userName}</h1>}
+
+            {editProf?<ProfessionInput editProf={editProf} setEditProf={setEditProf} isInfo={isInfo} inputRef={inputRef} profession={profession} setItemData={setItemData} onChangeHandler={onChangeHandler}/>:<h2 className={styles.profession}onClick={()=>setEditProf(true)}>{profession}</h2>}
           </div>
         </div>
       </div>
-      {editProfSummary?<ProfSummaryInput/>:<h2 className={styles.tagline} onClick={()=>setEditProfSummary(true)}>"{tagline}"</h2>}
+      {editProfSummary?<ProfSummaryInput editProfSummary={editProfSummary} setEditProfSummary={setEditProfSummary} isInfo={isInfo} inputRef={inputRef} tagline={tagline} setItemData={setItemData} onChangeHandler={onChangeHandler}/>:<h2 className={styles.tagline} onClick={()=>setEditProfSummary(true)}>"{tagline}"</h2>}
     </>
   );
 };

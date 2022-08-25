@@ -31,9 +31,6 @@
   color: orangered;
 }
 
-.resume form {
-  padding-right: 3px;
-}
 .resume form .input_fields {
   display: flex;
   justify-content: center;
@@ -67,14 +64,14 @@
 .resume form .icons span:hover {
   transform: scale(1.1);
 }
-.resume form .icons span:first-child {
+.resume form .icons .save {
   color: green;
 }
-.resume form .icons span:last-child {
+.resume form .icons .delete {
   color: red;
 }
 
-.secTitleInput {
+.secTitleInput, .nameInput, .professionInput, .profSummaryInput {
   background-color: rgb(40, 40, 40);
   margin-bottom: 15px;
   display: flex;
@@ -83,22 +80,22 @@
   align-items: center;
   width: 100%;
 }
-.secTitleInput input {
+.secTitleInput input, .nameInput input, .professionInput input, .profSummaryInput input {
   width: 100%;
   font-size: 22px;
-  background-color: hsl(210deg, 17%, 10%);
+  background-color: hsl(210deg, 17%, 25%);
   color: white;
   padding: 2px 0;
   letter-spacing: 2px;
   text-align: center;
   font-family: "Merriweather", serif;
 }
-.secTitleInput span {
+.secTitleInput span, .nameInput span, .professionInput span, .profSummaryInput span {
   color: green;
   font-size: 32px;
   height: 25px;
   width: 25px;
-  margin: 0 5px;
+  margin: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,7 +104,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.secTitleInput span:hover {
+.secTitleInput span:hover, .nameInput span:hover, .professionInput span:hover, .profSummaryInput span:hover {
   transform: scale(1.1);
 }
 
@@ -488,12 +485,11 @@
 }
 
 .professionInput, .nameInput {
-  border: 1px solid white;
   margin-right: auto;
   margin-left: auto;
   width: 260px;
-  padding: 4px;
   font-family: "Ubuntu", sans-serif;
+  background-color: rgb(255, 255, 255);
 }
 .professionInput input, .nameInput input {
   color: rgb(185, 185, 185);
@@ -518,22 +514,31 @@
 }
 
 .profSummaryInput {
-  padding-top: 5px;
-  margin-left: 35px;
+  padding: 0;
+  margin-left: 37px;
+  margin-top: 3px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: flex-start;
 }
 .profSummaryInput textarea {
+  border: 0;
+  outline: 0;
   font-size: 20px;
   border: 3px solid rgb(43, 52, 61);
   margin: 0;
-  width: 520px;
-  max-width: 520px;
-  min-width: 520px;
+  width: 492px;
+  max-width: 492px;
+  min-width: 492px;
   height: 83px;
   max-height: 83px;
   min-height: 83px;
+  padding: 3px;
 }
 
 .imgInput {

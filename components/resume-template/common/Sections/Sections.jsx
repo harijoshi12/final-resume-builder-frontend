@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import {v4 as uuidv4} from 'uuid'
+
+// import components
 import AddItems from '../AddItem/AddItem'
 import SecItem, { ContactDetails } from '../Items/Items'
 import SecTitle from '../SectionTitles/SectionTitles'
+import { ContactInput } from '../Items/ItemsInput'
 
 // custom style
 import styles from '../Resume.module.css'
-import { ContactInput } from '../Items/ItemsInput'
-import { ContactDetail } from '../Items/Items'
+
+// proglang level marking component
 const Marking =()=>{
   return(
     <div className={styles.marking}>
@@ -15,34 +18,36 @@ const Marking =()=>{
     </div>
   )
 }
+
+// 
 const Section = (props)=>{
-  const {secId,  secTitleName, data, className} = props
+  const {secId,  secTitleName, secData, className} = props
   const [plusEl, setPlusEl] = useState(false)
-  const [items, setItems] = useState(data)
+  const [newSecData, setNewSecData] = useState(secData)
   const [addNewItem, setAddNewItem] = useState(false)
   const [showContactInput, setShowContactInput] = useState(false)
   const addNewItemHandler = ()=>{
-    const itemsarr = items.map(d=> ({...d, isLast: false }))
+    const itemsarr = newSecData.map(itemData=> ({...itemData, isLast: false }))
     if(secId==="2"){
-      setItems([...itemsarr, {id:uuidv4(), techSkill: ``, isLast: true}])
+      setNewSecData([...itemsarr, {id:uuidv4(), techSkill: ``, isLast: true}])
     }
     if(secId==="3"){
-      setItems([...itemsarr, {id:uuidv4(), progLang: ``,progLangLevel: 7, isLast: true}])
+      setNewSecData([...itemsarr, {id:uuidv4(), progLang: ``,progLangLevel: 7, isLast: true}])
     }
     if(secId==="4"){
-      setItems([...itemsarr, {id:uuidv4(), jobTitle: ``,jobCompany: ``,jobStartDate: '',jobEndDate: '',jobPresent:'',jobDesc:'' , isLast: true}])
+      setNewSecData([...itemsarr, {id:uuidv4(), jobTitle: ``,jobCompany: ``,jobStartDate: '',jobEndDate: '',jobPresent:'',jobDesc:'' , isLast: true}])
     }
     if(secId==="6"){
-      setItems([...itemsarr, {id:uuidv4(), projectTitle: ``,projectTechStack: ``,projectDesc:'', projectGitLink:'', projectLiveDemo:'', isLast: true}])
+      setNewSecData([...itemsarr, {id:uuidv4(), projectTitle: ``,projectTechStack: ``,projectDesc:'', projectGitLink:'', projectLiveDemo:'', isLast: true}])
     }
     if(secId==="7"){
-      setItems([...itemsarr, {id:uuidv4(), language: ``,languageLevel: `${itemData2}`, isLast: true}])
+      setNewSecData([...itemsarr, {id:uuidv4(), language: ``,languageLevel: `${itemData2}`, isLast: true}])
     }
     if(secId==="8"){
-      setItems([...itemsarr, {id:uuidv4(), studyProgram: ``, institution: ``,studyStartDate:'',studyEndDate:'',studyPresent: false,cgpa:'',studyPlace:'', isLast: true}])
+      setNewSecData([...itemsarr, {id:uuidv4(), studyProgram: ``, institution: ``,studyStartDate:'',studyEndDate:'',studyPresent: false,cgpa:'',studyPlace:'', isLast: true}])
     }
     if(secId==="9"){
-      setItems([...itemsarr, {id:uuidv4(), interest: ``, isLast: true}])
+      setNewSecData([...itemsarr, {id:uuidv4(), interest: ``, isLast: true}])
     }
     setAddNewItem(true)
   }
@@ -50,9 +55,9 @@ const Section = (props)=>{
   let contactSec
   if(secId === "5"){
     if(showContactInput){
-      contactSec = <ContactInput setShowContactInput={setShowContactInput} dataArray={items} setDataArray={setItems}/>
+      contactSec = <ContactInput setShowContactInput={setShowContactInput} newSecData={newSecData} setNewSecData={setNewSecData}/>
     }else{
-      contactSec = <ContactDetails setShowContactInput={setShowContactInput} {...items} />
+      contactSec = <ContactDetails setShowContactInput={setShowContactInput} {...newSecData} />
     }
   }
   return(
@@ -64,13 +69,13 @@ const Section = (props)=>{
       secId==="3"?(
         <div className={`${styles[className]} ${styles.secContent}`}>
         <Marking/>
-        {items.map(d => <SecItem secId={secId} key={d.id} data={d} dataArray={items} setDataArray={setItems} addNewItem={addNewItem} setPlusEl={setPlusEl}/>)}
+        {newSecData.map(itemData => <SecItem secId={secId} key={itemData.id} itemData={itemData} secData={newSecData} setSecData={setNewSecData} addNewItem={addNewItem} setPlusEl={setPlusEl}/>)}
       </div>
       ): secId ==="5"?(
         contactSec
       ):(
       <div className={`${styles[className]} ${styles.secContent}`}>
-        {items.map(d => <SecItem secId={secId} key={d.id} data={d} dataArray={items} setDataArray={setItems} addNewItem={addNewItem} setPlusEl={setPlusEl} />)}
+        {newSecData.map(itemData => <SecItem secId={secId} key={itemData.id} itemData={itemData} secData={newSecData} setSecData={setNewSecData} addNewItem={addNewItem} setPlusEl={setPlusEl} />)}
       </div>
       )
       }

@@ -13,7 +13,7 @@ import styles from '../Resume.module.css'
 import { fieldCode } from '../constants/typeCodes';
 
 export const CommonForm= (props)=>{
-  const {secId, newEditFinishHandler, handleDeleteItem, className,children} = props
+  const {secId, isInfo, isImageUpload ,newEditFinishHandler, handleDeleteItem, className,children} = props
   const formRef = useRef(null)
 
   const onSubmitHandler =(e)=>{
@@ -25,7 +25,6 @@ export const CommonForm= (props)=>{
     function handleClickOutside(e){
       if(formRef.current && !formRef.current.contains(e.target)){
         newEditFinishHandler()
-        console.log("click outside")
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -40,61 +39,103 @@ export const CommonForm= (props)=>{
     <form ref={formRef} className={styles[className]} onSubmit={(e) => { onSubmitHandler(e) }}>
       <div className={styles.input_fields}>{children}</div>
       <div className={styles.icons}>
-        <span className={styles.icon} onClick={(e) => onSubmitHandler(e)}><MdDone /></span>
-        <span className={styles.icon} onClick={(e) => handleDeleteItem(e)}><AiFillDelete /></span>
+        {
+          !isImageUpload?(
+          <span className={`${styles.icon} ${styles.save}`} onClick={(e) => onSubmitHandler(e)}><MdDone /></span>):(null)
+        }
+        {
+          !isInfo?
+          (<span className={`${styles.icon} ${styles.delete}`} onClick={(e) => handleDeleteItem(e)}><AiFillDelete /></span>
+          ):(null)
+        }
       </div>
     </form>
   )
 }
 
 export const NameInput = (props) => {
-  const inputRef = useRef(null)
+  const {inputRef,editName, setEditName, isInfo ,userName, setItemData, onChangeHandler} = props
+  console.log("down=",props)
+  const newEditFinishHandler=()=>{
+    setEditName(!editName)
+    if(userName === ""){
+      setItemData(prev=>({...prev, userName: "Your Name"}))
+    }
+  }
+  useEffect(() => {
+    inputRef.current?.focus()
+  }, [editName])
   return (
-    <div className={styles.nameInput}>
-      <input ref={inputRef} name={fieldCode.NAME} placeholder="Your Name" />
-    </div>
+    <CommonForm isInfo={isInfo} newEditFinishHandler={newEditFinishHandler} className="nameInput">
+      <input ref={inputRef} value={userName} name={fieldCode.NAME} placeholder="Your Name" onChange={(e)=> onChangeHandler(e)}/>
+    </CommonForm>
   )
 }
 
 export const ProfessionInput = (props) => {
-  const inputRef = useRef(null)
+  const {inputRef, isInfo, editProf, setEditProf, profession, setItemData, onChangeHandler} = props
+  const newEditFinishHandler=()=>{
+    setEditProf(!editProf)
+    if(profession === ""){
+      setItemData(prev=>({...prev, profession: "Profession"}))
+    }
+  }
+  useEffect(() => {
+    inputRef.current?.focus()
+  }, [editProf])
   return (
-    <div className={styles.professionInput}>
-      <input ref={inputRef} name={fieldCode.PROFESSION} placeholder="Profession" />
-    </div>
+    <CommonForm isInfo={isInfo} newEditFinishHandler={newEditFinishHandler} className="professionInput">
+      <input ref={inputRef} name={fieldCode.PROFESSION} placeholder="Profession" value={profession} onChange={(e) => onChangeHandler(e)}/>
+    </CommonForm>
   )
 }
 
 export const ProfSummaryInput = (props) => {
-  const inputRef = useRef(null)
+  const {inputRef,editProfSummary, setEditProfSummary, isInfo, tagline, setItemData, onChangeHandler} = props
+  const newEditFinishHandler=()=>{
+    setEditProfSummary(!editProfSummary)
+    if(tagline === ""){
+      setItemData(prev=>({...prev, tagline: "About you"}))
+    }
+  }
+  useEffect(() => {
+    inputRef.current?.focus()
+  }, [editProfSummary])
   return (
-    <div className={styles.profSummaryInput}>
-      <textarea  cols="30" rows="10" ref={inputRef} name={fieldCode.TAGLINE} placeholder="About You"/>
-    </div>
+    <CommonForm isInfo={isInfo} newEditFinishHandler={newEditFinishHandler} className="profSummaryInput">
+      <textarea  ref={inputRef} name={fieldCode.TAGLINE} placeholder="About You" value={tagline} onChange={(e) => onChangeHandler(e)}/>
+    </CommonForm>
   )
 }
 
 export const ImageInput = (props) => {
-  const inputRef = useRef(null)
+  const {editImage, setEditImage, setItemData, onChangeHandler, inputRef,}=props
+  const isImageUpload = true
+  const newEditFinishHandler=()=>{
+    setEditImage(!editImage)
+  }
   return (
-    <div className={styles.imgInput}>
+    <CommonForm isImageUpload={isImageUpload} newEditFinishHandler={newEditFinishHandler}  className="imgInput">
       <label htmlFor="imgUpload">
       <span className={styles.upload}><IoMdCloudUpload/></span>
       Upload Photo
       </label>
-      <input type="file" id='imgUpload' ref={inputRef} name={fieldCode.IMAGESRC} />
-      <span className={styles.delete}>
-        <AiFillDelete/>
-      </span>
-    </div>
+      <input type="file" id='imgUpload' ref={inputRef} name={fieldCode.IMAGESRC} onChange={(e) => onChangeHandler(e)} />
+    </CommonForm>
   )
 }
 
 export const TechSkillInput = (props) => {
-  const {title,  inputRef, onSubmitHandler, handleDeleteItemTitle, onChangeHandler} = props
+  const {techSkill, inputRef, setItemData, handleDeleteItem, onChangeHandler , editFinishHandler} = props
+  const newEditFinishHandler=()=>{
+    editFinishHandler()
+    if(techSkill === ""){
+      setItemData(prev=>({...prev, techSkill: "Technical Sikll"}))
+    }
+  }
   return (
-    <CommonForm inputRef={inputRef} handleDeleteItemTitle={handleDeleteItemTitle} onSubmitHandler={onSubmitHandler} secId="2" className="techSkillInput" >  
-     <input ref={inputRef} name={fieldCode.TECHSKILL} value={title} onChange={(e) => onChangeHandler(e)} />
+    <CommonForm handleDeleteItem={handleDeleteItem} newEditFinishHandler={newEditFinishHandler} secId="2" className="techSkillInput" >  
+     <input ref={inputRef} placeholder='Technical Skill' name={fieldCode.TECHSKILL} value={techSkill} onChange={(e) => onChangeHandler(e)} />
     </CommonForm>
   )
 }
