@@ -252,18 +252,18 @@ const ContactOption = ({ type, fieldName, placeholder, value, checkVal, icon, se
 }
 
 export const ContactInput = (props)=>{
-  const {dataArray,setShowContactInput, setDataArray } = props
-  const [items, setItems] = useState({...dataArray})
+  const {newSecData,setShowContactInput, setNewSecData } = props
+  const [items, setItems] = useState({...newSecData})
 
   const {email, emailChecked, phone, phoneChecked, address, addressChecked, website, websiteChecked, linkedin, linkedinChecked, github, githubChecked, stackoverflow, stackoverflowChecked, quora, quoraChecked, medium, mediumChecked} = items
 
   const onDiscardHandler =()=>{
-    setDataArray({...dataArray})
+    setNewSecData({...newSecData})
     setShowContactInput(false)
   }
   const onSubmitHandler =(e)=>{
     e.preventDefault()
-    setDataArray(prev=>({...items}))
+    setNewSecData(prev=>({...items}))
     setShowContactInput(false)
   }
   
