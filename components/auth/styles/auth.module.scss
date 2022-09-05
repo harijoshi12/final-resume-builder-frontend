@@ -4,7 +4,6 @@
   padding: 20px 0;
   position: absolute;
   top: 387px;
-  // border: 2px solid black;
   width: calc(100% - 60px);
   transition: all 0.3s ease-in-out;
 
@@ -53,6 +52,24 @@
     font-size: 13px;
     span{
       color: blue;
+    }
+  }
+}
+
+@media screen and (max-width: "576px") {
+  .form_container{
+    padding: 20px 10px;
+    .common{
+      width: calc(100% - 20px);
+    }
+    form{
+      width: calc(100% - 20px);
+    }
+    .register_form{
+      left: 520px;
+    }
+    .login_form{
+      left: 10px;
     }
   }
 }

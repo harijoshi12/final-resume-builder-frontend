@@ -2,24 +2,20 @@ $dark: rgb(48, 48, 48);
 $light: rgb(209, 209, 209);
 
 .wrapper{
-  padding-top: 100px;
-  background-color: rgb(255, 255, 255);
+  min-height: 95vh;
+  padding: 70px 10px;
+  padding-top: 120px;
+  background-color: rgb(168, 168, 168);
 }
 .form_container{
-  background-color: rgb(213, 213, 213);
+  background-color: rgb(235, 235, 235);
   position: relative;
-  border: 2px solid blue;
   border-radius: 50px;
   max-width: 500px;
   margin: auto;
   overflow: hidden;
-  height: 690px;
+  height: fit-content;
   padding: 20px 30px;
-  *{
-    // border: 1px solid rgb(0, 0, 0);
-    // padding: 5px;
-    // margin: 5px;
-  }
 
   .slider_container{
     margin: 20px 0;
@@ -30,7 +26,9 @@ $light: rgb(209, 209, 209);
     // background-color: red;
     color: white;
     border-radius: 50px;
-    box-shadow: inset 1px 1px 3px 1px black, inset -1px -1px 3px 1px gray;
+    // box-shadow:  1px 1px 3px 1px orangered, inset -1px -1px 3px 1px orangered;
+    box-shadow: 0 0 10px 2px white;
+    border: 1px solid orangered;
     .link{
       margin: 0;
       border: 0;
@@ -50,8 +48,8 @@ $light: rgb(209, 209, 209);
     }
     .slider{
       position: absolute;
-      background: linear-gradient(to right, red, hotpink);
-      background: rgb(23, 161, 23);
+      background: orangered;
+      background: linear-gradient(to right, orange, red);
       height: 100%;
       margin: 0;
       top: 0;
@@ -61,11 +59,17 @@ $light: rgb(209, 209, 209);
       transition: 0.3s;
     }
   }
+  .padding{
+    width: 100%;
+    background-color: transparent;
+    z-index: -1;
+  }
   form{
     width: calc(100% - 60px);
     position: absolute;
+    top: 125px;
     margin: 0;
-    // border: 1px solid black;
+    z-index: 10;
     transition: all 0.3s ease-in-out;
     .input_field{
       width: 100%;
@@ -118,12 +122,14 @@ $light: rgb(209, 209, 209);
     .submit_btn{
       margin-top: 26px;
       width: 100%;
-      padding: 13px;
-      font-size: 20px;
+      padding: 11px;
+      font-size: 25px;
       border: 1px solid rgb(95, 95, 95);
       outline: 0;
       border-radius: 5px;
-      background: rgb(23, 161, 23);
+      background: orangered;
+      color: white;
+      background: linear-gradient(to right, orange, red);
       // box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
     }
   }
