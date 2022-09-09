@@ -4,18 +4,18 @@ export const skinCodes = ['skin1', 'skin2', 'skin3', 'skin4', 'skin5', 'skin6']
 
 export const fontsize = ['small', 'medium', 'large']
 
-export const fontFamily = ['Roboto', 'Quicksand', 'Merriweather' ]
+export const fontFamily = ['Roboto', 'Quicksand', 'Merriweather']
 
-export const fieldCode = {
+export const resumeInputCodes = {
   RESUMETITLE: "resumeTitle",
   // section title
   SECTITLE: "secTitle",
   // personal info
   NAME: "userName",
-  PROFESSION:"profession",
+  PROFESSION: "profession",
   IMAGESRC: "imageSrc",
-  TAGLINE:"tagline",
-  
+  TAGLINE: "tagline",
+
   // contact details
   EMAIL: "email",
   EMAILCHECKED: "emailChecked",
@@ -39,7 +39,7 @@ export const fieldCode = {
 
   // techskills
   TECHSKILL: "techSkill",
-  
+
   // programming languages
   PROGLANG: "progLang",
   PROGLANGLEVEL: "progLangLevel",
@@ -58,7 +58,7 @@ export const fieldCode = {
   PROJECTDESC: "projectDesc",
   PROJECTGITLINK: "projectGitLink",
   PROJECTLIVEDEMO: "projectLiveDemo",
-  
+
   // languages
   LANGUAGE: "language",
   LANGUAGELEVEL: "languageLevel",
@@ -75,4 +75,12 @@ export const fieldCode = {
 
   // interests
   INTEREST: "interest"
+}
+
+export const authInputCodes = {
+  USERNAME: "userName",
+  EMAIL: "email",
+  PASSWORD: "password",
+  CONFIRMPASSWORD: "confirmPassword",
+  IMAGESRC: "imageSrc",
 }

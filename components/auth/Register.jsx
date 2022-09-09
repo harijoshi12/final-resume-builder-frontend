@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import reCAPTCHA from "react-google-recaptcha";
 import HocForm from "./HocForm";
 import InputField from "./InputField";
 import styles from "./styles/auth.module.css";
@@ -46,7 +47,7 @@ const Register = (props) => {
         label="Comfirm Password"
       ></InputField>
 
-      <div className={styles.captcha_wrapper}>
+      {/* <div className={styles.captcha_wrapper}>
         <InputField
           inputRef={password1Ref}
           isStar={false}
@@ -57,7 +58,7 @@ const Register = (props) => {
           label="I'm not a robot"
         ></InputField>
         <div className={styles.captcha_img}></div>
-      </div>
+      </div> */}
 
       <button className={styles.submit_btn} type="submit">
         Register

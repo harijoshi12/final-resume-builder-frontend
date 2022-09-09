@@ -62,8 +62,12 @@
     .common{
       width: calc(100% - 20px);
     }
+    .slider_container{
+      margin-top: 0px;
+    }
     form{
       width: calc(100% - 20px);
+      top: 90px;
     }
     .register_form{
       left: 520px;

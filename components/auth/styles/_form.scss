@@ -10,7 +10,7 @@ $light: rgb(209, 209, 209);
 .form_container{
   background-color: rgb(235, 235, 235);
   position: relative;
-  border-radius: 50px;
+  border-radius: 15px;
   max-width: 500px;
   margin: auto;
   overflow: hidden;
@@ -18,30 +18,26 @@ $light: rgb(209, 209, 209);
   padding: 20px 30px;
 
   .slider_container{
-    margin: 20px 0;
+    margin: 10px 0;
     margin-bottom: 30px;
     display: flex;
     overflow: hidden;
     position: relative;
-    // background-color: red;
     color: white;
-    border-radius: 50px;
-    // box-shadow:  1px 1px 3px 1px orangered, inset -1px -1px 3px 1px orangered;
+    border-radius: 30px;
     box-shadow: 0 0 10px 2px white;
     border: 1px solid orangered;
+    font-family: sans-serif;
     .link{
       margin: 0;
       border: 0;
-      // background-color: red;
       width: 100%;
-      // border: 2px solid white;
-      padding: 13px 20px;
-      
+      padding: 8px 20px;
       display: inline-flex;
       justify-content: center;
       cursor: pointer;
       text-decoration: none;
-      color: black;
+      // color: black;
       font-size: 25px;
       position: relative;
       z-index: 1;
@@ -67,7 +63,7 @@ $light: rgb(209, 209, 209);
   form{
     width: calc(100% - 60px);
     position: absolute;
-    top: 125px;
+    top: 110px;
     margin: 0;
     z-index: 10;
     transition: all 0.3s ease-in-out;
@@ -186,6 +182,9 @@ $light: rgb(209, 209, 209);
       }
       .forget{
         margin-right: 5px;
+        font-size: 15px;
+        font-weight: 100;
+        color: rgb(66, 88, 255);
       }
     }
   }

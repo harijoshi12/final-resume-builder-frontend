@@ -11,7 +11,7 @@
 //   return (
 //     <form ref={formRef} action="" className={styles.login_form}>
 //       <InputField inputRef={emailRef} isStar={true}  type="email" name="email_login" id_htmlFor="id_email_login" label="E-mail" ></InputField>
-      
+
 //       <InputField inputRef={password1Ref} isStar={true}  type="password" name="password_login" id_htmlFor="id_password_login" label="Password" ></InputField>
 
 //       <div className={styles.etc}>
@@ -70,14 +70,11 @@
 
 // export default HocForm
 
-
-
-// import { fieldCode } from '../constants/typeCodes';
-// const {RESUMETITLE, SECTITLE, NAME, PROFESSION, IMAGESRC, TAGLINE, EMAIL, PHONE, ADDRESS, WEBSITE, LINKEDIN, GITHUB, STACKOVERFLOW, QUORA, MEDIUM, TECHSKILL, PROGLANG, PROGLANGLEVEL, JOBSTARTDATE, JOBENDDATE, JOBPRESENT, JOBTITLE, JOBCOMPANY, JOBDESC, PROJECTTITLE, PROJECTDESC, PROJECTTECHSTACK, PROJECTGITLINK, PROJECTLIVEDEMO, LANGUAGE, LANGUAGELEVEL, STUDYPROGRAM, INSTITUTION, CGPA, STUDYSTARTDATE, STUDYENDDATE, STUDYPRESENT, STUDYPLACE, INTEREST } = fieldCode
-
+// import { resumeInputCodes } from '../constants/typeCodes';
+// const {RESUMETITLE, SECTITLE, NAME, PROFESSION, IMAGESRC, TAGLINE, EMAIL, PHONE, ADDRESS, WEBSITE, LINKEDIN, GITHUB, STACKOVERFLOW, QUORA, MEDIUM, TECHSKILL, PROGLANG, PROGLANGLEVEL, JOBSTARTDATE, JOBENDDATE, JOBPRESENT, JOBTITLE, JOBCOMPANY, JOBDESC, PROJECTTITLE, PROJECTDESC, PROJECTTECHSTACK, PROJECTGITLINK, PROJECTLIVEDEMO, LANGUAGE, LANGUAGELEVEL, STUDYPROGRAM, INSTITUTION, CGPA, STUDYSTARTDATE, STUDYENDDATE, STUDYPRESENT, STUDYPLACE, INTEREST } = resumeInputCodes
 
 // {
-  // link: "mailto:mr.hariprasdjoshi@gmail.com"
+// link: "mailto:mr.hariprasdjoshi@gmail.com"
 //   icon: <IoIosMail/>,
 //   icon: <BsFillTelephoneFill/>,
 //   link: "tel:+9634090498"
@@ -91,9 +88,8 @@
 //   link: "https://www.harijoshi.tech/"
 // }
 
-
-    // if (itemData.title === "") {
-    //   setItemData(prev=>({...prev, title: itemData1 }))
-    // }else{
-    //   setDataArray(dataArray.map(d=>d.id === data.id? {...d, title:itemData.title}: d))
-    // }
+// if (itemData.title === "") {
+//   setItemData(prev=>({...prev, title: itemData1 }))
+// }else{
+//   setDataArray(dataArray.map(d=>d.id === data.id? {...d, title:itemData.title}: d))
+// }
