@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&family=Roboto:wght@400;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-a{
+a {
   text-decoration: none;
 }
 main {
@@ -12,3 +12,7 @@ main {
   width: 100%;
 }
 
+.Toastify .custom_toast {
+  top: 64px;
+  min-height: 50px;
+}

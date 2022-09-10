@@ -1,15 +1,73 @@
-import React, { useRef, useEffect } from "react";
-import reCAPTCHA from "react-google-recaptcha";
+import React, { useRef, useEffect, useState } from "react";
 import HocForm from "./HocForm";
 import InputField from "./InputField";
 import styles from "./styles/auth.module.css";
+
+import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+
+import { useAuth } from "../../contexts/AuthContext";
+
 const Register = (props) => {
-  const { emailRef, password1Ref, password2Ref, isLoginForm } = props;
+  const {
+    emailRef,
+    password1Ref,
+    password2Ref,
+    isLoginForm,
+    data,
+    setData,
+    handleInputs,
+  } = props;
+  const { email_register, password_register1, password_register2 } = data;
+  const [isLoading, setIsLoading] = useState(false);
   const registerFormRef = useRef(null);
+
+  const { handleRegister } = useAuth();
+
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      if (!email_register || !password_register1 || !password_register2) {
+        toast.error("Please fill all details", {
+          position: toast.POSITION.TOP_CENTER,
+          className: "custom_toast",
+        });
+      } else {
+        if (password_register1 !== password_register2) {
+          toast.error("Password and confirm password don't match", {
+            position: toast.POSITION.TOP_CENTER,
+            className: "custom_toast",
+          });
+        } else {
+          if (password_register1.length < 6) {
+            toast.error("Password should be atleat 6 characters", {
+              position: toast.POSITION.TOP_CENTER,
+              className: "custom_toast",
+            });
+            console.log("less");
+          } else {
+            const user = await handleRegister(
+              email_register,
+              password_register1
+            );
+            toast.success("Successfully registered!", {
+              position: toast.POSITION.TOP_CENTER,
+              className: "custom_toast",
+            });
+          }
+        }
+      }
+    } catch (error) {
+      toast.error(error.message, {
+        position: toast.POSITION.TOP_CENTER,
+        className: "custom_toast",
+      });
+    }
+  };
 
   useEffect(() => {
     if (isLoginForm) {
-      registerFormRef.current.style.left = "500px";
+      registerFormRef.current.style.left = "550px";
     } else {
       if (window.innerWidth <= "576") {
         registerFormRef.current.style.left = "10px";
@@ -18,47 +76,43 @@ const Register = (props) => {
       }
     }
   }, [isLoginForm]);
+
   return (
-    <form ref={registerFormRef} action="" className={styles.register_form}>
+    <form
+      ref={registerFormRef}
+      action=""
+      className={styles.register_form}
+      onSubmit={(e) => onSubmitHandler(e)}
+    >
       <InputField
         inputRef={emailRef}
-        isStar={true}
         type="email"
         name="email_register"
         id_htmlFor="id_email_register"
         label="E-mail"
+        value={email_register}
+        handleInputs={handleInputs}
       ></InputField>
 
       <InputField
         inputRef={password1Ref}
-        isStar={true}
         type="password"
         name="password_register1"
         id_htmlFor="id_password_register1"
         label="Password"
+        value={password_register1}
+        handleInputs={handleInputs}
       ></InputField>
 
       <InputField
         inputRef={password2Ref}
-        isStar={true}
         type="password"
         name="password_register2"
         id_htmlFor="id_password_register2"
         label="Comfirm Password"
+        value={password_register2}
+        handleInputs={handleInputs}
       ></InputField>
-
-      {/* <div className={styles.captcha_wrapper}>
-        <InputField
-          inputRef={password1Ref}
-          isStar={false}
-          isCaptcha={true}
-          type="checkbox"
-          name="captcha"
-          id_htmlFor="id_captcha"
-          label="I'm not a robot"
-        ></InputField>
-        <div className={styles.captcha_img}></div>
-      </div> */}
 
       <button className={styles.submit_btn} type="submit">
         Register

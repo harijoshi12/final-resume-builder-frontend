@@ -14,13 +14,13 @@ const HocForm = (Form) => {
           input.current.addEventListener("focus", () => {
             label.style.transform = `translateY(-25px)`;
             label.style.fontSize = `13px`;
-            label.style.color = `orangered`;
+            label.style.color = `blue`;
           });
           input.current.addEventListener("blur", () => {
             if (input.current.value !== "") {
               label.style.transform = `translateY(-25px)`;
               label.style.fontSize = `13px`;
-              label.style.color = `orangered`;
+              label.style.color = `blue`;
             } else {
               label.style.transform = `translateY(-50%)`;
               label.style.fontSize = `16px`;

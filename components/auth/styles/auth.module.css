@@ -118,12 +118,18 @@
   width: 100%;
   padding: 11px;
   font-size: 25px;
-  border: 1px solid rgb(95, 95, 95);
+  cursor: pointer;
+  border: 0;
   outline: 0;
   border-radius: 5px;
   background: orangered;
-  color: white;
   background: linear-gradient(to right, orange, red);
+  color: white;
+  box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+.form_container form .submit_btn:hover {
+  box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.5);
 }
 .form_container .register_form {
   left: 500px;
@@ -220,18 +226,34 @@
   border-radius: 50%;
 }
 .common .social_logins .google_auth {
-  background-color: rgba(255, 25, 0, 0.982);
+  font-family: sans-serif;
+  overflow: hidden;
+  background-color: rgb(58, 129, 238);
   width: 100%;
-  padding: 15px;
   font-size: 22px;
   color: white;
   border-radius: 5px;
   margin: 25px 0;
   margin-top: 35px;
   text-align: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
-.common .social_logins .google_auth span {
-  margin-right: 6px;
+.common .social_logins .google_auth:hover {
+  box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.5);
+}
+.common .social_logins .google_auth .goolge_logo {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  background-image: url("../../../media/images/socialicons/googleColor.svg");
+}
+.common .social_logins .google_auth .google_text {
+  margin: auto;
 }
 .common p {
   text-align: center;

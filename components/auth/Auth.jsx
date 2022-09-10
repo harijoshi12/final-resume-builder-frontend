@@ -1,9 +1,19 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import NewLogin from "./Login";
 import NewRegister from "./Register";
-
 import styles from "./styles/auth.module.css";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Auth = () => {
+  const [data, setData] = useState({
+    email_login: "",
+    password_login: "",
+    email_register: "",
+    password_register1: "",
+    password_register2: "",
+  });
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [formHeight, setFormHeight] = useState("410px");
   const [top, setTop] = useState("");
@@ -11,13 +21,28 @@ const Auth = () => {
   const sliderRef = useRef(null);
   const paddingRef = useRef(null);
 
+  const handleInputs = (e) => {
+    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
   useLayoutEffect(() => {
-    if (window.innerWidth <= "576") {
-      setTop("360px");
+    sliderRef.current.style.left = "50%";
+    if (!isLoginForm) {
+      if (window.innerWidth <= "576") {
+        setTop("420px");
+      } else {
+        setTop("435px");
+      }
     } else {
-      setTop("374px");
+      sliderRef.current.style.left = "0%";
+      if (window.innerWidth <= "576") {
+        setTop("360px");
+      } else {
+        setTop("374px");
+      }
     }
   }, []);
+
   useEffect(() => {
     commonRef.current.style.top = top;
     paddingRef.current.style.paddingTop = formHeight;
@@ -35,6 +60,7 @@ const Auth = () => {
     sliderRef.current.style.left = "0%";
     setIsLoginForm(true);
   };
+
   const showRegister = () => {
     if (window.innerWidth <= "576") {
       setTop("420px");
@@ -47,8 +73,10 @@ const Auth = () => {
     paddingRef.current.style.transition = "all 0.1s ease-in-out";
     setIsLoginForm(false);
   };
+
   return (
     <main className={styles.wrapper}>
+      <ToastContainer position="top-center" />
       <div className={styles.form_container}>
         <div className={styles.slider_container}>
           <span
@@ -68,24 +96,28 @@ const Auth = () => {
           <div ref={sliderRef} className={styles.slider}></div>
         </div>
         <div ref={paddingRef} className={styles.padding}></div>
-        <NewLogin isLoginForm={isLoginForm} />
-        <NewRegister isLoginForm={isLoginForm} />
+        <NewLogin
+          isLoginForm={isLoginForm}
+          data={data}
+          setData={setData}
+          handleInputs={handleInputs}
+        />
+        <NewRegister
+          isLoginForm={isLoginForm}
+          data={data}
+          setData={setData}
+          handleInputs={handleInputs}
+        />
         <div ref={commonRef} className={styles.common}>
           <div className={styles.social_divider}>
             <span>or</span>
           </div>
           <div className={styles.social_logins}>
             <div className={styles.google_auth}>
-              <span>G</span> Google
+              <span className={styles.goolge_logo}></span>
+              <span className={styles.google_text}>Continue with Google</span>
             </div>
-            {/* <div className={styles.facebook_auth}><span>F</span>Facebook</div>
-            <div className={styles.linkedin_auth}><span>in..</span>Linkedin</div>
-            <div className={styles.Github_auth}><span>Git..</span>Github</div> */}
           </div>
-          {/* <p>
-            By creating this account, you agree to our{" "}
-            <span>Privacy Policy</span> & <span>Cookie Policy</span>.
-          </p> */}
         </div>
       </div>
     </main>

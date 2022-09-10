@@ -1,13 +1,13 @@
-import React, { Fragment } from 'react'
-import Header from '../components/Header/Header'
-import Footer from '../components/Footer/Footer'
-function Layout({children}) {
+import React, { Fragment } from "react";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+function Layout({ children }) {
   return (
     <Fragment>
-        <Header/>
-        {children}
-        <Footer/>
+      <Header />
+      {children}
+      <Footer />
     </Fragment>
-  )
+  );
 }
-export default Layout
+export default Layout;

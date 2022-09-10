@@ -3,11 +3,14 @@ import { Provider } from 'react-redux'
 import '../styles/globals.css'
 import '../components/Header/Header.css'
 import '../components/Footer/Footer.css'
+import AuthContextProvider from '../contexts/AuthContext'
 function MyApp({ Component, pageProps }) {
   return (
-    <Provider store={store}>
-      <Component {...pageProps} />
-    </Provider>
+    <AuthContextProvider>
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
+    </AuthContextProvider>
   )
 }
 

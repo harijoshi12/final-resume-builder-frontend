@@ -3,9 +3,40 @@ import Link from "next/link";
 import HocForm from "./HocForm";
 import InputField from "./InputField";
 import styles from "./styles/auth.module.css";
+import { useAuth } from "../../contexts/AuthContext";
+import { toast } from "react-toastify";
+
 const Login = (props) => {
-  const { emailRef, password1Ref, isLoginForm } = props;
+  const { emailRef, password1Ref, isLoginForm, data, handleInputs } = props;
+  const { email_login, password_login } = data;
   const loginFormRef = useRef(null);
+
+  const { handleLogin } = useAuth();
+
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      if (!email_login || !password_login) {
+        toast.error("Please fill all details", {
+          position: toast.POSITION.TOP_CENTER,
+          className: "custom_toast",
+        });
+      } else {
+        const user = await handleLogin(email_login, password_login);
+        console.log(user);
+        toast.success("Successfully login!", {
+          position: toast.POSITION.TOP_CENTER,
+          className: "custom_toast",
+        });
+      }
+    } catch (error) {
+      toast.error(error.message, {
+        position: toast.POSITION.TOP_CENTER,
+        className: "custom_toast",
+      });
+    }
+  };
+
   useEffect(() => {
     if (isLoginForm) {
       if (window.innerWidth <= "576") {
@@ -18,34 +49,37 @@ const Login = (props) => {
     }
   }, [isLoginForm]);
   return (
-    <form ref={loginFormRef} action="" className={styles.login_form}>
+    <form
+      ref={loginFormRef}
+      action=""
+      className={styles.login_form}
+      onSubmit={(e) => onSubmitHandler(e)}
+    >
       <InputField
         inputRef={emailRef}
-        isStar={true}
         type="email"
         name="email_login"
         id_htmlFor="id_email_login"
         label="E-mail"
+        value={email_login}
+        handleInputs={handleInputs}
       ></InputField>
 
       <InputField
         inputRef={password1Ref}
-        isStar={true}
         type="password"
         name="password_login"
         id_htmlFor="id_password_login"
         label="Password"
+        value={password_login}
+        handleInputs={handleInputs}
       ></InputField>
 
       <div className={styles.etc}>
-        <InputField
-          inputRef={password1Ref}
-          isStar={false}
-          type="checkbox"
-          name="remember"
-          id_htmlFor="id_remember"
-          label="Remember Me"
-        ></InputField>
+        <div className={styles.remember}>
+          <input type="checkbox" name="remember" id="id_remember" />
+          <label htmlFor="id_remember">Remember Me</label>
+        </div>
         <Link href="/reset-password">
           <a className={styles.forget}>Forget Password?</a>
         </Link>

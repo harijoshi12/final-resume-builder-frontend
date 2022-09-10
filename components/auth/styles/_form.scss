@@ -120,13 +120,18 @@ $light: rgb(209, 209, 209);
       width: 100%;
       padding: 11px;
       font-size: 25px;
-      border: 1px solid rgb(95, 95, 95);
+      cursor: pointer;
+      border: 0;
       outline: 0;
       border-radius: 5px;
       background: orangered;
-      color: white;
       background: linear-gradient(to right, orange, red);
-      // box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+      color: white;
+      box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.5);
+      transition: all 0.2s ease;
+      &:hover{
+        box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.5);
+      }
     }
   }
   .register_form{
