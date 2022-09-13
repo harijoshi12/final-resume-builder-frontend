@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { authInputCodes } from "../../constants/constants"
+import { userInputCodes } from "../../constants/constants"
 
 const initialState = {
-  [authInputCodes.USERNAME]: "",
-  [authInputCodes.EMAIL]: "",
-  [authInputCodes.PASSWORD]: "",
-  [authInputCodes.CONFIRMPASSWORD]: "",
-  [authInputCodes.IMAGESRC]: ""
+  [userInputCodes.USERNAME]: "",
+  [userInputCodes.EMAIL]: "",
+  [userInputCodes.PASSWORD]: "",
+  [userInputCodes.CONFIRMPASSWORD]: "",
+  [userInputCodes.IMAGESRC]: ""
 }
 
 export const authSlice = createSlice({

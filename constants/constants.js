@@ -77,10 +77,15 @@ export const resumeInputCodes = {
   INTEREST: "interest"
 }
 
-export const authInputCodes = {
+export const userInputCodes = {
+  NAME: "name",
   USERNAME: "userName",
   EMAIL: "email",
   PASSWORD: "password",
   CONFIRMPASSWORD: "confirmPassword",
+  ISSUPERADMIN: "isSuperAdmin",
+  ROLE: "role",
+  CART: "cart",
+  DOCUMENTS: "documents",
   IMAGESRC: "imageSrc",
 }

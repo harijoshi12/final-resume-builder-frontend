@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import HocForm from "./HocForm";
 import InputField from "./InputField";
@@ -10,6 +11,8 @@ const Login = (props) => {
   const { emailRef, password1Ref, isLoginForm, data, handleInputs } = props;
   const { email_login, password_login } = data;
   const loginFormRef = useRef(null);
+
+  const router = useRouter();
 
   const { handleLogin } = useAuth();
 
@@ -23,11 +26,18 @@ const Login = (props) => {
         });
       } else {
         const user = await handleLogin(email_login, password_login);
-        console.log(user);
+        const token = await user.user.getIdToken();
+        console.log("login= ", user.user);
+        localStorage.setItem("token", token);
+
+        axios.get("https://localhost:5000/api/user/", {
+          header,
+        });
         toast.success("Successfully login!", {
           position: toast.POSITION.TOP_CENTER,
           className: "custom_toast",
         });
+        router.push("/dashboard");
       }
     } catch (error) {
       toast.error(error.message, {

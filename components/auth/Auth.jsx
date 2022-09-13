@@ -5,8 +5,10 @@ import styles from "./styles/auth.module.css";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../../contexts/AuthContext";
+import { useRouter } from "next/router";
 
-const Auth = () => {
+const Auth = ({ authPage }) => {
   const [data, setData] = useState({
     email_login: "",
     password_login: "",
@@ -21,13 +23,22 @@ const Auth = () => {
   const sliderRef = useRef(null);
   const paddingRef = useRef(null);
 
+  useEffect(() => {
+    if (authPage === "login") {
+      setIsLoginForm(true);
+    } else if (authPage === "register") {
+      setIsLoginForm(false);
+    }
+  }, [authPage]);
+
   const handleInputs = (e) => {
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  useLayoutEffect(() => {
-    sliderRef.current.style.left = "50%";
+  useEffect(() => {
     if (!isLoginForm) {
+      sliderRef.current.style.left = "50%";
+      setFormHeight("470px");
       if (window.innerWidth <= "576") {
         setTop("420px");
       } else {
@@ -35,19 +46,21 @@ const Auth = () => {
       }
     } else {
       sliderRef.current.style.left = "0%";
+      setFormHeight("410px");
       if (window.innerWidth <= "576") {
         setTop("360px");
       } else {
         setTop("374px");
       }
     }
-  }, []);
+  }, [isLoginForm]);
 
   useEffect(() => {
     commonRef.current.style.top = top;
     paddingRef.current.style.paddingTop = formHeight;
-  }, [top, formHeight]);
+  }, [top, formHeight, isLoginForm]);
 
+  const router = useRouter();
   const showLogin = () => {
     if (window.innerWidth <= "576") {
       setTop("360px");
@@ -59,9 +72,11 @@ const Auth = () => {
     paddingRef.current.style.transition = "all 0.6s ease-in-out";
     sliderRef.current.style.left = "0%";
     setIsLoginForm(true);
+    router.push("/login");
   };
 
   const showRegister = () => {
+    router.push("/register");
     if (window.innerWidth <= "576") {
       setTop("420px");
     } else {
@@ -72,6 +87,23 @@ const Auth = () => {
     commonRef.current.style.transition = "all 0.1s ease-in-out";
     paddingRef.current.style.transition = "all 0.1s ease-in-out";
     setIsLoginForm(false);
+  };
+
+  const { handleGoogleLogin } = useAuth();
+  const googleLoginHandler = async () => {
+    try {
+      const user = await handleGoogleLogin();
+      console.log("g= ", user);
+      toast.success("Successfully login!", {
+        position: toast.POSITION.TOP_CENTER,
+        className: "custom_toast",
+      });
+    } catch (error) {
+      toast.error(error.message, {
+        position: toast.POSITION.TOP_CENTER,
+        className: "custom_toast",
+      });
+    }
   };
 
   return (
@@ -112,7 +144,10 @@ const Auth = () => {
           <div className={styles.social_divider}>
             <span>or</span>
           </div>
-          <div className={styles.social_logins}>
+          <div
+            className={styles.social_logins}
+            onClick={(e) => googleLoginHandler(e)}
+          >
             <div className={styles.google_auth}>
               <span className={styles.goolge_logo}></span>
               <span className={styles.google_text}>Continue with Google</span>

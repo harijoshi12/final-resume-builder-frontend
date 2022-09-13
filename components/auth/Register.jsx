@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import HocForm from "./HocForm";
 import InputField from "./InputField";
 import styles from "./styles/auth.module.css";
@@ -7,6 +8,7 @@ import { toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useRouter } from "next/router";
 
 const Register = (props) => {
   const {
@@ -19,14 +21,21 @@ const Register = (props) => {
     handleInputs,
   } = props;
   const { email_register, password_register1, password_register2 } = data;
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [varified, setVarified] = useState(false);
   const registerFormRef = useRef(null);
 
-  const { handleRegister } = useAuth();
+  function onChange(value) {
+    console.log("Captcha value:", value);
+  }
 
+  const { handleRegister, currentUser } = useAuth();
+
+  const router = useRouter();
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       if (!email_register || !password_register1 || !password_register2) {
         toast.error("Please fill all details", {
           position: toast.POSITION.TOP_CENTER,
@@ -50,6 +59,8 @@ const Register = (props) => {
               email_register,
               password_register1
             );
+            setLoading(false);
+            router.push("/");
             toast.success("Successfully registered!", {
               position: toast.POSITION.TOP_CENTER,
               className: "custom_toast",
@@ -62,6 +73,7 @@ const Register = (props) => {
         position: toast.POSITION.TOP_CENTER,
         className: "custom_toast",
       });
+      setLoading(false);
     }
   };
 
@@ -84,6 +96,7 @@ const Register = (props) => {
       className={styles.register_form}
       onSubmit={(e) => onSubmitHandler(e)}
     >
+      {currentUser?.email}
       <InputField
         inputRef={emailRef}
         type="email"
@@ -93,7 +106,6 @@ const Register = (props) => {
         value={email_register}
         handleInputs={handleInputs}
       ></InputField>
-
       <InputField
         inputRef={password1Ref}
         type="password"
@@ -103,7 +115,6 @@ const Register = (props) => {
         value={password_register1}
         handleInputs={handleInputs}
       ></InputField>
-
       <InputField
         inputRef={password2Ref}
         type="password"
@@ -113,7 +124,10 @@ const Register = (props) => {
         value={password_register2}
         handleInputs={handleInputs}
       ></InputField>
-
+      <ReCAPTCHA
+        sitekey="6Lf21OchAAAAAKwT5p5OwNKr_FLHE1MGbULpZiQq"
+        onChange={onChange}
+      />
       <button className={styles.submit_btn} type="submit">
         Register
       </button>

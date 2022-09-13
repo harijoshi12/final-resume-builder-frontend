@@ -106,16 +106,21 @@
   width: 310px;
   height: 430px;
   border: 5px solid orangered;
+  transform-style: preserve-3d;
 }
 .hero .container .content .right_section .resumebg .first {
   z-index: 10;
   border-bottom: 0;
   border-right: 0;
+  -webkit-animation: anim 5s linear infinite;
+          animation: anim 5s linear infinite;
 }
 .hero .container .content .right_section .resumebg .second {
   z-index: 30;
   border-left: 0;
   border-top: 0;
+  -webkit-animation: anim 5s linear infinite;
+          animation: anim 5s linear infinite;
 }
 .hero .container .content .right_section .resumebg .imgbox {
   position: relative;
@@ -129,6 +134,17 @@
   width: 283px;
 }
 
+@-webkit-keyframes anim {
+  50% {
+    transform: skew(14deg);
+  }
+}
+
+@keyframes anim {
+  50% {
+    transform: skew(14deg);
+  }
+}
 @media screen and (max-width: 768px) {
   .hero {
     background-image: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.05) 65%, rgba(254, 254, 254, 0) 100%), url(../media/images/triangles-bg.png);

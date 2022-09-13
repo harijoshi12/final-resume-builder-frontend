@@ -1,16 +1,18 @@
-import React, { useRef, useState, useEffect } from 'react'
-import Link from 'next/link'
-function Header({setIsMousein}) {
-  const [toggleMenu, setToggleMenu] = useState(false)
-  const progress = useRef()
-  const nav = useRef()
-  const link1 = useRef()
-  const link2 = useRef()
-  const link3 = useRef()
-  const link4 = useRef()
-  const link5 = useRef()
- 
-  const burger = useRef()
+import React, { useRef, useState, useEffect } from "react";
+import Link from "next/link";
+import { useAuth } from "../../contexts/AuthContext";
+import { useRouter } from "next/router";
+function Header({ setIsMousein }) {
+  const [toggleMenu, setToggleMenu] = useState(false);
+  const progress = useRef();
+  const nav = useRef();
+  const link1 = useRef();
+  const link2 = useRef();
+  const link3 = useRef();
+  const link4 = useRef();
+  const link5 = useRef();
+
+  const burger = useRef();
 
   // useEffect(()=>{
   //   console.log(link1)
@@ -30,7 +32,6 @@ function Header({setIsMousein}) {
   //     })
   //   })
   // },[ setIsMousein])
-
 
   // Responsive Navabar
   // useEffect(()=>{
@@ -112,69 +113,100 @@ function Header({setIsMousein}) {
   //   })
   // },[])
 
-  
   // Progress Bar
- useEffect(()=>{
+  useEffect(() => {
     let body = document.body;
     let html = document.documentElement;
     let winHeight = window.innerHeight;
     let value;
-  function onResizeProgress(){
-    let a = body.scrollHeight;
-    let b = body.offsetHeight;
-    let d = html.scrollHeight; // includes margin
-    let e = html.offsetHeight; // includes margin
-    var docHeight = Math.max(a, b, d, e);
-    winHeight = window.innerHeight;
-    let scrollHeight = window.scrollY;
-    let scrollableHeight = docHeight - winHeight;
-    value = Math.floor((scrollHeight / scrollableHeight) * 100);
-    progress.current.style.width = value + "%";
-  }
-  function onScrollProgress(){
-    // console.log(progress)
-    let a = body.scrollHeight;
-    let b = body.offsetHeight;
-    let d = html.scrollHeight; // includes margin
-    let e = html.offsetHeight; // includes margin
-    winHeight = window.innerHeight;
-    var docHeight = Math.max(a, b, d, e);
-    let scrollHeight = window.scrollY;
-    let scrollableHeight = docHeight - winHeight;
-    value = Math.floor((scrollHeight / scrollableHeight) * 100);
-    progress.current.style.width = value + "%";
-  }
-  const progressBar = () => {
-    window.addEventListener("resize", onResizeProgress);
-    window.addEventListener("scroll", onScrollProgress);
+    function onResizeProgress() {
+      let a = body.scrollHeight;
+      let b = body.offsetHeight;
+      let d = html.scrollHeight; // includes margin
+      let e = html.offsetHeight; // includes margin
+      var docHeight = Math.max(a, b, d, e);
+      winHeight = window.innerHeight;
+      let scrollHeight = window.scrollY;
+      let scrollableHeight = docHeight - winHeight;
+      value = Math.floor((scrollHeight / scrollableHeight) * 100);
+      progress.current.style.width = value + "%";
+    }
+    function onScrollProgress() {
+      // console.log(progress)
+      let a = body.scrollHeight;
+      let b = body.offsetHeight;
+      let d = html.scrollHeight; // includes margin
+      let e = html.offsetHeight; // includes margin
+      winHeight = window.innerHeight;
+      var docHeight = Math.max(a, b, d, e);
+      let scrollHeight = window.scrollY;
+      let scrollableHeight = docHeight - winHeight;
+      value = Math.floor((scrollHeight / scrollableHeight) * 100);
+      progress.current.style.width = value + "%";
+    }
+    const progressBar = () => {
+      window.addEventListener("resize", onResizeProgress);
+      window.addEventListener("scroll", onScrollProgress);
+    };
+    progressBar();
+    return () => {
+      window.removeEventListener("resize", onResizeProgress);
+      window.removeEventListener("scroll", onScrollProgress);
+    };
+  }, []);
+  
+  const { currentUser, handleLogout } = useAuth();
+  const router = useRouter();
+  const logoutHandler = (e) => {
+    router.push("/");
+    handleLogout();
   };
-  progressBar();
-  return(()=>{
-    window.removeEventListener("resize", onResizeProgress);
-    window.removeEventListener("scroll", onScrollProgress);
-  })
- },[])
-
   return (
     <>
-      <div className={toggleMenu ? "nav-overlay toggle": "nav-overlay"}></div>
+      <div className={toggleMenu ? "nav-overlay toggle" : "nav-overlay"}></div>
       <div className="pseudo_header"></div>
-      <header className={toggleMenu ? "toggle": ""} >
+      <header className={toggleMenu ? "toggle" : ""}>
         <div className="progress_wrapper">
           <div ref={progress} className="progress"></div>
         </div>
         <div className="nav_wrapper">
-          <div className='logo'><Link href='/'><a>Meta <span>Resume</span></a></Link></div>
-          <nav ref={nav} className={toggleMenu ? "toggle": ""}>
-            <Link href='/'><a ref={link1}>Home</a></Link>
-            <Link href='/resume-templates'><a ref={link2}>Templates</a></Link>
-            <Link href='/dashboard'><a ref={link3}>Dashboard</a></Link>
-            <Link href='/view-resume'><a ref={link5}>View Resume</a></Link>
-            <Link href='/login-register'><a className='login_register'>Login/Register</a></Link>
+          <div className="logo">
+            <Link href="/">
+              <a>
+                Meta <span>Resume</span>
+              </a>
+            </Link>
+          </div>
+          <nav ref={nav} className={toggleMenu ? "toggle" : ""}>
+            <Link href="/">
+              <a ref={link1}>Home</a>
+            </Link>
+            <Link href="/resume-templates">
+              <a ref={link2}>Templates</a>
+            </Link>
+            {currentUser && (
+              <Link href="/dashboard">
+                <a ref={link3}>Dashboard</a>
+              </Link>
+            )}
+            <Link href="/view-resume">
+              <a ref={link5}>View Resume</a>
+            </Link>
+            {currentUser ? (
+              <button onClick={(e) => logoutHandler(e)}>Logout</button>
+            ) : (
+              <Link href="/login-register">
+                <a className="login_register">Login/Register</a>
+              </Link>
+            )}
           </nav>
-          <div ref={burger} className={toggleMenu ? "burger toggle": "burger"} onClick={()=>{
-            setToggleMenu(!toggleMenu)
-          }} >
+          <div
+            ref={burger}
+            className={toggleMenu ? "burger toggle" : "burger"}
+            onClick={() => {
+              setToggleMenu(!toggleMenu);
+            }}
+          >
             <div className="line line1"></div>
             <div className="line line2"></div>
             <div className="line line3"></div>
@@ -182,7 +214,7 @@ function Header({setIsMousein}) {
         </div>
       </header>
     </>
-  )
+  );
 }
 
-export default Header
+export default Header;

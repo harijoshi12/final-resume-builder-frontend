@@ -21,6 +21,7 @@ import {
   ProjectInput,
   TechSkillInput,
 } from "./ItemsInput";
+import { useAuth } from "../../../../contexts/AuthContext";
 
 const SecItem = (props) => {
   const { secId, itemData, secData, setSecData, addNewItem, setPlusEl } = props;
@@ -311,6 +312,7 @@ const ContactItem = ({ setShowContactInput, icon, info }) => {
   );
 };
 export const ContactDetails = (props) => {
+  const { currentUser } = useAuth();
   const {
     setShowContactInput,
     email,
@@ -338,7 +340,8 @@ export const ContactDetails = (props) => {
       {email && emailChecked && (
         <ContactItem
           setShowContactInput={setShowContactInput}
-          info={email}
+          // info={email}
+          info={currentUser?.email}
           icon={<MdEmail />}
         />
       )}
