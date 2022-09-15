@@ -11,13 +11,27 @@ const HocForm = (Form) => {
       inputs.forEach((input) => {
         if (input.current) {
           const label = input.current.nextElementSibling.firstElementChild;
+
+          // if data already filled
+          function onDataFill() {
+            if (input.current.value !== "") {
+              label.style.transform = `translateY(-25px)`;
+              label.style.fontSize = `13px`;
+              label.style.color = `blue`;
+            }
+          }
+          onDataFill();
+
+          // on focus
           input.current.addEventListener("focus", () => {
             label.style.transform = `translateY(-25px)`;
             label.style.fontSize = `13px`;
             label.style.color = `blue`;
           });
+
+          // on blur
           input.current.addEventListener("blur", () => {
-            if (input.current.value !== "") {
+            if (input?.current?.value !== "") {
               label.style.transform = `translateY(-25px)`;
               label.style.fontSize = `13px`;
               label.style.color = `blue`;

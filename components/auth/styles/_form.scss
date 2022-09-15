@@ -2,10 +2,7 @@ $dark: rgb(48, 48, 48);
 $light: rgb(209, 209, 209);
 
 .wrapper{
-  min-height: 95vh;
-  padding: 70px 10px;
-  padding-top: 120px;
-  background-color: rgb(168, 168, 168);
+  
 }
 .form_container{
   background-color: rgb(235, 235, 235);
@@ -80,9 +77,9 @@ $light: rgb(209, 209, 209);
         background-color: white;
         padding-top: 15px;
         padding-left: 10px;
-        font-size: 20px;
-        color: $dark;
-        // color: $light;
+        font-size: 18px;
+        letter-spacing: 1px;
+        color: rgb(67, 67, 67);
       }
       label{
         pointer-events: none;

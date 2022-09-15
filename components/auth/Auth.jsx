@@ -1,10 +1,12 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import axios from "axios";
 import NewLogin from "./Login";
 import NewRegister from "./Register";
 import styles from "./styles/auth.module.css";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
 
@@ -24,6 +26,12 @@ const Auth = ({ authPage }) => {
   const paddingRef = useRef(null);
 
   useEffect(() => {
+    if (currentUser) {
+      router.push("/dashboard");
+    }
+  }, [currentUser]);
+
+  useEffect(() => {
     if (authPage === "login") {
       setIsLoginForm(true);
     } else if (authPage === "register") {
@@ -38,6 +46,8 @@ const Auth = ({ authPage }) => {
   useEffect(() => {
     if (!isLoginForm) {
       sliderRef.current.style.left = "50%";
+      commonRef.current.style.transition = "all 0.1s ease-in-out";
+      paddingRef.current.style.transition = "all 0.1s ease-in-out";
       setFormHeight("470px");
       if (window.innerWidth <= "576") {
         setTop("420px");
@@ -46,6 +56,8 @@ const Auth = ({ authPage }) => {
       }
     } else {
       sliderRef.current.style.left = "0%";
+      commonRef.current.style.transition = "all 0.6s ease-in-out";
+      paddingRef.current.style.transition = "all 0.6s ease-in-out";
       setFormHeight("410px");
       if (window.innerWidth <= "576") {
         setTop("360px");
@@ -61,39 +73,34 @@ const Auth = ({ authPage }) => {
   }, [top, formHeight, isLoginForm]);
 
   const router = useRouter();
+
   const showLogin = () => {
-    if (window.innerWidth <= "576") {
-      setTop("360px");
-    } else {
-      setTop("374px");
-    }
-    setFormHeight("410px");
-    commonRef.current.style.transition = "all 0.6s ease-in-out";
-    paddingRef.current.style.transition = "all 0.6s ease-in-out";
-    sliderRef.current.style.left = "0%";
     setIsLoginForm(true);
     router.push("/login");
   };
-
   const showRegister = () => {
-    router.push("/register");
-    if (window.innerWidth <= "576") {
-      setTop("420px");
-    } else {
-      setTop("435px");
-    }
-    setFormHeight("470px");
-    sliderRef.current.style.left = "50%";
-    commonRef.current.style.transition = "all 0.1s ease-in-out";
-    paddingRef.current.style.transition = "all 0.1s ease-in-out";
     setIsLoginForm(false);
+    router.push("/register");
   };
 
-  const { handleGoogleLogin } = useAuth();
+  const { handleGoogleLogin, currentUser } = useAuth();
+
   const googleLoginHandler = async () => {
     try {
       const user = await handleGoogleLogin();
-      console.log("g= ", user);
+      const token = await user.user.getIdToken();
+      const config = {
+        headers: {
+          // Authorization: `Bearer ${token}`,
+          token,
+        },
+      };
+      const { data } = await axios.get(
+        "http://192.168.1.39:5000/api/user/current-user",
+        config
+      );
+      console.log("data= ", data);
+      router.push("/dashboard");
       toast.success("Successfully login!", {
         position: toast.POSITION.TOP_CENTER,
         className: "custom_toast",

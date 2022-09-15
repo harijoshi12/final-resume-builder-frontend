@@ -154,13 +154,14 @@ function Header({ setIsMousein }) {
       window.removeEventListener("scroll", onScrollProgress);
     };
   }, []);
-  
+
   const { currentUser, handleLogout } = useAuth();
   const router = useRouter();
   const logoutHandler = (e) => {
-    router.push("/");
     handleLogout();
+    router.push("/");
   };
+
   return (
     <>
       <div className={toggleMenu ? "nav-overlay toggle" : "nav-overlay"}></div>
@@ -195,7 +196,7 @@ function Header({ setIsMousein }) {
             {currentUser ? (
               <button onClick={(e) => logoutHandler(e)}>Logout</button>
             ) : (
-              <Link href="/login-register">
+              <Link href="/login">
                 <a className="login_register">Login/Register</a>
               </Link>
             )}

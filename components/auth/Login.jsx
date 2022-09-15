@@ -6,6 +6,7 @@ import InputField from "./InputField";
 import styles from "./styles/auth.module.css";
 import { useAuth } from "../../contexts/AuthContext";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const Login = (props) => {
   const { emailRef, password1Ref, isLoginForm, data, handleInputs } = props;
@@ -14,7 +15,12 @@ const Login = (props) => {
 
   const router = useRouter();
 
-  const { handleLogin } = useAuth();
+  const { handleLogin, currentUser, currentToken } = useAuth();
+
+  useEffect(() => {
+    console.log("cu= ", currentUser);
+    console.log("cT= ", currentToken);
+  });
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -25,14 +31,22 @@ const Login = (props) => {
           className: "custom_toast",
         });
       } else {
-        const user = await handleLogin(email_login, password_login);
-        const token = await user.user.getIdToken();
-        console.log("login= ", user.user);
-        localStorage.setItem("token", token);
-
-        axios.get("https://localhost:5000/api/user/", {
-          header,
-        });
+        const { user } = await handleLogin(email_login, password_login);
+        const token = await user?.getIdToken();
+        console.log("user= ", user);
+        console.log("token= ", token);
+        const config = {
+          headers: {
+            // Authorization: `Bearer ${token}`,
+            token,
+          },
+        };
+        const { data } = await axios.get(
+          "http://192.168.1.34:5000/api/user/current-user",
+          config
+        );
+        console.log("data= ", data);
+        // localStorage.setItem("token", token);
         toast.success("Successfully login!", {
           position: toast.POSITION.TOP_CENTER,
           className: "custom_toast",
@@ -58,6 +72,7 @@ const Login = (props) => {
       loginFormRef.current.style.left = "-500px";
     }
   }, [isLoginForm]);
+
   return (
     <form
       ref={loginFormRef}

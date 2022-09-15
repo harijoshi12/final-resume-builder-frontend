@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getIdToken, GoogleAuthProvider, onAuthStateChanged, onIdTokenChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { auth } from '../config/firebase'
@@ -9,6 +9,7 @@ const AuthContext = createContext({
   handleLogin: () => Promise,
   handleGoogleLogin: () => Promise,
   handleLogout: () => Promise,
+  currentToken: null,
 })
 
 // custom hook
@@ -17,14 +18,21 @@ export const useAuth = () => useContext(AuthContext)
 // component
 const AuthContextProvider = ({ children }) => {
 
-  const [currentUser, setCurrentUser] = useState("radha")
+  const [currentUser, setCurrentUser] = useState(null)
+  const [currentToken, setCurrentToken] = useState(null)
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user)
+    const unsubscribe = onIdTokenChanged(auth, async (user) => {
+      // const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log("idn= ", user)
+      console.log('token changed');
+      console.log(await user?.getIdToken());
+      setCurrentUser(await user)
+      setCurrentToken(await user?.getIdToken())
     })
     return () => unsubscribe()
   }, [])
+
 
   const handleRegister = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -43,7 +51,7 @@ const AuthContextProvider = ({ children }) => {
     return signOut(auth)
   }
 
-  const value = { currentUser, handleRegister, handleLogin, handleLogout, handleGoogleLogin }
+  const value = { currentUser, handleRegister, handleLogin, handleLogout, handleGoogleLogin, currentToken }
 
   return (
     <AuthContext.Provider value={value}>

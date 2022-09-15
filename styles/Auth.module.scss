@@ -1,0 +1,26 @@
+.auth_page{
+  background-color: rgb(168, 168, 168);
+  padding: 40px 10px;
+  padding-bottom: 100px;
+  min-height: 100vh;
+}
+
+.logo{
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 45px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-style: 'Merriweather', serif;
+  z-index: 400;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+  a{
+      color: brown;
+      span{
+          font-weight: 200;
+      }
+  }
+}

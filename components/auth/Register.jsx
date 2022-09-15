@@ -1,11 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 import HocForm from "./HocForm";
 import InputField from "./InputField";
 import styles from "./styles/auth.module.css";
 
 import { toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 
 import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
@@ -25,11 +23,7 @@ const Register = (props) => {
   const [varified, setVarified] = useState(false);
   const registerFormRef = useRef(null);
 
-  function onChange(value) {
-    console.log("Captcha value:", value);
-  }
-
-  const { handleRegister, currentUser } = useAuth();
+  const { handleRegister, currentUser, handleLogout } = useAuth();
 
   const router = useRouter();
   const onSubmitHandler = async (e) => {
@@ -59,8 +53,10 @@ const Register = (props) => {
               email_register,
               password_register1
             );
+            setData((prev) => ({ ...prev, email_login: user.user.email }));
+            handleLogout();
             setLoading(false);
-            router.push("/");
+            router.push("/login");
             toast.success("Successfully registered!", {
               position: toast.POSITION.TOP_CENTER,
               className: "custom_toast",
@@ -96,7 +92,6 @@ const Register = (props) => {
       className={styles.register_form}
       onSubmit={(e) => onSubmitHandler(e)}
     >
-      {currentUser?.email}
       <InputField
         inputRef={emailRef}
         type="email"
@@ -124,10 +119,6 @@ const Register = (props) => {
         value={password_register2}
         handleInputs={handleInputs}
       ></InputField>
-      <ReCAPTCHA
-        sitekey="6Lf21OchAAAAAKwT5p5OwNKr_FLHE1MGbULpZiQq"
-        onChange={onChange}
-      />
       <button className={styles.submit_btn} type="submit">
         Register
       </button>
