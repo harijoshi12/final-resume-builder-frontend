@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 
 import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 const Register = (props) => {
   const {
@@ -49,11 +50,26 @@ const Register = (props) => {
             });
             console.log("less");
           } else {
-            const user = await handleRegister(
+            const { user } = await handleRegister(
               email_register,
               password_register1
             );
-            setData((prev) => ({ ...prev, email_login: user.user.email }));
+            const token = await user?.getIdToken();
+            console.log("user= ", user);
+            console.log("token= ", token);
+            const config = {
+              headers: {
+                // Authorization: `Bearer ${token}`,
+                token,
+              },
+            };
+            const { data } = await axios.patch(
+              "http://192.168.1.34:5000/api/user/current-user",
+              { password: "hari123ram" },
+              config
+            );
+            console.log("data= ", data);
+            setData((prev) => ({ ...prev, email_login: user.email }));
             handleLogout();
             setLoading(false);
             router.push("/login");
