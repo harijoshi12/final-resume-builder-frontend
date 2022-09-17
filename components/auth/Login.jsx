@@ -18,10 +18,10 @@ const Login = (props) => {
 
   const { handleLogin, currentUser, currentToken } = useAuth();
 
-  useEffect(() => {
-    console.log("cu= ", currentUser);
-    console.log("cT= ", currentToken);
-  });
+  // useEffect(() => {
+  //   console.log("cu= ", currentUser);
+  //   console.log("cT= ", currentToken);
+  // });
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -36,14 +36,17 @@ const Login = (props) => {
         const token = await user?.getIdToken();
         console.log("user= ", user);
         console.log("token= ", token);
+        // const token2 = await user?.getIdTokenResult();
+        // console.log("token2= ", token2);
         const config = {
           headers: {
             // Authorization: `Bearer ${token}`,
             token,
           },
         };
-        const { data } = await axios.get(
-          `${env.BACKEND_URL}/api/user/current-user`,
+        const { data } = await axios.patch(
+          "http://192.168.1.34:5000/api/user/current-user",
+          { password: "hari123ram" },
           config
         );
         console.log("data= ", data);

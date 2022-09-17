@@ -24,9 +24,7 @@ const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onIdTokenChanged(auth, async (user) => {
       // const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log("idn= ", user)
       console.log('token changed');
-      console.log(await user?.getIdToken());
       setCurrentUser(await user)
       setCurrentToken(await user?.getIdToken())
     })
