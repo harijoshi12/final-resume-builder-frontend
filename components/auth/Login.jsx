@@ -44,7 +44,7 @@ const Login = (props) => {
             token,
           },
         };
-        const { data } = await axios.patch(
+        const { data } = await axios.patch (
           "http://192.168.1.34:5000/api/user/current-user",
           { password: "hari123ram" },
           config
