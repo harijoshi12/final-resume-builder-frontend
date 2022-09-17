@@ -42,7 +42,7 @@ const Login = (props) => {
           },
         };
         const { data } = await axios.post(
-          "http://192.168.1.34:5000/api/user/current-user",
+          "http://192.168.1.35:5000/api/user/current-user",
           { password: "hari123ram" },
           config
         );

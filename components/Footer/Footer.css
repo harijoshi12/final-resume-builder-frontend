@@ -20,7 +20,10 @@ footer .copyright {
 }
 footer .copyright a {
   color: rgb(171, 184, 255);
-  text-decoration: underline;
+  transition: all 0.1s ease;
+}
+footer .copyright a:hover {
+  color: orangered;
 }
 footer .copyright .heart {
   width: 15px;

@@ -1,0 +1,104 @@
+.templatePage {
+  background-color: #03464f;
+  min-height: 100vh;
+  width: 100%;
+  color: rgb(238, 238, 238);
+  padding-bottom: 70px;
+}
+.templatePage .templates {
+  padding-top: 70px;
+}
+.templatePage .container {
+  margin: auto;
+  width: 100%;
+}
+.templatePage .content {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.templatePage .content .top {
+  max-width: 1000px;
+  padding: 20px 30px;
+}
+.templatePage .content .top h1 {
+  font-size: 50px;
+  margin: 50px auto;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+.templatePage .content .top h3 {
+  margin: 20px auto;
+  margin-bottom: 30px;
+  font-size: 25px;
+  font-weight: 100;
+  font-family: sans-serif;
+  line-height: 40px;
+  letter-spacing: 1px;
+}
+.templatePage .content .wish {
+  margin: 10px;
+  padding: 100px;
+  max-width: 900px;
+  border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
+  background-color: orangered;
+  font-family: cursive, sans-serif;
+  -webkit-animation: brAnim 10s linear infinite;
+          animation: brAnim 10s linear infinite;
+  color: white;
+}
+.templatePage .content .wish h1 {
+  margin-bottom: 30px;
+}
+.templatePage .content .wish h3 {
+  font-size: 30px;
+}
+
+@-webkit-keyframes brAnim {
+  0% {
+    border-radius: 61% 39% 44% 56%/34% 41% 59% 66%;
+  }
+  20% {
+    border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
+  }
+  40% {
+    border-radius: 57% 43% 40% 60%/30% 30% 70% 70%;
+  }
+  60% {
+    border-radius: 61% 39% 32% 68%/55% 72% 28% 45%;
+  }
+  80% {
+    border-radius: 61% 39% 82% 18%/68% 41% 59% 32%;
+  }
+  100% {
+    border-radius: 61% 39% 44% 56%/34% 41% 59% 66%;
+  }
+}
+
+@keyframes brAnim {
+  0% {
+    border-radius: 61% 39% 44% 56%/34% 41% 59% 66%;
+  }
+  20% {
+    border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
+  }
+  40% {
+    border-radius: 57% 43% 40% 60%/30% 30% 70% 70%;
+  }
+  60% {
+    border-radius: 61% 39% 32% 68%/55% 72% 28% 45%;
+  }
+  80% {
+    border-radius: 61% 39% 82% 18%/68% 41% 59% 32%;
+  }
+  100% {
+    border-radius: 61% 39% 44% 56%/34% 41% 59% 66%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .templatePage .content .wish {
+    padding: 100px 20px;
+  }
+}/*# sourceMappingURL=SelectTemplates.module.css.map */
