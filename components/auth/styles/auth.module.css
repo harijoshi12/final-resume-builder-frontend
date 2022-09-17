@@ -187,6 +187,24 @@
   font-size: 15px;
   font-weight: 100;
   color: rgb(66, 88, 255);
+  transition: all 0.2s ease;
+}
+.form_container .login_form .etc .forget:hover {
+  text-decoration: underline;
+  color: orangered;
+}
+
+.form_container {
+  padding-bottom: 50px;
+}
+.form_container p {
+  margin: 10px;
+  margin-bottom: 20px;
+  margin-left: 0;
+}
+.form_container .forget_password_form {
+  position: static;
+  width: 100%;
 }
 
 .common {

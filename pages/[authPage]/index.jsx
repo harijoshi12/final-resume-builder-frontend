@@ -23,7 +23,7 @@ const AuthPageWrapper = ({ children }) => {
           </a>
         </Link>
       </div>
-      {children}
+      <main className={styles.wrapper}>{children}</main>
       <ReCAPTCHA
         sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
         onChange={onChange}
