@@ -7,6 +7,7 @@ import styles from "./styles/auth.module.css";
 import { useAuth } from "../../contexts/AuthContext";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { env } from "../../config/Env";
 
 const Login = (props) => {
   const { emailRef, password1Ref, isLoginForm, data, handleInputs } = props;
@@ -42,7 +43,7 @@ const Login = (props) => {
           },
         };
         const { data } = await axios.get(
-          "http://192.168.1.34:5000/api/user/current-user",
+          `${env.BACKEND_URL}/api/user/current-user`,
           config
         );
         console.log("data= ", data);

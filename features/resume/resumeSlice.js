@@ -1,15 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { resumeInputCodes } from "../../constants/constants"
+import initialState from "./resumeInitialState"
 
-const initialState = {
-  name: ''
-}
+// const initialState = {
+//   name: ''
+// }
+
+
 
 export const resumeSlice = createSlice({
   name: "resumeReducer",
   initialState,
   reducers: {
-
+    
   }
 })
 
