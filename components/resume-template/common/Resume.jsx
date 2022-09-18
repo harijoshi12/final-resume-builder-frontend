@@ -21,14 +21,14 @@ let i = 0;
 const Resume = () => {
   let completeState = useSelector((state) => state.resumeReducer);
 
-  useEffect(()=>{
-    const f = async () => {
-      const {data} = await axios.get("http://localhost:5000/api/resume/");
-      console.log("idn14: data:", data[0]);
-      setResumeLocalData({...data[0]})
-    }
-    f();
-  }, []);
+  // useEffect(()=>{
+  //   const f = async () => {
+  //     const {data} = await axios.get("http://localhost:5000/api/resume/");
+  //     console.log("idn14: data:", data[0]);
+  //     setResumeLocalData({...data[0]})
+  //   }
+  //   f();
+  // }, []);
 
 
   const {
