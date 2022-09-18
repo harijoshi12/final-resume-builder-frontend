@@ -32,6 +32,7 @@ export const CommonForm = (props) => {
 
   useEffect(() => {
     function handleClickOutside(e) {
+      console.log("e in ")
       if (formRef.current && !formRef.current.contains(e.target)) {
         newEditFinishHandler();
       }
@@ -474,7 +475,10 @@ const ContactOption = ({
 export const ContactInput = (props) => {
   const { newSecData, setShowContactInput, setNewSecData } = props;
   const [items, setItems] = useState({ ...newSecData });
-
+  // TODO-done : save data in newSecData on change of newSecData
+  useEffect(() => {
+    setNewSecData({...items});
+  } , [items]);
   const {
     email,
     emailChecked,
@@ -719,7 +723,7 @@ export const LangInput = (props) => {
   } = props;
   const newEditFinishHandler = () => {
     editFinishHandler();
-    if (progLang === "") {
+    if (Language === "") {
       setItemData((prev) => ({ ...prev, progLang: "Programming Language" }));
     }
   };

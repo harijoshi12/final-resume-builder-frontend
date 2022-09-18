@@ -21,13 +21,39 @@ import {
   ProjectInput,
   TechSkillInput,
 } from "./ItemsInput";
+
 import { useAuth } from "../../../../contexts/AuthContext";
+import { langNoToText } from "../../../viewResume/Template1/components/Items";
 
 const SecItem = (props) => {
   const { secId, itemData, secData, setSecData, addNewItem, setPlusEl } = props;
   const [edit, setEdit] = useState(false);
 
   const [newItemData, setNewItemData] = useState(itemData);
+
+  // TODO : update secData on itemData Change, as we have id. then use useEffect in secData dependency in Sections.jsx  
+
+  useEffect(() =>{
+    if(secId === "1"){
+      setSecData([{...newItemData}]);
+    } else {
+      setSecData((prev)=>{
+
+        if(prev){
+           return  prev.map((item) => {
+            if(item.id  == newItemData.id){
+              return {...newItemData};
+            } else {
+              return item;
+            }
+          })
+        } else {
+          return prev;
+        }
+      })
+    }
+  } , [newItemData]);
+
 
   useEffect(() => {
     if (itemData.isLast) {
@@ -341,7 +367,7 @@ export const ContactDetails = (props) => {
         <ContactItem
           setShowContactInput={setShowContactInput}
           // info={email}
-          info={currentUser?.email}
+          info={email ? email : currentUser?.email}
           icon={<MdEmail />}
         />
       )}
@@ -470,7 +496,7 @@ const Lang = ({ language, languageLevel, handleClickItem }) => {
         {language}
       </span>
       <span className={styles.level} onClick={handleClickItem}>
-        {languageLevel}
+        { langNoToText(languageLevel)}
       </span>
     </div>
   );

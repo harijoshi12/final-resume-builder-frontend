@@ -106,12 +106,26 @@ export const ProgLang = (props) => {
   );
 };
 
+export const langNoToText = (languageLevel) => {
+  if( typeof languageLevel === 'number'){
+    if(languageLevel < 2) {
+      return 'Below Average';
+    } else if (languageLevel === 3) {
+      return 'Average';
+    } else {
+      return 'Above Average';
+    }
+  } else {
+    return languageLevel;
+  }
+}
+
 export const Lang = (props) => {
   const { language, languageLevel }=props
   return (
     <div className={styles.lang}>
       <span className={styles.title}>{language}</span>
-      <span className={styles.level}>{languageLevel}</span>
+      <span className={styles.level}>{langNoToText(languageLevel)}</span>
     </div>
   );
 };

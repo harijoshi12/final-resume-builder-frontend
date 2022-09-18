@@ -36,16 +36,14 @@ const Login = (props) => {
         const token = await user?.getIdToken();
         console.log("user= ", user);
         console.log("token= ", token);
-        // const token2 = await user?.getIdTokenResult();
-        // console.log("token2= ", token2);
         const config = {
           headers: {
             // Authorization: `Bearer ${token}`,
             token,
           },
         };
-        const { data } = await axios.patch (
-          "http://192.168.1.34:5000/api/user/current-user",
+        const { data } = await axios.post(
+          "http://103.248.123.81:5000/api/user/current-user",
           { password: "hari123ram" },
           config
         );
@@ -109,7 +107,7 @@ const Login = (props) => {
           <input type="checkbox" name="remember" id="id_remember" />
           <label htmlFor="id_remember">Remember Me</label>
         </div>
-        <Link href="/reset-password">
+        <Link href="/forgot-password">
           <a className={styles.forget}>Forget Password?</a>
         </Link>
       </div>

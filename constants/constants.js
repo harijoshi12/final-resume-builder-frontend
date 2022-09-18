@@ -8,6 +8,8 @@ export const fontFamily = ['Roboto', 'Quicksand', 'Merriweather']
 
 export const resumeInputCodes = {
   RESUMETITLE: "resumeTitle",
+  ID: 'id',
+
   // section title
   SECTITLE: "secTitle",
   // personal info
@@ -71,7 +73,6 @@ export const resumeInputCodes = {
   STUDYENDDATE: "studyEndDate",
   STUDYPRESENT: "studyPresent",
   STUDYPLACE: "studyPlace",
-
 
   // interests
   INTEREST: "interest"

@@ -1,12 +1,33 @@
 import React, { useEffect, useRef, useState } from "react";
 import { MdDone } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import { resumeInputCodes } from "../../../../constants/constants";
+import { resumeActions } from "../../../../features/resume/resumeSlice";
 // custom styles
 import styles from "../Resume.module.css";
-
-const SecTitle = ({ setPlusEl, secTitleName }) => {
+let i = true;
+const SecTitle = ({ setPlusEl, secTitleObj }) => {
+  const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
-  const [secTitle, setSecTitle] = useState(secTitleName);
+  i ? console.log('idn13 , secTitleObj 1st time  : ', secTitleObj) : null;
+  const [secTitle, setSecTitle] = useState(secTitleObj?.secTitle);
+
+  // TODO: Dispatch statechange action with payload of { id: ' ' , newValue: '' , type: 'setTitle'}
+
+  console.log('secTitleObj in Sectitle :', secTitleObj);
+  console.log('secTitle state in  sectitle:  ', secTitle);
+  
+  useEffect(()=>{
+    if(!secTitleObj?.id){
+      return;
+    }
+    dispatch(resumeActions.changeState({
+      id: secTitleObj.id,
+      type: 'setTitle',
+      newValue: secTitle
+    }))
+  }, [secTitle]);
+
   useEffect(() => {
     if (edit) {
       setPlusEl(true);

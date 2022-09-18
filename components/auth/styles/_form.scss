@@ -1,9 +1,6 @@
 $dark: rgb(48, 48, 48);
 $light: rgb(209, 209, 209);
 
-.wrapper{
-  
-}
 .form_container{
   background-color: rgb(235, 235, 235);
   position: relative;
@@ -187,6 +184,11 @@ $light: rgb(209, 209, 209);
         font-size: 15px;
         font-weight: 100;
         color: rgb(66, 88, 255);
+        transition: all 0.2s ease;
+        &:hover{
+          text-decoration: underline;
+          color: orangered;
+        }
       }
     }
   }

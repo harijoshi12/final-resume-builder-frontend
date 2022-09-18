@@ -87,16 +87,19 @@ const Auth = ({ authPage }) => {
 
   const googleLoginHandler = async () => {
     try {
-      const user = await handleGoogleLogin();
-      const token = await user.user.getIdToken();
+      const { user } = await handleGoogleLogin();
+      const token = await user?.getIdToken();
+      console.log("user= ", user);
+      console.log("token= ", token);
       const config = {
         headers: {
           // Authorization: `Bearer ${token}`,
           token,
         },
       };
-      const { data } = await axios.get(
-        "http://192.168.1.39:5000/api/user/current-user",
+      const { data } = await axios.post(
+        "http://localhost:5000/api/user/current-user",
+        { password: "hari123ram" },
         config
       );
       console.log("data= ", data);
@@ -114,7 +117,7 @@ const Auth = ({ authPage }) => {
   };
 
   return (
-    <main className={styles.wrapper}>
+    <>
       <ToastContainer position="top-center" />
       <div className={styles.form_container}>
         <div className={styles.slider_container}>
@@ -162,8 +165,18 @@ const Auth = ({ authPage }) => {
           </div>
         </div>
       </div>
-    </main>
+    </>
   );
 };
 
 export default Auth;
+
+// This gets called on every request
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(`https://.../data`);
+  const data = await res.json();
+
+  // Pass data to the page via props
+  return { props: { data } };
+}

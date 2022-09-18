@@ -1,0 +1,34 @@
+const secTitles = [
+  {
+    [resumeInputCodes.SECTITLE]: "Personal Info",
+    id: "1"
+  },
+  {
+    [resumeInputCodes.SECTITLE]: "Technical Skills",
+    id: "2"
+  },
+  {
+    [resumeInputCodes.SECTITLE]: "Programming Languages",
+    id: "3"
+  },
+  {
+    [resumeInputCodes.SECTITLE]: "My Journey",
+    id: "4"
+  },
+  {
+    [resumeInputCodes.SECTITLE]: "Projects",
+    id: "6"
+  },
+  {
+    [resumeInputCodes.SECTITLE]: "Languages",
+    id: "7"
+  },
+  {
+    [resumeInputCodes.SECTITLE]: "Education",
+    id: "8"
+  },
+  {
+    [resumeInputCodes.SECTITLE]: "Intrests",
+    id: "9"
+  },
+];

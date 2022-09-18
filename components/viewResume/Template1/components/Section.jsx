@@ -21,7 +21,11 @@ const Marking =()=>{
 const Section = (props)=>{
   const {secId,  secTitleName, secData, className} = props
 
+  console.log('secId : ', secId);
+  console.log('secData : ', secData);
+  console.log('secTitleName : ', secTitleName);
 return(
+  
   <div className={`${styles[className]} ${styles.resumeSec}`}>
       {
         secId === "1" || secId === "5" ? null : <SecTitle secTitleName={secTitleName}/>
@@ -36,7 +40,7 @@ return(
         <ContactDetails {...secData} />
       ):(
       <div className={`${styles[className]} ${styles.secContent}`}>
-        {secData.map(itemData => <SecItem secId={secId} key={itemData.id} itemData={itemData}/>)}
+        { Array.isArray(secData) &&  secData.map(itemData => <SecItem secId={secId} key={itemData.id} itemData={itemData}/>)}
       </div>
       )
       }
