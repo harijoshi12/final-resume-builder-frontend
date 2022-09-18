@@ -55,6 +55,44 @@
 .templatePage .content .wish h3 {
   font-size: 30px;
 }
+.templatePage .template_wrapper {
+  overflow: hidden;
+}
+.templatePage .template_wrapper .template {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-position: center;
+  background-size: cover;
+  transition: all 2s ease;
+}
+.templatePage .template_wrapper .template:hover {
+  transform: scale(1.3);
+}
+.templatePage .template_wrapper .template1 {
+  background-image: url(../media/images/templates/resume0.jpg);
+}
+.templatePage .template_wrapper .template2 {
+  background-image: url(../media/images/templates/resume1.png);
+}
+.templatePage .template_wrapper .template3 {
+  background-image: url(../media/images/templates/resume2.png);
+}
+.templatePage .template_wrapper .template4 {
+  background-image: url(../media/images/templates/resume3.png);
+}
+.templatePage .template_wrapper .template5 {
+  background-image: url(../media/images/templates/resume4.png);
+}
+.templatePage .template_wrapper .template6 {
+  background-image: url(../media/images/templates/resume5.png);
+}
+.templatePage .template_wrapper .template7 {
+  background-image: url(../media/images/templates/resume6.png);
+}
 
 @-webkit-keyframes brAnim {
   0% {

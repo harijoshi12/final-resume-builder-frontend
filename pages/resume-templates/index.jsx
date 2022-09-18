@@ -10,6 +10,26 @@ import { Autoplay, Navigation, Pagination, FreeMode } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useRouter } from "next/router";
+import { useAuth } from "../../contexts/AuthContext";
+
+const CustomButton = ({ isdisabled, templateId }) => {
+  const router = useRouter();
+  const { currentUser } = useAuth();
+  const btnClickHanlder = () => {
+    console.log("clicked= ", templateId);
+    if (currentUser) {
+      router.push("/dashboard");
+    } else {
+      router.push("/login");
+    }
+  };
+  return (
+    <button disabled={isdisabled} onClick={btnClickHanlder}>
+      Build your CV
+    </button>
+  );
+};
 
 const ResumeTemplates = () => {
   return (
@@ -39,42 +59,77 @@ const ResumeTemplates = () => {
                 className="mySwiper"
               >
                 <SwiperSlide>
-                  <div className={styles.template}>
-                    Template 1 <button>Build your CV</button>
+                  <div className={styles.template_wrapper}>
+                    <div
+                      className={`${styles.template1} ${styles.template}`}
+                    ></div>
+                    <CustomButton isdisabled={false} templateId={"1"}>
+                      Build your CV
+                    </CustomButton>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className={styles.template}>
-                    Template 2<button>Build your CV</button>
+                  <div className={styles.template_wrapper}>
+                    <div
+                      className={`${styles.template2} ${styles.template}`}
+                    ></div>
+                    <CustomButton isdisabled={false} templateId={"2"}>
+                      Build your CV
+                    </CustomButton>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className={styles.template}>
-                    Template 3<button>Build your CV</button>
+                  <div className={styles.template_wrapper}>
+                    <div
+                      className={`${styles.template3} ${styles.template}`}
+                    ></div>
+                    <CustomButton isdisabled={true} templateId={"3"}>
+                      Build your CV
+                    </CustomButton>
                     <span className="comming-soon">Comming Soon</span>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className={styles.template}>
-                    Template 4<button>Build your CV</button>
+                  <div className={styles.template_wrapper}>
+                    <div
+                      className={`${styles.template4} ${styles.template}`}
+                    ></div>
+                    <CustomButton isdisabled={true} templateId={"4"}>
+                      Build your CV
+                    </CustomButton>
                     <span className="comming-soon">Comming Soon</span>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className={styles.template}>
-                    Template 5<button>Build your CV</button>
+                  <div className={styles.template_wrapper}>
+                    <div
+                      className={`${styles.template5} ${styles.template}`}
+                    ></div>
+                    <CustomButton isdisabled={true} templateId={"5"}>
+                      Build your CV
+                    </CustomButton>
                     <span className="comming-soon">Comming Soon</span>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className={styles.template}>
-                    Template 6<button>Build your CV</button>
+                  <div className={styles.template_wrapper}>
+                    <div
+                      className={`${styles.template6} ${styles.template}`}
+                    ></div>
+                    <CustomButton isdisabled={true} templateId={"6"}>
+                      Build your CV
+                    </CustomButton>
                     <span className="comming-soon">Comming Soon</span>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div className={styles.template}>
-                    Template 7<button>Build your CV</button>
+                  <div className={styles.template_wrapper}>
+                    <div
+                      className={`${styles.template7} ${styles.template}`}
+                    ></div>
+                    <CustomButton isdisabled={true} templateId={"7"}>
+                      Build your CV
+                    </CustomButton>
                     <span className="comming-soon">Comming Soon</span>
                   </div>
                 </SwiperSlide>
@@ -82,7 +137,7 @@ const ResumeTemplates = () => {
               <div className={styles.wish}>
                 <h1>We wish you all the best.</h1>
                 <h3>
-                  " If you can deram it, you can do it. Best wishes for yout
+                  " If you can deram it, you can do it. Best wishes for your
                   bright future "
                 </h3>
               </div>

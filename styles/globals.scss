@@ -38,6 +38,9 @@ main {
       background-color: rgb(255, 255, 255);
       height: calc(297*1.5px);
       width: calc(210*1.5px);
+      max-height: calc(297*1.5px);
+      max-width: calc(210*1.5px);
+      overflow: hidden;
       color: black;
       cursor: pointer;
       button{
@@ -76,6 +79,7 @@ main {
         font-size: 40px;
         color: white;
         background-color: rgba(0, 0, 0, 0.6);
+        pointer-events: none;
       }
     }
   }

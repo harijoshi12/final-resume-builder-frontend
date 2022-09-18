@@ -39,6 +39,9 @@ main {
   background-color: rgb(255, 255, 255);
   height: 445.5px;
   width: 315px;
+  max-height: 445.5px;
+  max-width: 315px;
+  overflow: hidden;
   color: black;
   cursor: pointer;
 }
@@ -78,6 +81,7 @@ main {
   font-size: 40px;
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
 }
 .swiper .swiper-button-next, .swiper .swiper-button-prev {
   width: 50px;
