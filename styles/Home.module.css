@@ -481,6 +481,11 @@
   background-color: rgb(24, 24, 24);
   color: rgb(209, 209, 209);
   box-shadow: 0 20px 20px 5px rgba(0, 0, 0, 0.6);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.contact .content_right button:hover {
+  box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.6);
 }
 
 @media screen and (max-width: 992px) {

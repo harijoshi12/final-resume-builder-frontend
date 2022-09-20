@@ -89,3 +89,10 @@ export const userInputCodes = {
   DOCUMENTS: "documents",
   IMAGESRC: "imageSrc",
 }
+
+export const contactFormCodes = {
+  FIRSTNAME: "firstName",
+  LASTNAME: "lastName",
+  CONTACTEMAIL: "contactEmail",
+  MESSAGE: "message"
+}

@@ -14,6 +14,8 @@ function Header({ setIsMousein }) {
 
   const burger = useRef();
 
+  const router = useRouter();
+
   // useEffect(()=>{
   //   console.log(link1)
   // },[])
@@ -156,7 +158,6 @@ function Header({ setIsMousein }) {
   }, []);
 
   const { currentUser, handleLogout } = useAuth();
-  const router = useRouter();
   const logoutHandler = (e) => {
     handleLogout();
     router.push("/");
@@ -180,24 +181,54 @@ function Header({ setIsMousein }) {
           </div>
           <nav ref={nav} className={toggleMenu ? "toggle" : ""}>
             <Link href="/">
-              <a ref={link1}>Home</a>
+              <a
+                className={router.pathname === "/" ? "active" : ""}
+                ref={link1}
+              >
+                Home
+              </a>
             </Link>
             <Link href="/resume-templates">
-              <a ref={link2}>Templates</a>
+              <a
+                className={
+                  router.pathname === "/resume-templates" ? "active" : ""
+                }
+                ref={link2}
+              >
+                Templates
+              </a>
             </Link>
             {currentUser && (
               <Link href="/dashboard">
-                <a ref={link3}>Dashboard</a>
+                <a
+                  className={router.pathname === "/dashboard" ? "active" : ""}
+                  ref={link3}
+                >
+                  Dashboard
+                </a>
               </Link>
             )}
             <Link href="/view-resume">
-              <a ref={link5}>View Resume</a>
+              <a
+                className={router.pathname === "/view-resume" ? "active" : ""}
+                ref={link5}
+              >
+                View Resume
+              </a>
             </Link>
             {currentUser ? (
               <button onClick={(e) => logoutHandler(e)}>Logout</button>
             ) : (
               <Link href="/login">
-                <a className="login_register">Login/Register</a>
+                <a
+                  className={
+                    router.pathname === "/login"
+                      ? "active login_register"
+                      : "login_register"
+                  }
+                >
+                  Login/Register
+                </a>
               </Link>
             )}
           </nav>

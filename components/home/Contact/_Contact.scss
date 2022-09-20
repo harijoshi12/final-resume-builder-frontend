@@ -172,6 +172,11 @@ $light: rgb(209, 209, 209);
       color: $light;
       // color: $dark;
       box-shadow: 0 20px 20px 5px rgba(0, 0, 0, 0.6);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      &:hover{
+        box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.6);
+      }
     }
   }
   

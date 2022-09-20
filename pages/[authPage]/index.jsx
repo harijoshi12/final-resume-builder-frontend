@@ -51,10 +51,6 @@ const AuthPage = () => {
         <AuthPageWrapper>
           <ResetPassword />
         </AuthPageWrapper>
-      ) : authPage === "user-profile" ? (
-        <AuthPageWrapper>
-          <UserProfile />
-        </AuthPageWrapper>
       ) : (
         router.isReady && <FourZeroFourPage />
       )}
