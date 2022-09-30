@@ -5,7 +5,7 @@ import Auth from "../../components/auth/Auth";
 import { useRouter } from "next/router";
 import ForgotPassword from "../../components/auth/ForgotPassword";
 import ResetPassword from "../../components/auth/ResetPassword";
-import UserProfile from "../../components/auth/UserProfile";
+// import UserProfile from "../../components/auth/UserProfile";
 import FourZeroFourPage from "../404";
 import Link from "next/link";
 import ReCAPTCHA from "react-google-recaptcha";

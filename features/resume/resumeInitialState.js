@@ -1,34 +1,14 @@
-import { resumeInputCodes } from "../../constants/constants"
+import { resumeInputCodes } from "../../constants/constants";
 
-const secTitles = [
-  {
-    [resumeInputCodes.SECTITLE]: "Technical Skills",
-  },
-  {
-    [resumeInputCodes.SECTITLE]: "Programming Languages",
-  },
-  {
-    [resumeInputCodes.SECTITLE]: "My Journey",
-  },
-  {
-    [resumeInputCodes.SECTITLE]: "Projects",
-  },
-  {
-    [resumeInputCodes.SECTITLE]: "Languages",
-  },
-  {
-    [resumeInputCodes.SECTITLE]: "Education",
-  },
-  {
-    [resumeInputCodes.SECTITLE]: "Intrests",
-  },
-]
+const secTitle = {
+  [resumeInputCodes.SECTITLE]: "",
+};
 
 const contactDetails = {
-  [resumeInputCodes.EMAIL]: "myemail@email.com",
-  [resumeInputCodes.EMAILCHECKED]: true,
-  [resumeInputCodes.PHONE]: "9876543210",
-  [resumeInputCodes.PHONECHECKED]: true,
+  [resumeInputCodes.EMAIL]: "",
+  [resumeInputCodes.EMAILCHECKED]: false,
+  [resumeInputCodes.PHONE]: "",
+  [resumeInputCodes.PHONECHECKED]: false,
   [resumeInputCodes.ADDRESS]: "",
   [resumeInputCodes.ADDRESSCHECKED]: false,
   [resumeInputCodes.WEBSITE]: "",
@@ -43,98 +23,73 @@ const contactDetails = {
   [resumeInputCodes.QUORACHECKED]: false,
   [resumeInputCodes.MEDIUM]: "",
   [resumeInputCodes.MEDIUMCHECKED]: false,
-}
+};
 
 const personalInfo = {
-  [resumeInputCodes.NAME]: "My Name",
-  [resumeInputCodes.PROFESSION]: "Full Stack Developer",
-  [resumeInputCodes.IMAGESRC]: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
-  [resumeInputCodes.TAGLINE]: "Seeking a challenging position in an organization where I can use my talents and skills to grow and expand an organization as well as myself.",
-}
+  [resumeInputCodes.NAME]: "",
+  [resumeInputCodes.PROFESSION]: "",
+  [resumeInputCodes.IMAGESRC]: "",
+  [resumeInputCodes.TAGLINE]: "",
+};
 
-const techskills = [
-  {
-    [resumeInputCodes.TECHSKILL]: "React",
-  },
-  {
-    [resumeInputCodes.TECHSKILL]: "Bootstrap",
-  },
-]
+const techskill = {
+  [resumeInputCodes.TECHSKILL]: "",
+};
 
-const progLangs = [
-  {
-    [resumeInputCodes.PROGLANG]: "JavaScript",
-    [resumeInputCodes.PROGLANGLEVEL]: 8,
-  },
-  {
-    [resumeInputCodes.PROGLANG]: "Java",
-    [resumeInputCodes.PROGLANGLEVEL]: 7,
-  },
-]
+const progLang = {
+  [resumeInputCodes.PROGLANG]: "",
+  [resumeInputCodes.PROGLANGLEVEL]: null,
+};
 
-const experiences = [
-  {
-    [resumeInputCodes.JOBSTARTDATE]: 2021,
-    [resumeInputCodes.JOBENDDATE]: null,
-    [resumeInputCodes.JOBPRESENT]: true,
-    [resumeInputCodes.JOBTITLE]: "FreeLancer",
-    [resumeInputCodes.JOBCOMPANY]: "Freelancing",
-    [resumeInputCodes.JOBDESC]: "I am doing freelancing since past 1 year",
-  }
-]
-const projects = [
-  {
-    [resumeInputCodes.PROJECTTITLE]: "Calculator",
-    [resumeInputCodes.PROJECTTECHSTACK]: "React Native",
-    [resumeInputCodes.PROJECTDESC]: "A basic calculator with theme toggle option",
-    [resumeInputCodes.PROJECTGITLINK]: "github.com",
-    [resumeInputCodes.PROJECTLIVEDEMO]: "playstore.com",
-  }
-]
+const experience = {
+  [resumeInputCodes.JOBSTARTDATE]: "",
+  [resumeInputCodes.JOBENDDATE]: "",
+  [resumeInputCodes.JOBPRESENT]: null,
+  [resumeInputCodes.JOBTITLE]: "",
+  [resumeInputCodes.JOBCOMPANY]: "",
+  [resumeInputCodes.JOBDESC]: "",
+};
 
-const languages = [
-  {
-    [resumeInputCodes.LANGUAGE]: "English",
-    [resumeInputCodes.LANGUAGELEVEL]: 4,
-  },
-  {
-    [resumeInputCodes.LANGUAGE]: "Hindi",
-    [resumeInputCodes.LANGUAGELEVEL]: 5,
-  },
-]
+const project = {
+  [resumeInputCodes.PROJECTTITLE]: "",
+  [resumeInputCodes.PROJECTTECHSTACK]: "",
+  [resumeInputCodes.PROJECTDESC]: "",
+  [resumeInputCodes.PROJECTGITLINK]: "",
+  [resumeInputCodes.PROJECTLIVEDEMO]: "",
+};
 
-const educations = [
-  {
-    [resumeInputCodes.STUDYPROGRAM]: "Computer Sciene",
-    [resumeInputCodes.INSTITUTION]: "Engineering College",
-    [resumeInputCodes.CGPA]: "8.9",
-    [resumeInputCodes.STUDYSTARTDATE]: 2017,
-    [resumeInputCodes.STUDYENDDATE]: 2021,
-    [resumeInputCodes.STUDYPRESENT]: false,
-    [resumeInputCodes.STUDYPLACE]: "Dehradun",
-  }
-]
+const language = {
+  [resumeInputCodes.LANGUAGE]: "",
+  [resumeInputCodes.LANGUAGELEVEL]: null,
+};
 
-const interests = [
-  {
-    [resumeInputCodes.INTEREST]: "Solving Puzzles"
-  },
-  {
-    [resumeInputCodes.INTEREST]: "Listening Audio Books"
-  },
-]
+const education = {
+  [resumeInputCodes.STUDYPROGRAM]: "",
+  [resumeInputCodes.INSTITUTION]: "",
+  [resumeInputCodes.CGPA]: "",
+  [resumeInputCodes.STUDYSTARTDATE]: "",
+  [resumeInputCodes.STUDYENDDATE]: "",
+  [resumeInputCodes.STUDYPRESENT]: null,
+  [resumeInputCodes.STUDYPLACE]: "",
+};
+
+const interest = {
+  [resumeInputCodes.INTEREST]: "",
+};
 
 const initialState = {
-  secTitles: secTitles,
-  personalInfo: personalInfo,
+  templateId: "",
+  secTitles: [secTitle],
+  personalInfo: [personalInfo],
   contactDetails: contactDetails,
-  techskills: techskills,
-  progLangs: progLangs,
-  experiences: experiences,
-  projects: projects,
-  languages: languages,
-  educations: educations,
-  interests: interests,
-}
+  techskills: [techskill],
+  progLangs: [progLang],
+  experiences: [experience],
+  projects: [project],
+  languages: [language],
+  educations: [education],
+  interests: [interest],
+};
 
-export default initialState
+
+export default initialState;

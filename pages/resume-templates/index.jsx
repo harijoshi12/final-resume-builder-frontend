@@ -17,7 +17,6 @@ const CustomButton = ({ isdisabled, templateId }) => {
   const router = useRouter();
   const { currentUser } = useAuth();
   const btnClickHanlder = () => {
-    console.log("clicked= ", templateId);
     if (currentUser) {
       router.push("/dashboard");
     } else {

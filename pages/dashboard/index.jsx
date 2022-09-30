@@ -12,7 +12,7 @@ function Dashboard() {
     if (!currentUser) {
       router.push("/login");
     }
-  }, []);
+  }, [currentUser]);
   return (
     <Layout>
       <main className={styles.dashboardPage}>

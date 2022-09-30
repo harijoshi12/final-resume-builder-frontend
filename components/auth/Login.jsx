@@ -21,6 +21,11 @@ const Login = (props) => {
   //   console.log("cu= ", currentUser);
   //   console.log("cT= ", currentToken);
   // });
+  useEffect(() => {
+    if (currentUser) {
+      router.push("/dashboard");
+    }
+  }, [currentUser]);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -42,8 +47,7 @@ const Login = (props) => {
           },
         };
         const { data } = await axios.post(
-          "http://192.168.1.35:5000/api/user/current-user",
-          { password: "hari123ram" },
+          "http://192.168.1.34:5000/api/user/current-user",
           config
         );
         console.log("data= ", data);
@@ -52,7 +56,7 @@ const Login = (props) => {
           position: toast.POSITION.TOP_CENTER,
           className: "custom_toast",
         });
-        router.push("/dashboard");
+        router.push("/resume-templates");
       }
     } catch (error) {
       toast.error(error.message, {

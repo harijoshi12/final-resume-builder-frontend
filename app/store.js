@@ -5,7 +5,7 @@ import resumeReducer from "../features/resume/resumeSlice"
 
 export const store = configureStore({
   reducer: {
-    authReducer,
-    resumeReducer,
+    auth: authReducer,
+    resume: resumeReducer,
   }
 })

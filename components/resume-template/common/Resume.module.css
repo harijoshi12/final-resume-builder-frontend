@@ -71,7 +71,10 @@
   color: red;
 }
 
-.secTitleInput, .nameInput, .professionInput, .profSummaryInput {
+.secTitleInput,
+.nameInput,
+.professionInput,
+.profSummaryInput {
   background-color: rgb(40, 40, 40);
   margin-bottom: 15px;
   display: flex;
@@ -80,7 +83,10 @@
   align-items: center;
   width: 100%;
 }
-.secTitleInput input, .nameInput input, .professionInput input, .profSummaryInput input {
+.secTitleInput input,
+.nameInput input,
+.professionInput input,
+.profSummaryInput input {
   width: 100%;
   font-size: 22px;
   background-color: hsl(210deg, 17%, 25%);
@@ -90,7 +96,10 @@
   text-align: center;
   font-family: "Merriweather", serif;
 }
-.secTitleInput span, .nameInput span, .professionInput span, .profSummaryInput span {
+.secTitleInput span,
+.nameInput span,
+.professionInput span,
+.profSummaryInput span {
   color: green;
   font-size: 32px;
   height: 25px;
@@ -104,18 +113,25 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.secTitleInput span:hover, .nameInput span:hover, .professionInput span:hover, .profSummaryInput span:hover {
+.secTitleInput span:hover,
+.nameInput span:hover,
+.professionInput span:hover,
+.profSummaryInput span:hover {
   transform: scale(1.1);
 }
 
-.techSkillInput, .interestInput, .progLangInput {
+.techSkillInput,
+.interestInput,
+.progLangInput {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   margin: 5px;
   padding: 1px 0;
 }
-.techSkillInput input, .interestInput input, .progLangInput input {
+.techSkillInput input,
+.interestInput input,
+.progLangInput input {
   width: 175px;
   font-size: 18px;
   font-weight: 500;
@@ -171,7 +187,9 @@
   padding: 0 5px;
   background-color: white;
 }
-.myJourneyInput .input_fields input, .myJourneyInput .input_fields textarea, .myJourneyInput .input_fields label {
+.myJourneyInput .input_fields input,
+.myJourneyInput .input_fields textarea,
+.myJourneyInput .input_fields label {
   padding: 4px;
   margin: 4px 0;
 }
@@ -272,30 +290,45 @@
   background-color: rgb(200, 200, 200);
 }
 
-.educationInput, .projectInput, .myJourneyInput, .langInput {
+.educationInput,
+.projectInput,
+.myJourneyInput,
+.langInput {
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
-.educationInput .input_fields, .projectInput .input_fields, .myJourneyInput .input_fields, .langInput .input_fields {
+.educationInput .input_fields,
+.projectInput .input_fields,
+.myJourneyInput .input_fields,
+.langInput .input_fields {
   display: flex;
   justify-content: center;
   width: 100%;
 }
-.educationInput .input_fields .top, .projectInput .input_fields .top, .myJourneyInput .input_fields .top, .langInput .input_fields .top {
+.educationInput .input_fields .top,
+.projectInput .input_fields .top,
+.myJourneyInput .input_fields .top,
+.langInput .input_fields .top {
   width: 100%;
   display: flex;
   gap: 10px;
   justify-content: center;
   align-items: center;
 }
-.educationInput .icons, .projectInput .icons, .myJourneyInput .icons, .langInput .icons {
+.educationInput .icons,
+.projectInput .icons,
+.myJourneyInput .icons,
+.langInput .icons {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
   margin: 3px;
 }
-.educationInput .icons span, .projectInput .icons span, .myJourneyInput .icons span, .langInput .icons span {
+.educationInput .icons span,
+.projectInput .icons span,
+.myJourneyInput .icons span,
+.langInput .icons span {
   margin: 3px;
 }
 
@@ -351,7 +384,8 @@
   width: 20px;
   margin-left: 15px;
 }
-.educationInput .input_fields .inputYear label, .educationInput .input_fields .inputYear .present {
+.educationInput .input_fields .inputYear label,
+.educationInput .input_fields .inputYear .present {
   margin-left: 5px;
   margin-right: 10px;
   font-size: 17px;
@@ -484,14 +518,16 @@
   width: 100%;
 }
 
-.professionInput, .nameInput {
+.professionInput,
+.nameInput {
   margin-right: auto;
   margin-left: auto;
   width: 260px;
   font-family: "Ubuntu", sans-serif;
   background-color: rgb(255, 255, 255);
 }
-.professionInput input, .nameInput input {
+.professionInput input,
+.nameInput input {
   color: rgb(185, 185, 185);
   background-color: rgb(40, 40, 40);
   padding: 4px;
@@ -840,6 +876,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  width: 100%;
 }
 .left .myJourney .myJourneyItem {
   margin-right: -10px;
