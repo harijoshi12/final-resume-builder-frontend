@@ -12,12 +12,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/AuthContext";
+import { useDispatch } from "react-redux";
+import { getOrCreateResumeAsync } from "../../features/resume/resumeSlice";
 
 const CustomButton = ({ isdisabled, templateId }) => {
   const router = useRouter();
-  const { currentUser } = useAuth();
+  const { currentToken, currentUser } = useAuth();
+  const dispatch = useDispatch()
   const btnClickHanlder = () => {
     if (currentUser) {
+      dispatch(getOrCreateResumeAsync(currentToken))
       router.push("/dashboard");
     } else {
       router.push("/login");

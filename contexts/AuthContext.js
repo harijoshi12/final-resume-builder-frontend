@@ -20,14 +20,15 @@ const AuthContextProvider = ({ children }) => {
 
   const [currentUser, setCurrentUser] = useState(null)
   const [currentToken, setCurrentToken] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const unsubscribe = onIdTokenChanged(auth, async (user) => {
       // const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log('token changed');
       setCurrentUser(await user)
       setCurrentToken(await user?.getIdToken())
     })
+    setLoading(false)
     return () => unsubscribe()
   }, [])
 
@@ -53,7 +54,7 @@ const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={value}>
-      {children}
+      {!loading && children}
     </AuthContext.Provider>
   )
 }

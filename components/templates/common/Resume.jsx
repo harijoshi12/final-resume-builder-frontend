@@ -36,9 +36,7 @@ const Resume = () => {
 
   useEffect(() => {
     setResumeData(data);
-    console.log("data1====> ", data);
   }, [data]);
-  console.log("data2====> ", resumeData);
 
   const {
     personalInfo,
@@ -51,16 +49,6 @@ const Resume = () => {
     experiences: myJourney,
     interests,
   } = resumeData;
-
-  console.log("destructure= ", personalInfo,
-    contactDetails,
-    techSkills,
-    progLangs,
-    projects,
-    langs,
-    education,
-    myJourney,
-    interests,)
 
   if (status == STATUSES.IDLE || status == STATUSES.PENDING) {
     return <h2>Loading</h2>;

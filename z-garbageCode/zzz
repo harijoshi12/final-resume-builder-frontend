@@ -1,0 +1,57 @@
+{
+  "personalInfo": {
+    "userName": "hari",
+    "profession": "Software Developer"
+  },
+  "contactDetails": {
+    "email": "mr.hari@gmail.com",
+    "emailChecked": false
+  },
+  "secTitles": [
+    "Techskills",
+    "Proglangs",
+    "education"
+  ],
+  "techskills": [
+    "React",
+    "mern"
+  ],
+  "progLangs": [
+    "c",
+    "java"
+  ],
+  "experiences": [
+    {
+      "jobStartDate": "2016",
+      "jobEndDate": "2017",
+      "jobTitle": "Teacher"
+    }
+  ],
+  "projects": [
+    {
+      "projectTitle": "projectTitle1",
+      "projectTechStack": "projectT2echStack"
+    }
+  ],
+  "languages": [
+    {
+      "language": "language1",
+      "languageLevel": "7"
+    }
+  ],
+  "educations": [
+    {
+      "studyProgram": "mech",
+      "institution": "gpn"
+    },
+    {
+      "studyProgram": "bsc",
+      "institution": "ignou"
+    }
+  ],
+  "interests": [
+    "coolking",
+    "bathing"
+  ],
+  "__v": 0
+}

@@ -29,6 +29,8 @@ const SecItem = (props) => {
 
   const [newItemData, setNewItemData] = useState(itemData);
 
+  console.log("id=", itemData)
+
   useEffect(() => {
     if (itemData.isLast) {
       if (addNewItem) {
@@ -87,18 +89,18 @@ const SecItem = (props) => {
   if (secId === "2") {
     edit
       ? (childComponent = (
-          <TechSkillInput
-            {...newItemData}
-            setItemData={setNewItemData}
-            onChangeHandler={onChangeHandler}
-            handleDeleteItem={handleDeleteItem}
-            editFinishHandler={editFinishHandler}
-            inputRef={inputRef}
-          />
-        ))
+        <TechSkillInput
+          {...newItemData}
+          setItemData={setNewItemData}
+          onChangeHandler={onChangeHandler}
+          handleDeleteItem={handleDeleteItem}
+          editFinishHandler={editFinishHandler}
+          inputRef={inputRef}
+        />
+      ))
       : (childComponent = (
-          <TechnicalSkill handleClickItem={handleClickItem} {...newItemData} />
-        ));
+        <TechnicalSkill handleClickItem={handleClickItem} {...newItemData} />
+      ));
   }
 
   if (secId === "3") {
@@ -119,18 +121,18 @@ const SecItem = (props) => {
   if (secId === "4") {
     edit
       ? (childComponent = (
-          <MyJourneyInput
-            {...newItemData}
-            setItemData={setNewItemData}
-            onChangeHandler={onChangeHandler}
-            handleDeleteItem={handleDeleteItem}
-            editFinishHandler={editFinishHandler}
-            inputRef={inputRef}
-          />
-        ))
+        <MyJourneyInput
+          {...newItemData}
+          setItemData={setNewItemData}
+          onChangeHandler={onChangeHandler}
+          handleDeleteItem={handleDeleteItem}
+          editFinishHandler={editFinishHandler}
+          inputRef={inputRef}
+        />
+      ))
       : (childComponent = (
-          <MyJourney handleClickItem={handleClickItem} {...newItemData} />
-        ));
+        <MyJourney handleClickItem={handleClickItem} {...newItemData} />
+      ));
   }
 
   if (secId === "5") {
@@ -140,69 +142,69 @@ const SecItem = (props) => {
   if (secId === "6") {
     edit
       ? (childComponent = (
-          <ProjectInput
-            {...newItemData}
-            setItemData={setNewItemData}
-            onChangeHandler={onChangeHandler}
-            handleDeleteItem={handleDeleteItem}
-            editFinishHandler={editFinishHandler}
-            inputRef={inputRef}
-          />
-        ))
+        <ProjectInput
+          {...newItemData}
+          setItemData={setNewItemData}
+          onChangeHandler={onChangeHandler}
+          handleDeleteItem={handleDeleteItem}
+          editFinishHandler={editFinishHandler}
+          inputRef={inputRef}
+        />
+      ))
       : (childComponent = (
-          <Project handleClickItem={handleClickItem} {...newItemData} />
-        ));
+        <Project handleClickItem={handleClickItem} {...newItemData} />
+      ));
   }
 
   if (secId === "7") {
     edit
       ? (childComponent = (
-          <LangInput
-            {...newItemData}
-            setItemData={setNewItemData}
-            onChangeHandler={onChangeHandler}
-            handleDeleteItem={handleDeleteItem}
-            editFinishHandler={editFinishHandler}
-            inputRef={inputRef}
-          />
-        ))
+        <LangInput
+          {...newItemData}
+          setItemData={setNewItemData}
+          onChangeHandler={onChangeHandler}
+          handleDeleteItem={handleDeleteItem}
+          editFinishHandler={editFinishHandler}
+          inputRef={inputRef}
+        />
+      ))
       : (childComponent = (
-          <Lang handleClickItem={handleClickItem} {...newItemData} />
-        ));
+        <Lang handleClickItem={handleClickItem} {...newItemData} />
+      ));
   }
 
   if (secId === "8") {
     edit
       ? (childComponent = (
-          <EducationInput
-            {...newItemData}
-            setItemData={setNewItemData}
-            onChangeHandler={onChangeHandler}
-            handleDeleteItem={handleDeleteItem}
-            editFinishHandler={editFinishHandler}
-            inputRef={inputRef}
-          />
-        ))
+        <EducationInput
+          {...newItemData}
+          setItemData={setNewItemData}
+          onChangeHandler={onChangeHandler}
+          handleDeleteItem={handleDeleteItem}
+          editFinishHandler={editFinishHandler}
+          inputRef={inputRef}
+        />
+      ))
       : (childComponent = (
-          <Edu handleClickItem={handleClickItem} {...newItemData} />
-        ));
+        <Edu handleClickItem={handleClickItem} {...newItemData} />
+      ));
   }
 
   if (secId === "9") {
     edit
       ? (childComponent = (
-          <InterestInput
-            {...newItemData}
-            setItemData={setNewItemData}
-            onChangeHandler={onChangeHandler}
-            handleDeleteItem={handleDeleteItem}
-            editFinishHandler={editFinishHandler}
-            inputRef={inputRef}
-          />
-        ))
+        <InterestInput
+          {...newItemData}
+          setItemData={setNewItemData}
+          onChangeHandler={onChangeHandler}
+          handleDeleteItem={handleDeleteItem}
+          editFinishHandler={editFinishHandler}
+          inputRef={inputRef}
+        />
+      ))
       : (childComponent = (
-          <Interest handleClickItem={handleClickItem} {...newItemData} />
-        ));
+        <Interest handleClickItem={handleClickItem} {...newItemData} />
+      ));
   }
   return <>{childComponent}</>;
 };

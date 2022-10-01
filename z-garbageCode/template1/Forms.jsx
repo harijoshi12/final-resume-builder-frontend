@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-
 import { AiFillDelete, AiFillGithub, AiFillMediumCircle } from "react-icons/ai";
 import { MdDone, MdEmail } from "react-icons/md";
 import { CgSmartphone, CgWebsite } from "react-icons/cg";
@@ -9,9 +7,9 @@ import { BsLinkedin, BsStackOverflow } from "react-icons/bs";
 import { FaQuora } from "react-icons/fa";
 import { IoMdCloudUpload } from "react-icons/io";
 
-import styles from "../Resume.module.css";
-import { resumeInputCodes } from "../../../../constants/constants";
-import { resumeActions } from "../../../../features/resume/resumeSlice";
+import styles from "./Template1.module.css";
+import { resumeInputCodes } from "../../../constants/constants";
+
 
 export const CommonForm = (props) => {
   const {
@@ -74,6 +72,7 @@ export const CommonForm = (props) => {
     </form>
   );
 };
+
 
 export const NameInput = (props) => {
   const {

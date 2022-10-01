@@ -8,6 +8,8 @@ import { useAuth } from "../../contexts/AuthContext";
 import { toast } from "react-toastify";
 import axios from "axios";
 
+import { baseUrl } from "../../constants/constants";
+
 const Login = (props) => {
   const { emailRef, password1Ref, isLoginForm, data, handleInputs } = props;
   const { email_login, password_login } = data;
@@ -21,11 +23,11 @@ const Login = (props) => {
   //   console.log("cu= ", currentUser);
   //   console.log("cT= ", currentToken);
   // });
-  useEffect(() => {
-    if (currentUser) {
-      router.push("/dashboard");
-    }
-  }, [currentUser]);
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     router.push("/dashboard");
+  //   }
+  // }, [currentUser]);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -47,7 +49,7 @@ const Login = (props) => {
           },
         };
         const { data } = await axios.post(
-          "http://192.168.1.34:5000/api/user/current-user",
+          `${baseUrl}/user/current-user`, {},
           config
         );
         console.log("data= ", data);

@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { baseUrl } from "../../constants/constants";
 
 const Register = (props) => {
   const {
@@ -64,7 +65,7 @@ const Register = (props) => {
               },
             };
             const { data } = await axios.post(
-              "http://192.168.1.34:5000/api/user/current-user",
+              `${baseUrl}/user/current-user`,
               { password: "hari123ram" },
               config
             );

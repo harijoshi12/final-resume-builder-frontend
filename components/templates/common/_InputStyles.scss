@@ -1,0 +1,659 @@
+$lightLeft: rgb(255, 255, 255);
+$lightRight: rgb(90, 90, 90);
+$lightTextBg: rgb(90, 90, 90);
+$lightTextBg1: rgb(43, 52, 61);
+$lightTextColor: rgb(49, 51, 42);
+$lightSecTitle: rgb(40, 40, 40);
+$lightResumeTitle: rgb(0, 0, 0);
+$lightName: rgb(205, 203, 204);
+$titlefontFamily: "Merriweather", serif;
+$generalfontfamily: "Roboto", sans-serif;
+
+.resume {
+  form {
+    .input_fields {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    input {
+      border: 1px solid black;
+      margin: 0 2px;
+    }
+    .icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      span {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        height: 22px;
+        width: 22px;
+        border-radius: 50%;
+        border: 1px solid black;
+        background-color: white;
+        color: green;
+        font-size: 22px;
+        padding: 3px;
+        margin: 3px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+      .save {
+        color: green;
+      }
+      .delete {
+        color: red;
+      }
+    }
+  }
+}
+
+.secTitleInput,
+.nameInput,
+.professionInput,
+.profSummaryInput {
+  background-color: $lightSecTitle;
+  margin-bottom: 15px;
+  display: flex;
+  padding: 1px 0;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  input {
+    width: 100%;
+    font-size: 22px;
+    background-color: hsl(210, 17%, 25%);
+    color: white;
+    padding: 2px 0;
+    letter-spacing: 2px;
+    text-align: center;
+    font-family: $titlefontFamily;
+  }
+  span {
+    color: green;
+    font-size: 32px;
+    height: 25px;
+    width: 25px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.techSkillInput,
+.interestInput,
+.progLangInput {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  padding: 1px 0;
+  input {
+    width: 175px;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: $generalfontfamily;
+    padding: 3px 0;
+    text-align: center;
+  }
+}
+
+.techSkillInput {
+  background-color: $lightTextBg1;
+  input {
+    background-color: hsl(210, 17%, 10%);
+    color: white;
+  }
+}
+
+.interestInput {
+  background-color: white;
+  input {
+    width: 145px;
+    background-color: rgb(255, 255, 255);
+    color: $lightTextBg1;
+  }
+}
+
+.progLangInput {
+  width: 30%;
+  margin: 0;
+  margin-right: 2px;
+  background-color: $lightTextBg1;
+  input {
+    font-size: 15px;
+    padding: 5px 0;
+    text-align: left;
+    width: 100%;
+    border: 0;
+    background-color: rgb(255, 255, 255);
+    text-transform: uppercase;
+  }
+  span {
+    margin: 0 1px;
+    color: green;
+  }
+}
+
+.myJourneyInput {
+  background-color: $lightTextBg1;
+  font-family: $generalfontfamily;
+  border: 1px solid black;
+  margin: 5px 0;
+
+  .input_fields {
+    padding: 0 5px;
+    background-color: white;
+    input,
+    textarea,
+    label {
+      padding: 4px;
+      margin: 4px 0;
+    }
+    .inputYear {
+      padding-right: 10px;
+      width: 32%;
+      text-align: center;
+      input {
+        width: 100%;
+      }
+      .present {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        input {
+          height: 20px;
+          width: 20px;
+        }
+      }
+    }
+    .main_details {
+      padding: 0 10px;
+      .top {
+        input {
+        }
+        input:first-child {
+          font-size: 20px;
+          font-weight: bold;
+          width: 54%;
+          background-color: $lightTextBg1;
+          color: white;
+        }
+        input:last-child {
+          width: 45%;
+          font-size: 18px;
+        }
+      }
+      textarea {
+        height: 100%;
+        width: 100%;
+        max-width: 348px;
+        min-width: 348px;
+        max-height: 70px;
+        min-height: 70px;
+      }
+    }
+  }
+}
+
+.projectInput {
+  padding: 5px;
+  font-family: $generalfontfamily;
+  border: 1px solid white;
+  margin-bottom: 30px;
+  .input_fields {
+    flex-direction: column;
+    input {
+      padding: 4px;
+      border: 1px solid white;
+    }
+    .top {
+      margin-bottom: 4px;
+      background-color: $lightRight;
+      margin-right: -3px;
+      input {
+        font-size: 18px;
+        padding: 2px;
+        width: 50%;
+        font-weight: bold;
+      }
+      input:first-child {
+        background-color: rgb(200, 200, 200);
+      }
+      input:last-child {
+        background-color: $lightRight;
+        color: white;
+      }
+    }
+    .bottom {
+      background-color: rgb(235, 235, 235);
+      padding: 5px 10px;
+      margin-left: auto;
+      textarea {
+        background-color: rgb(235, 235, 235);
+        height: 100%;
+        width: 100%;
+        max-width: 350px;
+        min-width: 350px;
+        max-height: 70px;
+        min-height: 70px;
+      }
+      .links {
+        display: flex;
+        justify-content: space-between;
+        input {
+          text-align: center;
+          width: 130px;
+          margin: 0px;
+          border: 1px solid black;
+          background-color: rgb(200, 200, 200);
+        }
+      }
+    }
+  }
+}
+
+.educationInput,
+.projectInput,
+.myJourneyInput,
+.langInput {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  .input_fields {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    .top {
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .icons {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin: 3px;
+    span {
+      margin: 3px;
+    }
+  }
+}
+
+.educationInput {
+  // border: 1px solid white;
+  padding: 2px;
+  margin: 20px 0;
+  background-color: $lightTextBg1;
+  * {
+    // border: 1px solid black;
+  }
+  .input_fields {
+    border: 1px solid white;
+    padding: 5px;
+    flex-direction: column;
+    background-color: $lightRight;
+    input {
+      padding: 4px;
+    }
+    .top {
+      margin-bottom: 5px;
+      input {
+        padding: 4px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      input:first-child {
+        width: 50%;
+        background-color: white;
+        color: $lightTextBg1;
+      }
+      input:last-child {
+        width: 50%;
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+      }
+    }
+    .inputYear {
+      width: 100%;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+      input[type="text"] {
+        width: 120px;
+      }
+      span {
+        margin: 4px;
+      }
+      input[type="checkbox"] {
+        height: 20px;
+        width: 20px;
+        margin-left: 15px;
+      }
+      label,
+      .present {
+        margin-left: 5px;
+        margin-right: 10px;
+        font-size: 17px;
+        font-weight: bold;
+      }
+      .present {
+        background-color: white;
+        color: $lightSecTitle;
+        padding: 2px 10px;
+        width: 120px;
+        margin: 0;
+      }
+    }
+    .bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      input:first-child {
+        width: 30%;
+      }
+      input:last-child {
+        width: 70%;
+      }
+    }
+  }
+}
+
+.langInput {
+  display: inline-flex;
+  width: 48%;
+  height: fit-content;
+  padding: 2px;
+  background-color: $lightTextBg1;
+  margin-top: 10px;
+  * {
+    // border: 1px solid black;
+  }
+  .input_fields {
+    background-color: $lightRight;
+    flex-direction: column;
+    padding: 5px 2px;
+    border: 1px solid white;
+    > input {
+      padding: 4px;
+      font-size: 18px;
+      width: 100%;
+    }
+    .group {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 5px;
+      background-color: rgb(200, 200, 200);
+      input {
+        display: none;
+      }
+      label {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        flex-grow: 1;
+        width: 100%;
+        // border: 1px solid;
+        padding: 3px;
+        transition: all 0.2s ease;
+        &:hover {
+          background-color: orangered;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.contactInput {
+  border: 1px solid white;
+  * {
+    // border: 1px solid black;
+  }
+  .save_discard {
+    background-color: $lightTextBg1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    button {
+      cursor: pointer;
+      width: 40%;
+      font-size: 20px;
+      padding: 7px 20px;
+      border-radius: 5px;
+      border: 0;
+      outline: none;
+      transition: all 0.2s ease;
+      color: white;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+    .discard {
+      background-color: red;
+    }
+    .save {
+      background-color: green;
+    }
+  }
+  .contactOptions {
+    .contact_option:last-child {
+      border: 0;
+    }
+    .contact_option {
+      padding: 5px 20px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      border-bottom: 1px solid hsl(0, 0%, 20%);
+      &:hover {
+        background-color: hsl(0, 0%, 30%);
+      }
+      input[type="checkbox"] {
+        height: 35px;
+        width: 35px;
+      }
+      span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        margin: 0 15px;
+      }
+      .input {
+        padding: 4px;
+        font-size: 20px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.professionInput,
+.nameInput {
+  margin-right: auto;
+  margin-left: auto;
+  width: 260px;
+  font-family: "Ubuntu", sans-serif;
+  background-color: rgb(255, 255, 255);
+  input {
+    color: rgb(185, 185, 185);
+    background-color: $lightSecTitle;
+    padding: 4px;
+    text-align: center;
+    width: 100%;
+    font-size: 30px;
+  }
+}
+
+.nameInput {
+  margin-top: -17px;
+  margin-bottom: 18px;
+}
+
+.professionInput {
+  width: 300px;
+  input {
+    font-size: 25px;
+    color: white;
+  }
+}
+
+.profSummaryInput {
+  padding: 0;
+  margin-left: 37px;
+  margin-top: 3px;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: flex-start;
+  textarea {
+    border: 0;
+    outline: 0;
+    font-size: 20px;
+    border: 3px solid $lightTextBg1;
+    margin: 0;
+    width: 492px;
+    max-width: 492px;
+    min-width: 492px;
+    height: 83px;
+    max-height: 83px;
+    min-height: 83px;
+    padding: 3px;
+  }
+}
+
+.imgInput {
+  position: absolute;
+  background-color: $lightRight;
+  color: white;
+  border: 1px solid black;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 30px;
+  * {
+    display: inline-flex;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  label {
+    margin-right: 15px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    .upload {
+      font-size: 18px;
+      margin-right: 5px;
+    }
+    &:hover {
+      color: cyan;
+      transform: scale(1.03);
+    }
+  }
+  input {
+    display: none;
+  }
+  .delete {
+    font-size: 18px;
+    color: red;
+    border-radius: 50%;
+    padding: 3px;
+    background-color: white;
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+}
+
+.progLangLevel {
+  position: relative;
+  &:hover {
+    .thumb {
+      transform: translateY(-50%) scale(1.3);
+      visibility: visible;
+    }
+  }
+  form {
+    background-color: transparent;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    .value {
+    }
+    .thumb {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      background-color: $lightTextBg1;
+      width: 20px;
+      height: 20px;
+      border: 1px solid white;
+      border-radius: 50%;
+      z-index: 10;
+      pointer-events: none;
+      transition: transform 0.2s ease;
+      visibility: hidden;
+    }
+    input {
+      cursor: ew-resize;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute;
+      width: calc(100% - 2px);
+      border: 0;
+      outline: none;
+      appearance: none;
+      background-color: transparent;
+      &::-webkit-slider-thumb {
+        background-color: transparent;
+        border: 0;
+        outline: none;
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        visibility: hidden;
+      }
+      &::-moz-range-thumb {
+        visibility: hidden;
+        -moz-appearance: none;
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        border: 0;
+        outline: none;
+      }
+    }
+  }
+}

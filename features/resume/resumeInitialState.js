@@ -81,7 +81,7 @@ const initialState = {
   templateId: "",
   secTitles: [secTitle],
   personalInfo: [personalInfo],
-  contactDetails: contactDetails,
+  contactDetails: [contactDetails],
   techskills: [techskill],
   progLangs: [progLang],
   experiences: [experience],
