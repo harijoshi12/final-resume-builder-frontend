@@ -14,7 +14,7 @@ import Section from "./Sections/Sections";
 //   interests,
 // } from "./data";
 import {
-  createResumeAsync,
+  getResumeAsync,
   STATUSES,
 } from "../../../features/resume/resumeSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,9 +30,9 @@ const Resume = () => {
 
   useEffect(() => {
     if (currentToken) {
-      dispatch(createResumeAsync(currentToken));
+      dispatch(getResumeAsync(currentToken))
     }
-  }, [currentToken, currentUser]);
+  }, [currentToken])
 
   useEffect(() => {
     setResumeData(data);

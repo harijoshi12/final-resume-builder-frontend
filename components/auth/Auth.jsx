@@ -25,6 +25,9 @@ const Auth = ({ authPage }) => {
   const sliderRef = useRef(null);
   const paddingRef = useRef(null);
 
+  const { handleGoogleLogin, currentUser } = useAuth();
+
+
   useEffect(() => {
     if (currentUser) {
       router.push("/dashboard");
@@ -83,8 +86,6 @@ const Auth = ({ authPage }) => {
     router.push("/register");
   };
 
-  const { handleGoogleLogin, currentUser } = useAuth();
-
   const googleLoginHandler = async () => {
     try {
       const { user } = await handleGoogleLogin();
@@ -99,7 +100,7 @@ const Auth = ({ authPage }) => {
       };
       const { data } = await axios.post(
         "http://192.168.1.34:5000/api/user/current-user",
-        { password: "hari123ram" },
+        {},
         config
       );
       console.log("data= ", data);

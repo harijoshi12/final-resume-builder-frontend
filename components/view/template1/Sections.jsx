@@ -1,10 +1,6 @@
 import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useAuth } from '../../../contexts/AuthContext'
+import { useSelector } from 'react-redux'
 
-import { ContactInput, EducationInput, ImageInput, InterestInput, LangInput, MyJourneyInput, NameInput, ProfessionInput, ProfSummaryInput, ProgLangInput, ProjectInput, TechSkillInput, } from './Forms'
 import { ContactDetails, Education, Interest, Language, MyJourney, PersonalInfo, ProgLang, Project, TechnicalSkill } from './Items'
 import SecTitle from './SectionTitles'
 
@@ -23,24 +19,15 @@ const SecWrapper = (props) => {
   const { children, className, secTitle } = props
   return (
     <div className={`${styles[className]} ${styles.resumeSec}`}>
-      {/* <SecTitle setPlusEl={setPlusEl} secTitleName={secTitleName} /> */}
       <SecTitle secTitleName={secTitle} />
       <div className={`${styles[className]} ${styles.secContent}`}>
         {children}
       </div>
-      {/* {
-        plusEl ? (
-          <AddItems addNewItemHandler={addNewItemHandler} />
-        ) : null
-      } */}
     </div>
   )
 }
-
 const SecPersonalInfo = (props) => {
-  const { data: { secPersonalInfo }, status } = useSelector(state => state?.resume)
   const { setTitle, secId, personalInfo } = useSelector(state => state?.resume?.data?.secPersonalInfo)
-  // const { secTitle, secId, personalInfo: [userName, profession, imageSrc, tagline] } = secPersonalInfo
   return (
     <SecWrapper className="personalInfo">
       {personalInfo.map(item => (
@@ -53,7 +40,6 @@ const SecTechnicalSkills = () => {
   const { secTitle, secId, techSkills } = useSelector(state => state?.resume?.data?.secTechSkills)
   return (
     <SecWrapper className="technicalSkills" secTitle={secTitle}>
-      {/* <TechSkillInput /> */}
       {techSkills.map(item => (
         <TechnicalSkill key={item._id} {...item} />
       ))}
@@ -82,7 +68,6 @@ const SecExperiences = () => {
   const { secTitle, secId, experiences } = useSelector(state => state?.resume?.data?.secExperiences)
   return (
     <SecWrapper className="myJourney" secTitle={secTitle}>
-      {/* <MyJourneyInput /> */}
       {experiences.map(item => (
         <MyJourney key={item._id} {...item} />
       ))}
@@ -93,10 +78,11 @@ const SecContactDetails = () => {
   const { secTitle, secId, contactDetails } = useSelector(state => state?.resume?.data?.secContactDetails)
   return (
     <SecWrapper className="contactDetails">
-      {/* <ContactInput /> */}
       {contactDetails.map(item => (
         <ContactDetails key={item._id} {...item} />
       ))}
+      <div className={styles.bottomBorder}></div>
+
     </SecWrapper>
   )
 }
@@ -104,7 +90,6 @@ const SecProjects = () => {
   const { secTitle, secId, projects } = useSelector(state => state?.resume?.data?.secProjects)
   return (
     <SecWrapper className="projects" secTitle={secTitle}>
-      {/* <ProjectInput /> */}
       {projects.map(item => (
         <Project key={item._id} {...item} />
       ))}
@@ -115,7 +100,6 @@ const SecLanguages = () => {
   const { secTitle, secId, languages } = useSelector(state => state?.resume?.data?.secLanguages)
   return (
     <SecWrapper className="langs" secTitle={secTitle}>
-      {/* <LangInput /> */}
       {languages.map(item => (
         <Language key={item._id} {...item} />
       ))}
@@ -126,7 +110,6 @@ const SecEducations = () => {
   const { secTitle, secId, educations } = useSelector(state => state?.resume?.data?.secEducations)
   return (
     <SecWrapper className="edus" secTitle={secTitle}>
-      {/* <EducationInput /> */}
       {educations.map(item => (
         <Education key={item._id} {...item} />
       ))}
@@ -137,7 +120,6 @@ const SecInterests = () => {
   const { secTitle, secId, interests } = useSelector(state => state?.resume?.data?.secInterests)
   return (
     <SecWrapper className="interests" secTitle={secTitle}>
-      {/* <InterestInput /> */}
       {interests.map(item => (
         <Interest key={item._id} {...item} />
       ))}

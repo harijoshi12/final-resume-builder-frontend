@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useAuth } from "../../../contexts/AuthContext";
-import { ProgLangInput } from "../common/Items/ItemsInput";
-import { ImageInput, NameInput, ProfessionInput, ProfSummaryInput, ProgLangLevel } from "./Forms";
-
 import { AiFillDelete, AiFillGithub, AiFillMediumCircle } from "react-icons/ai";
 import { MdDone, MdEmail } from "react-icons/md";
 import { CgSmartphone, CgWebsite } from "react-icons/cg";
@@ -15,11 +12,6 @@ import styles from "./styles/Template1.module.css";
 
 
 export const PersonalInfo = ({ data }) => {
-  const [editName, setEditName] = useState(false);
-  const [editProf, setEditProf] = useState(false);
-  const [editProfSummary, setEditProfSummary] = useState(false);
-  const [editImage, setEditImage] = useState(false);
-  const isInfo = true;
 
 
   const { userName, profession, imageSrc, tagline } = data
@@ -30,89 +22,43 @@ export const PersonalInfo = ({ data }) => {
       <div className={styles.imgboxOuter}>
         <div className={styles.imgboxInner}>
           <div className={styles.imgbox_wrapper}>
-            {editImage ? (
-              <ImageInput
-                editImage={editImage}
-                setEditImage={setEditImage}
-                inputRef={inputRef}
-                setItemData={setItemData}
-                onChangeHandler={onChangeHandler}
-              />
-            ) : null}
             <div
               className={styles.imgbox} style={{ background: `url${imageSrc}` }}
-              onClick={() => setEditImage(true)}
             ></div>
           </div>
           <div className={styles.myinfo}>
-            {editName ? (
-              <NameInput
-                editName={editName}
-                setEditName={setEditName}
-                isInfo={isInfo}
-                inputRef={inputRef}
-                userName={userName}
-                setItemData={setItemData}
-                onChangeHandler={onChangeHandler}
-              />
-            ) : (
-              <h1 className={styles.myName} onClick={() => setEditName(true)}>
-                {userName}
-              </h1>
-            )}
 
-            {editProf ? (
-              <ProfessionInput
-                editProf={editProf}
-                setEditProf={setEditProf}
-                isInfo={isInfo}
-                inputRef={inputRef}
-                profession={profession}
-                setItemData={setItemData}
-                onChangeHandler={onChangeHandler}
-              />
-            ) : (
-              <h2
-                className={styles.profession}
-                onClick={() => setEditProf(true)}
-              >
-                {profession}
-              </h2>
-            )}
+            <h1 className={styles.myName}>
+              {userName}
+            </h1>
+
+            <h2
+              className={styles.profession}
+            >
+              {profession}
+            </h2>
+
           </div>
         </div>
       </div>
-      {editProfSummary ? (
-        <ProfSummaryInput
-          editProfSummary={editProfSummary}
-          setEditProfSummary={setEditProfSummary}
-          isInfo={isInfo}
-          inputRef={inputRef}
-          tagline={tagline}
-          setItemData={setItemData}
-          onChangeHandler={onChangeHandler}
-        />
-      ) : (
-        <h2 className={styles.tagline} onClick={() => setEditProfSummary(true)}>
-          "{tagline}"
-        </h2>
-      )}
+      <h2 className={styles.tagline}>
+        "{tagline}"
+      </h2>
     </>
   );
 };
 
-const ContactItem = ({ setShowContactInput, icon, info }) => {
+const ContactItem = ({ icon, info }) => {
   return (
     <a rel="noopener noreferrer" target="_blank">
-      <span onClick={() => setShowContactInput(true)}>{icon}</span>
-      <span onClick={() => setShowContactInput(true)}>{info}</span>
+      <span >{icon}</span>
+      <span >{info}</span>
     </a>
   );
 };
 
 export const ContactDetails = (props) => {
   const { currentUser } = useAuth();
-  // const { secTitle, secId, contactDetails } = useSelector(state => state?.resume?.data?.secContactDetails)
   const {
     setShowContactInput,
     email,
@@ -214,9 +160,9 @@ export const ContactDetails = (props) => {
 };
 
 export const TechnicalSkill = (props) => {
-  const { handleClickItem, techSkill } = props;
+  const { techSkill } = props;
   return (
-    <span className={styles.technicalSkill} onClick={handleClickItem}>
+    <span className={styles.technicalSkill}>
       {techSkill}
     </span>
   );
@@ -225,94 +171,81 @@ export const TechnicalSkill = (props) => {
 export const ProgLang = (props) => {
   const {
     progLang,
-    setItemData,
-    progLangLevel,
-    inputRef,
-    handleClickItem,
-    editFinishHandler,
-    handleDeleteItem,
-    onChangeHandler,
-    edit,
+    progLangLevel: level,
   } = props;
   return (
     <div className={styles.progLang}>
-      {edit ? (
-        <ProgLangInput
-          setItemData={setItemData}
-          progLang={progLang}
-          inputRef={inputRef}
-          onChangeHandler={onChangeHandler}
-          handleDeleteItem={handleDeleteItem}
-          editFinishHandler={editFinishHandler}
-        />
-      ) : (
-        <span className={styles.title} onClick={handleClickItem}>
-          {progLang}
-        </span>
-      )}
-      <ProgLangLevel
-        setItemData={setItemData}
-        inputRef={inputRef}
-        onChangeHandler={onChangeHandler}
-        handleDeleteItem={handleDeleteItem}
-        editFinishHandler={editFinishHandler}
-        progLangLevel={progLangLevel}
-      />
+      <span className={styles.title}>{progLang}</span>
+      <span className={styles.outer}>
+        <span className={styles.inner} style={{ width: `${level * 10}%` }} ></span>
+      </span>
     </div>
   );
 };
 
-export const Language = ({ language, languageLevel, handleClickItem }) => {
+export const Language = ({ language, languageLevel: level, }) => {
+  console.log(level)
   return (
     <div className={styles.lang}>
-      <span className={styles.title} onClick={handleClickItem}>
+      <span className={styles.title} >
         {language}
       </span>
-      <span className={styles.level} onClick={handleClickItem}>
-        {languageLevel}
+      <span className={styles.level}>
+        {level === 1 ? (
+          "Elementary Proficiency"
+        ) : level === 2 ? (
+          "Limited Working Proficiency"
+        ) : level === 3 ? (
+          "Professional Working Proficiency"
+        ) : level === 4 ? (
+          "Full Professional Proficiency"
+        ) : (
+          "Native or Bilingual Proficiency"
+        )}
       </span>
     </div>
   );
 };
 
-export const Education = ({
-  studyProgram,
-  institution,
-  studyStartDate,
-  studyEndDate,
-  studyPresent,
-  studyPlace,
-  cgpa,
-  handleClickItem,
-}) => {
+export const Education = (props) => {
+  const {
+    studyProgram,
+    institution,
+    studyStartDate,
+    studyEndDate,
+    studyPresent,
+    studyPlace,
+    cgpa
+  } = props
+
   let time = studyStartDate || studyEndDate;
 
   return (
     <div className={styles.edu}>
       <div className={styles.r1}>
-        <span className={styles.title} onClick={handleClickItem}>
+        <span className={styles.title} >
           {studyProgram}
         </span>{" "}
         <span> | </span>
-        <span className={styles.institute} onClick={handleClickItem}>
+        <span className={styles.institute}>
           {institution}
         </span>
       </div>
       <div className={styles.r2}>
         {cgpa ? (
-          <span className={styles.cgpa} onClick={handleClickItem}>
+          <span className={styles.cgpa}>
             {cgpa}
           </span>
         ) : null}
         {cgpa ? "|" : null}
         {time ? (
-          <span className={styles.time} onClick={handleClickItem}>
+          <span className={styles.time}>
             {studyStartDate}-{studyPresent ? "Present" : studyEndDate}
           </span>
         ) : null}
         {time ? "|" : null}
         {studyPlace ? (
-          <span className={styles.place} onClick={handleClickItem}>
+          <span className={styles.place}>
             {studyPlace}
           </span>
         ) : null}
@@ -321,26 +254,29 @@ export const Education = ({
   );
 };
 
-export const Project = ({
-  projectTitle,
-  projectTechStack,
-  projectDesc,
-  projectGitLink,
-  projectLiveDemo,
-  handleClickItem,
-}) => {
+export const Project = (props) => {
+  const {
+    projectTitle,
+    projectTechStack,
+    projectDesc,
+    projectGitLink,
+    projectLiveDemo,
+  } = props
   return (
     <div className={styles.projectItem}>
       <h2 className={styles.title}>
-        <span onClick={handleClickItem}>{projectTitle}</span>
+        <span >{projectTitle}</span>
         <span>|</span>
-        <span onClick={handleClickItem}>{projectTechStack}</span>
+        <span >{projectTechStack}</span>
       </h2>
-      <div className={styles.desc} onClick={handleClickItem}>
+      <div className={styles.desc} >
         <p>{projectDesc}</p>
         <div className={styles.link}>
           <a className={styles.git_link} href={projectGitLink}>
             Github link
+          </a>
+          <a className={styles.git_link} href={projectGitLink}>
+            Video explanation
           </a>
           <a className={styles.liveDemo_link} href={projectLiveDemo}>
             Live-Demo link
@@ -359,20 +295,19 @@ export const MyJourney = (props) => {
     jobTitle,
     jobCompany,
     jobDesc,
-    handleClickItem,
   } = props;
   return (
     <div className={styles.myJourneyItem}>
-      <span className={styles.time} onClick={handleClickItem}>
+      <span className={styles.time} >
         {jobStartDate}-{jobPresent ? "Present" : jobEndDate}
       </span>
-      <h1 className={styles.title} onClick={handleClickItem}>
+      <h1 className={styles.title} >
         <span></span>
-        <span onClick={handleClickItem}>{jobTitle}</span>{" "}
+        <span >{jobTitle}</span>{" "}
         <span className={styles.divider}>|</span>
-        <span onClick={handleClickItem}>{jobCompany}</span>
+        <span >{jobCompany}</span>
       </h1>
-      <p className={styles.desc} onClick={handleClickItem}>
+      <p className={styles.desc} >
         {jobDesc}
       </p>
     </div>
@@ -380,9 +315,9 @@ export const MyJourney = (props) => {
 }
 
 export const Interest = (props) => {
-  const { interest, handleClickItem } = props;
+  const { interest, } = props;
   return (
-    <span className={styles.interest} onClick={handleClickItem}>
+    <span className={styles.interest} >
       {interest}
     </span>
   );

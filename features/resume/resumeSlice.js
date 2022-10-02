@@ -85,6 +85,7 @@ export const resumeSlice = createSlice({
 
 })
 
+
 export const resumeActions = resumeSlice.actions
 
 export default resumeSlice.reducer
