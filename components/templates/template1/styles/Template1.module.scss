@@ -281,27 +281,37 @@ $generalfontfamily: "Roboto", sans-serif;
   width: 45%;
   background-color: $lightRight;
   .contactDetails {
-    font-size: 22px;
-    font-weight: 400;
+    font-size: 24px;
+    font-weight: 100;
     letter-spacing: 1px;
     color: rgb(230, 230, 230);
     font-family: sans-serif;
     padding-top: 20px;
+    * {
+      // border: 1px solid white;
+    }
     a {
       display: flex;
-      line-height: 30px;
+      align-items: center;
+      line-height: 25px;
       color: white;
       transition: all 0.2s ease;
+      padding: 1px 0;
       padding-left: 10px;
       span:first-child {
         position: relative;
         margin-top: 5px;
-        width: 55px;
+        width: 40px;
+        min-width: 40px;
         // color: $lightTextBg1;
       }
       span:last-child {
+        // max-width: calc(100% - 35px);
         position: relative;
-        white-space: nowrap;
+        // white-space: wrap;
+        word-break: break-all;
+        // word-break: break-word;
+        // overflow-wrap: break-word;
       }
     }
 
