@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit"
 import { resumeInputCodes } from "../../constants/constants"
 import axios from 'axios'
 
@@ -24,6 +24,8 @@ export const updateResumeAsync = createAsyncThunk('resume/update', async () => {
   return data
 })
 
+
+
 export const getResumeAsync = createAsyncThunk('resume/get', async (token) => {
   try {
     const { data } = await axios.get(`${baseUrl}/resume/get`, { headers: { token } })
@@ -47,6 +49,31 @@ export const getOrCreateResumeAsync = createAsyncThunk('resume/getOrCreate', asy
 export const resumeSlice = createSlice({
   name: "resumeReducer",
   initialState,
+  reducers: {
+    updateItem: (state, action) => {
+      const { secId, secName, arrayName, objName, objId, value } = action.payload
+
+      if (secId === "5") {
+        state.data[secName][arrayName][0] = value
+        console.log("update state= ", current(state).data[secName][arrayName][0])
+        console.log("update payload= ", action.payload)
+
+        return
+      }
+      state.data[secName][arrayName].find(item => item._id === objId)[objName] = value
+      // console.log("update state= ", current(state).data[secName][arrayName].find(item => item._id === objId)[objName])
+      console.log("update state= ", current(state).data[secName][arrayName][0])
+      console.log("update payload= ", action.payload)
+    },
+
+    addItem: (state, action) => {
+      state[action.path].push(action.payload)
+    },
+
+    deleteItem: (state, action) => {
+      state[action.path].filter(item => item.id != id)
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(updateResumeAsync.pending, (state, action) => {
@@ -86,6 +113,7 @@ export const resumeSlice = createSlice({
 })
 
 
-export const resumeActions = resumeSlice.actions
+
+export const { updateItem, addItem, deleteItem } = resumeSlice.actions
 
 export default resumeSlice.reducer

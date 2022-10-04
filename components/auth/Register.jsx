@@ -49,15 +49,12 @@ const Register = (props) => {
               position: toast.POSITION.TOP_CENTER,
               className: "custom_toast",
             });
-            console.log("less");
           } else {
             const { user } = await handleRegister(
               email_register,
               password_register1
             );
             const token = await user?.getIdToken();
-            console.log("user= ", user);
-            console.log("token= ", token);
             const config = {
               headers: {
                 // Authorization: `Bearer ${token}`,
@@ -66,11 +63,11 @@ const Register = (props) => {
             };
             const { data } = await axios.post(
               `${baseUrl}/user/current-user`,
-              { password: "hari123ram" },
+              {},
               config
             );
             console.log("data= ", data);
-            setData((prev) => ({ ...prev, email_login: user.email }));
+            setData((prev) => ({ ...prev, email_login: user?.email }));
             handleLogout();
             setLoading(false);
             router.push("/login");

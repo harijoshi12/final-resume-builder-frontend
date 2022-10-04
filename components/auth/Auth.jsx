@@ -28,11 +28,11 @@ const Auth = ({ authPage }) => {
   const { handleGoogleLogin, currentUser } = useAuth();
 
 
-  useEffect(() => {
-    if (currentUser) {
-      router.push("/dashboard");
-    }
-  }, [currentUser]);
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     router.push("/dashboard");
+  //   }
+  // }, [currentUser]);
 
   useEffect(() => {
     if (authPage === "login") {

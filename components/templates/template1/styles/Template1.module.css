@@ -174,7 +174,6 @@
 }
 .progLangInput span {
   margin: 0 1px;
-  color: green;
 }
 
 .myJourneyInput {
@@ -284,7 +283,7 @@
 }
 .projectInput .input_fields .bottom .links input {
   text-align: center;
-  width: 130px;
+  width: 110px;
   margin: 0px;
   border: 1px solid black;
   background-color: rgb(200, 200, 200);
@@ -941,13 +940,13 @@
   color: rgb(230, 230, 230);
   font-family: sans-serif;
   padding-top: 20px;
-  padding-left: 40px;
 }
 .right .contactDetails a {
   display: flex;
   line-height: 30px;
   color: white;
   transition: all 0.2s ease;
+  padding-left: 10px;
 }
 .right .contactDetails a span:first-child {
   position: relative;

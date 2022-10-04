@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAuth } from '../../../contexts/AuthContext'
+import AddItems from './AddItem'
+import CommonItemAndForm from './CommonItemAndForm'
 
-import { ContactInput, EducationInput, ImageInput, InterestInput, LangInput, MyJourneyInput, NameInput, ProfessionInput, ProfSummaryInput, ProgLangInput, ProjectInput, TechSkillInput, } from './Forms'
+import { ContactInput, EducationInput, InterestInput, LangInput, MyJourneyInput, ProjectInput, TechSkillInput, } from './Forms'
+
 import { ContactDetails, Education, Interest, Language, MyJourney, PersonalInfo, ProgLang, Project, TechnicalSkill } from './Items'
 import SecTitle from './SectionTitles'
 
@@ -12,50 +15,53 @@ import styles from './styles/Template1.module.css'
 
 const HocSec = (Sec) => {
   const NewSec = (props) => {
+    const [plusEl, setPlusEl] = useState(false)
+
+    // useEffect(() => {
+    //   setPlusEl(edit);
+    // }, [edit]);
+
     return (
-      <Sec {...props} ></Sec>
+      <Sec {...props} plusEl={plusEl} setPlusEl={setPlusEl}></Sec>
     )
   }
   return NewSec
 }
 
 const SecWrapper = (props) => {
-  const { children, className, secTitle } = props
+  const { children, className, secTitle, plusEl, setPlusEl } = props
+
   return (
     <div className={`${styles[className]} ${styles.resumeSec}`}>
-      {/* <SecTitle setPlusEl={setPlusEl} secTitleName={secTitleName} /> */}
-      <SecTitle secTitleName={secTitle} />
+      <SecTitle secTitleName={secTitle} setPlusEl={setPlusEl} />
       <div className={`${styles[className]} ${styles.secContent}`}>
         {children}
       </div>
-      {/* {
-        plusEl ? (
-          <AddItems addNewItemHandler={addNewItemHandler} />
-        ) : null
-      } */}
+      {plusEl ? (
+        <AddItems />
+      ) : null}
     </div>
   )
 }
 
 const SecPersonalInfo = (props) => {
-  const { data: { secPersonalInfo }, status } = useSelector(state => state?.resume)
   const { setTitle, secId, personalInfo } = useSelector(state => state?.resume?.data?.secPersonalInfo)
-  // const { secTitle, secId, personalInfo: [userName, profession, imageSrc, tagline] } = secPersonalInfo
   return (
     <SecWrapper className="personalInfo">
       {personalInfo.map(item => (
-        <PersonalInfo key={item._id} data={item} />
+        <CommonItemAndForm key={item._id} secId={secId} data={item} ViewItem={PersonalInfo} />
       ))}
     </SecWrapper>
   )
 }
-const SecTechnicalSkills = () => {
+const SecTechnicalSkills = (props) => {
   const { secTitle, secId, techSkills } = useSelector(state => state?.resume?.data?.secTechSkills)
+  const { plusEl, setPlusEl } = props
+
   return (
-    <SecWrapper className="technicalSkills" secTitle={secTitle}>
-      {/* <TechSkillInput /> */}
+    <SecWrapper className="technicalSkills" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} >
       {techSkills.map(item => (
-        <TechnicalSkill key={item._id} {...item} />
+        <CommonItemAndForm key={item._id} {...item} InputItem={TechSkillInput} ViewItem={TechnicalSkill} setPlusEl={setPlusEl} />
       ))}
     </SecWrapper>
   )
@@ -67,79 +73,90 @@ const Marking = () => {
     </div>
   )
 }
-const SecProgLangs = () => {
+const SecProgLangs = (props) => {
   const { secTitle, secId, progLangs } = useSelector(state => state?.resume?.data?.secProgLangs)
+  const { plusEl, setPlusEl } = props
   return (
-    <SecWrapper className="progLangs" secTitle={secTitle}>
+    <SecWrapper className="progLangs" secTitle={secTitle} plusEl={plusEl} >
       <Marking />
       {progLangs.map(item => (
-        <ProgLang key={item._id} {...item} />
+        <CommonItemAndForm key={item._id} {...item} secId={secId} ViewItem={ProgLang} setPlusEl={setPlusEl} />
       ))}
+
     </SecWrapper>
   )
 }
-const SecExperiences = () => {
+const SecExperiences = (props) => {
   const { secTitle, secId, experiences } = useSelector(state => state?.resume?.data?.secExperiences)
+  const { plusEl, setPlusEl } = props
+
   return (
-    <SecWrapper className="myJourney" secTitle={secTitle}>
-      {/* <MyJourneyInput /> */}
+    <SecWrapper className="myJourney" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl}>
       {experiences.map(item => (
-        <MyJourney key={item._id} {...item} />
+        <CommonItemAndForm key={item._id} {...item} InputItem={MyJourneyInput} ViewItem={MyJourney} setPlusEl={setPlusEl} />
       ))}
     </SecWrapper>
   )
 }
-const SecContactDetails = () => {
-  const { secTitle, secId, contactDetails } = useSelector(state => state?.resume?.data?.secContactDetails)
+const SecContactDetails = (props) => {
+  const [showContactInput, setShowContactInput] = useState(false)
+
   return (
     <SecWrapper className="contactDetails">
-      {/* <ContactInput /> */}
-      {contactDetails.map(item => (
-        <ContactDetails key={item._id} {...item} />
-      ))}
+      {showContactInput ? (
+        <ContactInput setShowContactInput={setShowContactInput} />
+      ) :
+        <>
+          <ContactDetails setShowContactInput={setShowContactInput} />
+          <div className={styles.bottomBorder}></div>
+        </>
+      }
+
     </SecWrapper>
   )
 }
-const SecProjects = () => {
+
+const SecProjects = (props) => {
   const { secTitle, secId, projects } = useSelector(state => state?.resume?.data?.secProjects)
+  const { plusEl, setPlusEl } = props
   return (
-    <SecWrapper className="projects" secTitle={secTitle}>
-      {/* <ProjectInput /> */}
+    <SecWrapper className="projects" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl}>
       {projects.map(item => (
-        <Project key={item._id} {...item} />
+        <CommonItemAndForm key={item._id} {...item} InputItem={ProjectInput} ViewItem={Project} setPlusEl={setPlusEl} />
       ))}
     </SecWrapper>
   )
 }
-const SecLanguages = () => {
+
+const SecLanguages = (props) => {
   const { secTitle, secId, languages } = useSelector(state => state?.resume?.data?.secLanguages)
+  const { plusEl, setPlusEl } = props
   return (
-    <SecWrapper className="langs" secTitle={secTitle}>
-      {/* <LangInput /> */}
+    <SecWrapper className="langs" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl}>
       {languages.map(item => (
-        <Language key={item._id} {...item} />
+        <CommonItemAndForm key={item._id} {...item} InputItem={LangInput} ViewItem={Language} setPlusEl={setPlusEl} />
       ))}
     </SecWrapper>
   )
 }
-const SecEducations = () => {
+const SecEducations = (props) => {
   const { secTitle, secId, educations } = useSelector(state => state?.resume?.data?.secEducations)
+  const { plusEl, setPlusEl } = props
   return (
-    <SecWrapper className="edus" secTitle={secTitle}>
-      {/* <EducationInput /> */}
+    <SecWrapper className="edus" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl}>
       {educations.map(item => (
-        <Education key={item._id} {...item} />
+        <CommonItemAndForm key={item._id} {...item} InputItem={EducationInput} ViewItem={Education} setPlusEl={setPlusEl} />
       ))}
     </SecWrapper>
   )
 }
-const SecInterests = () => {
+const SecInterests = (props) => {
   const { secTitle, secId, interests } = useSelector(state => state?.resume?.data?.secInterests)
+  const { plusEl, setPlusEl } = props
   return (
-    <SecWrapper className="interests" secTitle={secTitle}>
-      {/* <InterestInput /> */}
+    <SecWrapper className="interests" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl}>
       {interests.map(item => (
-        <Interest key={item._id} {...item} />
+        <CommonItemAndForm key={item._id} {...item} InputItem={InterestInput} ViewItem={Interest} setPlusEl={setPlusEl} />
       ))}
     </SecWrapper>
   )

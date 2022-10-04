@@ -183,8 +183,8 @@ export const ProgLang = (props) => {
   );
 };
 
-export const Language = ({ language, languageLevel: level, }) => {
-  console.log(level)
+export const Language = (props) => {
+  const { language, languageLevel: level } = props
   return (
     <div className={styles.lang}>
       <span className={styles.title} >
@@ -260,6 +260,7 @@ export const Project = (props) => {
     projectTechStack,
     projectDesc,
     projectGitLink,
+    videoExplanationLink,
     projectLiveDemo,
   } = props
   return (
@@ -275,7 +276,7 @@ export const Project = (props) => {
           <a className={styles.git_link} href={projectGitLink}>
             Github link
           </a>
-          <a className={styles.git_link} href={projectGitLink}>
+          <a className={styles.git_link} href={videoExplanationLink}>
             Video explanation
           </a>
           <a className={styles.liveDemo_link} href={projectLiveDemo}>

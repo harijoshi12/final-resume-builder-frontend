@@ -269,7 +269,8 @@ export const ProgLangInput = (props) => {
       newEditFinishHandler={newEditFinishHandler}
       handleDeleteItem={handleDeleteItem}
       secId="3"
-      className="progLangInput"
+      // className="progLangInput"
+      className="ram"
     >
       <input
         value={progLang}

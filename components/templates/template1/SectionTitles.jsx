@@ -4,18 +4,18 @@ import { resumeInputCodes } from "../../../constants/constants";
 // custom styles
 import styles from './styles/Template1.module.css';
 
-const SecTitle = ({ setPlusEl, secTitleName }) => {
+const SecTitle = (props) => {
+  const { setPlusEl, secTitleName } = props
   const [edit, setEdit] = useState(false);
   const [secTitle, setSecTitle] = useState(secTitleName);
-  console.log("first=", secTitleName)
 
-  // useEffect(() => {
-  //   if (edit) {
-  //     setPlusEl(true);
-  //   } else {
-  //     setPlusEl(false);
-  //   }
-  // }, [edit, setPlusEl]);
+  useEffect(() => {
+    if (edit) {
+      setPlusEl?.(true);
+    } else {
+      setPlusEl?.(false);
+    }
+  }, [edit, setPlusEl]);
 
   const handleClickSecTitle = () => {
     setEdit(!edit);

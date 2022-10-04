@@ -287,22 +287,12 @@ $generalfontfamily: "Roboto", sans-serif;
     color: rgb(230, 230, 230);
     font-family: sans-serif;
     padding-top: 20px;
-    padding-left: 40px;
     a {
       display: flex;
       line-height: 30px;
       color: white;
       transition: all 0.2s ease;
-
-      // &:hover{
-      //     span:last-child{
-      //         transform: translateY(-3px);
-      //         color: rgb(45, 230, 254);
-      //     }
-      //     span:first-child{
-      //         color: rgb(45, 230, 254);
-      //     }
-      // }
+      padding-left: 10px;
       span:first-child {
         position: relative;
         margin-top: 5px;

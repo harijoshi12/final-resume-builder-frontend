@@ -9,6 +9,9 @@ import { IoMdCloudUpload } from "react-icons/io";
 
 import styles from "./styles/Template1.module.css";
 import { resumeInputCodes } from "../../../constants/constants";
+import { useDispatch, useSelector } from "react-redux";
+
+import { updateItem } from "../../../features/resume/resumeSlice";
 
 export const CommonForm = (props) => {
   const {
@@ -215,20 +218,21 @@ export const TechSkillInput = (props) => {
   const {
     techSkill,
     inputRef,
-    setItemData,
-    handleDeleteItem,
-    onChangeHandler,
     editFinishHandler,
+    onChangeHandler,
+    _id
   } = props;
+
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (techSkill === "") {
-      setItemData((prev) => ({ ...prev, techSkill: "Technical Sikll" }));
+      onChangeHandler("secTechSkills", "techSkills", _id, "techSkill", "Technical Skill")
     }
   };
+
   return (
     <CommonForm
-      handleDeleteItem={handleDeleteItem}
+      // handleDeleteItem={handleDeleteItem}
       newEditFinishHandler={newEditFinishHandler}
       secId="2"
       className="techSkillInput"
@@ -238,7 +242,7 @@ export const TechSkillInput = (props) => {
         placeholder="Technical Skill"
         name={resumeInputCodes.TECHSKILL}
         value={techSkill}
-        onChange={(e) => onChangeHandler(e)}
+        onChange={(e) => onChangeHandler("secTechSkills", "techSkills", _id, "techSkill", e.target.value)}
       />
     </CommonForm>
   );
@@ -251,13 +255,13 @@ export const ProgLangInput = (props) => {
     handleDeleteItem,
     editFinishHandler,
     onChangeHandler,
-    setItemData,
+    _id,
   } = props;
 
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (progLang === "") {
-      setItemData((prev) => ({ ...prev, progLang: "Programming Language" }));
+      onChangeHandler("secProgLangs", "progLangs", _id, "progLang", "Programming Language")
     }
   };
   return (
@@ -272,14 +276,13 @@ export const ProgLangInput = (props) => {
         placeholder="Programming Language"
         ref={inputRef}
         name={resumeInputCodes.PROGLANG}
-        onChange={(e) => onChangeHandler(e)}
-      />
+        onChange={(e) => onChangeHandler("secProgLangs", "progLangs", _id, "progLang", e.target.value)} />
     </CommonForm>
   );
 };
 
 export const ProgLangLevel = (props) => {
-  const { progLangLevel, setItemData } = props;
+  const { progLangLevel, onChangeHandler, _id } = props;
   const level = progLangLevel;
   const innerRef = useRef(null);
   const outerRef = useRef(null);
@@ -292,9 +295,6 @@ export const ProgLangLevel = (props) => {
     thumbRef.current.style.left = `${(value / 100) * width - 10}px`;
   };
 
-  const onChangeHandler = (e) => {
-    setItemData((prev) => ({ ...prev, [e.target.name]: e.target.value / 10 }));
-  };
   return (
     <span ref={outerRef} className={`${styles.outer} ${styles.progLangLevel}`}>
       <form action="">
@@ -315,7 +315,7 @@ export const ProgLangLevel = (props) => {
           type="range"
           step={"5"}
           name={resumeInputCodes.PROGLANGLEVEL}
-          onChange={(e) => onChangeHandler(e)}
+          onChange={(e) => onChangeHandler("secProgLangs", "progLangs", _id, "progLangLevel", e.target.value / 10)}
           id=""
         />
       </form>
@@ -336,21 +336,16 @@ export const MyJourneyInput = (props) => {
     setItemData,
     editFinishHandler,
     onChangeHandler,
+    _id
   } = props;
 
-  const onChangeHandlerTc = (e) => {
-    setItemData((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
-  };
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (jobTitle === "") {
-      setItemData((prev) => ({ ...prev, jobTitle: "Job Title" }));
+      onChangeHandler("secExperiences", "experiences", _id, "jobTitle", "Job Title")
     }
     if (jobCompany === "") {
-      setItemData((prev) => ({
-        ...prev,
-        jobCompany: "Company Name/workPlace",
-      }));
+      onChangeHandler("secExperiences", "experiences", _id, "jobCompany", "Company Name/workPlace")
     }
   };
 
@@ -369,7 +364,7 @@ export const MyJourneyInput = (props) => {
             name={resumeInputCodes.JOBSTARTDATE}
             id=""
             placeholder="yyyy"
-            onChange={(e) => onChangeHandler(e)}
+            onChange={(e) => onChangeHandler("secExperiences", "experiences", _id, "jobStartDate", e.target.value)}
           />
           <span>to</span>
           {jobPresent ? (
@@ -381,7 +376,7 @@ export const MyJourneyInput = (props) => {
               id=""
               name={resumeInputCodes.JOBENDDATE}
               placeholder="yyyy"
-              onChange={(e) => onChangeHandler(e)}
+              onChange={(e) => onChangeHandler("secExperiences", "experiences", _id, "jobEndDate", e.target.value)}
             />
           )}
 
@@ -391,7 +386,7 @@ export const MyJourneyInput = (props) => {
               checked={jobPresent}
               name={resumeInputCodes.JOBPRESENT}
               id="present"
-              onChange={(e) => onChangeHandlerTc(e)}
+              onChange={(e) => onChangeHandler("secExperiences", "experiences", _id, "jobPresent", e.target.checked)}
             />
             <label htmlFor="present">present</label>
           </div>
@@ -403,13 +398,13 @@ export const MyJourneyInput = (props) => {
               ref={inputRef}
               name={resumeInputCodes.JOBTITLE}
               placeholder="Title/Position"
-              onChange={(e) => onChangeHandler(e)}
+              onChange={(e) => onChangeHandler("secExperiences", "experiences", _id, "jobTitle", e.target.value)}
             />
             <input
               value={jobCompany}
               name={resumeInputCodes.JOBCOMPANY}
               placeholder="Workplace/Company"
-              onChange={(e) => onChangeHandler(e)}
+              onChange={(e) => onChangeHandler("secExperiences", "experiences", _id, "jobCompany", e.target.value)}
             />
           </div>
           <textarea
@@ -417,7 +412,7 @@ export const MyJourneyInput = (props) => {
             type="text"
             name={resumeInputCodes.JOBDESC}
             placeholder="Description/Achievements"
-            onChange={(e) => onChangeHandler(e)}
+            onChange={(e) => onChangeHandler("secExperiences", "experiences", _id, "jobDesc", e.target.value)}
           />
         </div>
       </CommonForm>
@@ -425,15 +420,16 @@ export const MyJourneyInput = (props) => {
   );
 };
 
-const ContactOption = ({
-  type,
-  fieldName,
-  placeholder,
-  value,
-  checkVal,
-  icon,
-  setItems,
-}) => {
+const ContactOption = (props) => {
+  const {
+    type,
+    fieldName,
+    placeholder,
+    value,
+    checkVal,
+    icon,
+    setItems,
+  } = props
   const onChangeHandler = (e) => {
     setItems((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -451,8 +447,7 @@ const ContactOption = ({
         type="checkbox"
         name={`${fieldName}Checked`}
         id=""
-        onChange={(e) => onChangeHandlerTc(e)}
-      />
+        onChange={(e) => onChangeHandlerTc(e)} />
       <span>{icon}</span>
       <input
         className={styles.input}
@@ -468,9 +463,10 @@ const ContactOption = ({
   );
 };
 
-export const ContactInput = (props) => {
-  const { newSecData, setShowContactInput, setNewSecData } = props;
-  const [items, setItems] = useState({ ...newSecData });
+export const ContactInput = ({ setShowContactInput }) => {
+  const { contactDetails } = useSelector(state => state?.resume?.data?.secContactDetails)
+  const [items, setItems] = useState({ ...contactDetails[0] })
+  const dispatch = useDispatch()
 
   const {
     email,
@@ -491,15 +487,29 @@ export const ContactInput = (props) => {
     quoraChecked,
     medium,
     mediumChecked,
-  } = items;
+    _id
+  } = items
 
+  console.log("contact= ", items)
   const onDiscardHandler = () => {
-    setNewSecData({ ...newSecData });
+    // setNewSecData({ ...newSecData });
+    dispatch(updateItem({
+      secId: "5",
+      secName: "secContactDetails",
+      arrayName: "contactDetails",
+      value: contactDetails[0]
+    }))
     setShowContactInput(false);
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    setNewSecData((prev) => ({ ...items }));
+    // setNewSecData((prev) => ({ ...items }));
+    dispatch(updateItem({
+      secId: "5",
+      secName: "secContactDetails",
+      arrayName: "contactDetails",
+      value: { ...items }
+    }))
     setShowContactInput(false);
   };
 
@@ -677,6 +687,13 @@ export const ProjectInput = (props) => {
           />
           <input
             type="text"
+            placeholder="Video Explanation link"
+            name={resumeInputCodes.PROJECTGITLINK}
+            value={projectGitLink}
+            onChange={(e) => onChangeHandler(e)}
+          />
+          <input
+            type="text"
             placeholder="Live-Demo link"
             name={resumeInputCodes.PROJECTLIVEDEMO}
             value={projectLiveDemo}
@@ -715,8 +732,8 @@ export const LangInput = (props) => {
   } = props;
   const newEditFinishHandler = () => {
     editFinishHandler();
-    if (progLang === "") {
-      setItemData((prev) => ({ ...prev, progLang: "Programming Language" }));
+    if (Language === "") {
+      setItemData((prev) => ({ ...prev, Language: "Language" }));
     }
   };
   return (

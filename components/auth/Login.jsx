@@ -19,15 +19,6 @@ const Login = (props) => {
 
   const { handleLogin, currentUser, currentToken } = useAuth();
 
-  // useEffect(() => {
-  //   console.log("cu= ", currentUser);
-  //   console.log("cT= ", currentToken);
-  // });
-  // useEffect(() => {
-  //   if (currentUser) {
-  //     router.push("/dashboard");
-  //   }
-  // }, [currentUser]);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();

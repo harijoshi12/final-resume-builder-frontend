@@ -27,7 +27,6 @@ const Section = (props) => {
   const [newSecData, setNewSecData] = useState(secData)
   const [addNewItem, setAddNewItem] = useState(false)
   const [showContactInput, setShowContactInput] = useState(false)
-  const [render, setRender] = useState(false)
 
   // useEffect(() => {
   //   setRender(!render)

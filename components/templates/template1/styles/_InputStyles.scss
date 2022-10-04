@@ -140,11 +140,12 @@ $generalfontfamily: "Roboto", sans-serif;
     width: 100%;
     border: 0;
     background-color: rgb(255, 255, 255);
+    // background-color: red;
     text-transform: uppercase;
   }
   span {
     margin: 0 1px;
-    color: green;
+    // color: green;
   }
 }
 
@@ -256,7 +257,8 @@ $generalfontfamily: "Roboto", sans-serif;
         justify-content: space-between;
         input {
           text-align: center;
-          width: 130px;
+          width: 110px;
+          // padding: 2px 5px;
           margin: 0px;
           border: 1px solid black;
           background-color: rgb(200, 200, 200);
