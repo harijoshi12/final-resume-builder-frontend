@@ -352,7 +352,6 @@ export const Project = (props) => {
           {projectLiveDemo && <a className={styles.liveDemo_link} href={projectLiveDemo}>
             Live-Demo link
           </a>}
-
         </div>
       </div>
     </div>
@@ -375,10 +374,10 @@ export const MyJourney = (props) => {
         {jobStartDate}-{jobPresent ? "Present" : jobEndDate}
       </span>
       <h1 className={styles.title} >
-        <span></span>
-        <span >{jobTitle}</span>{" "}
+        <span className={styles.bullet_point}></span>
+        <span className={styles.job_title}>{jobTitle}</span>{" "}
         <span className={styles.divider}>|</span>
-        <span >{jobCompany}</span>
+        <span className={styles.company}>{jobCompany}</span>
       </h1>
       <p className={styles.desc} >
         {jobDesc}

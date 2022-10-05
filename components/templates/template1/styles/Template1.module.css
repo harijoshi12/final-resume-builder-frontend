@@ -900,13 +900,12 @@
   justify-content: flex-start;
   align-items: center;
   white-space: wrap;
-  word-break: break-all;
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 10px;
   position: relative;
 }
-.left .myJourney .myJourneyItem .title span:first-child {
+.left .myJourney .myJourneyItem .title .bullet_point {
   position: absolute;
   display: inline-flex;
   height: 13px;
@@ -917,13 +916,14 @@
   border: 1px solid rgb(255, 255, 255);
   background-color: rgb(43, 52, 61);
 }
-.left .myJourney .myJourneyItem .title > .divider {
-  margin: 0 7px;
-}
-.left .myJourney .myJourneyItem .title span:nth-child(2) {
+.left .myJourney .myJourneyItem .title .job_title {
+  width: 50%;
   color: white;
   padding: 3px 5px;
   background-color: rgb(43, 52, 61);
+}
+.left .myJourney .myJourneyItem .title .divider {
+  margin: 0 7px;
 }
 .left .myJourney .myJourneyItem .desc {
   font-size: 18px;
@@ -978,7 +978,6 @@
   display: flex;
   align-items: center;
   white-space: wrap;
-  word-break: break-all;
   color: rgb(255, 255, 255);
   font-size: 20px;
   margin: 6px 0;
@@ -989,6 +988,7 @@
   padding: 3px 5px;
 }
 .right .projects .projectItem .title span:first-child {
+  width: 50%;
   padding: 0 5px;
   color: rgb(49, 51, 42);
   background-color: rgb(200, 200, 200);
