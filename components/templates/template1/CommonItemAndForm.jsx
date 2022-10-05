@@ -35,13 +35,7 @@ const CommonItemAndForm = (props) => {
     inputRef.current?.focus();
   }, [edit]);
 
-  if (secId === "1") {
-    return (
-      <ViewItem {...props} inputRef={inputRef} editFinishHandler={editFinishHandler} handleClickItem={handleClickItem} />
-    )
-  }
-
-  if (secId === "3") {
+  if (secId === "1" || secId === "3") {
     return (
       <ViewItem {...props} inputRef={inputRef} edit={edit} editFinishHandler={editFinishHandler} handleClickItem={handleClickItem} onChangeHandler={onChangeHandler} />
     )

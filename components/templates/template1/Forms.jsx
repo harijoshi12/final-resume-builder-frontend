@@ -82,16 +82,20 @@ export const NameInput = (props) => {
     setEditName,
     isInfo,
     userName,
+    _id,
     setItemData,
     onChangeHandler,
   } = props;
 
+  console.log("name input= ", props)
+
   const newEditFinishHandler = () => {
     setEditName(!editName);
     if (userName === "") {
-      setItemData((prev) => ({ ...prev, userName: "Your Name" }));
+      onChangeHandler("secPersonalInfo", "personalInfo", _id, "userName", "Your Name")
     }
   };
+
   useEffect(() => {
     inputRef.current?.focus();
   }, [editName, inputRef]);
@@ -106,8 +110,7 @@ export const NameInput = (props) => {
         value={userName}
         name={resumeInputCodes.NAME}
         placeholder="Your Name"
-        onChange={(e) => onChangeHandler(e)}
-      />
+        onChange={(e) => onChangeHandler("secPersonalInfo", "personalInfo", _id, "userName", e.target.value)} />
     </CommonForm>
   );
 };
@@ -119,13 +122,13 @@ export const ProfessionInput = (props) => {
     editProf,
     setEditProf,
     profession,
-    setItemData,
+    _id,
     onChangeHandler,
   } = props;
   const newEditFinishHandler = () => {
     setEditProf(!editProf);
     if (profession === "") {
-      setItemData((prev) => ({ ...prev, profession: "Profession" }));
+      onChangeHandler("secPersonalInfo", "personalInfo", _id, "profession", "Profession")
     }
   };
   useEffect(() => {
@@ -142,7 +145,7 @@ export const ProfessionInput = (props) => {
         name={resumeInputCodes.PROFESSION}
         placeholder="Profession"
         value={profession}
-        onChange={(e) => onChangeHandler(e)}
+        onChange={(e) => onChangeHandler("secPersonalInfo", "personalInfo", _id, "profession", e.target.value)}
       />
     </CommonForm>
   );
@@ -155,13 +158,13 @@ export const ProfSummaryInput = (props) => {
     setEditProfSummary,
     isInfo,
     tagline,
-    setItemData,
+    _id,
     onChangeHandler,
   } = props;
   const newEditFinishHandler = () => {
     setEditProfSummary(!editProfSummary);
     if (tagline === "") {
-      setItemData((prev) => ({ ...prev, tagline: "About you" }));
+      onChangeHandler("secPersonalInfo", "personalInfo", _id, "tagline", "About you")
     }
   };
   useEffect(() => {
@@ -178,7 +181,7 @@ export const ProfSummaryInput = (props) => {
         name={resumeInputCodes.TAGLINE}
         placeholder="About You"
         value={tagline}
-        onChange={(e) => onChangeHandler(e)}
+        onChange={(e) => onChangeHandler("secPersonalInfo", "personalInfo", _id, "tagline", e.target.value)}
       />
     </CommonForm>
   );
@@ -188,6 +191,9 @@ export const ImageInput = (props) => {
   const { editImage, setEditImage, setItemData, onChangeHandler, inputRef } =
     props;
   const isImageUpload = true;
+
+  console.log("image input= ", props)
+
   const newEditFinishHandler = () => {
     setEditImage(!editImage);
   };

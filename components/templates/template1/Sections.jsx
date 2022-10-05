@@ -49,7 +49,7 @@ const SecPersonalInfo = (props) => {
   return (
     <SecWrapper className="personalInfo">
       {personalInfo.map(item => (
-        <CommonItemAndForm key={item._id} secId={secId} data={item} ViewItem={PersonalInfo} />
+        <CommonItemAndForm key={item._id} secId={secId} {...item} ViewItem={PersonalInfo} />
       ))}
     </SecWrapper>
   )

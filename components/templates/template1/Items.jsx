@@ -12,7 +12,7 @@ import { FaQuora } from "react-icons/fa";
 
 import styles from "./styles/Template1.module.css";
 
-export const PersonalInfo = ({ data }) => {
+export const PersonalInfo = (props) => {
   const [editName, setEditName] = useState(false);
   const [editProf, setEditProf] = useState(false);
   const [editProfSummary, setEditProfSummary] = useState(false);
@@ -20,7 +20,9 @@ export const PersonalInfo = ({ data }) => {
   const isInfo = true;
 
 
-  const { userName, profession, imageSrc, tagline } = data
+  const { userName, profession, imageSrc, tagline } = props
+
+  console.log("pi= ", props)
 
   return (
     <>
@@ -32,9 +34,7 @@ export const PersonalInfo = ({ data }) => {
               <ImageInput
                 editImage={editImage}
                 setEditImage={setEditImage}
-                inputRef={inputRef}
-                setItemData={setItemData}
-                onChangeHandler={onChangeHandler}
+                {...props}
               />
             ) : null}
             <div
@@ -48,10 +48,8 @@ export const PersonalInfo = ({ data }) => {
                 editName={editName}
                 setEditName={setEditName}
                 isInfo={isInfo}
-                inputRef={inputRef}
                 userName={userName}
-                setItemData={setItemData}
-                onChangeHandler={onChangeHandler}
+                {...props}
               />
             ) : (
               <h1 className={styles.myName} onClick={() => setEditName(true)}>
@@ -64,10 +62,8 @@ export const PersonalInfo = ({ data }) => {
                 editProf={editProf}
                 setEditProf={setEditProf}
                 isInfo={isInfo}
-                inputRef={inputRef}
                 profession={profession}
-                setItemData={setItemData}
-                onChangeHandler={onChangeHandler}
+                {...props}
               />
             ) : (
               <h2
@@ -85,10 +81,8 @@ export const PersonalInfo = ({ data }) => {
           editProfSummary={editProfSummary}
           setEditProfSummary={setEditProfSummary}
           isInfo={isInfo}
-          inputRef={inputRef}
           tagline={tagline}
-          setItemData={setItemData}
-          onChangeHandler={onChangeHandler}
+          {...props}
         />
       ) : (
         <h2 className={styles.tagline} onClick={() => setEditProfSummary(true)}>
