@@ -17,10 +17,6 @@ const HocSec = (Sec) => {
   const NewSec = (props) => {
     const [plusEl, setPlusEl] = useState(false)
 
-    // useEffect(() => {
-    //   setPlusEl(edit);
-    // }, [edit]);
-
     return (
       <Sec {...props} plusEl={plusEl} setPlusEl={setPlusEl}></Sec>
     )
@@ -29,11 +25,11 @@ const HocSec = (Sec) => {
 }
 
 const SecWrapper = (props) => {
-  const { children, className, secTitle, plusEl, setPlusEl } = props
+  const { children, className, secName, secTitle, showTitle, plusEl, setPlusEl } = props
 
   return (
     <div className={`${styles[className]} ${styles.resumeSec}`}>
-      <SecTitle secTitleName={secTitle} setPlusEl={setPlusEl} />
+      <SecTitle secTitleName={secTitle} secName={secName} setPlusEl={setPlusEl} showTitle={showTitle} />
       <div className={`${styles[className]} ${styles.secContent}`}>
         {children}
       </div>
@@ -47,7 +43,7 @@ const SecWrapper = (props) => {
 const SecPersonalInfo = (props) => {
   const { setTitle, secId, personalInfo } = useSelector(state => state?.resume?.data?.secPersonalInfo)
   return (
-    <SecWrapper className="personalInfo">
+    <SecWrapper className="personalInfo" secName="secPersonalInfo">
       {personalInfo.map(item => (
         <CommonItemAndForm key={item._id} secId={secId} {...item} ViewItem={PersonalInfo} />
       ))}
@@ -59,7 +55,7 @@ const SecTechnicalSkills = (props) => {
   const { plusEl, setPlusEl } = props
 
   return (
-    <SecWrapper className="technicalSkills" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} >
+    <SecWrapper className="technicalSkills" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} secName="secTechSkills" showTitle={true}>
       {techSkills.map(item => (
         <CommonItemAndForm key={item._id} {...item} InputItem={TechSkillInput} ViewItem={TechnicalSkill} setPlusEl={setPlusEl} />
       ))}
@@ -77,7 +73,7 @@ const SecProgLangs = (props) => {
   const { secTitle, secId, progLangs } = useSelector(state => state?.resume?.data?.secProgLangs)
   const { plusEl, setPlusEl } = props
   return (
-    <SecWrapper className="progLangs" secTitle={secTitle} plusEl={plusEl} >
+    <SecWrapper className="progLangs" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} secName="secProgLangs" showTitle={true}>
       <Marking />
       {progLangs.map(item => (
         <CommonItemAndForm key={item._id} {...item} secId={secId} ViewItem={ProgLang} setPlusEl={setPlusEl} />
@@ -90,7 +86,7 @@ const SecExperiences = (props) => {
   const { plusEl, setPlusEl } = props
 
   return (
-    <SecWrapper className="myJourney" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl}>
+    <SecWrapper className="myJourney" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} secName="secExperiences" showTitle={true}>
       {experiences.map(item => (
         <CommonItemAndForm key={item._id} {...item} InputItem={MyJourneyInput} ViewItem={MyJourney} setPlusEl={setPlusEl} />
       ))}
@@ -119,7 +115,7 @@ const SecProjects = (props) => {
   const { secTitle, secId, projects } = useSelector(state => state?.resume?.data?.secProjects)
   const { plusEl, setPlusEl } = props
   return (
-    <SecWrapper className="projects" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl}>
+    <SecWrapper className="projects" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} secName="secProjects" showTitle={true}>
       {projects.map(item => (
         <CommonItemAndForm key={item._id} {...item} InputItem={ProjectInput} ViewItem={Project} setPlusEl={setPlusEl} />
       ))}
@@ -131,7 +127,7 @@ const SecLanguages = (props) => {
   const { secTitle, secId, languages } = useSelector(state => state?.resume?.data?.secLanguages)
   const { plusEl, setPlusEl } = props
   return (
-    <SecWrapper className="langs" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl}>
+    <SecWrapper className="langs" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} secName="secLanguages" showTitle={true}>
       {languages.map(item => (
         <CommonItemAndForm key={item._id} {...item} InputItem={LangInput} ViewItem={Language} setPlusEl={setPlusEl} />
       ))}
@@ -142,7 +138,7 @@ const SecEducations = (props) => {
   const { secTitle, secId, educations } = useSelector(state => state?.resume?.data?.secEducations)
   const { plusEl, setPlusEl } = props
   return (
-    <SecWrapper className="edus" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl}>
+    <SecWrapper className="edus" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} secName="secEducations" showTitle={true}>
       {educations.map(item => (
         <CommonItemAndForm key={item._id} {...item} InputItem={EducationInput} ViewItem={Education} setPlusEl={setPlusEl} />
       ))}
@@ -153,7 +149,7 @@ const SecInterests = (props) => {
   const { secTitle, secId, interests } = useSelector(state => state?.resume?.data?.secInterests)
   const { plusEl, setPlusEl } = props
   return (
-    <SecWrapper className="interests" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl}>
+    <SecWrapper className="interests" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} secName="secInterests" showTitle={true}>
       {interests.map(item => (
         <CommonItemAndForm key={item._id} {...item} InputItem={InterestInput} ViewItem={Interest} setPlusEl={setPlusEl} />
       ))}

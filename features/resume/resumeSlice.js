@@ -51,17 +51,21 @@ export const resumeSlice = createSlice({
   initialState,
   reducers: {
     updateItem: (state, action) => {
-      const { secId, secName, arrayName, objName, objId, value } = action.payload
+      const { secId, secName, type, arrayName, objName, objId, value } = action.payload
 
+      if (type === "secTitle") {
+        state.data[secName].secTitle = value
+        return
+      }
       if (secId === "5") {
         state.data[secName][arrayName][0] = value
-        console.log("update state= ", current(state).data[secName][arrayName][0])
-        console.log("update payload= ", action.payload)
+        // console.log("update state= ", current(state).data[secName][arrayName][0])
+        // console.log("update payload= ", action.payload)
         return
       }
       state.data[secName][arrayName].find(item => item._id === objId)[objName] = value
-      console.log("update state= ", current(state).data[secName][arrayName].find(item => item._id === objId)[objName])
-      console.log("update payload= ", action.payload)
+      // console.log("update state= ", current(state).data[secName][arrayName].find(item => item._id === objId)[objName])
+      // console.log("update payload= ", action.payload)
     },
 
     addItem: (state, action) => {

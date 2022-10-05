@@ -35,7 +35,17 @@ const CommonItemAndForm = (props) => {
     inputRef.current?.focus();
   }, [edit]);
 
-  if (secId === "1" || secId === "3") {
+  // useEffect(() => {
+  //   setPlusEl(edit);
+  // }, [edit]);
+
+  if (secId === "1") {
+    return (
+      <ViewItem {...props} inputRef={inputRef} onChangeHandler={onChangeHandler} />
+    )
+  }
+
+  if (secId === "3") {
     return (
       <ViewItem {...props} inputRef={inputRef} edit={edit} editFinishHandler={editFinishHandler} handleClickItem={handleClickItem} onChangeHandler={onChangeHandler} />
     )

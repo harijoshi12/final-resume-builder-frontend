@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { MdDone } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import { resumeInputCodes } from "../../../constants/constants";
+import { updateItem } from "../../../features/resume/resumeSlice";
 // custom styles
 import styles from './styles/Template1.module.css';
 
 const SecTitle = (props) => {
-  const { setPlusEl, secTitleName } = props
+  const { setPlusEl, secTitleName, secName, showTitle } = props
   const [edit, setEdit] = useState(false);
   const [secTitle, setSecTitle] = useState(secTitleName);
 
@@ -22,25 +24,29 @@ const SecTitle = (props) => {
   };
 
   const inputRef = useRef(null);
-  const onChangeHandler = (e) => {
-    setSecTitle(e.target.value);
-    if (e.target.value === "") {
-      inputRef.current.placeholder = secTitleName;
-    }
-  };
+
+  const dispatch = useDispatch()
+
+  const onChangeHandler = (secName, type, value) => {
+    dispatch(updateItem({
+      secName: secName,
+      type: type,
+      value: value
+    }))
+  }
 
   const handleEditSecTitle = (e) => {
     e.preventDefault();
     setEdit(!edit);
-    if (secTitle === "") {
-      setSecTitle(secTitleName);
+    if (secTitleName === "") {
+      onChangeHandler(secName, "secTitle", secTitle)
     }
   };
 
   useEffect(() => {
     inputRef.current?.focus();
   }, [edit]);
-  if (secTitleName) {
+  if (showTitle) {
     return (
       <>
         {edit ? (
@@ -56,8 +62,9 @@ const SecTitle = (props) => {
             <input
               name={resumeInputCodes.SECTITLE}
               ref={inputRef}
-              value={secTitle}
-              onChange={(e) => onChangeHandler(e)}
+              value={secTitleName}
+              placeholder={secTitle}
+              onChange={(e) => onChangeHandler(secName, "secTitle", e.target.value)}
             />
             <span className={styles.icon} onClick={(e) => handleEditSecTitle(e)}>
               <MdDone />
@@ -65,7 +72,7 @@ const SecTitle = (props) => {
           </form>
         ) : (
           <h1 className={styles.secTitle} onClick={handleClickSecTitle}>
-            {secTitle}
+            {secTitleName}
           </h1>
         )}
       </>
