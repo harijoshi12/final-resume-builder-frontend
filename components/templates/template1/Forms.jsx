@@ -94,7 +94,7 @@ export const NameInput = (props) => {
   };
   useEffect(() => {
     inputRef.current?.focus();
-  }, [editName]);
+  }, [editName, inputRef]);
   return (
     <CommonForm
       isInfo={isInfo}
@@ -130,7 +130,7 @@ export const ProfessionInput = (props) => {
   };
   useEffect(() => {
     inputRef.current?.focus();
-  }, [editProf]);
+  }, [editProf, inputRef]);
   return (
     <CommonForm
       isInfo={isInfo}
@@ -166,7 +166,7 @@ export const ProfSummaryInput = (props) => {
   };
   useEffect(() => {
     inputRef.current?.focus();
-  }, [editProfSummary]);
+  }, [editProfSummary, inputRef]);
   return (
     <CommonForm
       isInfo={isInfo}
@@ -910,7 +910,6 @@ export const InterestInput = (props) => {
     onChangeHandler,
     editFinishHandler,
   } = props;
-  console.log("int= ", props)
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (interest === "") {

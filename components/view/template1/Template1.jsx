@@ -17,7 +17,7 @@ const Template1 = () => {
     if (currentToken) {
       dispatch(getResumeAsync(currentToken))
     }
-  }, [currentToken])
+  }, [currentToken, dispatch])
 
   const { status } = useSelector(state => state.resume)
   if (status === STATUSES.PENDING) {

@@ -6,7 +6,7 @@ import Template3 from '../../../components/view/template3/Template3'
 import Template4 from '../../../components/view/template4/Template4'
 import FourZeroFourPage from '../../404'
 
-const viewResume = () => {
+const ViewResume = () => {
   const router = useRouter()
   const { id } = router.query
   if (!router.isReady) {
@@ -29,4 +29,4 @@ const viewResume = () => {
   )
 }
 
-export default viewResume
+export default ViewResume
