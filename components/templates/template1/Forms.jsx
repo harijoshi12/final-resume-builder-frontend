@@ -818,8 +818,6 @@ export const EducationInput = (props) => {
     onChangeHandler,
   } = props;
 
-  console.log("edu prop= ", props)
-
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (studyProgram === "") {
@@ -906,17 +904,17 @@ export const EducationInput = (props) => {
 export const InterestInput = (props) => {
   const {
     interest,
+    _id,
     inputRef,
-    setItemData,
     handleDeleteItem,
     onChangeHandler,
     editFinishHandler,
   } = props;
-
+  console.log("int= ", props)
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (interest === "") {
-      setItemData((prev) => ({ ...prev, interest: "interest" }));
+      onChangeHandler("secInterests", "interests", _id, "interest", "Interest")
     }
   };
 
@@ -932,7 +930,7 @@ export const InterestInput = (props) => {
         ref={inputRef}
         name={resumeInputCodes.INTEREST}
         value={interest}
-        onChange={(e) => onChangeHandler(e)}
+        onChange={(e) => onChangeHandler("secInterests", "interests", _id, "interest", e.target.value)}
       />
     </CommonForm>
   );
