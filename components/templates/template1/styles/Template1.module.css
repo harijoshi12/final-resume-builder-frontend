@@ -439,10 +439,18 @@
   margin-top: 5px;
   background-color: rgb(200, 200, 200);
 }
-.langInput .input_fields .group input {
+.langInput .input_fields .group .radio_btn {
+  flex-grow: 1;
+  position: relative;
+}
+.langInput .input_fields .group .radio_btn input {
   display: none;
 }
-.langInput .input_fields .group label {
+.langInput .input_fields .group .radio_btn input[type=radio]:checked + label {
+  background-color: orangered;
+  color: white;
+}
+.langInput .input_fields .group .radio_btn label {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -452,9 +460,39 @@
   padding: 3px;
   transition: all 0.2s ease;
 }
-.langInput .input_fields .group label:hover {
+.langInput .input_fields .group .radio_btn label:hover {
   background-color: orangered;
   color: white;
+}
+.langInput .input_fields .group .radio_btn:hover .tooltip {
+  visibility: visible;
+  transform: translateX(-42%) translateY(15px);
+}
+.langInput .input_fields .group .radio_btn .tooltip {
+  transition: transform 0.2s ease-in-out;
+  position: absolute;
+  visibility: hidden;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translateX(-42%) translateY(25px);
+}
+.langInput .input_fields .group .radio_btn .tooltip::before {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 0 0 5px 0;
+  border-color: transparent black black transparent;
+  background-color: white;
+  transform: translateX(-50%) rotate(-135deg);
 }
 
 .contactInput {

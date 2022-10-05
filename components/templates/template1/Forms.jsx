@@ -633,7 +633,6 @@ export const ProjectInput = (props) => {
     onChangeHandler,
   } = props;
 
-  // console.log("project =", props)
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (projectTitle === "") {
@@ -701,37 +700,48 @@ export const ProjectInput = (props) => {
   );
 };
 
-const RadioGroup = ({ id, value, onChangeHandler }) => {
+const RadioGroup = (props) => {
+  const { id, objId, value, labelVal, level, content, onChangeHandler } = props
   return (
-    <>
+    <div className={styles.radio_btn}>
       <input
         type="radio"
         name={resumeInputCodes.LANGUAGELEVEL}
         id={id}
         value={value}
-        onChange={(e) => onChangeHandler(e)}
+        checked={value === level}
+        onChange={(e) => {
+          onChangeHandler("secLanguages", "languages", objId, "languageLevel", e.target.value);
+          console.log(labelVal, ": ", e.target.value)
+        }
+        }
       />
-      <label htmlFor={id}>{value}</label>
-    </>
+      <label htmlFor={id}>{labelVal}</label>
+      <div className={styles.tooltip}>
+        {content}
+      </div>
+    </div>
   );
 };
 
 export const LangInput = (props) => {
   const {
-    Language,
-    LanguageLevel,
+    language,
+    languageLevel: level,
+    _id,
     inputRef,
     handleDeleteItem,
     editFinishHandler,
     onChangeHandler,
-    setItemData,
   } = props;
+
+  console.log("lang prop= ", props)
   const newEditFinishHandler = () => {
     editFinishHandler();
-    if (Language === "") {
-      setItemData((prev) => ({ ...prev, Language: "Language" }));
-    }
-  };
+    if (language === "") {
+      // onChangeHandler("secLanguages", "languages", objId, "language", "Language")
+    };
+  }
   return (
     <CommonForm
       newEditFinishHandler={newEditFinishHandler}
@@ -744,40 +754,59 @@ export const LangInput = (props) => {
         type="text"
         name={resumeInputCodes.LANGUAGE}
         placeholder="Language"
-        value={Language}
-        onChange={(e) => onChangeHandler(e)}
+        value={language}
+        onChange={(e) => onChangeHandler("secLanguages", "languages", _id, "language", e.target.value)}
       />
       <div className={styles.group}>
         <RadioGroup
           id={"option1"}
           onChangeHandler={onChangeHandler}
-          value="1/5"
+          labelVal="1/5"
+          value="1"
+          level={level}
+          objId={_id}
+          content={"Elementary Proficiency"}
         />
         <RadioGroup
           id={"option2"}
           onChangeHandler={onChangeHandler}
-          value="2/5"
+          labelVal="2/5"
+          value="2"
+          level={level}
+          objId={_id}
+          content={"Limited Working Proficiency"}
         />
         <RadioGroup
           id={"option3"}
           onChangeHandler={onChangeHandler}
-          value="3/5"
+          labelVal="3/5"
+          value="3"
+          level={level}
+          objId={_id}
+          content={"Professional Working Proficiency"}
         />
         <RadioGroup
           id={"option4"}
           onChangeHandler={onChangeHandler}
-          value="4/5"
+          labelVal="4/5"
+          value="4"
+          level={level}
+          objId={_id}
+          content={"Full Professional Proficiency"}
         />
         <RadioGroup
           id={"option5"}
           onChangeHandler={onChangeHandler}
-          value="5/5"
+          labelVal="5/5"
+          value="5"
+          level={level}
+          objId={_id}
+          content={"Native or Bilingual Proficiency"}
         />
       </div>
     </CommonForm>
   );
 };
-
 export const EducationInput = (props) => {
   const {
     inputRef,
@@ -917,4 +946,4 @@ export const InterestInput = (props) => {
       />
     </CommonForm>
   );
-};
+}

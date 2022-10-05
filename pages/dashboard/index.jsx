@@ -9,11 +9,11 @@ import Template1 from "../../components/templates/template1/Template1";
 function Dashboard() {
   const { currentUser } = useAuth();
   const router = useRouter();
-  useEffect(() => {
-    if (!currentUser) {
-      router.push("/login");
-    }
-  }, [currentUser]);
+  // useEffect(() => {
+  //   if (!currentUser) {
+  //     router.push("/login");
+  //   }
+  // }, [currentUser]);
   return (
     <Layout>
       <main className={styles.dashboardPage}>
