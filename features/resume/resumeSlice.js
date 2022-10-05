@@ -57,12 +57,10 @@ export const resumeSlice = createSlice({
         state.data[secName][arrayName][0] = value
         console.log("update state= ", current(state).data[secName][arrayName][0])
         console.log("update payload= ", action.payload)
-
         return
       }
       state.data[secName][arrayName].find(item => item._id === objId)[objName] = value
-      // console.log("update state= ", current(state).data[secName][arrayName].find(item => item._id === objId)[objName])
-      console.log("update state= ", current(state).data[secName][arrayName][0])
+      console.log("update state= ", current(state).data[secName][arrayName].find(item => item._id === objId)[objName])
       console.log("update payload= ", action.payload)
     },
 

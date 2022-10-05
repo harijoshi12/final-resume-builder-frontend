@@ -245,8 +245,8 @@ $generalfontfamily: "Roboto", sans-serif;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        word-break: break-all;
         white-space: wrap;
+        word-break: break-all;
         font-size: 20px;
         font-weight: 700;
         margin-bottom: 10px;
@@ -325,6 +325,9 @@ $generalfontfamily: "Roboto", sans-serif;
   }
 
   .projects {
+    * {
+      // border: 1px solid white;
+    }
     .projectItem:last-child {
       margin-bottom: 0;
     }
@@ -333,6 +336,10 @@ $generalfontfamily: "Roboto", sans-serif;
       font-family: $generalfontfamily;
       // font-family: sans-serif;
       .title {
+        display: flex;
+        align-items: center;
+        white-space: wrap;
+        word-break: break-all;
         color: rgb(255, 255, 255);
         font-size: 20px;
         margin: 6px 0;

@@ -343,15 +343,16 @@ export const Project = (props) => {
       <div className={styles.desc} >
         <p>{projectDesc}</p>
         <div className={styles.link}>
-          <a className={styles.git_link} href={projectGitLink}>
+          {projectGitLink && <a className={styles.git_link} href={projectGitLink}>
             Github link
-          </a>
-          <a className={styles.git_link} href={videoExplanationLink}>
+          </a>}
+          {videoExplanationLink && <a className={styles.git_link} href={videoExplanationLink}>
             Video explanation
-          </a>
-          <a className={styles.liveDemo_link} href={projectLiveDemo}>
+          </a>}
+          {projectLiveDemo && <a className={styles.liveDemo_link} href={projectLiveDemo}>
             Live-Demo link
-          </a>
+          </a>}
+
         </div>
       </div>
     </div>

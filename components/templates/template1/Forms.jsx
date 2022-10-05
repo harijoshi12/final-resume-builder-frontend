@@ -333,7 +333,6 @@ export const MyJourneyInput = (props) => {
     jobCompany,
     jobDesc,
     handleDeleteItem,
-    setItemData,
     editFinishHandler,
     onChangeHandler,
     _id
@@ -490,9 +489,7 @@ export const ContactInput = ({ setShowContactInput }) => {
     _id
   } = items
 
-  console.log("contact= ", items)
   const onDiscardHandler = () => {
-    // setNewSecData({ ...newSecData });
     dispatch(updateItem({
       secId: "5",
       secName: "secContactDetails",
@@ -503,7 +500,6 @@ export const ContactInput = ({ setShowContactInput }) => {
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    // setNewSecData((prev) => ({ ...items }));
     dispatch(updateItem({
       secId: "5",
       secName: "secContactDetails",
@@ -624,25 +620,27 @@ export const ContactInput = ({ setShowContactInput }) => {
 
 export const ProjectInput = (props) => {
   const {
-    inputRef,
     projectTitle,
     projectTechStack,
     projectDesc,
     projectGitLink,
+    videoExplanationLink,
     projectLiveDemo,
+    _id,
+    inputRef,
     handleDeleteItem,
-    setItemData,
     editFinishHandler,
     onChangeHandler,
   } = props;
 
+  // console.log("project =", props)
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (projectTitle === "") {
-      setItemData((prev) => ({ ...prev, projectTitle: "Project Title" }));
+      onChangeHandler("secProjects", "projects", _id, "projectTitle", "Project Title")
     }
     if (projectTechStack === "") {
-      setItemData((prev) => ({ ...prev, projectTechStack: "TechStack used" }));
+      onChangeHandler("secProjects", "projects", _id, "projectTechStack", "TechStack used")
     }
   };
 
@@ -660,14 +658,13 @@ export const ProjectInput = (props) => {
           ref={inputRef}
           name={resumeInputCodes.PROJECTTITLE}
           value={projectTitle}
-          onChange={(e) => onChangeHandler(e)}
-        />
+          onChange={(e) => onChangeHandler("secProjects", "projects", _id, "projectTitle", e.target.value)} />
         <input
           type="text"
           placeholder="TechStack used"
           name={resumeInputCodes.PROJECTTECHSTACK}
           value={projectTechStack}
-          onChange={(e) => onChangeHandler(e)}
+          onChange={(e) => onChangeHandler("secProjects", "projects", _id, "projectTechStack", e.target.value)}
         />
       </div>
       <div className={styles.bottom}>
@@ -675,7 +672,7 @@ export const ProjectInput = (props) => {
           name={resumeInputCodes.PROJECTDESC}
           placeholder="Project Description"
           value={projectDesc}
-          onChange={(e) => onChangeHandler(e)}
+          onChange={(e) => onChangeHandler("secProjects", "projects", _id, "projectDesc", e.target.value)}
         />
         <div className={styles.links}>
           <input
@@ -683,22 +680,21 @@ export const ProjectInput = (props) => {
             placeholder="Github link"
             name={resumeInputCodes.PROJECTGITLINK}
             value={projectGitLink}
-            onChange={(e) => onChangeHandler(e)}
+            onChange={(e) => onChangeHandler("secProjects", "projects", _id, "projectGitLink", e.target.value)}
           />
           <input
             type="text"
             placeholder="Video Explanation link"
             name={resumeInputCodes.PROJECTGITLINK}
-            value={projectGitLink}
-            onChange={(e) => onChangeHandler(e)}
+            value={videoExplanationLink}
+            onChange={(e) => onChangeHandler("secProjects", "projects", _id, "videoExplanationLink", e.target.value)}
           />
           <input
             type="text"
             placeholder="Live-Demo link"
             name={resumeInputCodes.PROJECTLIVEDEMO}
             value={projectLiveDemo}
-            onChange={(e) => onChangeHandler(e)}
-          />
+            onChange={(e) => onChangeHandler("secProjects", "projects", _id, "projectLiveDemo", e.target.value)} />
         </div>
       </div>
     </CommonForm>
