@@ -76,7 +76,7 @@ const Section = (props) => {
         secId === "3" ? (
           <div className={`${styles[className]} ${styles.secContent}`}>
             <Marking />
-            {/* {secData?.map(itemData => <SecItem secId={secId} key={itemData._id} itemData={itemData} secData={newSecData} setSecData={setNewSecData} addNewItem={addNewItem} setPlusEl={setPlusEl} />)} */}
+            {secData?.map(itemData => <SecItem secId={secId} key={itemData._id} itemData={itemData} secData={newSecData} setSecData={setNewSecData} addNewItem={addNewItem} setPlusEl={setPlusEl} />)}
           </div>
         ) : secId === "5" ? (
           contactSec

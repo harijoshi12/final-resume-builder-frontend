@@ -82,7 +82,6 @@ const SecProgLangs = (props) => {
       {progLangs.map(item => (
         <CommonItemAndForm key={item._id} {...item} secId={secId} ViewItem={ProgLang} setPlusEl={setPlusEl} />
       ))}
-
     </SecWrapper>
   )
 }

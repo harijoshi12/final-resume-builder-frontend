@@ -307,13 +307,13 @@ export const Education = ({
             {cgpa}
           </span>
         ) : null}
-        {cgpa ? "|" : null}
+        {cgpa && (time || studyPlace) ? "|" : null}
         {time ? (
           <span className={styles.time} >
             {studyStartDate}-{studyPresent ? "Present" : studyEndDate}
           </span>
         ) : null}
-        {time ? "|" : null}
+        {time && studyPlace ? "|" : null}
         {studyPlace ? (
           <span className={styles.place} >
             {studyPlace}

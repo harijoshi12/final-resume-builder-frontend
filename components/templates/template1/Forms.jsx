@@ -710,11 +710,7 @@ const RadioGroup = (props) => {
         id={id}
         value={value}
         checked={value === level}
-        onChange={(e) => {
-          onChangeHandler("secLanguages", "languages", objId, "languageLevel", e.target.value);
-          console.log(labelVal, ": ", e.target.value)
-        }
-        }
+        onChange={(e) => { onChangeHandler("secLanguages", "languages", objId, "languageLevel", e.target.value); }}
       />
       <label htmlFor={id}>{labelVal}</label>
       <div className={styles.tooltip}>
@@ -735,11 +731,10 @@ export const LangInput = (props) => {
     onChangeHandler,
   } = props;
 
-  console.log("lang prop= ", props)
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (language === "") {
-      // onChangeHandler("secLanguages", "languages", objId, "language", "Language")
+      onChangeHandler("secLanguages", "languages", _id, "language", "Language")
     };
   }
   return (
@@ -810,7 +805,6 @@ export const LangInput = (props) => {
 export const EducationInput = (props) => {
   const {
     inputRef,
-    setItemData,
     studyProgram,
     institution,
     cgpa,
@@ -818,24 +812,21 @@ export const EducationInput = (props) => {
     studyEndDate,
     studyPresent,
     studyPlace,
+    _id,
     handleDeleteItem,
     editFinishHandler,
     onChangeHandler,
   } = props;
 
-  const onChangeHandlerTc = (e) => {
-    setItemData((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
-  };
+  console.log("edu prop= ", props)
+
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (studyProgram === "") {
-      setItemData((prev) => ({ ...prev, studyProgram: "Study Program" }));
+      onChangeHandler("secEducations", "educations", _id, "studyProgram", "Study Program")
     }
     if (institution === "") {
-      setItemData((prev) => ({
-        ...prev,
-        institution: "Institution/Place of Education",
-      }));
+      onChangeHandler("secEducations", "educations", _id, "institution", "Institution/Place of Education")
     }
   };
 
@@ -852,13 +843,12 @@ export const EducationInput = (props) => {
           name={resumeInputCodes.STUDYPROGRAM}
           placeholder="Study Program"
           value={studyProgram}
-          onChange={(e) => onChangeHandler(e)}
-        />
+          onChange={(e) => onChangeHandler("secEducations", "educations", _id, "studyProgram", e.target.value)} />
         <input
           name={resumeInputCodes.INSTITUTION}
           placeholder="Institution/Place of Education"
           value={institution}
-          onChange={(e) => onChangeHandler(e)}
+          onChange={(e) => onChangeHandler("secEducations", "educations", _id, "institution", e.target.value)}
         />
       </div>
       <div className={styles.inputYear}>
@@ -868,7 +858,7 @@ export const EducationInput = (props) => {
           id=""
           placeholder="yyyy"
           value={studyStartDate}
-          onChange={(e) => onChangeHandler(e)}
+          onChange={(e) => onChangeHandler("secEducations", "educations", _id, "studyStartDate", e.target.value)}
         />
         <span>to</span>
         {studyPresent ? (
@@ -880,7 +870,7 @@ export const EducationInput = (props) => {
             name={resumeInputCodes.STUDYENDDATE}
             placeholder="yyyy"
             value={studyEndDate}
-            onChange={(e) => onChangeHandler(e)}
+            onChange={(e) => onChangeHandler("secEducations", "educations", _id, "studyEndDate", e.target.value)}
           />
         )}
         <input
@@ -888,7 +878,7 @@ export const EducationInput = (props) => {
           checked={studyPresent}
           name={resumeInputCodes.STUDYPRESENT}
           id="present"
-          onChange={(e) => onChangeHandlerTc(e)}
+          onChange={(e) => onChangeHandler("secEducations", "educations", _id, "studyPresent", e.target.checked)}
         />
         <label htmlFor="present">Present</label>
       </div>
@@ -899,14 +889,14 @@ export const EducationInput = (props) => {
           id=""
           placeholder="CGPA/Percentage"
           value={cgpa}
-          onChange={(e) => onChangeHandler(e)}
+          onChange={(e) => onChangeHandler("secEducations", "educations", _id, "cgpa", e.target.value)}
         />
         <input
           type="text"
           placeholder="Study Place"
           name={resumeInputCodes.STUDYPLACE}
           value={studyPlace}
-          onChange={(e) => onChangeHandler(e)}
+          onChange={(e) => onChangeHandler("secEducations", "educations", _id, "studyPlace", e.target.value)}
         />
       </div>
     </CommonForm>
