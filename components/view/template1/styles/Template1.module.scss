@@ -245,13 +245,13 @@ $generalfontfamily: "Roboto", sans-serif;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        word-break: break-all;
         white-space: wrap;
+        // word-break: break-all;
         font-size: 20px;
         font-weight: 700;
         margin-bottom: 10px;
         position: relative;
-        span:first-child {
+        .bullet_point {
           position: absolute;
           display: inline-flex;
           height: 13px;
@@ -262,13 +262,16 @@ $generalfontfamily: "Roboto", sans-serif;
           border: 1px solid rgb(255, 255, 255);
           background-color: $lightTextBg1;
         }
-        > .divider {
-          margin: 0 7px;
-        }
-        span:nth-child(2) {
+        .job_title {
+          width: 50%;
           color: white;
           padding: 3px 5px;
           background-color: $lightTextBg1;
+        }
+        .divider {
+          margin: 0 7px;
+        }
+        .company {
         }
       }
       .desc {
@@ -281,28 +284,37 @@ $generalfontfamily: "Roboto", sans-serif;
   width: 45%;
   background-color: $lightRight;
   .contactDetails {
-    font-size: 22px;
-    font-weight: 400;
+    font-size: 24px;
+    font-weight: 100;
     letter-spacing: 1px;
     color: rgb(230, 230, 230);
     font-family: sans-serif;
-    padding-top: 20px;
-
+    padding-top: 13px;
+    * {
+      // border: 1px solid white;
+    }
     a {
       display: flex;
-      line-height: 30px;
+      align-items: center;
+      line-height: 25px;
       color: white;
       transition: all 0.2s ease;
+      padding: 1px 0;
       padding-left: 10px;
       span:first-child {
         position: relative;
         margin-top: 5px;
-        width: 55px;
+        width: 40px;
+        min-width: 40px;
         // color: $lightTextBg1;
       }
       span:last-child {
+        // max-width: calc(100% - 35px);
         position: relative;
-        white-space: nowrap;
+        // white-space: wrap;
+        word-break: break-all;
+        // word-break: break-word;
+        // overflow-wrap: break-word;
       }
     }
 
@@ -324,6 +336,10 @@ $generalfontfamily: "Roboto", sans-serif;
       font-family: $generalfontfamily;
       // font-family: sans-serif;
       .title {
+        display: flex;
+        align-items: center;
+        white-space: wrap;
+        // word-break: break-all;
         color: rgb(255, 255, 255);
         font-size: 20px;
         margin: 6px 0;
@@ -333,6 +349,7 @@ $generalfontfamily: "Roboto", sans-serif;
           padding: 3px 5px;
         }
         span:first-child {
+          width: 50%;
           padding: 0 5px;
           color: $lightTextColor;
           background-color: rgb(200, 200, 200);

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAuth } from '../../../contexts/AuthContext'
-import { getResumeAsync, STATUSES } from '../../../features/resume/resumeSlice'
+import { getResumeAsync, STATUSES, updateResume, updateResumeAsync } from '../../../features/resume/resumeSlice'
 import { NewSecContactDetails, NewSecEducations, NewSecExperiences, NewSecInterests, NewSecLanguages, NewSecPersonalInfo, NewSecProgLangs, NewSecProjects, NewSecTechnicalSkills, } from './Sections'
 import styles from './styles/Template1.module.css'
 
@@ -19,13 +19,22 @@ const Template1 = () => {
     }
   }, [currentToken, dispatch])
 
-  const { status } = useSelector(state => state.resume)
-  if (status === STATUSES.PENDING) {
-    return <h2>Loading</h2>
+
+  const test = () => {
+    if (currentToken) {
+      console.log("ct= ", currentToken)
+      dispatch(updateResumeAsync(currentToken))
+    }
   }
+
+  const { status } = useSelector(state => state.resume)
+  // if (status === STATUSES.PENDING) {
+  //   return <h2>Loading</h2>
+  // }
 
   return (
     <>
+      <button onClick={() => test()}>ssend data</button>
       {status === STATUSES.SUCCEEDED && currentUser && (
         <div className={styles.resume}>
 

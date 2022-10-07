@@ -19,17 +19,26 @@ const initialState = {
   error: null
 }
 
-export const updateResumeAsync = createAsyncThunk('resume/update', async () => {
-  const { data } = await axios.get(`${baseUrl}/resume`)
-  return data
+
+
+export const updateResumeAsync = createAsyncThunk('resume/update', async (token, { getState }) => {
+  try {
+    const { templateId, secContactDetails, secEducations, secExperiences, secInterests, secLanguages, secPersonalInfo, secProgLangs, secProjects, secTechSkills } = getState().resume.data
+    const { data } = await axios.put(`${baseUrl}/resume/update`, { templateId, secContactDetails, secEducations, secExperiences, secInterests, secLanguages, secPersonalInfo, secProgLangs, secProjects, secTechSkills }, { headers: { token } })
+    console.log("update response= ", data)
+    return data
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 
 
-export const getResumeAsync = createAsyncThunk('resume/get', async (token) => {
+export const getResumeAsync = createAsyncThunk('resume/get', async (token, { getState }) => {
   try {
     const { data } = await axios.get(`${baseUrl}/resume/get`, { headers: { token } })
     console.log("get= ", data)
+    console.log("getState= ", getState().resume.data)
     return data
   } catch (error) {
     console.log(error)
@@ -59,17 +68,14 @@ export const resumeSlice = createSlice({
       }
       if (secId === "5") {
         state.data[secName][arrayName][0] = value
-        // console.log("update state= ", current(state).data[secName][arrayName][0])
-        // console.log("update payload= ", action.payload)
         return
       }
       state.data[secName][arrayName].find(item => item._id === objId)[objName] = value
-      // console.log("update state= ", current(state).data[secName][arrayName].find(item => item._id === objId)[objName])
-      // console.log("update payload= ", action.payload)
     },
 
     addItem: (state, action) => {
-      state[action.path].push(action.payload)
+      const { secName, arrayName, value } = action.payload
+      state.data[secName][arrayName].push(value)
     },
 
     deleteItem: (state, action) => {
@@ -79,7 +85,7 @@ export const resumeSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(updateResumeAsync.pending, (state, action) => {
-        state.status = STATUSES.PENDING
+        state.status = STATUSES.SUCCEEDED
       })
       .addCase(updateResumeAsync.fulfilled, (state, action) => {
         state.data = action.payload

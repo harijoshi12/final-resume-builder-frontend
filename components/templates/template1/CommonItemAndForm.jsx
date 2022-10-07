@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import { updateItem } from "../../../features/resume/resumeSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useAuth } from "../../../contexts/AuthContext";
+import { updateItem, updateResume, updateResumeAsync } from "../../../features/resume/resumeSlice";
 
 const CommonItemAndForm = (props) => {
-  const { InputItem, ViewItem, setPlusEl, secId } = props
-
+  const { id, InputItem, ViewItem, setPlusEl, secId, addNewItem, newItem } = props
   const [edit, setEdit] = useState(false);
-
   const dispatch = useDispatch()
-
   const inputRef = useRef(null);
 
   const editFinishHandler = () => {
@@ -16,10 +14,29 @@ const CommonItemAndForm = (props) => {
     setPlusEl(false);
   };
 
+  // useEffect(() => {
+  //   // console.log("props= ", props)
+  //   // console.log("id= ", id, "newItem id= ", newItem)
+  //   if (addNewItem) {
+  //     setEdit(true);
+  //   } else {
+  //     editFinishHandler()
+  //   }
+  //   if (props?.isLast) {
+  //     console.log("newItem= ", newItem)
+  //   }
+  // }, [addNewItem]);
+
   const handleClickItem = () => {
     setEdit(!edit);
     setPlusEl(true);
   };
+
+  useEffect(() => {
+    setPlusEl(edit);
+  }, [edit]);
+
+  const { currentToken, currentUser } = useAuth();
 
   const onChangeHandler = (secName, arrayName, objId, objName, value) => {
     dispatch(updateItem({
@@ -34,10 +51,6 @@ const CommonItemAndForm = (props) => {
   useEffect(() => {
     inputRef.current?.focus();
   }, [edit]);
-
-  // useEffect(() => {
-  //   setPlusEl(edit);
-  // }, [edit]);
 
   if (secId === "1") {
     return (

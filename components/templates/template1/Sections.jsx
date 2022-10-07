@@ -16,48 +16,50 @@ import styles from './styles/Template1.module.css'
 const HocSec = (Sec) => {
   const NewSec = (props) => {
     const [plusEl, setPlusEl] = useState(false)
+    const [addNewItem, setAddNewItem] = useState(false)
 
     return (
-      <Sec {...props} plusEl={plusEl} setPlusEl={setPlusEl}></Sec>
+      <Sec {...props} plusEl={plusEl} setPlusEl={setPlusEl} addNewItem={addNewItem} setAddNewItem={setAddNewItem}></Sec>
     )
   }
   return NewSec
 }
 
 const SecWrapper = (props) => {
-  const { children, className, secName, secTitle, showTitle, plusEl, setPlusEl } = props
+  const { children, className, secName, secId, arrayName, newItem, secTitle, secTitlePlaceholder, showTitle, plusEl, setPlusEl, addNewItem, setAddNewItem } = props
 
   return (
     <div className={`${styles[className]} ${styles.resumeSec}`}>
-      <SecTitle secTitleName={secTitle} secName={secName} setPlusEl={setPlusEl} showTitle={showTitle} />
+      <SecTitle secTitleName={secTitle} secTitlePlaceholder={secTitlePlaceholder} secName={secName} setPlusEl={setPlusEl} showTitle={showTitle} />
       <div className={`${styles[className]} ${styles.secContent}`}>
         {children}
       </div>
       {plusEl ? (
-        <AddItems />
+        <AddItems secName={secName} arrayName={arrayName} secId={secId} newItem={newItem} setAddNewItem={setAddNewItem} />
       ) : null}
     </div>
   )
 }
 
 const SecPersonalInfo = (props) => {
-  const { setTitle, secId, personalInfo } = useSelector(state => state?.resume?.data?.secPersonalInfo)
+  const { secTitle, secId, personalInfo } = useSelector(state => state?.resume?.data?.secPersonalInfo)
+
   return (
-    <SecWrapper className="personalInfo" secName="secPersonalInfo">
-      {personalInfo.map(item => (
-        <CommonItemAndForm key={item._id} secId={secId} {...item} ViewItem={PersonalInfo} />
+    <SecWrapper className="personalInfo" secName="secPersonalInfo" arrayName="personalInfo">
+      {personalInfo?.map(item => (
+        <CommonItemAndForm key={item.id} secId={secId} {...item} {...props} ViewItem={PersonalInfo} />
       ))}
     </SecWrapper>
   )
 }
 const SecTechnicalSkills = (props) => {
   const { secTitle, secId, techSkills } = useSelector(state => state?.resume?.data?.secTechSkills)
-  const { plusEl, setPlusEl } = props
 
+  const newItem = { techSkill: "" }
   return (
-    <SecWrapper className="technicalSkills" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} secName="secTechSkills" showTitle={true}>
+    <SecWrapper className="technicalSkills" secTitle={secTitle} secTitlePlaceholder="Technical Skills" {...props} secName="secTechSkills" arrayName="techSkills" showTitle={true} secId={secId} newItem={newItem}>
       {techSkills.map(item => (
-        <CommonItemAndForm key={item._id} {...item} InputItem={TechSkillInput} ViewItem={TechnicalSkill} setPlusEl={setPlusEl} />
+        <CommonItemAndForm key={item.id} {...item} secId={secId} InputItem={TechSkillInput} ViewItem={TechnicalSkill} {...props} newItem={newItem} />
       ))}
     </SecWrapper>
   )
@@ -71,24 +73,25 @@ const Marking = () => {
 }
 const SecProgLangs = (props) => {
   const { secTitle, secId, progLangs } = useSelector(state => state?.resume?.data?.secProgLangs)
-  const { plusEl, setPlusEl } = props
+
+  const newItem = { progLang: ``, progLangLevel: 7 }
   return (
-    <SecWrapper className="progLangs" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} secName="secProgLangs" showTitle={true}>
+    <SecWrapper className="progLangs" secTitle={secTitle} secTitlePlaceholder="Programming Languages" {...props} secName="secProgLangs" arrayName="progLangs" showTitle={true} secId={secId} newItem={newItem}>
       <Marking />
       {progLangs.map(item => (
-        <CommonItemAndForm key={item._id} {...item} secId={secId} ViewItem={ProgLang} setPlusEl={setPlusEl} />
+        <CommonItemAndForm key={item.id} {...item} secId={secId} ViewItem={ProgLang} {...props} newItem={newItem} />
       ))}
     </SecWrapper>
   )
 }
 const SecExperiences = (props) => {
   const { secTitle, secId, experiences } = useSelector(state => state?.resume?.data?.secExperiences)
-  const { plusEl, setPlusEl } = props
 
+  const newItem = { jobTitle: ``, jobCompany: ``, jobStartDate: '', jobEndDate: '', jobPresent: '', jobDesc: '' }
   return (
-    <SecWrapper className="myJourney" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} secName="secExperiences" showTitle={true}>
+    <SecWrapper className="myJourney" secTitle={secTitle} secTitlePlaceholder="Experiences/My Journey" {...props} secName="secExperiences" arrayName="experiences" showTitle={true} secId={secId} newItem={newItem}>
       {experiences.map(item => (
-        <CommonItemAndForm key={item._id} {...item} InputItem={MyJourneyInput} ViewItem={MyJourney} setPlusEl={setPlusEl} />
+        <CommonItemAndForm key={item.id} {...item} secId={secId} InputItem={MyJourneyInput} ViewItem={MyJourney} {...props} newItem={newItem} />
       ))}
     </SecWrapper>
   )
@@ -97,7 +100,7 @@ const SecContactDetails = (props) => {
   const [showContactInput, setShowContactInput] = useState(false)
 
   return (
-    <SecWrapper className="contactDetails">
+    <SecWrapper className="contactDetails" secName="secContactDetails" arrayName="contactDetails">
       {showContactInput ? (
         <ContactInput setShowContactInput={setShowContactInput} />
       ) :
@@ -113,11 +116,12 @@ const SecContactDetails = (props) => {
 
 const SecProjects = (props) => {
   const { secTitle, secId, projects } = useSelector(state => state?.resume?.data?.secProjects)
-  const { plusEl, setPlusEl } = props
+
+  const newItem = { projectTitle: ``, projectTechStack: ``, projectDesc: '', projectGitLink: '', videoExplanationLink: '', projectLiveDemo: '' }
   return (
-    <SecWrapper className="projects" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} secName="secProjects" showTitle={true}>
+    <SecWrapper className="projects" secTitle={secTitle} secTitlePlaceholder="Projects" {...props} secName="secProjects" arrayName="projects" showTitle={true} secId={secId} newItem={newItem}>
       {projects.map(item => (
-        <CommonItemAndForm key={item._id} {...item} InputItem={ProjectInput} ViewItem={Project} setPlusEl={setPlusEl} />
+        <CommonItemAndForm key={item.id} {...item} secId={secId} InputItem={ProjectInput} ViewItem={Project} {...props} newItem={newItem} />
       ))}
     </SecWrapper>
   )
@@ -125,33 +129,36 @@ const SecProjects = (props) => {
 
 const SecLanguages = (props) => {
   const { secTitle, secId, languages } = useSelector(state => state?.resume?.data?.secLanguages)
-  const { plusEl, setPlusEl } = props
+
+  const newItem = { language: ``, languageLevel: `4` }
   return (
-    <SecWrapper className="langs" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} secName="secLanguages" showTitle={true}>
+    <SecWrapper className="langs" secTitle={secTitle} secTitlePlaceholder="Languages" {...props} secName="secLanguages" arrayName="languages" showTitle={true} secId={secId} newItem={newItem}>
       {languages.map(item => (
-        <CommonItemAndForm key={item._id} {...item} InputItem={LangInput} ViewItem={Language} setPlusEl={setPlusEl} />
+        <CommonItemAndForm key={item.id} {...item} secId={secId} InputItem={LangInput} ViewItem={Language} {...props} newItem={newItem} />
       ))}
     </SecWrapper>
   )
 }
 const SecEducations = (props) => {
   const { secTitle, secId, educations } = useSelector(state => state?.resume?.data?.secEducations)
-  const { plusEl, setPlusEl } = props
+
+  const newItem = { studyProgram: ``, institution: ``, studyStartDate: '', studyEndDate: '', studyPresent: false, cgpa: '', studyPlace: '' }
   return (
-    <SecWrapper className="edus" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} secName="secEducations" showTitle={true}>
+    <SecWrapper className="edus" secTitle={secTitle} secTitlePlaceholder="Education" {...props} secName="secEducations" arrayName="educations" showTitle={true} secId={secId} newItem={newItem}>
       {educations.map(item => (
-        <CommonItemAndForm key={item._id} {...item} InputItem={EducationInput} ViewItem={Education} setPlusEl={setPlusEl} />
+        <CommonItemAndForm key={item.id} {...item} secId={secId} InputItem={EducationInput} ViewItem={Education} {...props} newItem={newItem} />
       ))}
     </SecWrapper>
   )
 }
 const SecInterests = (props) => {
   const { secTitle, secId, interests } = useSelector(state => state?.resume?.data?.secInterests)
-  const { plusEl, setPlusEl } = props
+
+  const newItem = { interest: "" }
   return (
-    <SecWrapper className="interests" secTitle={secTitle} plusEl={plusEl} setPlusEl={setPlusEl} secName="secInterests" showTitle={true}>
+    <SecWrapper className="interests" secTitle={secTitle} secTitlePlaceholder="Interests" {...props} secName="secInterests" arrayName="interests" showTitle={true} secId={secId} newItem={newItem}>
       {interests.map(item => (
-        <CommonItemAndForm key={item._id} {...item} InputItem={InterestInput} ViewItem={Interest} setPlusEl={setPlusEl} />
+        <CommonItemAndForm key={item.id} {...item} secId={secId} InputItem={InterestInput} ViewItem={Interest} {...props} newItem={newItem} />
       ))}
     </SecWrapper>
   )

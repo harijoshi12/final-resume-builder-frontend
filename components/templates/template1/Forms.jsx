@@ -11,7 +11,8 @@ import styles from "./styles/Template1.module.css";
 import { resumeInputCodes } from "../../../constants/constants";
 import { useDispatch, useSelector } from "react-redux";
 
-import { updateItem } from "../../../features/resume/resumeSlice";
+import { updateItem, updateResumeAsync } from "../../../features/resume/resumeSlice";
+import { useAuth } from "../../../contexts/AuthContext";
 
 export const CommonForm = (props) => {
   const {
@@ -24,16 +25,21 @@ export const CommonForm = (props) => {
     children,
   } = props;
   const formRef = useRef(null);
+  const { currentToken, currentUser } = useAuth();
+  const dispatch = useDispatch()
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
     newEditFinishHandler();
+    console.log("submited")
+    dispatch(updateResumeAsync(currentToken))
   };
 
   useEffect(() => {
     function handleClickOutside(e) {
       if (formRef.current && !formRef.current.contains(e.target)) {
         newEditFinishHandler();
+        dispatch(updateResumeAsync(currentToken))
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -83,7 +89,6 @@ export const NameInput = (props) => {
     isInfo,
     userName,
     _id,
-    setItemData,
     onChangeHandler,
   } = props;
 
@@ -230,10 +235,10 @@ export const TechSkillInput = (props) => {
   } = props;
 
   const newEditFinishHandler = () => {
-    editFinishHandler();
     if (techSkill === "") {
       onChangeHandler("secTechSkills", "techSkills", _id, "techSkill", "Technical Skill")
     }
+    editFinishHandler();
   };
 
   return (
@@ -301,6 +306,13 @@ export const ProgLangLevel = (props) => {
     thumbRef.current.style.left = `${(value / 100) * width - 10}px`;
   };
 
+  const { currentToken, currentUser } = useAuth();
+  const dispatch = useDispatch()
+
+  const changeAndUpdate = (e) => {
+    onChangeHandler("secProgLangs", "progLangs", _id, "progLangLevel", e.target.value / 10)
+    dispatch(updateResumeAsync(currentToken))
+  }
   return (
     <span ref={outerRef} className={`${styles.outer} ${styles.progLangLevel}`}>
       <form action="">
@@ -321,7 +333,7 @@ export const ProgLangLevel = (props) => {
           type="range"
           step={"5"}
           name={resumeInputCodes.PROGLANGLEVEL}
-          onChange={(e) => onChangeHandler("secProgLangs", "progLangs", _id, "progLangLevel", e.target.value / 10)}
+          onChange={(e) => changeAndUpdate(e)}
           id=""
         />
       </form>
@@ -495,6 +507,8 @@ export const ContactInput = ({ setShowContactInput }) => {
     _id
   } = items
 
+  const { currentToken, currentUser } = useAuth();
+
   const onDiscardHandler = () => {
     dispatch(updateItem({
       secId: "5",
@@ -502,6 +516,7 @@ export const ContactInput = ({ setShowContactInput }) => {
       arrayName: "contactDetails",
       value: contactDetails[0]
     }))
+    dispatch(updateResumeAsync(currentToken))
     setShowContactInput(false);
   };
   const onSubmitHandler = (e) => {
@@ -512,6 +527,7 @@ export const ContactInput = ({ setShowContactInput }) => {
       arrayName: "contactDetails",
       value: { ...items }
     }))
+    dispatch(updateResumeAsync(currentToken))
     setShowContactInput(false);
   };
 

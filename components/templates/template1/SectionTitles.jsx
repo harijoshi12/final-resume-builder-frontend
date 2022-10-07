@@ -2,12 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { MdDone } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { resumeInputCodes } from "../../../constants/constants";
-import { updateItem } from "../../../features/resume/resumeSlice";
+import { useAuth } from "../../../contexts/AuthContext";
+import { updateItem, updateResumeAsync } from "../../../features/resume/resumeSlice";
 // custom styles
 import styles from './styles/Template1.module.css';
 
 const SecTitle = (props) => {
-  const { setPlusEl, secTitleName, secName, showTitle } = props
+  const { setPlusEl, secTitleName, secTitlePlaceholder, secName, showTitle } = props
   const [edit, setEdit] = useState(false);
   const [secTitle, setSecTitle] = useState(secTitleName);
 
@@ -35,12 +36,15 @@ const SecTitle = (props) => {
     }))
   }
 
-  const handleEditSecTitle = (e) => {
+  const { currentToken, currentUser } = useAuth();
+
+  const handleEditFinish = (e) => {
     e.preventDefault();
     setEdit(!edit);
     if (secTitleName === "") {
-      onChangeHandler(secName, "secTitle", secTitle)
+      onChangeHandler(secName, "secTitle", secTitlePlaceholder)
     }
+    dispatch(updateResumeAsync(currentToken))
   };
 
   useEffect(() => {
@@ -53,20 +57,20 @@ const SecTitle = (props) => {
           <form
             className={styles.secTitleInput}
             onSubmit={(e) => {
-              handleEditSecTitle(e);
+              handleEditFinish(e);
             }}
             onBlur={(e) => {
-              handleEditSecTitle(e);
+              handleEditFinish(e);
             }}
           >
             <input
               name={resumeInputCodes.SECTITLE}
               ref={inputRef}
               value={secTitleName}
-              placeholder={secTitle}
+              placeholder={secTitlePlaceholder}
               onChange={(e) => onChangeHandler(secName, "secTitle", e.target.value)}
             />
-            <span className={styles.icon} onClick={(e) => handleEditSecTitle(e)}>
+            <span className={styles.icon} onClick={(e) => handleEditFinish(e)}>
               <MdDone />
             </span>
           </form>

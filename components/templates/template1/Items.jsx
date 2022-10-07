@@ -22,8 +22,6 @@ export const PersonalInfo = (props) => {
 
   const { userName, profession, imageSrc, tagline } = props
 
-  console.log("pi= ", props)
-
   return (
     <>
       <h1 className={styles.resumeTitle}>"Are We A Good Fit?"</h1>
