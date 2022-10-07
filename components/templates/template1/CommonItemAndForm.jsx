@@ -1,31 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "../../../contexts/AuthContext";
-import { updateItem, updateResume, updateResumeAsync } from "../../../features/resume/resumeSlice";
+import { deleteItem, updateItem, updateResumeAsync } from "../../../features/resume/resumeSlice";
 
 const CommonItemAndForm = (props) => {
-  const { id, InputItem, ViewItem, setPlusEl, secId, addNewItem, newItem } = props
+  const { id, idx, secData, secName, arrayName, InputItem, ViewItem, setPlusEl, secId, addNewItem, newItem } = props
   const [edit, setEdit] = useState(false);
   const dispatch = useDispatch()
   const inputRef = useRef(null);
 
   const editFinishHandler = () => {
-    setEdit(!edit);
+    setEdit(false);
     setPlusEl(false);
   };
 
-  // useEffect(() => {
-  //   // console.log("props= ", props)
-  //   // console.log("id= ", id, "newItem id= ", newItem)
-  //   if (addNewItem) {
-  //     setEdit(true);
-  //   } else {
-  //     editFinishHandler()
-  //   }
-  //   if (props?.isLast) {
-  //     console.log("newItem= ", newItem)
-  //   }
-  // }, [addNewItem]);
+  useEffect(() => {
+    if (idx === (secData?.length - 1)) {
+      if (addNewItem) {
+        setEdit(true);
+      } else {
+        setEdit(false)
+      }
+    }
+  }, [addNewItem]);
 
   const handleClickItem = () => {
     setEdit(!edit);
@@ -48,6 +45,16 @@ const CommonItemAndForm = (props) => {
     }))
   }
 
+  const handleDeleteItem = () => {
+    dispatch(deleteItem({
+      secName,
+      arrayName,
+      objId: id
+    }))
+    setPlusEl(false);
+    dispatch(updateResumeAsync(currentToken))
+  }
+
   useEffect(() => {
     inputRef.current?.focus();
   }, [edit]);
@@ -60,13 +67,13 @@ const CommonItemAndForm = (props) => {
 
   if (secId === "3") {
     return (
-      <ViewItem {...props} inputRef={inputRef} edit={edit} editFinishHandler={editFinishHandler} handleClickItem={handleClickItem} onChangeHandler={onChangeHandler} />
+      <ViewItem {...props} inputRef={inputRef} edit={edit} handleDeleteItem={handleDeleteItem} editFinishHandler={editFinishHandler} handleClickItem={handleClickItem} onChangeHandler={onChangeHandler} />
     )
   }
 
   return (
     <>
-      {edit ? <InputItem {...props} inputRef={inputRef} editFinishHandler={editFinishHandler} onChangeHandler={onChangeHandler} /> : <ViewItem {...props} handleClickItem={handleClickItem} />}
+      {edit ? <InputItem {...props} inputRef={inputRef} handleDeleteItem={handleDeleteItem} editFinishHandler={editFinishHandler} onChangeHandler={onChangeHandler} /> : <ViewItem {...props} handleClickItem={handleClickItem} />}
     </>
   )
 }

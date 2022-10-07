@@ -14,7 +14,7 @@ const AddItems = (props) => {
 
   const addNewItemHandler = () => {
     dispatch(addItem({
-      secName, arrayName, value: { ...value, id: uuidv4(), isLast: true }
+      secName, arrayName, value: { ...value, id: uuidv4() }
     }))
     setAddNewItem(true)
   }

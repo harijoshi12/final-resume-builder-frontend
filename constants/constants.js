@@ -81,6 +81,30 @@ export const resumeInputCodes = {
   INTEREST: "interest"
 }
 
+export const resumeSecNames = {
+  SECPERSONALINFO: "secPersonalInfo",
+  SECTECHSKILLS: "secTechSkills",
+  SECPROGLANGS: "secProgLangs",
+  SECEXPERIENCES: "secExperiences",
+  SECCONTACTDETAILS: "secContactDetails",
+  SECPROJECTS: "secProjects",
+  SECLANGUAGES: "secLanguages",
+  SECEDUCATIONS: "secEducations",
+  SECINTERESTS: "secInterests"
+}
+
+export const resumeArrayNames = {
+  PERSONALINFO: "personalInfo",
+  TECHSKILLS: "techSkills",
+  PROGLANGS: "progLangs",
+  EXPERIENCES: "experiences",
+  CONTACTDETAILS: "contactDetails",
+  PROJECTS: "projects",
+  LANGUAGES: "languages",
+  EDUCATIONS: "educations",
+  INTERESTS: "interests"
+}
+
 export const userInputCodes = {
   NAME: "name",
   USERNAME: "userName",

@@ -70,7 +70,7 @@ export const resumeSlice = createSlice({
         state.data[secName][arrayName][0] = value
         return
       }
-      state.data[secName][arrayName].find(item => item._id === objId)[objName] = value
+      state.data[secName][arrayName].find(item => item.id === objId)[objName] = value
     },
 
     addItem: (state, action) => {
@@ -79,7 +79,8 @@ export const resumeSlice = createSlice({
     },
 
     deleteItem: (state, action) => {
-      state[action.path].filter(item => item.id != id)
+      const { secName, arrayName, objId } = action.payload
+      state.data[secName][arrayName] = current(state).data[secName][arrayName].filter(item => item.id !== objId)
     }
   },
   extraReducers: (builder) => {

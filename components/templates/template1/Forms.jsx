@@ -17,6 +17,9 @@ import { useAuth } from "../../../contexts/AuthContext";
 export const CommonForm = (props) => {
   const {
     secId,
+    secName,
+    arrayName,
+    id,
     isInfo,
     isImageUpload,
     newEditFinishHandler,
@@ -71,7 +74,7 @@ export const CommonForm = (props) => {
         {!isInfo ? (
           <span
             className={`${styles.icon} ${styles.delete}`}
-            onClick={(e) => handleDeleteItem(e)}
+            onClick={(e) => handleDeleteItem(secName, arrayName, id)}
           >
             <AiFillDelete />
           </span>
@@ -88,16 +91,14 @@ export const NameInput = (props) => {
     setEditName,
     isInfo,
     userName,
-    _id,
+    id,
     onChangeHandler,
   } = props;
-
-  console.log("name input= ", props)
 
   const newEditFinishHandler = () => {
     setEditName(!editName);
     if (userName === "") {
-      onChangeHandler("secPersonalInfo", "personalInfo", _id, "userName", "Your Name")
+      onChangeHandler("secPersonalInfo", "personalInfo", id, "userName", "Your Name")
     }
   };
 
@@ -115,7 +116,7 @@ export const NameInput = (props) => {
         value={userName}
         name={resumeInputCodes.NAME}
         placeholder="Your Name"
-        onChange={(e) => onChangeHandler("secPersonalInfo", "personalInfo", _id, "userName", e.target.value)} />
+        onChange={(e) => onChangeHandler("secPersonalInfo", "personalInfo", id, "userName", e.target.value)} />
     </CommonForm>
   );
 };
@@ -127,13 +128,13 @@ export const ProfessionInput = (props) => {
     editProf,
     setEditProf,
     profession,
-    _id,
+    id,
     onChangeHandler,
   } = props;
   const newEditFinishHandler = () => {
     setEditProf(!editProf);
     if (profession === "") {
-      onChangeHandler("secPersonalInfo", "personalInfo", _id, "profession", "Profession")
+      onChangeHandler("secPersonalInfo", "personalInfo", id, "profession", "Profession")
     }
   };
   useEffect(() => {
@@ -150,7 +151,7 @@ export const ProfessionInput = (props) => {
         name={resumeInputCodes.PROFESSION}
         placeholder="Profession"
         value={profession}
-        onChange={(e) => onChangeHandler("secPersonalInfo", "personalInfo", _id, "profession", e.target.value)}
+        onChange={(e) => onChangeHandler("secPersonalInfo", "personalInfo", id, "profession", e.target.value)}
       />
     </CommonForm>
   );
@@ -163,13 +164,13 @@ export const ProfSummaryInput = (props) => {
     setEditProfSummary,
     isInfo,
     tagline,
-    _id,
+    id,
     onChangeHandler,
   } = props;
   const newEditFinishHandler = () => {
     setEditProfSummary(!editProfSummary);
     if (tagline === "") {
-      onChangeHandler("secPersonalInfo", "personalInfo", _id, "tagline", "About you")
+      onChangeHandler("secPersonalInfo", "personalInfo", id, "tagline", "About you")
     }
   };
   useEffect(() => {
@@ -186,7 +187,7 @@ export const ProfSummaryInput = (props) => {
         name={resumeInputCodes.TAGLINE}
         placeholder="About You"
         value={tagline}
-        onChange={(e) => onChangeHandler("secPersonalInfo", "personalInfo", _id, "tagline", e.target.value)}
+        onChange={(e) => onChangeHandler("secPersonalInfo", "personalInfo", id, "tagline", e.target.value)}
       />
     </CommonForm>
   );
@@ -230,20 +231,22 @@ export const TechSkillInput = (props) => {
     techSkill,
     inputRef,
     editFinishHandler,
+    handleDeleteItem,
     onChangeHandler,
-    _id
+    id
   } = props;
 
   const newEditFinishHandler = () => {
     if (techSkill === "") {
-      onChangeHandler("secTechSkills", "techSkills", _id, "techSkill", "Technical Skill")
+      onChangeHandler("secTechSkills", "techSkills", id, "techSkill", "Technical Skill")
     }
     editFinishHandler();
   };
 
+
   return (
     <CommonForm
-      // handleDeleteItem={handleDeleteItem}
+      handleDeleteItem={handleDeleteItem}
       newEditFinishHandler={newEditFinishHandler}
       secId="2"
       className="techSkillInput"
@@ -253,7 +256,7 @@ export const TechSkillInput = (props) => {
         placeholder="Technical Skill"
         name={resumeInputCodes.TECHSKILL}
         value={techSkill}
-        onChange={(e) => onChangeHandler("secTechSkills", "techSkills", _id, "techSkill", e.target.value)}
+        onChange={(e) => onChangeHandler("secTechSkills", "techSkills", id, "techSkill", e.target.value)}
       />
     </CommonForm>
   );
@@ -266,13 +269,13 @@ export const ProgLangInput = (props) => {
     handleDeleteItem,
     editFinishHandler,
     onChangeHandler,
-    _id,
+    id,
   } = props;
 
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (progLang === "") {
-      onChangeHandler("secProgLangs", "progLangs", _id, "progLang", "Programming Language")
+      onChangeHandler("secProgLangs", "progLangs", id, "progLang", "Programming Language")
     }
   };
   return (
@@ -287,13 +290,13 @@ export const ProgLangInput = (props) => {
         placeholder="Programming Language"
         ref={inputRef}
         name={resumeInputCodes.PROGLANG}
-        onChange={(e) => onChangeHandler("secProgLangs", "progLangs", _id, "progLang", e.target.value)} />
+        onChange={(e) => onChangeHandler("secProgLangs", "progLangs", id, "progLang", e.target.value)} />
     </CommonForm>
   );
 };
 
 export const ProgLangLevel = (props) => {
-  const { progLangLevel, onChangeHandler, _id } = props;
+  const { progLangLevel, onChangeHandler, id } = props;
   const level = progLangLevel;
   const innerRef = useRef(null);
   const outerRef = useRef(null);
@@ -310,7 +313,7 @@ export const ProgLangLevel = (props) => {
   const dispatch = useDispatch()
 
   const changeAndUpdate = (e) => {
-    onChangeHandler("secProgLangs", "progLangs", _id, "progLangLevel", e.target.value / 10)
+    onChangeHandler("secProgLangs", "progLangs", id, "progLangLevel", e.target.value / 10)
     dispatch(updateResumeAsync(currentToken))
   }
   return (
@@ -353,16 +356,16 @@ export const MyJourneyInput = (props) => {
     handleDeleteItem,
     editFinishHandler,
     onChangeHandler,
-    _id
+    id
   } = props;
 
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (jobTitle === "") {
-      onChangeHandler("secExperiences", "experiences", _id, "jobTitle", "Job Title")
+      onChangeHandler("secExperiences", "experiences", id, "jobTitle", "Job Title")
     }
     if (jobCompany === "") {
-      onChangeHandler("secExperiences", "experiences", _id, "jobCompany", "Company Name/workPlace")
+      onChangeHandler("secExperiences", "experiences", id, "jobCompany", "Company Name/workPlace")
     }
   };
 
@@ -381,7 +384,7 @@ export const MyJourneyInput = (props) => {
             name={resumeInputCodes.JOBSTARTDATE}
             id=""
             placeholder="yyyy"
-            onChange={(e) => onChangeHandler("secExperiences", "experiences", _id, "jobStartDate", e.target.value)}
+            onChange={(e) => onChangeHandler("secExperiences", "experiences", id, "jobStartDate", e.target.value)}
           />
           <span>to</span>
           {jobPresent ? (
@@ -393,7 +396,7 @@ export const MyJourneyInput = (props) => {
               id=""
               name={resumeInputCodes.JOBENDDATE}
               placeholder="yyyy"
-              onChange={(e) => onChangeHandler("secExperiences", "experiences", _id, "jobEndDate", e.target.value)}
+              onChange={(e) => onChangeHandler("secExperiences", "experiences", id, "jobEndDate", e.target.value)}
             />
           )}
 
@@ -403,7 +406,7 @@ export const MyJourneyInput = (props) => {
               checked={jobPresent}
               name={resumeInputCodes.JOBPRESENT}
               id="present"
-              onChange={(e) => onChangeHandler("secExperiences", "experiences", _id, "jobPresent", e.target.checked)}
+              onChange={(e) => onChangeHandler("secExperiences", "experiences", id, "jobPresent", e.target.checked)}
             />
             <label htmlFor="present">present</label>
           </div>
@@ -415,13 +418,13 @@ export const MyJourneyInput = (props) => {
               ref={inputRef}
               name={resumeInputCodes.JOBTITLE}
               placeholder="Title/Position"
-              onChange={(e) => onChangeHandler("secExperiences", "experiences", _id, "jobTitle", e.target.value)}
+              onChange={(e) => onChangeHandler("secExperiences", "experiences", id, "jobTitle", e.target.value)}
             />
             <input
               value={jobCompany}
               name={resumeInputCodes.JOBCOMPANY}
               placeholder="Workplace/Company"
-              onChange={(e) => onChangeHandler("secExperiences", "experiences", _id, "jobCompany", e.target.value)}
+              onChange={(e) => onChangeHandler("secExperiences", "experiences", id, "jobCompany", e.target.value)}
             />
           </div>
           <textarea
@@ -429,7 +432,7 @@ export const MyJourneyInput = (props) => {
             type="text"
             name={resumeInputCodes.JOBDESC}
             placeholder="Description/Achievements"
-            onChange={(e) => onChangeHandler("secExperiences", "experiences", _id, "jobDesc", e.target.value)}
+            onChange={(e) => onChangeHandler("secExperiences", "experiences", id, "jobDesc", e.target.value)}
           />
         </div>
       </CommonForm>
@@ -504,7 +507,7 @@ export const ContactInput = ({ setShowContactInput }) => {
     quoraChecked,
     medium,
     mediumChecked,
-    _id
+    id
   } = items
 
   const { currentToken, currentUser } = useAuth();
@@ -648,7 +651,7 @@ export const ProjectInput = (props) => {
     projectGitLink,
     videoExplanationLink,
     projectLiveDemo,
-    _id,
+    id,
     inputRef,
     handleDeleteItem,
     editFinishHandler,
@@ -658,10 +661,10 @@ export const ProjectInput = (props) => {
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (projectTitle === "") {
-      onChangeHandler("secProjects", "projects", _id, "projectTitle", "Project Title")
+      onChangeHandler("secProjects", "projects", id, "projectTitle", "Project Title")
     }
     if (projectTechStack === "") {
-      onChangeHandler("secProjects", "projects", _id, "projectTechStack", "TechStack used")
+      onChangeHandler("secProjects", "projects", id, "projectTechStack", "TechStack used")
     }
   };
 
@@ -679,13 +682,13 @@ export const ProjectInput = (props) => {
           ref={inputRef}
           name={resumeInputCodes.PROJECTTITLE}
           value={projectTitle}
-          onChange={(e) => onChangeHandler("secProjects", "projects", _id, "projectTitle", e.target.value)} />
+          onChange={(e) => onChangeHandler("secProjects", "projects", id, "projectTitle", e.target.value)} />
         <input
           type="text"
           placeholder="TechStack used"
           name={resumeInputCodes.PROJECTTECHSTACK}
           value={projectTechStack}
-          onChange={(e) => onChangeHandler("secProjects", "projects", _id, "projectTechStack", e.target.value)}
+          onChange={(e) => onChangeHandler("secProjects", "projects", id, "projectTechStack", e.target.value)}
         />
       </div>
       <div className={styles.bottom}>
@@ -693,7 +696,7 @@ export const ProjectInput = (props) => {
           name={resumeInputCodes.PROJECTDESC}
           placeholder="Project Description"
           value={projectDesc}
-          onChange={(e) => onChangeHandler("secProjects", "projects", _id, "projectDesc", e.target.value)}
+          onChange={(e) => onChangeHandler("secProjects", "projects", id, "projectDesc", e.target.value)}
         />
         <div className={styles.links}>
           <input
@@ -701,21 +704,21 @@ export const ProjectInput = (props) => {
             placeholder="Github link"
             name={resumeInputCodes.PROJECTGITLINK}
             value={projectGitLink}
-            onChange={(e) => onChangeHandler("secProjects", "projects", _id, "projectGitLink", e.target.value)}
+            onChange={(e) => onChangeHandler("secProjects", "projects", id, "projectGitLink", e.target.value)}
           />
           <input
             type="text"
             placeholder="Video Explanation link"
             name={resumeInputCodes.PROJECTGITLINK}
             value={videoExplanationLink}
-            onChange={(e) => onChangeHandler("secProjects", "projects", _id, "videoExplanationLink", e.target.value)}
+            onChange={(e) => onChangeHandler("secProjects", "projects", id, "videoExplanationLink", e.target.value)}
           />
           <input
             type="text"
             placeholder="Live-Demo link"
             name={resumeInputCodes.PROJECTLIVEDEMO}
             value={projectLiveDemo}
-            onChange={(e) => onChangeHandler("secProjects", "projects", _id, "projectLiveDemo", e.target.value)} />
+            onChange={(e) => onChangeHandler("secProjects", "projects", id, "projectLiveDemo", e.target.value)} />
         </div>
       </div>
     </CommonForm>
@@ -746,7 +749,7 @@ export const LangInput = (props) => {
   const {
     language,
     languageLevel: level,
-    _id,
+    id,
     inputRef,
     handleDeleteItem,
     editFinishHandler,
@@ -756,7 +759,7 @@ export const LangInput = (props) => {
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (language === "") {
-      onChangeHandler("secLanguages", "languages", _id, "language", "Language")
+      onChangeHandler("secLanguages", "languages", id, "language", "Language")
     };
   }
   return (
@@ -772,7 +775,7 @@ export const LangInput = (props) => {
         name={resumeInputCodes.LANGUAGE}
         placeholder="Language"
         value={language}
-        onChange={(e) => onChangeHandler("secLanguages", "languages", _id, "language", e.target.value)}
+        onChange={(e) => onChangeHandler("secLanguages", "languages", id, "language", e.target.value)}
       />
       <div className={styles.group}>
         <RadioGroup
@@ -781,7 +784,7 @@ export const LangInput = (props) => {
           labelVal="1/5"
           value="1"
           level={level}
-          objId={_id}
+          objId={id}
           content={"Elementary Proficiency"}
         />
         <RadioGroup
@@ -790,7 +793,7 @@ export const LangInput = (props) => {
           labelVal="2/5"
           value="2"
           level={level}
-          objId={_id}
+          objId={id}
           content={"Limited Working Proficiency"}
         />
         <RadioGroup
@@ -799,7 +802,7 @@ export const LangInput = (props) => {
           labelVal="3/5"
           value="3"
           level={level}
-          objId={_id}
+          objId={id}
           content={"Professional Working Proficiency"}
         />
         <RadioGroup
@@ -808,7 +811,7 @@ export const LangInput = (props) => {
           labelVal="4/5"
           value="4"
           level={level}
-          objId={_id}
+          objId={id}
           content={"Full Professional Proficiency"}
         />
         <RadioGroup
@@ -817,7 +820,7 @@ export const LangInput = (props) => {
           labelVal="5/5"
           value="5"
           level={level}
-          objId={_id}
+          objId={id}
           content={"Native or Bilingual Proficiency"}
         />
       </div>
@@ -834,7 +837,7 @@ export const EducationInput = (props) => {
     studyEndDate,
     studyPresent,
     studyPlace,
-    _id,
+    id,
     handleDeleteItem,
     editFinishHandler,
     onChangeHandler,
@@ -843,10 +846,10 @@ export const EducationInput = (props) => {
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (studyProgram === "") {
-      onChangeHandler("secEducations", "educations", _id, "studyProgram", "Study Program")
+      onChangeHandler("secEducations", "educations", id, "studyProgram", "Study Program")
     }
     if (institution === "") {
-      onChangeHandler("secEducations", "educations", _id, "institution", "Institution/Place of Education")
+      onChangeHandler("secEducations", "educations", id, "institution", "Institution/Place of Education")
     }
   };
 
@@ -863,12 +866,12 @@ export const EducationInput = (props) => {
           name={resumeInputCodes.STUDYPROGRAM}
           placeholder="Study Program"
           value={studyProgram}
-          onChange={(e) => onChangeHandler("secEducations", "educations", _id, "studyProgram", e.target.value)} />
+          onChange={(e) => onChangeHandler("secEducations", "educations", id, "studyProgram", e.target.value)} />
         <input
           name={resumeInputCodes.INSTITUTION}
           placeholder="Institution/Place of Education"
           value={institution}
-          onChange={(e) => onChangeHandler("secEducations", "educations", _id, "institution", e.target.value)}
+          onChange={(e) => onChangeHandler("secEducations", "educations", id, "institution", e.target.value)}
         />
       </div>
       <div className={styles.inputYear}>
@@ -878,7 +881,7 @@ export const EducationInput = (props) => {
           id=""
           placeholder="yyyy"
           value={studyStartDate}
-          onChange={(e) => onChangeHandler("secEducations", "educations", _id, "studyStartDate", e.target.value)}
+          onChange={(e) => onChangeHandler("secEducations", "educations", id, "studyStartDate", e.target.value)}
         />
         <span>to</span>
         {studyPresent ? (
@@ -890,7 +893,7 @@ export const EducationInput = (props) => {
             name={resumeInputCodes.STUDYENDDATE}
             placeholder="yyyy"
             value={studyEndDate}
-            onChange={(e) => onChangeHandler("secEducations", "educations", _id, "studyEndDate", e.target.value)}
+            onChange={(e) => onChangeHandler("secEducations", "educations", id, "studyEndDate", e.target.value)}
           />
         )}
         <input
@@ -898,7 +901,7 @@ export const EducationInput = (props) => {
           checked={studyPresent}
           name={resumeInputCodes.STUDYPRESENT}
           id="present"
-          onChange={(e) => onChangeHandler("secEducations", "educations", _id, "studyPresent", e.target.checked)}
+          onChange={(e) => onChangeHandler("secEducations", "educations", id, "studyPresent", e.target.checked)}
         />
         <label htmlFor="present">Present</label>
       </div>
@@ -909,14 +912,14 @@ export const EducationInput = (props) => {
           id=""
           placeholder="CGPA/Percentage"
           value={cgpa}
-          onChange={(e) => onChangeHandler("secEducations", "educations", _id, "cgpa", e.target.value)}
+          onChange={(e) => onChangeHandler("secEducations", "educations", id, "cgpa", e.target.value)}
         />
         <input
           type="text"
           placeholder="Study Place"
           name={resumeInputCodes.STUDYPLACE}
           value={studyPlace}
-          onChange={(e) => onChangeHandler("secEducations", "educations", _id, "studyPlace", e.target.value)}
+          onChange={(e) => onChangeHandler("secEducations", "educations", id, "studyPlace", e.target.value)}
         />
       </div>
     </CommonForm>
@@ -926,7 +929,7 @@ export const EducationInput = (props) => {
 export const InterestInput = (props) => {
   const {
     interest,
-    _id,
+    id,
     inputRef,
     handleDeleteItem,
     onChangeHandler,
@@ -935,7 +938,7 @@ export const InterestInput = (props) => {
   const newEditFinishHandler = () => {
     editFinishHandler();
     if (interest === "") {
-      onChangeHandler("secInterests", "interests", _id, "interest", "Interest")
+      onChangeHandler("secInterests", "interests", id, "interest", "Interest")
     }
   };
 
@@ -951,7 +954,7 @@ export const InterestInput = (props) => {
         ref={inputRef}
         name={resumeInputCodes.INTEREST}
         value={interest}
-        onChange={(e) => onChangeHandler("secInterests", "interests", _id, "interest", e.target.value)}
+        onChange={(e) => onChangeHandler("secInterests", "interests", id, "interest", e.target.value)}
       />
     </CommonForm>
   );
