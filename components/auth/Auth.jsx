@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
+import { baseUrl } from "../../constants/constants";
 
 const Auth = ({ authPage }) => {
   const [data, setData] = useState({
@@ -90,8 +91,6 @@ const Auth = ({ authPage }) => {
     try {
       const { user } = await handleGoogleLogin();
       const token = await user?.getIdToken();
-      console.log("user= ", user);
-      console.log("token= ", token);
       const config = {
         headers: {
           // Authorization: `Bearer ${token}`,
@@ -99,11 +98,10 @@ const Auth = ({ authPage }) => {
         },
       };
       const { data } = await axios.post(
-        "http://192.168.1.34:5000/api/user/current-user",
+        `${baseUrl}/user/current-user`,
         {},
         config
       );
-      console.log("data= ", data);
       router.push("/dashboard");
       toast.success("Successfully login!", {
         position: toast.POSITION.TOP_CENTER,
