@@ -26,12 +26,13 @@ const AuthContextProvider = ({ children }) => {
     const unsubscribe = onIdTokenChanged(auth, async (user) => {
       // const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(await user)
-      setCurrentToken(await user?.getIdToken())
+      setCurrentToken(await user?.getIdToken(true))
     })
     setLoading(false)
     return () => unsubscribe()
   }, [])
 
+  console.log("running")
   const handleRegister = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };

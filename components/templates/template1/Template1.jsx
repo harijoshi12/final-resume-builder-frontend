@@ -19,22 +19,13 @@ const Template1 = () => {
     }
   }, [currentToken, dispatch])
 
-
-  const test = () => {
-    if (currentToken) {
-      console.log("ct= ", currentToken)
-      dispatch(updateResumeAsync(currentToken))
-    }
-  }
-
   const { status } = useSelector(state => state.resume)
-  // if (status === STATUSES.PENDING) {
-  //   return <h2>Loading</h2>
-  // }
+  if (status === STATUSES.PENDING) {
+    return <h2>Loading</h2>
+  }
 
   return (
     <>
-      <button onClick={() => test()}>ssend data</button>
       {status === STATUSES.SUCCEEDED && currentUser && (
         <div className={styles.resume}>
 

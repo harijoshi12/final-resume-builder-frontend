@@ -37,8 +37,6 @@ export const updateResumeAsync = createAsyncThunk('resume/update', async (token,
 export const getResumeAsync = createAsyncThunk('resume/get', async (token, { getState }) => {
   try {
     const { data } = await axios.get(`${baseUrl}/resume/get`, { headers: { token } })
-    console.log("get= ", data)
-    console.log("getState= ", getState().resume.data)
     return data
   } catch (error) {
     console.log(error)
@@ -48,7 +46,6 @@ export const getResumeAsync = createAsyncThunk('resume/get', async (token, { get
 export const getOrCreateResumeAsync = createAsyncThunk('resume/getOrCreate', async (token) => {
   try {
     const { data } = await axios.post(`${baseUrl}/resume/get-or-create`, {}, { headers: { token } });
-    console.log("get-or-create= ", data)
     return data
   } catch (e) {
     console.log(e);

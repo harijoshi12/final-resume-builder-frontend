@@ -36,7 +36,7 @@ export const PersonalInfo = (props) => {
               />
             ) : null}
             <div
-              className={styles.imgbox} style={{ background: `url${imageSrc}` }}
+              className={styles.imgbox} style={{ backgroundImage: `url(${imageSrc})` }}
               onClick={() => setEditImage(true)}
             ></div>
           </div>

@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { updateItem, updateResumeAsync } from "../../../features/resume/resumeSlice";
 import { useAuth } from "../../../contexts/AuthContext";
+import axios from "axios";
 
 export const CommonForm = (props) => {
   const {
@@ -34,7 +35,6 @@ export const CommonForm = (props) => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     newEditFinishHandler();
-    console.log("submited")
     dispatch(updateResumeAsync(currentToken))
   };
 
@@ -194,19 +194,31 @@ export const ProfSummaryInput = (props) => {
 };
 
 export const ImageInput = (props) => {
-  const { editImage, setEditImage, setItemData, onChangeHandler, inputRef } =
+  const { editImage, setEditImage, onChangeHandler, inputRef, id } =
     props;
   const isImageUpload = true;
 
-  console.log("image input= ", props)
+  const { currentToken, currentUser } = useAuth();
+  const dispatch = useDispatch()
 
-  const newEditFinishHandler = () => {
+  const uploadFile = async (files) => {
     setEditImage(!editImage);
-  };
+    console.log("files= ", files[0])
+    const data = new FormData()
+    data.append("file", files[0])
+    data.append("upload_preset", "meta_resume")
+    data.append("cloud_name", "dhctgbbdn")
+    const result = await axios.post("https://api.cloudinary.com/v1_1/dhctgbbdn/image/upload", data)
+
+    onChangeHandler("secPersonalInfo", "personalInfo", id, "imageSrc", result?.data?.url)
+
+    dispatch(updateResumeAsync(currentToken))
+  }
+
   return (
     <CommonForm
       isImageUpload={isImageUpload}
-      newEditFinishHandler={newEditFinishHandler}
+      // newEditFinishHandler={newEditFinishHandler}
       className="imgInput"
     >
       <label htmlFor="imgUpload">
@@ -220,7 +232,7 @@ export const ImageInput = (props) => {
         id="imgUpload"
         ref={inputRef}
         name={resumeInputCodes.IMAGESRC}
-        onChange={(e) => onChangeHandler(e)}
+        onChange={(e) => uploadFile(e.target.files)}
       />
     </CommonForm>
   );

@@ -7,7 +7,8 @@ export const fontsize = ['small', 'medium', 'large']
 export const fontFamily = ['Roboto', 'Quicksand', 'Merriweather']
 
 // export const baseUrl = 'http://192.168.145.116:5000/api'
-export const baseUrl = 'http://192.168.1.37:5000/api'
+// export const baseUrl = 'http://192.168.1.37:5000/api'
+export const baseUrl = 'https://meta-resume.herokuapp.com/api'
 
 export const resumeInputCodes = {
   RESUMETITLE: "resumeTitle",

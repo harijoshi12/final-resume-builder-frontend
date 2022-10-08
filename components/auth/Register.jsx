@@ -66,7 +66,6 @@ const Register = (props) => {
               {},
               config
             );
-            console.log("data= ", data);
             setData((prev) => ({ ...prev, email_login: user?.email }));
             handleLogout();
             setLoading(false);

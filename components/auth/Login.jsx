@@ -31,8 +31,6 @@ const Login = (props) => {
       } else {
         const { user } = await handleLogin(email_login, password_login);
         const token = await user?.getIdToken();
-        console.log("user= ", user);
-        console.log("token= ", token);
         const config = {
           headers: {
             // Authorization: `Bearer ${token}`,
@@ -43,8 +41,6 @@ const Login = (props) => {
           `${baseUrl}/user/current-user`, {},
           config
         );
-        console.log("data= ", data);
-        // localStorage.setItem("token", token);
         toast.success("Successfully login!", {
           position: toast.POSITION.TOP_CENTER,
           className: "custom_toast",

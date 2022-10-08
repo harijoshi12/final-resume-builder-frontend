@@ -104,10 +104,9 @@ $generalfontfamily: "Roboto", sans-serif;
             background-color: rgb(208, 208, 208);
             border: 1px solid white;
             overflow: hidden;
-            // background-image: url(../../media/images/dp.png);
-            background-position: 44% 32%;
+            background-position: center;
             background-repeat: no-repeat;
-            background-size: 170%;
+            background-size: cover;
             img {
               width: 300px;
             }

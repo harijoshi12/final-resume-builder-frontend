@@ -12,10 +12,7 @@ import styles from "./styles/Template1.module.css";
 
 
 export const PersonalInfo = ({ data }) => {
-
-
   const { userName, profession, imageSrc, tagline } = data
-
   return (
     <>
       <h1 className={styles.resumeTitle}>"Are We A Good Fit?"</h1>
@@ -23,7 +20,7 @@ export const PersonalInfo = ({ data }) => {
         <div className={styles.imgboxInner}>
           <div className={styles.imgbox_wrapper}>
             <div
-              className={styles.imgbox} style={{ background: `url${imageSrc}` }}
+              className={styles.imgbox} style={{ backgroundImage: `url(${imageSrc})` }}
             ></div>
           </div>
           <div className={styles.myinfo}>

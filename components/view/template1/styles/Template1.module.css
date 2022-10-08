@@ -781,9 +781,9 @@
   background-color: rgb(208, 208, 208);
   border: 1px solid white;
   overflow: hidden;
-  background-position: 44% 32%;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: 170%;
+  background-size: cover;
 }
 .left .personalInfo.resumeSec .imgboxOuter .imgboxInner .imgbox_wrapper .imgbox img {
   width: 300px;
