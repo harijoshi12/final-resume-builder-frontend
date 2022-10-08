@@ -32,7 +32,6 @@ const AuthContextProvider = ({ children }) => {
     return () => unsubscribe()
   }, [])
 
-  console.log("running")
   const handleRegister = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };

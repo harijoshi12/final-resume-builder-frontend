@@ -102,7 +102,7 @@ const Auth = ({ authPage }) => {
         {},
         config
       );
-      router.push("/dashboard");
+      router.push("/resume-templates");
       toast.success("Successfully login!", {
         position: toast.POSITION.TOP_CENTER,
         className: "custom_toast",
