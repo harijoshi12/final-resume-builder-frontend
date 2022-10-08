@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/AuthContext";
 import { useDispatch } from "react-redux";
 import { getOrCreateResumeAsync } from "../../features/resume/resumeSlice";
+import { useEffect } from "react";
 
 const CustomButton = ({ isdisabled, templateId }) => {
   const router = useRouter();
@@ -27,6 +28,7 @@ const CustomButton = ({ isdisabled, templateId }) => {
       router.push("/login");
     }
   };
+
   return (
     <button disabled={isdisabled} onClick={btnClickHanlder}>
       Build your CV
@@ -35,6 +37,7 @@ const CustomButton = ({ isdisabled, templateId }) => {
 };
 
 const ResumeTemplates = () => {
+
   return (
     <Layout>
       <main className={styles.templatePage}>
@@ -76,9 +79,10 @@ const ResumeTemplates = () => {
                     <div
                       className={`${styles.template2} ${styles.template}`}
                     ></div>
-                    <CustomButton isdisabled={false} templateId={"2"}>
+                    <CustomButton isdisabled={true} templateId={"2"}>
                       Build your CV
                     </CustomButton>
+                    <span className="comming-soon">Comming Soon</span>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>

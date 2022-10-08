@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -12,21 +14,34 @@ const Template1 = () => {
   const { currentToken, currentUser } = useAuth();
 
   const dispatch = useDispatch()
+  const router = useRouter()
 
   useEffect(() => {
     if (currentToken) {
       dispatch(getResumeAsync(currentToken))
+      window.print()
+      window.addEventListener('afterprint', (event) => {
+        router.push("/dashboard")
+      });
     }
   }, [currentToken, dispatch])
 
-  const { status } = useSelector(state => state.resume)
+  const tempStyle = {
+    height: "70vh",
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  }
+
+  const { status, data } = useSelector(state => state.resume)
   if (status === STATUSES.PENDING) {
     return <h2>Loading</h2>
   }
 
   return (
     <>
-      {status === STATUSES.SUCCEEDED && currentUser && (
+      {(status === STATUSES.SUCCEEDED && data) ? (
         <div className={styles.resume}>
 
           <div className={styles.left}>
@@ -44,6 +59,8 @@ const Template1 = () => {
             <NewSecInterests />
           </div>
         </div>
+      ) : (
+        <h1 style={tempStyle}>Please select a <Link href="/resume-templates"><a>&nbsp;Tempate&nbsp;</a></Link> first. </h1>
       )}
     </>
   )

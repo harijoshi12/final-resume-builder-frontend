@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -19,14 +20,22 @@ const Template1 = () => {
     }
   }, [currentToken, dispatch])
 
-  const { status } = useSelector(state => state.resume)
+  const { status, data } = useSelector(state => state.resume)
   if (status === STATUSES.PENDING) {
     return <h2>Loading</h2>
   }
 
+  const tempStyle = {
+    height: "70vh",
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  }
+
   return (
     <>
-      {status === STATUSES.SUCCEEDED && currentUser && (
+      {(status === STATUSES.SUCCEEDED && data) ? (
         <div className={styles.resume}>
 
           <div className={styles.left}>
@@ -44,6 +53,8 @@ const Template1 = () => {
             <NewSecInterests />
           </div>
         </div>
+      ) : (
+        <h1 style={tempStyle}>Please select a <Link href="/resume-templates"><a>&nbsp;Tempate&nbsp;</a></Link> first. </h1>
       )}
     </>
   )
