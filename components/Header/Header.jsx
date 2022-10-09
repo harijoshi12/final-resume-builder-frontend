@@ -165,10 +165,17 @@ function Header({ setIsMousein }) {
     router.push("/");
   };
 
-  console.log("cu= ", currentUser)
-  const { secTitle, secId, personalInfo } = useSelector(state => state?.resume?.data?.secPersonalInfo)
-  console.log("pi= ", personalInfo[0])
+  // console.log("cu= ", currentUser)
+  let personalInfo = [];
+  let data = useSelector(state => state?.resume?.data?.secPersonalInfo?.personalInfo)
+  if (data) {
+    personalInfo = data
+  }
+  useEffect(() => {
+    console.log("pi= ", data, personalInfo)
+  })
   const imageSrc = personalInfo[0]?.imageSrc
+
   return (
     <>
       <div className={toggleMenu ? "nav-overlay toggle" : "nav-overlay"}></div>
