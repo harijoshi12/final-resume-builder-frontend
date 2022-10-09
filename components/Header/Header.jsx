@@ -165,7 +165,6 @@ function Header({ setIsMousein }) {
     router.push("/");
   };
 
-  // console.log("cu= ", currentUser)
   let personalInfo = [];
   let data = useSelector(state => state?.resume?.data?.secPersonalInfo?.personalInfo)
   if (data) {

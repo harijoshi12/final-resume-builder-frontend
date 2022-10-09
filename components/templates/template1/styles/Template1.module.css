@@ -747,6 +747,9 @@
   padding: 10px 25px;
   padding-bottom: 10px;
 }
+.resume .resumeSec .secContent {
+  padding: 0 5px;
+}
 .resume {
   margin: auto;
   display: flex;
@@ -926,12 +929,12 @@
   left: -146px;
   width: 130px;
   text-align: right;
+  white-space: wrap;
 }
 .left .myJourney .myJourneyItem .title {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  white-space: wrap;
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 10px;
@@ -949,7 +952,6 @@
   background-color: rgb(43, 52, 61);
 }
 .left .myJourney .myJourneyItem .title .job_title {
-  width: 50%;
   color: white;
   padding: 3px 5px;
   background-color: rgb(43, 52, 61);
@@ -980,12 +982,12 @@
   color: white;
   transition: all 0.2s ease;
   padding: 1px 0;
-  padding-left: 10px;
+  padding-left: 5px;
 }
 .right .contactDetails a span:first-child {
   position: relative;
   margin-top: 5px;
-  width: 40px;
+  width: 45px;
   min-width: 40px;
 }
 .right .contactDetails a span:last-child {
@@ -1022,14 +1024,18 @@
 .right .projects .projectItem .title span {
   padding: 3px 5px;
 }
-.right .projects .projectItem .title span:first-child {
-  width: 50%;
+.right .projects .projectItem .title .p_title {
   padding: 0 5px;
   color: rgb(49, 51, 42);
   background-color: rgb(200, 200, 200);
+  white-space: nowrap;
 }
-.right .projects .projectItem .title span:nth-child(2) {
+.right .projects .projectItem .title .p_divider {
   margin-left: 7px;
+}
+.right .projects .projectItem .title .p_techStack {
+  font-size: 20px;
+  font-weight: 100;
 }
 .right .projects .projectItem .desc {
   color: rgb(49, 51, 42);
@@ -1099,6 +1105,8 @@
   margin: 0;
   font-size: 20px;
   font-weight: 700;
+  display: flex;
+  align-items: center;
 }
 .right .edus .edu .r1 span {
   display: inline-flex;
@@ -1107,21 +1115,21 @@
   font-size: 25px;
 }
 .right .edus .edu .r1 .title {
-  width: 55%;
   background-color: white;
+  white-space: nowrap;
   color: rgb(49, 51, 42);
   padding: 5px;
   margin-right: 10px;
 }
 .right .edus .edu .r1 .institute {
   position: relative;
-  width: 35%;
-  top: -10px;
   margin-left: 10px;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 100;
 }
 .right .edus .edu .r2 {
   padding: 0;
+  margin-top: 10px;
   font-size: 20px;
   font-weight: 500;
   display: flex;

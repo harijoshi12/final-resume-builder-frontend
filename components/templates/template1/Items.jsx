@@ -329,9 +329,9 @@ export const Project = (props) => {
   return (
     <div className={styles.projectItem} onClick={handleClickItem}>
       <h2 className={styles.title}>
-        <span >{projectTitle}</span>
-        <span>|</span>
-        <span >{projectTechStack}</span>
+        <span className={styles.p_title}>{projectTitle}</span>
+        <span className={styles.p_divider}>|</span>
+        <span className={styles.p_techStack}>{projectTechStack}</span>
       </h2>
       <div className={styles.desc} >
         <p>{projectDesc}</p>
