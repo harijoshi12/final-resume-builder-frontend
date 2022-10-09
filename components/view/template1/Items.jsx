@@ -263,22 +263,22 @@ export const Project = (props) => {
   return (
     <div className={styles.projectItem}>
       <h2 className={styles.title}>
-        <span >{projectTitle}</span>
-        <span>|</span>
-        <span >{projectTechStack}</span>
+        <span className={styles.p_title}>{projectTitle}</span>
+        <span className={styles.p_divider}>|</span>
+        <span className={styles.p_techStack}>{projectTechStack}</span>
       </h2>
       <div className={styles.desc} >
         <p>{projectDesc}</p>
         <div className={styles.link}>
-          <a className={styles.git_link} href={projectGitLink}>
+          {projectGitLink && <a className={styles.git_link} href={projectGitLink}>
             Github link
-          </a>
-          <a className={styles.git_link} href={videoExplanationLink}>
+          </a>}
+          {videoExplanationLink && <a className={styles.git_link} href={videoExplanationLink}>
             Video explanation
-          </a>
-          <a className={styles.liveDemo_link} href={projectLiveDemo}>
+          </a>}
+          {projectLiveDemo && <a className={styles.liveDemo_link} href={projectLiveDemo}>
             Live-Demo link
-          </a>
+          </a>}
         </div>
       </div>
     </div>
@@ -300,10 +300,10 @@ export const MyJourney = (props) => {
         {jobStartDate}-{jobPresent ? "Present" : jobEndDate}
       </span>
       <h1 className={styles.title} >
-        <span></span>
-        <span >{jobTitle}</span>{" "}
+        <span className={styles.bullet_point}></span>
+        <span className={styles.job_title}>{jobTitle}</span>{" "}
         <span className={styles.divider}>|</span>
-        <span >{jobCompany}</span>
+        <span className={styles.company}>{jobCompany}</span>
       </h1>
       <p className={styles.desc} >
         {jobDesc}
