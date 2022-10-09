@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { BsTriangleFill } from "react-icons/bs";
 function Header({ setIsMousein }) {
   const [toggleMenu, setToggleMenu] = useState(false);
   const progress = useRef();
@@ -163,6 +165,10 @@ function Header({ setIsMousein }) {
     router.push("/");
   };
 
+  console.log("cu= ", currentUser)
+  const { secTitle, secId, personalInfo } = useSelector(state => state?.resume?.data?.secPersonalInfo)
+  console.log("pi= ", personalInfo[0])
+  const imageSrc = personalInfo[0]?.imageSrc
   return (
     <>
       <div className={toggleMenu ? "nav-overlay toggle" : "nav-overlay"}></div>
@@ -173,65 +179,45 @@ function Header({ setIsMousein }) {
         </div>
         <div className="nav_wrapper">
           <div className="logo">
-            <Link href="/">
-              <a>
-                Meta <span>Resume</span>
-              </a>
-            </Link>
+            <Link href="/"><a>Meta <span>Resume</span></a></Link>
           </div>
           <nav ref={nav} className={toggleMenu ? "toggle" : ""}>
             <Link href="/">
-              <a
-                className={router.pathname === "/" ? "active" : ""}
-                ref={link1}
-              >
-                Home
-              </a>
+              <a className={router.pathname === "/" ? "active" : ""} ref={link1}>Home</a>
             </Link>
             <Link href="/resume-templates">
-              <a
-                className={
-                  router.pathname === "/resume-templates" ? "active" : ""
-                }
-                ref={link2}
-              >
-                Templates
-              </a>
+              <a className={router.pathname === "/resume-templates" ? "active" : ""} ref={link2}>Templates</a>
             </Link>
             {currentUser && (
               <Link href="/dashboard">
-                <a
-                  className={router.pathname === "/dashboard" ? "active" : ""}
-                  ref={link3}
-                >
-                  Dashboard
-                </a>
+                <a className={router.pathname === "/dashboard" ? "active" : ""} ref={link3}>Dashboard</a>
               </Link>
             )}
             <Link href="/view-resume">
-              <a
-                className={router.pathname === "/view-resume" ? "active" : ""}
-                ref={link5}
-              >
-                View Resume
-              </a>
+              <a className={router.pathname === "/view-resume" ? "active" : ""} ref={link5}>View Resume</a>
             </Link>
-            {currentUser ? (
-              <button onClick={(e) => logoutHandler(e)}>Logout</button>
-            ) : (
+            {!currentUser &&
               <Link href="/login">
-                <a
-                  className={
-                    router.pathname === "/login"
-                      ? "active login_register"
-                      : "login_register"
-                  }
-                >
-                  Login/Register
-                </a>
+                <span className={router.pathname === "/login" ? "active login_register" : "login_register"}>Login / Register</span>
               </Link>
-            )}
+            }
           </nav>
+          {currentUser ? (
+            <div className="dd_menu">
+              <div className="dd_parent">
+                <Link href="/view-resume">
+                  <div className="imgbox" style={{ backgroundImage: `url(${imageSrc})` }}></div>
+                </Link>
+                <div className="dd_arrow"><BsTriangleFill></BsTriangleFill></div>
+              </div>
+              <div className="dd_child_wrapper">
+                <div className="dd_child">
+                  <Link href="#"><a className="dd_child_link">Account Page</a></Link>
+                  <div className="dd_child_link" onClick={(e) => logoutHandler(e)}>Logout</div>
+                </div>
+              </div>
+            </div>
+          ) : null}
           <div
             ref={burger}
             className={toggleMenu ? "burger toggle" : "burger"}
