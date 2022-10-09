@@ -23,7 +23,7 @@ const Template1 = () => {
     }
     window.addEventListener('afterprint', fun);
     return () => window.removeEventListener('afterprint', fun);
-  }, [])
+  }, [router])
 
   useEffect(() => {
     if (currentToken) {

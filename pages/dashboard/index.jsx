@@ -1,7 +1,6 @@
 import React from "react";
 import Layout from "../../UI/Layout";
 import styles from "../../styles/Dashboard.module.css";
-import Resume from "../../components/templates/common/Resume";
 import { useAuth } from "../../contexts/AuthContext";
 import { useEffect } from "react";
 import { useRouter } from "next/router";

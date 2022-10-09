@@ -22,7 +22,7 @@ const CommonItemAndForm = (props) => {
         setEdit(false)
       }
     }
-  }, [addNewItem]);
+  }, [addNewItem, idx, secData?.length]);
 
   const handleClickItem = () => {
     setEdit(!edit);
@@ -31,7 +31,7 @@ const CommonItemAndForm = (props) => {
 
   useEffect(() => {
     setPlusEl(edit);
-  }, [edit]);
+  }, [edit, setPlusEl]);
 
   const { currentToken, currentUser } = useAuth();
 
