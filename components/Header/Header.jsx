@@ -171,10 +171,9 @@ function Header({ setIsMousein }) {
   if (data) {
     personalInfo = data
   }
-  useEffect(() => {
-    console.log("pi= ", data, personalInfo)
-  })
-  const imageSrc = personalInfo[0]?.imageSrc
+  const imageSrc = data ? personalInfo[0]?.imageSrc : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+
+  console.log("imgsrc= ", imageSrc)
 
   return (
     <>

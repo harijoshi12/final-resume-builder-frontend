@@ -1,7 +1,7 @@
 .pseudo_header {
   position: fixed;
   top: 0;
-  background: rgb(247, 247, 247);
+  background: rgb(255, 255, 255);
   width: 100%;
   height: 75px;
   z-index: 100;
@@ -118,9 +118,10 @@ header .dd_menu .dd_parent {
   align-items: center;
 }
 header .dd_menu .dd_parent .imgbox {
-  height: 60px;
-  width: 60px;
+  height: 55px;
+  width: 55px;
   background-size: cover;
+  background-position: center;
   border-radius: 50%;
   border: 2px solid black;
 }
