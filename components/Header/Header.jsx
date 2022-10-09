@@ -173,8 +173,6 @@ function Header({ setIsMousein }) {
   }
   const imageSrc = data ? personalInfo[0]?.imageSrc : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
 
-  console.log("imgsrc= ", imageSrc)
-
   return (
     <>
       <div className={toggleMenu ? "nav-overlay toggle" : "nav-overlay"}></div>
