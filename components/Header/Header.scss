@@ -41,7 +41,7 @@ header {
     .progress {
       width: 0%;
       height: 7px;
-      background-color: orangered;
+      background-color: #ff4500;
       transition: width 0.2s ease;
     }
   }
@@ -79,6 +79,7 @@ header {
     width: 60%;
     z-index: 200;
     // background-color: rgb(241, 241, 11);
+    margin-left: auto;
     .login_register {
       border: 2px solid orangered;
       background-color: orangered;

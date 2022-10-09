@@ -44,7 +44,7 @@ header .progress_wrapper {
 header .progress_wrapper .progress {
   width: 0%;
   height: 7px;
-  background-color: orangered;
+  background-color: #ff4500;
   transition: width 0.2s ease;
 }
 header .nav_wrapper {
@@ -79,6 +79,7 @@ header nav {
   justify-content: space-around;
   width: 60%;
   z-index: 200;
+  margin-left: auto;
 }
 header nav .login_register {
   border: 2px solid orangered;
