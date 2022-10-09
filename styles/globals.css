@@ -84,7 +84,8 @@ main {
   background-color: rgba(0, 0, 0, 0.6);
   pointer-events: none;
 }
-.swiper .swiper-button-next, .swiper .swiper-button-prev {
+.swiper .swiper-button-next,
+.swiper .swiper-button-prev {
   width: 50px;
   height: 50px;
   padding: 5px;
@@ -95,21 +96,23 @@ main {
   box-shadow: 0 0 10px 1px rgba(128, 128, 128, 0.6);
   transition: all 0.2s ease-in-out;
 }
-.swiper .swiper-button-next:hover, .swiper .swiper-button-prev:hover {
+.swiper .swiper-button-next:hover,
+.swiper .swiper-button-prev:hover {
   transform: scale(1.2);
 }
-.swiper .swiper-button-next::after, .swiper .swiper-button-prev::after {
+.swiper .swiper-button-next::after,
+.swiper .swiper-button-prev::after {
   content: "";
 }
 .swiper .swiper-button-prev {
   background-position: 45% 50%;
   left: 10%;
-  background-image: url("../media/images/swiper/chevron-left.svg");
+  background-image: url("../media/images/swiper/Vector-left.png");
 }
 .swiper .swiper-button-next {
   background-position: 55% 50%;
   right: 10%;
-  background-image: url("../media/images/swiper/chevron-right.svg");
+  background-image: url("../media/images/swiper/Vector-right.png");
 }
 .swiper .swiper-pagination {
   bottom: 90px !important;
@@ -140,4 +143,4 @@ main {
   .swiper .swiper-button-next {
     right: 2%;
   }
-}/*# sourceMappingURL=globals.css.map */
+} /*# sourceMappingURL=globals.css.map */
