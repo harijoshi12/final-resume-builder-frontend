@@ -144,7 +144,7 @@ const ResumeTemplates = () => {
               <div className={styles.wish}>
                 <h1>We wish you all the best.</h1>
                 <h3>
-                  " If you can deram it, you can do it. Best wishes for your
+                  " If you can dream it, you can do it. Best wishes for your
                   bright future "
                 </h3>
               </div>

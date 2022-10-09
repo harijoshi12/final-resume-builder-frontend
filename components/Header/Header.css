@@ -242,6 +242,9 @@ header .burger.toggle .line3 {
     justify-content: center;
     align-items: center;
     width: 50%;
+    min-width: -webkit-fit-content;
+    min-width: -moz-fit-content;
+    min-width: fit-content;
     white-space: nowrap;
     font-size: 20px;
     font-weight: bold;

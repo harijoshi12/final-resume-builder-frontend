@@ -197,9 +197,9 @@ function Header({ setIsMousein }) {
                 <a className={router.pathname === "/dashboard" ? "active" : ""} ref={link3}>Dashboard</a>
               </Link>
             )}
-            <Link href="/view-resume">
+            {/* <Link href="/view-resume">
               <a className={router.pathname === "/view-resume" ? "active" : ""} ref={link5}>View Resume</a>
-            </Link>
+            </Link> */}
             {!currentUser &&
               <Link href="/login">
                 <a className={router.pathname === "/login" ? "active login_register" : "login_register"}>Login / Register</a>
