@@ -90,7 +90,8 @@ main {
   height: 50px;
   padding: 5px;
   top: 35%;
-  background-color: black;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   background-repeat: no-repeat;
   background-size: 27%;
   box-shadow: 0 0 10px 1px rgba(128, 128, 128, 0.6);
@@ -102,17 +103,16 @@ main {
 }
 .swiper .swiper-button-next::after,
 .swiper .swiper-button-prev::after {
-  content: "";
+  font-size: 25px;
+  font-weight: bold;
 }
 .swiper .swiper-button-prev {
   background-position: 45% 50%;
   left: 10%;
-  background-image: url(../media/images/VectorLeft.png);
 }
 .swiper .swiper-button-next {
   background-position: 55% 50%;
   right: 10%;
-  background-image: url(../media/images/VectorRight.png);
 }
 .swiper .swiper-pagination {
   bottom: 90px !important;

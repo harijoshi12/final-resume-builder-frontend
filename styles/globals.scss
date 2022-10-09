@@ -91,7 +91,8 @@ main {
     padding: 5px;
     // border-radius: 50%;
     top: 35%;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     background-repeat: no-repeat;
     background-size: 27%;
     box-shadow: 0 0 10px 1px rgba(128, 128, 128, 0.6);
@@ -100,18 +101,20 @@ main {
       transform: scale(1.2);
     }
     &::after {
-      content: "";
+      // content: "";
+      font-size: 25px;
+      font-weight: bold;
     }
   }
   .swiper-button-prev {
     background-position: 45% 50%;
     left: 10%;
-    background-image: url(../media/images/VectorLeft.png);
+    // background-image: url(../media/images/VectorLeft.png);
   }
   .swiper-button-next {
     background-position: 55% 50%;
     right: 10%;
-    background-image: url(../media/images/VectorRight.png);
+    // background-image: url(../media/images/VectorRight.png);
   }
   .swiper-pagination {
     bottom: 90px !important;
