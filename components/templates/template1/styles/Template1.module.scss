@@ -36,15 +36,15 @@ $generalfontfamily: "Roboto", sans-serif;
   }
   .resumeSec {
     padding: 10px 25px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     .secContent {
     }
   }
   .left {
-    .resumeSec {
-      padding: 10px 6%;
-      padding-bottom: 15px;
-    }
+    // .resumeSec {
+    //   padding: 10px 6%;
+    //   padding-bottom: 15px;
+    // }
   }
 }
 
@@ -58,6 +58,9 @@ $generalfontfamily: "Roboto", sans-serif;
   min-width: 1120px;
   width: 1120px;
   height: 1585px;
+  * {
+    // border: 1px solid black;
+  }
 }
 .left {
   background-color: $lightLeft;
@@ -65,24 +68,24 @@ $generalfontfamily: "Roboto", sans-serif;
   .personalInfo.resumeSec {
     width: 100%;
     height: fit-content;
-    padding-bottom: 10px;
-    padding-right: 6%;
+    padding-bottom: 0px;
+    padding-right: 25px;
     padding-left: 0;
     .resumeTitle {
       font-size: 2.3rem;
-      margin-left: 6%;
+      margin-left: 25px;
       color: black;
       text-align: center;
       text-transform: uppercase;
       letter-spacing: 2px;
-      padding: 20px;
+      padding: 15px;
       font-family: $titlefontFamily;
       font-style: italic;
     }
     .imgboxOuter {
       width: 100%;
       min-width: fit-content;
-      padding-left: 6.4%;
+      padding-left: 25px;
       background-color: $lightRight;
       display: flex;
       justify-content: flex-end;
@@ -136,7 +139,7 @@ $generalfontfamily: "Roboto", sans-serif;
     .tagline {
       padding: 15px 0;
       font-size: 20px;
-      margin-left: 6%;
+      margin-left: 25px;
       font-weight: 500;
       color: $lightTextColor;
       text-align: center;
@@ -187,7 +190,7 @@ $generalfontfamily: "Roboto", sans-serif;
     }
     .progLang {
       // background-color: yellow;
-      margin: 10px 0;
+      margin: 7px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -330,6 +333,9 @@ $generalfontfamily: "Roboto", sans-serif;
     .projectItem:last-child {
       margin-bottom: 0;
     }
+    .projectItem:first-child {
+      margin-top: 0;
+    }
     .projectItem {
       margin: 30px 0;
       font-family: $generalfontfamily;
@@ -371,6 +377,7 @@ $generalfontfamily: "Roboto", sans-serif;
           align-items: center;
           margin-top: 5px;
           text-decoration: underline;
+          font-size: 16px;
           button {
             background-color: rgb(200, 200, 200);
             color: $lightTextColor;

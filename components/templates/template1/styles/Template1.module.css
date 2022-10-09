@@ -745,13 +745,8 @@
 }
 .resume .resumeSec {
   padding: 10px 25px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
-.resume .left .resumeSec {
-  padding: 10px 6%;
-  padding-bottom: 15px;
-}
-
 .resume {
   margin: auto;
   display: flex;
@@ -763,7 +758,6 @@
   width: 1120px;
   height: 1585px;
 }
-
 .left {
   background-color: rgb(255, 255, 255);
   width: 55%;
@@ -773,18 +767,18 @@
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  padding-bottom: 10px;
-  padding-right: 6%;
+  padding-bottom: 0px;
+  padding-right: 25px;
   padding-left: 0;
 }
 .left .personalInfo.resumeSec .resumeTitle {
   font-size: 2.3rem;
-  margin-left: 6%;
+  margin-left: 25px;
   color: black;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
-  padding: 20px;
+  padding: 15px;
   font-family: "Merriweather", serif;
   font-style: italic;
 }
@@ -793,7 +787,7 @@
   min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
   min-width: fit-content;
-  padding-left: 6.4%;
+  padding-left: 25px;
   background-color: rgb(90, 90, 90);
   display: flex;
   justify-content: flex-end;
@@ -846,7 +840,7 @@
 .left .personalInfo.resumeSec .tagline {
   padding: 15px 0;
   font-size: 20px;
-  margin-left: 6%;
+  margin-left: 25px;
   font-weight: 500;
   color: rgb(49, 51, 42);
   text-align: center;
@@ -884,7 +878,7 @@
   display: inline-flex;
 }
 .left .progLangs .progLang {
-  margin: 10px 0;
+  margin: 7px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1008,6 +1002,9 @@
 .right .projects .projectItem:last-child {
   margin-bottom: 0;
 }
+.right .projects .projectItem:first-child {
+  margin-top: 0;
+}
 .right .projects .projectItem {
   margin: 30px 0;
   font-family: "Roboto", sans-serif;
@@ -1048,6 +1045,7 @@
   align-items: center;
   margin-top: 5px;
   text-decoration: underline;
+  font-size: 16px;
 }
 .right .projects .projectItem .desc .link button {
   background-color: rgb(200, 200, 200);
