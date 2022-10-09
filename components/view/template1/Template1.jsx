@@ -17,12 +17,23 @@ const Template1 = () => {
   const router = useRouter()
 
   useEffect(() => {
+    const fun = (event) => {
+      console.log("returning")
+      router.push("/dashboard")
+    }
+    window.addEventListener('afterprint', fun);
+    return () => window.removeEventListener('afterprint', fun);
+  }, [])
+
+  useEffect(() => {
     if (currentToken) {
       dispatch(getResumeAsync(currentToken))
       window.print()
-      window.addEventListener('afterprint', (event) => {
-        router.push("/dashboard")
-      });
+      console.log("printing")
+      // window.addEventListener('afterprint', (event) => {
+      //   console.log("returning")
+      //   router.push("/dashboard")
+      // });
     }
   }, [currentToken, dispatch])
 
