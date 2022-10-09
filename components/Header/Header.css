@@ -99,9 +99,6 @@ header nav a {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-header nav a:hover {
-  color: orangered;
-}
 header .dd_menu {
   z-index: 100;
   margin-left: auto;

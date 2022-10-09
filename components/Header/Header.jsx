@@ -198,7 +198,7 @@ function Header({ setIsMousein }) {
             </Link>
             {!currentUser &&
               <Link href="/login">
-                <span className={router.pathname === "/login" ? "active login_register" : "login_register"}>Login / Register</span>
+                <a className={router.pathname === "/login" ? "active login_register" : "login_register"}>Login / Register</a>
               </Link>
             }
           </nav>

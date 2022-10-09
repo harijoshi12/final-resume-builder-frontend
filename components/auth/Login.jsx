@@ -94,7 +94,7 @@ const Login = (props) => {
         handleInputs={handleInputs}
       ></InputField>
 
-      <div className={styles.etc}>
+      {/* <div className={styles.etc}>
         <div className={styles.remember}>
           <input type="checkbox" name="remember" id="id_remember" />
           <label htmlFor="id_remember">Remember Me</label>
@@ -102,7 +102,7 @@ const Login = (props) => {
         <Link href="/forgot-password">
           <a className={styles.forget}>Forget Password?</a>
         </Link>
-      </div>
+      </div> */}
       <button className={styles.submit_btn} type="submit">
         Login
       </button>
