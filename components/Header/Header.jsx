@@ -208,7 +208,7 @@ function Header({ setIsMousein }) {
           {currentUser ? (
             <div className="dd_menu">
               <div className="dd_parent">
-                <Link href="/view-resume">
+                <Link href="#">
                   <div className="imgbox" style={{ backgroundImage: `url(${imageSrc})` }}></div>
                 </Link>
                 <div className="dd_arrow"><BsTriangleFill></BsTriangleFill></div>
