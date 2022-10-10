@@ -328,8 +328,9 @@ export const ProgLangLevel = (props) => {
     const fun1 = () => {
       dispatch(updateResumeAsync(currentToken))
     }
-    outerRef.current.addEventListener("mouseup", fun1)
-    return () => outerRef.current.removeEventListener("mouseup", fun1)
+    const comp = outerRef.current
+    comp.addEventListener("mouseup", fun1)
+    return () => comp.removeEventListener("mouseup", fun1)
   }, [])
 
   return (
