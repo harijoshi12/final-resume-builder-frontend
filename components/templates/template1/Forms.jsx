@@ -324,10 +324,14 @@ export const ProgLangLevel = (props) => {
   const { currentToken, currentUser } = useAuth();
   const dispatch = useDispatch()
 
-  const changeAndUpdate = (e) => {
-    onChangeHandler("secProgLangs", "progLangs", id, "progLangLevel", e.target.value / 10)
-    dispatch(updateResumeAsync(currentToken))
-  }
+  useEffect(() => {
+    const fun1 = () => {
+      dispatch(updateResumeAsync(currentToken))
+    }
+    outerRef.current.addEventListener("mouseup", fun1)
+    return () => outerRef.current.removeEventListener("mouseup", fun1)
+  }, [])
+
   return (
     <span ref={outerRef} className={`${styles.outer} ${styles.progLangLevel}`}>
       <form action="">
@@ -348,7 +352,7 @@ export const ProgLangLevel = (props) => {
           type="range"
           step={"5"}
           name={resumeInputCodes.PROGLANGLEVEL}
-          onChange={(e) => changeAndUpdate(e)}
+          onChange={(e) => onChangeHandler("secProgLangs", "progLangs", id, "progLangLevel", e.target.value / 10)}
           id=""
         />
       </form>
