@@ -839,6 +839,7 @@
   color: rgb(240, 240, 240);
   font-size: 30px;
   font-weight: 500;
+  font-family: "Merriweather Sans", sans-serif;
 }
 .left .personalInfo.resumeSec .tagline {
   padding: 15px 0;
@@ -847,7 +848,7 @@
   font-weight: 500;
   color: rgb(49, 51, 42);
   text-align: center;
-  font-family: "Roboto", sans-serif;
+  font-family: "Merriweather Sans", sans-serif;
 }
 .left .technicalSkills .technicalSkill {
   display: inline-flex;
@@ -857,7 +858,7 @@
   margin: 5px;
   font-size: 18px;
   font-weight: 500;
-  font-family: "Roboto", sans-serif;
+  font-family: "Merriweather Sans", sans-serif;
   transition: all 0.2s ease;
 }
 .left .technicalSkills .technicalSkill:hover {
@@ -893,7 +894,7 @@
   width: 30%;
   padding: 5px 0;
   text-transform: uppercase;
-  font-family: "Roboto", sans-serif;
+  font-family: "Merriweather Sans", sans-serif;
   margin-left: 2px;
 }
 .left .progLangs .progLang .outer {
@@ -920,8 +921,8 @@
   color: rgb(49, 51, 42);
   padding: 10px;
   padding-right: 0;
-  padding-bottom: 25px;
-  font-family: "Roboto", sans-serif;
+  padding-bottom: 20px;
+  font-family: "Merriweather Sans", sans-serif;
 }
 .left .myJourney .myJourneyItem .time {
   font-size: 18px;
@@ -1009,7 +1010,7 @@
 }
 .right .projects .projectItem {
   margin: 30px 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Merriweather Sans", sans-serif;
 }
 .right .projects .projectItem .title {
   display: flex;
@@ -1074,7 +1075,7 @@
   text-align: left;
   margin: 5px 0;
   width: 48%;
-  font-family: "Roboto", sans-serif;
+  font-family: "Merriweather Sans", sans-serif;
 }
 .right .langs .lang span {
   display: inline;
@@ -1097,7 +1098,7 @@
   background-color: rgb(221, 221, 221);
 }
 .right .edus .edu {
-  font-family: "Roboto", sans-serif;
+  font-family: "Merriweather Sans", sans-serif;
   color: white;
   margin-top: 25px;
 }
@@ -1146,7 +1147,7 @@
   display: inline-flex;
   color: rgb(49, 51, 42);
   background-color: white;
-  font-family: "Roboto", sans-serif;
+  font-family: "Merriweather Sans", sans-serif;
   font-weight: 500;
   padding: 5px 9px;
   font-size: 19px;
