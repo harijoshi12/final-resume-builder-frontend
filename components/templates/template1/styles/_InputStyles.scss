@@ -241,7 +241,7 @@ $generalfontfamily: "Roboto", sans-serif;
     }
     .bottom {
       background-color: rgb(235, 235, 235);
-      padding: 5px 10px;
+      padding: 3px;
       margin-left: auto;
       textarea {
         background-color: rgb(235, 235, 235);
@@ -251,6 +251,7 @@ $generalfontfamily: "Roboto", sans-serif;
         min-width: 350px;
         max-height: 70px;
         min-height: 70px;
+        padding: 3px;
       }
       .links {
         display: flex;

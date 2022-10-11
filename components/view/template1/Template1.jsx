@@ -25,13 +25,13 @@ const Template1 = () => {
     return () => window.removeEventListener('afterprint', fun);
   }, [router])
 
-  useEffect(() => {
-    if (currentToken) {
-      dispatch(getResumeAsync(currentToken))
-      window.print()
-      console.log("printing")
-    }
-  }, [currentToken, dispatch])
+  // useEffect(() => {
+  //   if (currentToken) {
+  //     dispatch(getResumeAsync(currentToken))
+  //     window.print()
+  //     console.log("printing")
+  //   }
+  // }, [currentToken, dispatch])
 
   const tempStyle = {
     height: "70vh",

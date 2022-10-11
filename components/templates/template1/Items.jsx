@@ -316,6 +316,9 @@ export const Education = ({
   );
 };
 
+const NewLine = () => {
+  return (<br />)
+}
 export const Project = (props) => {
   const {
     projectTitle,
@@ -326,6 +329,8 @@ export const Project = (props) => {
     videoExplanationLink,
     handleClickItem,
   } = props
+  const newProjectDesc = projectDesc.split("\n")
+
   return (
     <div className={styles.projectItem} onClick={handleClickItem}>
       <h2 className={styles.title}>
@@ -334,7 +339,11 @@ export const Project = (props) => {
         <span className={styles.p_techStack}>{projectTechStack}</span>
       </h2>
       <div className={styles.desc} >
-        <p>{projectDesc}</p>
+        <p>{newProjectDesc.map((item, idx) => (
+          <>
+            {idx === 0 ? <p>{item}</p> : <li>{item}</li>}
+          </>
+        ))}</p>
         <div className={styles.link}>
           {projectGitLink && <a className={styles.git_link} href={projectGitLink}>
             Github link

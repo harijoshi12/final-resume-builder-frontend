@@ -268,6 +268,8 @@ export const Project = (props) => {
     videoExplanationLink,
     projectLiveDemo,
   } = props
+  const newProjectDesc = projectDesc.split("\n")
+
   return (
     <div className={styles.projectItem}>
       <h2 className={styles.title}>
@@ -276,7 +278,11 @@ export const Project = (props) => {
         <span className={styles.p_techStack}>{projectTechStack}</span>
       </h2>
       <div className={styles.desc} >
-        <p>{projectDesc}</p>
+        <p>{newProjectDesc.map((item, idx) => (
+          <>
+            {idx === 0 ? <p>{item}</p> : <li>{item}</li>}
+          </>
+        ))}</p>
         <div className={styles.link}>
           {projectGitLink && <a rel="noopener noreferrer" target="_blank" className={styles.git_link} href={projectGitLink}>
             Github link
