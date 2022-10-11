@@ -862,9 +862,6 @@
   font-family: "Merriweather Sans", sans-serif;
   transition: all 0.2s ease;
 }
-.left .technicalSkills .technicalSkill:hover {
-  background-color: hsl(210deg, 17%, 10%);
-}
 .left .progLangs .marking {
   position: relative;
   width: 70%;
