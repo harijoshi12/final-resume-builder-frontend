@@ -45,9 +45,9 @@ export const PersonalInfo = ({ data }) => {
   );
 };
 
-const ContactItem = ({ icon, info }) => {
+const ContactItem = ({ icon, info, type }) => {
   return (
-    <a rel="noopener noreferrer" target="_blank">
+    <a rel="noopener noreferrer" target="_blank" href={type === "phone" ? `tel:${info}` : type === "email" ? `mailto:${info}` : type === "link" ? `https://www.${info}/` : null}>
       <span >{icon}</span>
       <span >{info}</span>
     </a>
@@ -83,9 +83,9 @@ export const ContactDetails = (props) => {
       {email && emailChecked && (
         <ContactItem
           setShowContactInput={setShowContactInput}
-          // info={email}
-          info={currentUser?.email}
+          info={email}
           icon={<MdEmail />}
+          type="email"
         />
       )}
 
@@ -94,6 +94,7 @@ export const ContactDetails = (props) => {
           setShowContactInput={setShowContactInput}
           info={phone}
           icon={<CgSmartphone />}
+          type="phone"
         />
       )}
 
@@ -102,6 +103,7 @@ export const ContactDetails = (props) => {
           setShowContactInput={setShowContactInput}
           info={address}
           icon={<IoLocationSharp />}
+          type="address"
         />
       )}
 
@@ -110,6 +112,7 @@ export const ContactDetails = (props) => {
           setShowContactInput={setShowContactInput}
           info={website}
           icon={<CgWebsite />}
+          type="link"
         />
       )}
 
@@ -118,6 +121,7 @@ export const ContactDetails = (props) => {
           setShowContactInput={setShowContactInput}
           info={linkedin}
           icon={<BsLinkedin />}
+          type="link"
         />
       )}
 
@@ -126,6 +130,7 @@ export const ContactDetails = (props) => {
           setShowContactInput={setShowContactInput}
           info={github}
           icon={<AiFillGithub />}
+          type="link"
         />
       )}
 
@@ -134,6 +139,7 @@ export const ContactDetails = (props) => {
           setShowContactInput={setShowContactInput}
           info={stackoverflow}
           icon={<BsStackOverflow />}
+          type="link"
         />
       )}
 
@@ -142,6 +148,7 @@ export const ContactDetails = (props) => {
           setShowContactInput={setShowContactInput}
           info={quora}
           icon={<FaQuora />}
+          type="link"
         />
       )}
 
@@ -150,6 +157,7 @@ export const ContactDetails = (props) => {
           setShowContactInput={setShowContactInput}
           info={email}
           icon={<AiFillMediumCircle />}
+          type="link"
         />
       )}
     </>
@@ -270,13 +278,13 @@ export const Project = (props) => {
       <div className={styles.desc} >
         <p>{projectDesc}</p>
         <div className={styles.link}>
-          {projectGitLink && <a className={styles.git_link} href={projectGitLink}>
+          {projectGitLink && <a rel="noopener noreferrer" target="_blank" className={styles.git_link} href={projectGitLink}>
             Github link
           </a>}
-          {videoExplanationLink && <a className={styles.git_link} href={videoExplanationLink}>
+          {videoExplanationLink && <a rel="noopener noreferrer" target="_blank" className={styles.git_link} href={videoExplanationLink}>
             Video explanation
           </a>}
-          {projectLiveDemo && <a className={styles.liveDemo_link} href={projectLiveDemo}>
+          {projectLiveDemo && <a rel="noopener noreferrer" target="_blank" className={styles.liveDemo_link} href={projectLiveDemo}>
             Live-Demo link
           </a>}
         </div>

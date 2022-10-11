@@ -8,7 +8,7 @@ $lightSecTitle: rgb(40, 40, 40);
 $lightResumeTitle: rgb(0, 0, 0);
 $lightName: rgb(205, 203, 204);
 $titlefontFamily: "Merriweather", serif;
-$generalfontfamily: "Roboto", sans-serif;
+$textfontFamily: "Merriweather Sans", sans-serif;
 // dark
 
 @import "./AddItem";
@@ -132,7 +132,7 @@ $generalfontfamily: "Roboto", sans-serif;
             color: rgb(240, 240, 240);
             font-size: 30px;
             font-weight: 500;
-            // font-family: ;
+            font-family: $textfontFamily;
           }
         }
       }
@@ -144,7 +144,7 @@ $generalfontfamily: "Roboto", sans-serif;
       font-weight: 500;
       color: $lightTextColor;
       text-align: center;
-      font-family: $generalfontfamily;
+      font-family: $textfontFamily;
       // span{
       //     font-weight: 500;
       // }
@@ -160,7 +160,7 @@ $generalfontfamily: "Roboto", sans-serif;
       margin: 5px;
       font-size: 18px;
       font-weight: 500;
-      font-family: $generalfontfamily;
+      font-family: $textfontFamily;
       transition: all 0.2s ease;
       &:hover {
         background-color: hsl(210, 17%, 10%);
@@ -203,7 +203,7 @@ $generalfontfamily: "Roboto", sans-serif;
         width: 30%;
         padding: 5px 0;
         text-transform: uppercase;
-        font-family: $generalfontfamily;
+        font-family: $textfontFamily;
         margin-left: 2px;
       }
       .outer {
@@ -235,8 +235,8 @@ $generalfontfamily: "Roboto", sans-serif;
       color: $lightTextColor;
       padding: 10px;
       padding-right: 0;
-      padding-bottom: 25px;
-      font-family: $generalfontfamily;
+      padding-bottom: 20px;
+      font-family: $textfontFamily;
       .time {
         font-size: 18px;
         position: absolute;
@@ -339,7 +339,7 @@ $generalfontfamily: "Roboto", sans-serif;
     }
     .projectItem {
       margin: 30px 0;
-      font-family: $generalfontfamily;
+      font-family: $textfontFamily;
       // font-family: sans-serif;
       .title {
         display: flex;
@@ -411,7 +411,7 @@ $generalfontfamily: "Roboto", sans-serif;
       text-align: left;
       margin: 5px 0;
       width: 48%;
-      font-family: $generalfontfamily;
+      font-family: $textfontFamily;
       span {
         display: inline;
         margin: 2px 5px;
@@ -441,7 +441,7 @@ $generalfontfamily: "Roboto", sans-serif;
       // border: 1px solid;
     }
     .edu {
-      font-family: $generalfontfamily;
+      font-family: $textfontFamily;
       color: white;
       margin-top: 25px;
       * {
@@ -502,7 +502,7 @@ $generalfontfamily: "Roboto", sans-serif;
       display: inline-flex;
       color: $lightTextColor;
       background-color: white;
-      font-family: $generalfontfamily;
+      font-family: $textfontFamily;
       font-weight: 500;
       padding: 5px 9px;
       font-size: 19px;

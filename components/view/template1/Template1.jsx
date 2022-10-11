@@ -30,10 +30,6 @@ const Template1 = () => {
       dispatch(getResumeAsync(currentToken))
       window.print()
       console.log("printing")
-      // window.addEventListener('afterprint', (event) => {
-      //   console.log("returning")
-      //   router.push("/dashboard")
-      // });
     }
   }, [currentToken, dispatch])
 
