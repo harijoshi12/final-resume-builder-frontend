@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
-import { contactFormCodes } from "../../../constants/constants";
+import { baseUrl, contactFormCodes } from "../../../constants/constants";
 import styles from "../../../styles/Home.module.css";
 import axios from "axios";
 
@@ -67,7 +67,8 @@ const Contact = (props) => {
         });
       } else {
         const { data } = await axios.post(
-          "http://192.168.1.42:5000/api/contact-form",
+
+          `${baseUrl}/contact-form`,
           {
             ...contactData,
           }
