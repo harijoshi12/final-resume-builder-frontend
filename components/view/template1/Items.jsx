@@ -196,13 +196,13 @@ export const Language = (props) => {
         {language}
       </span>
       <span className={styles.level}>
-        {level === 1 ? (
+        {level === "1" ? (
           "Elementary Proficiency"
-        ) : level === 2 ? (
+        ) : level === "2" ? (
           "Limited Working Proficiency"
-        ) : level === 3 ? (
+        ) : level === "3" ? (
           "Professional Working Proficiency"
-        ) : level === 4 ? (
+        ) : level === "4" ? (
           "Full Professional Proficiency"
         ) : (
           "Native or Bilingual Proficiency"
