@@ -10,15 +10,7 @@ import Testimonial from "../components/home/Testimonial/Testimonial";
 import styles from "../styles/Home.module.css";
 import Layout from "../UI/Layout";
 export default function Home() {
-  const [isMaintenance, setIsMaintenance] = useState(true)
-  const h1Style = {
-    width: "100%",
-    height: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column"
-  }
+
   return (
     <Fragment>
       <Head>
@@ -29,22 +21,15 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {!isMaintenance ? (
-
-        <Layout>
-          <main className={styles.home_main}>
-            <Hero />
-            <Features />
-            <Procedure />
-            {/* <Testimonial/> */}
-            <Contact />
-          </main>
-        </Layout>) : (
-        <div style={h1Style}>
-          <h1> Site is being updated ...</h1>
-          <button style={{ padding: "15px", margin: "15px", cursor: "pointer" }} onClick={() => setIsMaintenance(false)}> Anyway view beta version</button>
-        </div>
-      )}
+      <Layout>
+        <main className={styles.home_main}>
+          <Hero />
+          <Features />
+          <Procedure />
+          {/* <Testimonial/> */}
+          <Contact />
+        </main>
+      </Layout>
     </Fragment>
   );
 }
