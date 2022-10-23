@@ -1,0 +1,90 @@
+// import Link from 'next/link'
+// import { useRouter } from 'next/router'
+// import React from 'react'
+// import { useState } from 'react'
+// import { useEffect } from 'react'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { useAuth } from '../../../contexts/AuthContext'
+// import { getResumeAsync, STATUSES } from '../../../features/resume/resumeSlice'
+// import { NewSecContactDetails, NewSecEducations, NewSecExperiences, NewSecInterests, NewSecLanguages, NewSecPersonalInfo, NewSecProgLangs, NewSecProjects, NewSecTechnicalSkills, } from './Sections'
+// import styles from '../styles/Template4.module.css'
+
+// const Template4 = () => {
+
+//   const { currentToken, currentUser } = useAuth();
+
+//   const dispatch = useDispatch()
+//   const router = useRouter()
+
+//   useEffect(() => {
+//     const fun = (event) => {
+//       console.log("returning")
+//       router.push("/dashboard")
+//     }
+//     window.addEventListener('afterprint', fun);
+//     return () => window.removeEventListener('afterprint', fun);
+//   }, [router])
+
+//   useEffect(() => {
+//     if (currentToken) {
+//       dispatch(getResumeAsync(currentToken))
+//       window.print()
+//       console.log("printing")
+//     }
+//   }, [currentToken, dispatch])
+
+//   const tempStyle = {
+//     height: "70vh",
+//     width: "100%",
+//     display: "flex",
+//     justifyContent: "center",
+//     alignItems: "center"
+//   }
+
+//   const { status, data } = useSelector(state => state.resume)
+//   if (status === STATUSES.PENDING) {
+//     return <h2>Loading</h2>
+//   }
+
+//   return (
+//     <h1>View Template 4</h1>
+//   )
+
+//   return (
+//     <>
+//       {(status === STATUSES.SUCCEEDED && data) ? (
+//         <div className={styles.resume}>
+
+//           <div className={styles.left}>
+//             <NewSecPersonalInfo />
+//             <NewSecTechnicalSkills />
+//             <NewSecProgLangs />
+//             <NewSecExperiences />
+//           </div>
+
+//           <div className={styles.right}>
+//             <NewSecContactDetails />
+//             <NewSecProjects />
+//             <NewSecLanguages />
+//             <NewSecEducations />
+//             <NewSecInterests />
+//           </div>
+//         </div>
+//       ) : (
+//         <h1 style={tempStyle}>Please select a <Link href="/resume-templates"><a>&nbsp;Tempate&nbsp;</a></Link> first. </h1>
+//       )}
+//     </>
+//   )
+// }
+
+// export default Template4
+
+import React from 'react'
+
+const Template4 = () => {
+  return (
+    <h1>View Template 4</h1>
+  )
+}
+
+export default Template4

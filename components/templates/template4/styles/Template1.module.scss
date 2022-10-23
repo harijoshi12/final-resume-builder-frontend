@@ -1,0 +1,512 @@
+// light
+$lightLeft: rgb(255, 255, 255);
+$lightRight: rgb(90, 90, 90);
+$lightTextBg: rgb(90, 90, 90);
+$lightTextBg1: rgb(43, 52, 61);
+$lightTextColor: rgb(49, 51, 42);
+$lightSecTitle: rgb(40, 40, 40);
+$lightResumeTitle: rgb(0, 0, 0);
+$lightName: rgb(205, 203, 204);
+$titlefontFamily: "Merriweather", serif;
+$textfontFamily: "Merriweather Sans", sans-serif;
+// dark
+
+@import "./AddItem";
+@import "./InputStyles";
+
+.resume {
+  * {
+    // border: 1px solid black;
+  }
+  input {
+    border: 0;
+    outline: none;
+  }
+  cursor: auto;
+  .secTitle {
+    width: 100%;
+    font-size: 22px;
+    background-color: $lightSecTitle;
+    color: white;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 4px;
+    letter-spacing: 2px;
+    font-family: $titlefontFamily;
+  }
+  .resumeSec {
+    padding: 10px 25px;
+    padding-bottom: 10px;
+    .secContent {
+      padding: 0 5px;
+    }
+  }
+  .left {
+    // .resumeSec {
+    //   padding: 10px 6%;
+    //   padding-bottom: 15px;
+    // }
+  }
+}
+
+.resume {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgb(242, 242, 242);
+  box-shadow: 0px 0px 25px 4px rgb(100, 100, 100);
+  min-width: 1120px;
+  width: 1120px;
+  height: 1585px;
+  * {
+    // border: 1px solid black;
+  }
+}
+.left {
+  background-color: $lightLeft;
+  width: 55%;
+  .personalInfo.resumeSec {
+    width: 100%;
+    height: fit-content;
+    padding-bottom: 0px;
+    padding-right: 25px;
+    padding-left: 0;
+    .resumeTitle {
+      font-size: 2.3rem;
+      margin-left: 25px;
+      color: black;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 15px;
+      font-family: $titlefontFamily;
+      font-style: italic;
+    }
+    .imgboxOuter {
+      width: 100%;
+      min-width: fit-content;
+      padding-left: 25px;
+      background-color: $lightRight;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .imgboxInner {
+        width: 100%;
+        background-color: $lightSecTitle;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 30px;
+        padding-right: 5px;
+        .imgbox_wrapper {
+          position: relative;
+          background-color: blue;
+          .imgbox {
+            min-width: 160px;
+            min-height: 180px;
+            background-color: rgb(208, 208, 208);
+            border: 1px solid white;
+            overflow: hidden;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            img {
+              width: 300px;
+            }
+          }
+        }
+        .myinfo {
+          text-align: center;
+          margin: auto;
+          padding: 5px;
+          white-space: nowrap;
+          .myName {
+            color: rgb(185, 185, 185);
+            font-size: 50px;
+            padding-bottom: 18px;
+            margin-top: -17px;
+            font-family: "Ubuntu", sans-serif;
+          }
+          .profession {
+            color: rgb(240, 240, 240);
+            font-size: 30px;
+            font-weight: 500;
+            font-family: $textfontFamily;
+          }
+        }
+      }
+    }
+    .tagline {
+      padding: 15px 0;
+      font-size: 20px;
+      margin-left: 25px;
+      font-weight: 500;
+      color: $lightTextColor;
+      text-align: center;
+      font-family: $textfontFamily;
+      // span{
+      //     font-weight: 500;
+      // }
+    }
+  }
+
+  .technicalSkills {
+    .technicalSkill {
+      display: inline-flex;
+      background-color: $lightTextBg1;
+      color: white;
+      padding: 5px 13px;
+      margin: 5px;
+      font-size: 18px;
+      font-weight: 500;
+      font-family: $textfontFamily;
+      transition: all 0.2s ease;
+      &:hover {
+        // background-color: hsl(210, 17%, 10%);
+      }
+    }
+  }
+
+  .progLangs {
+    * {
+      // border: 1px solid;
+    }
+    .marking {
+      position: relative;
+      width: 70%;
+      margin-left: auto;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 4px;
+      margin-bottom: -7px;
+      span {
+        width: 2px;
+        height: 7px;
+        background-color: $lightSecTitle;
+      }
+    }
+    span {
+      display: inline-flex;
+    }
+    .progLang {
+      // background-color: yellow;
+      margin: 7px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .title {
+        // background-color: blue;
+        font-size: 18px;
+        font-weight: 700;
+        color: $lightTextColor;
+        width: 30%;
+        padding: 5px 0;
+        text-transform: uppercase;
+        font-family: $textfontFamily;
+        margin-left: 2px;
+      }
+      .outer {
+        padding: 1px;
+        border: 2px solid black;
+        width: 70%;
+      }
+      .inner {
+        background-color: $lightTextBg1;
+        height: 10px;
+        width: 100%;
+      }
+    }
+  }
+
+  .myJourney {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    * {
+      // border: 1px solid ;
+    }
+    .myJourneyItem {
+      margin-right: -10px;
+      position: relative;
+      width: 80%;
+      border-left: 5px solid $lightTextBg1;
+      color: $lightTextColor;
+      padding: 10px;
+      padding-right: 0;
+      padding-bottom: 20px;
+      font-family: $textfontFamily;
+      .time {
+        font-size: 18px;
+        position: absolute;
+        left: -146px;
+        width: 130px;
+        text-align: right;
+        white-space: wrap;
+      }
+      .title {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        // white-space: wrap;
+        // word-break: break-all;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        position: relative;
+        .bullet_point {
+          position: absolute;
+          display: inline-flex;
+          height: 13px;
+          width: 13px;
+          border-radius: 50%;
+          left: -19px;
+          top: 7px;
+          border: 1px solid rgb(255, 255, 255);
+          background-color: $lightTextBg1;
+        }
+        .job_title {
+          color: white;
+          padding: 3px 5px;
+          background-color: $lightTextBg1;
+        }
+        .divider {
+          margin: 0 7px;
+        }
+        .company {
+        }
+      }
+      .desc {
+        font-size: 18px;
+      }
+    }
+  }
+}
+.right {
+  width: 45%;
+  background-color: $lightRight;
+  .contactDetails {
+    font-size: 24px;
+    font-weight: 100;
+    letter-spacing: 1px;
+    color: rgb(230, 230, 230);
+    font-family: sans-serif;
+    padding-top: 13px;
+    * {
+      // border: 1px solid white;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      line-height: 25px;
+      color: white;
+      transition: all 0.2s ease;
+      padding: 1px 0;
+      padding-left: 5px;
+      span:first-child {
+        position: relative;
+        margin-top: 5px;
+        width: 45px;
+        min-width: 40px;
+        // color: $lightTextBg1;
+      }
+      span:last-child {
+        // max-width: calc(100% - 35px);
+        position: relative;
+        // white-space: wrap;
+        word-break: break-all;
+        // word-break: break-word;
+        // overflow-wrap: break-word;
+      }
+    }
+
+    .bottomBorder {
+      width: 80%;
+      height: 2px;
+      background-color: rgb(190, 190, 190);
+      margin: auto;
+      margin-top: 20px;
+    }
+  }
+
+  .projects {
+    .projectItem:last-child {
+      margin-bottom: 0;
+    }
+    .projectItem:first-child {
+      margin-top: 0;
+    }
+    .projectItem {
+      margin: 20px 0;
+      font-family: $textfontFamily;
+      // font-family: sans-serif;
+      .title {
+        display: flex;
+        align-items: center;
+        white-space: wrap;
+        // word-break: break-all;
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+        margin: 6px 0;
+        margin-bottom: 8px;
+        font-weight: 700;
+        span {
+          padding: 3px 5px;
+        }
+        .p_title {
+          // width: 50%;
+          padding: 0 5px;
+          color: $lightTextColor;
+          background-color: rgb(200, 200, 200);
+          white-space: nowrap;
+        }
+        .p_divider {
+          margin-left: 7px;
+        }
+        .p_techStack {
+          font-size: 20px;
+          font-weight: 100;
+        }
+      }
+      .desc {
+        color: $lightTextColor;
+        // color: white;
+        background-color: rgb(235, 235, 235);
+        font-size: 18px;
+        font-weight: 500;
+        padding: 10px;
+        margin-left: 25px;
+        .link {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 5px;
+          text-decoration: underline;
+          font-size: 16px;
+          button {
+            background-color: rgb(200, 200, 200);
+            color: $lightTextColor;
+            padding: 2px 20px;
+            letter-spacing: 2px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  .langs {
+    > .secContent {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .lang {
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      text-align: left;
+      margin: 5px 0;
+      width: 48%;
+      font-family: $textfontFamily;
+      span {
+        display: inline;
+        margin: 2px 5px;
+      }
+      .title {
+        font-size: 22px;
+        font-weight: 700;
+        color: white;
+      }
+      .level {
+        padding: 3px 10px;
+        font-size: 16px;
+        margin: 2px 6px;
+        font-weight: 500;
+        // white-space: nowrap;
+        color: $lightTextColor;
+        background-color: white;
+        &:hover {
+          background-color: rgb(221, 221, 221);
+        }
+      }
+    }
+  }
+
+  .edus {
+    * {
+      // border: 1px solid;
+    }
+    .edu {
+      font-family: $textfontFamily;
+      color: white;
+      margin-top: 25px;
+      * {
+        // border: 1px solid white;
+      }
+      .r1 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+
+        span {
+          display: inline-flex;
+        }
+        span:nth-child(2) {
+          font-size: 25px;
+        }
+        .title {
+          background-color: white;
+          white-space: nowrap;
+          color: $lightTextColor;
+          padding: 5px;
+          margin-right: 10px;
+        }
+        .institute {
+          position: relative;
+          margin-left: 10px;
+          font-size: 20px;
+          font-weight: 100;
+        }
+      }
+      .r2 {
+        padding: 0;
+        margin-top: 10px;
+        font-size: 20px;
+        font-weight: 500;
+        // background-color: purple;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .cgpa {
+          // padding: 5px 0;
+          font-size: 23px;
+          // font-weight: bold;
+        }
+        .time {
+        }
+        .place {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  .interests {
+    .interest {
+      display: inline-flex;
+      color: $lightTextColor;
+      background-color: white;
+      font-family: $textfontFamily;
+      font-weight: 500;
+      padding: 5px 9px;
+      font-size: 19px;
+      margin: 5px;
+    }
+  }
+}

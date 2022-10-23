@@ -4,8 +4,8 @@ import styles from "../../styles/Dashboard.module.css";
 import { useAuth } from "../../contexts/AuthContext";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Template1 from "../../components/templates/template1/Template1";
 import { baseUrl } from "../../constants/constants";
+import Template1 from "../../components/templates/template1/edit/Template1";
 function Dashboard() {
   const { currentUser } = useAuth();
   const router = useRouter();
@@ -49,10 +49,9 @@ function Dashboard() {
     <Layout>
       <main className={styles.dashboardPage}>
         <div className={styles.desktopView}>
-          {/* <Resume /> */}
           <Template1 />
         </div>
-        <button className={styles.downloadBtn} onClick={downloadResume2}>Downlaod Resme</button>
+        {/* <button className={styles.downloadBtn} onClick={downloadResume2}>Downlaod Resme</button> */}
       </main>
     </Layout>
   );
