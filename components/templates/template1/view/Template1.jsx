@@ -4,8 +4,8 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useAuth } from '../../../contexts/AuthContext'
-import { getResumeAsync, STATUSES } from '../../../features/resume/resumeSlice'
+import { useAuth } from '../../../../contexts/AuthContext'
+import { getResumeAsync, STATUSES } from '../../../../features/resume/resumeSlice'
 import { NewSecContactDetails, NewSecEducations, NewSecExperiences, NewSecInterests, NewSecLanguages, NewSecPersonalInfo, NewSecProgLangs, NewSecProjects, NewSecTechnicalSkills, } from './Sections'
 import styles from '../styles/Template1.module.css'
 
@@ -21,14 +21,14 @@ const Template1 = () => {
       console.log("returning")
       router.push("/dashboard")
     }
-    window.addEventListener('afterprint', fun);
-    return () => window.removeEventListener('afterprint', fun);
+    // window.addEventListener('afterprint', fun);
+    // return () => window.removeEventListener('afterprint', fun);
   }, [router])
 
   useEffect(() => {
     if (currentToken) {
       dispatch(getResumeAsync(currentToken))
-      window.print()
+      // window.print()
       console.log("printing")
     }
   }, [currentToken, dispatch])

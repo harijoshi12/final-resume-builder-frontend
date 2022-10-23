@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { ContactDetails, Education, Interest, Language, MyJourney, PersonalInfo, ProgLang, Project, TechnicalSkill } from './Items'
 import SecTitle from './SectionTitles'
 
-import styles from './styles/Template1.module.css'
+import styles from '../styles/Template1.module.css'
 
 const HocSec = (Sec) => {
   const NewSec = (props) => {

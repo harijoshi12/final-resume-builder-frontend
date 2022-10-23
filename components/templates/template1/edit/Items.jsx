@@ -316,9 +316,6 @@ export const Education = ({
   );
 };
 
-const NewLine = () => {
-  return (<br />)
-}
 export const Project = (props) => {
   const {
     projectTitle,
@@ -339,11 +336,11 @@ export const Project = (props) => {
         <span className={styles.p_techStack}>{projectTechStack}</span>
       </h2>
       <div className={styles.desc} >
-        <p>{newProjectDesc.map((item, idx) => (
-          <>
+        {newProjectDesc.map((item, idx) => (
+          <div key={idx}>
             {idx === 0 ? <p>{item}</p> : <li>{item}</li>}
-          </>
-        ))}</p>
+          </div>
+        ))}
         <div className={styles.link}>
           {projectGitLink && <a className={styles.git_link} href={projectGitLink}>
             Github link

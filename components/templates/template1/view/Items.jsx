@@ -8,7 +8,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { BsLinkedin, BsStackOverflow } from "react-icons/bs";
 import { FaQuora } from "react-icons/fa";
 
-import styles from "./styles/Template1.module.css";
+import styles from "../styles/Template1.module.css";
 
 
 export const PersonalInfo = ({ data }) => {
@@ -278,11 +278,11 @@ export const Project = (props) => {
         <span className={styles.p_techStack}>{projectTechStack}</span>
       </h2>
       <div className={styles.desc} >
-        <p>{newProjectDesc.map((item, idx) => (
-          <>
+        {newProjectDesc.map((item, idx) => (
+          <div key={idx}>
             {idx === 0 ? <p>{item}</p> : <li>{item}</li>}
-          </>
-        ))}</p>
+          </div>
+        ))}
         <div className={styles.link}>
           {projectGitLink && <a rel="noopener noreferrer" target="_blank" className={styles.git_link} href={projectGitLink}>
             Github link
