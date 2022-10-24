@@ -4,7 +4,6 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { BsTriangleFill } from "react-icons/bs";
-import logoicon from '../../media/images/logo/logo.png'
 
 import styles from './Header.module.css'
 function Header({ setIsMousein }) {
@@ -185,7 +184,7 @@ function Header({ setIsMousein }) {
         </div>
         <div className={styles.nav_wrapper}>
           <div className={styles.logo}>
-            <Link href="/"><a><span className={styles.logoicon} style={{ backgroundImage: `url(${logoicon})` }}></span> Meta <span>Resume</span></a></Link>
+            <Link href="/"><a><span className={styles.logoicon}></span> <span>metaresume</span></a></Link>
           </div>
           <nav ref={nav} className={toggleMenu ? `${styles.toggle}` : ""}>
             <Link href="/">
@@ -204,7 +203,7 @@ function Header({ setIsMousein }) {
             </Link> */}
             {!currentUser &&
               <Link href="/login">
-                <a className={router.pathname === "/login" ? "active login_register" : "login_register"}>Login / Register</a>
+                <a className={router.pathname === "/login" ? `${styles.active} ${styles.login_register}` : `${styles.login_register}`}>Login / Register</a>
               </Link>
             }
           </nav>

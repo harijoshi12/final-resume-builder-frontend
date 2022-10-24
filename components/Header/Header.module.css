@@ -58,26 +58,35 @@
   position: relative;
 }
 .header .nav_wrapper .logo {
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 25px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 1px;
+  font-size: 35px;
   font-weight: bold;
   transition: all 0.3s ease;
-  font-style: "Merriweather", serif;
+  font-family: sans-serif;
   z-index: 400;
 }
 .header .nav_wrapper .logo a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   color: rgb(0, 0, 0);
 }
 .header .nav_wrapper .logo a .logoicon {
-  min-height: 100px;
-  min-width: 100px;
-  background-color: yellow;
+  display: inline-flex;
+  min-height: 50px;
+  min-width: 50px;
+  background-image: url("../../media/images/logo/logo.png");
   background-position: center;
   background-size: cover;
+  margin-right: 5px;
 }
 .header .nav_wrapper .logo a span {
-  font-weight: 200;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 .header nav {
   font-family: "Quicksand", sans-serif;
