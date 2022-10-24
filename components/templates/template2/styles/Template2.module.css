@@ -128,6 +128,7 @@
   align-items: center;
   margin: 5px;
   padding: 1px 0;
+  width: 69%;
 }
 .techSkillInput input,
 .interestInput input,
@@ -267,6 +268,7 @@
   background-color: rgb(235, 235, 235);
   padding: 3px;
   margin-left: auto;
+  width: 100%;
 }
 .projectInput .input_fields .bottom textarea {
   background-color: rgb(235, 235, 235);
@@ -277,6 +279,9 @@
   max-height: 70px;
   min-height: 70px;
   padding: 3px;
+  width: 100%;
+  height: 58px;
+  max-width: unset;
 }
 .projectInput .input_fields .bottom .links {
   display: flex;
@@ -745,11 +750,14 @@
   font-family: "Merriweather", serif;
 }
 .resume .resumeSec {
-  padding: 10px 25px;
+  padding: 10px 5px;
   padding-bottom: 10px;
 }
 .resume .resumeSec .secContent {
   padding: 0 5px;
+}
+.resume .resumeSec.contactDetails {
+  padding: 0;
 }
 .resume {
   margin: auto;
@@ -761,310 +769,51 @@
   min-width: 1120px;
   width: 1120px;
   height: 1585px;
-}
-.left {
-  background-color: rgb(255, 255, 255);
-  width: 55%;
-}
-.left .personalInfo.resumeSec {
-  width: 100%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  padding-bottom: 0px;
-  padding-right: 25px;
-  padding-left: 0;
-}
-.left .personalInfo.resumeSec .resumeTitle {
-  font-size: 2.3rem;
-  margin-left: 25px;
-  color: black;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  padding: 15px;
-  font-family: "Merriweather", serif;
-  font-style: italic;
-}
-.left .personalInfo.resumeSec .imgboxOuter {
-  width: 100%;
-  min-width: -webkit-fit-content;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
-  padding-left: 25px;
-  background-color: rgb(90, 90, 90);
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.left .personalInfo.resumeSec .imgboxOuter .imgboxInner {
-  width: 100%;
-  background-color: rgb(40, 40, 40);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 25px 30px;
-  padding-right: 5px;
-}
-.left .personalInfo.resumeSec .imgboxOuter .imgboxInner .imgbox_wrapper {
-  position: relative;
-  background-color: blue;
-}
-.left .personalInfo.resumeSec .imgboxOuter .imgboxInner .imgbox_wrapper .imgbox {
-  min-width: 160px;
-  min-height: 180px;
-  background-color: rgb(208, 208, 208);
-  border: 1px solid white;
-  overflow: hidden;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.left .personalInfo.resumeSec .imgboxOuter .imgboxInner .imgbox_wrapper .imgbox img {
-  width: 300px;
-}
-.left .personalInfo.resumeSec .imgboxOuter .imgboxInner .myinfo {
-  text-align: center;
-  margin: auto;
-  padding: 5px;
-  white-space: nowrap;
-}
-.left .personalInfo.resumeSec .imgboxOuter .imgboxInner .myinfo .myName {
-  color: rgb(185, 185, 185);
-  font-size: 50px;
-  padding-bottom: 18px;
-  margin-top: -17px;
-  font-family: "Ubuntu", sans-serif;
-}
-.left .personalInfo.resumeSec .imgboxOuter .imgboxInner .myinfo .profession {
-  color: rgb(240, 240, 240);
-  font-size: 30px;
-  font-weight: 500;
   font-family: "Merriweather Sans", sans-serif;
 }
-.left .personalInfo.resumeSec .tagline {
-  padding: 15px 0;
-  font-size: 20px;
-  margin-left: 25px;
-  font-weight: 500;
-  color: rgb(49, 51, 42);
-  text-align: center;
-  font-family: "Merriweather Sans", sans-serif;
-}
-.left .technicalSkills .technicalSkill {
-  display: inline-flex;
-  background-color: rgb(43, 52, 61);
+.resume .outer.progLangLevel div.marking {
+  position: absolute;
+  width: 100%;
   color: white;
-  padding: 5px 13px;
-  margin: 5px;
-  font-size: 18px;
-  font-weight: 500;
-  font-family: "Merriweather Sans", sans-serif;
-  transition: all 0.2s ease;
+  background-color: white;
+  top: -8px;
+  padding: 0px;
 }
-.left .progLangs .marking {
-  position: relative;
-  width: 70%;
-  margin-left: auto;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 4px;
-  margin-bottom: -7px;
-}
-.left .progLangs .marking span {
-  width: 2px;
-  height: 7px;
-  background-color: rgb(40, 40, 40);
-}
-.left .progLangs span {
-  display: inline-flex;
-}
-.left .progLangs .progLang {
-  margin: 7px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.left .progLangs .progLang .title {
-  font-size: 18px;
-  font-weight: 700;
-  color: rgb(49, 51, 42);
-  width: 30%;
-  padding: 5px 0;
-  text-transform: uppercase;
-  font-family: "Merriweather Sans", sans-serif;
-  margin-left: 2px;
-}
-.left .progLangs .progLang .outer {
-  padding: 1px;
-  border: 2px solid black;
-  width: 70%;
-}
-.left .progLangs .progLang .inner {
-  background-color: rgb(43, 52, 61);
-  height: 10px;
-  width: 100%;
-}
-.left .myJourney {
+.resume #markingspace {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  background-color: transparent;
+  margin-top: 0.5rem;
   width: 100%;
 }
-.left .myJourney .myJourneyItem {
-  margin-right: -10px;
-  position: relative;
-  width: 80%;
-  border-left: 5px solid rgb(43, 52, 61);
-  color: rgb(49, 51, 42);
-  padding: 10px;
-  padding-right: 0;
-  padding-bottom: 20px;
-  font-family: "Merriweather Sans", sans-serif;
-}
-.left .myJourney .myJourneyItem .time {
-  font-size: 18px;
-  position: absolute;
-  left: -146px;
-  width: 130px;
-  text-align: right;
-  white-space: wrap;
-}
-.left .myJourney .myJourneyItem .title {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  position: relative;
-}
-.left .myJourney .myJourneyItem .title .bullet_point {
-  position: absolute;
-  display: inline-flex;
-  height: 13px;
-  width: 13px;
-  border-radius: 50%;
-  left: -19px;
-  top: 7px;
-  border: 1px solid rgb(255, 255, 255);
-  background-color: rgb(43, 52, 61);
-}
-.left .myJourney .myJourneyItem .title .job_title {
+.resume #markingspace > span:first-child {
+  align-self: flex-start;
+  max-width: 100%;
+  width: auto;
   color: white;
-  padding: 3px 5px;
-  background-color: rgb(43, 52, 61);
 }
-.left .myJourney .myJourneyItem .title .divider {
-  margin: 0 7px;
+.resume #markingspace > span:last-child {
+  align-self: flex-end;
+  margin-top: 0rem;
+  width: 100%;
 }
-.left .myJourney .myJourneyItem .desc {
-  font-size: 18px;
-}
-
-.right {
+.resume .left {
+  background-color: black;
   width: 45%;
-  background-color: rgb(90, 90, 90);
 }
-.right .contactDetails {
-  font-size: 24px;
-  font-weight: 100;
-  letter-spacing: 1px;
-  color: rgb(230, 230, 230);
-  font-family: sans-serif;
-  padding-top: 13px;
+.resume .left .technicalSkills .secTitle,
+.resume .left .secTitle {
+  background: transparent;
+  border-bottom: 4px solid white;
+  text-transform: uppercase;
+  text-align: left;
 }
-.right .contactDetails a {
-  display: flex;
-  align-items: center;
-  line-height: 25px;
-  color: white;
-  transition: all 0.2s ease;
-  padding: 1px 0;
-  padding-left: 5px;
-}
-.right .contactDetails a span:first-child {
-  position: relative;
-  margin-top: 5px;
-  width: 45px;
-  min-width: 40px;
-}
-.right .contactDetails a span:last-child {
-  position: relative;
-  word-break: break-all;
-}
-.right .contactDetails .bottomBorder {
-  width: 80%;
-  height: 2px;
-  background-color: rgb(190, 190, 190);
-  margin: auto;
-  margin-top: 20px;
-}
-.right .projects .projectItem:last-child {
-  margin-bottom: 0;
-}
-.right .projects .projectItem:first-child {
-  margin-top: 0;
-}
-.right .projects .projectItem {
-  margin: 20px 0;
-  font-family: "Merriweather Sans", sans-serif;
-}
-.right .projects .projectItem .title {
-  display: flex;
-  align-items: center;
-  white-space: wrap;
-  color: rgb(255, 255, 255);
-  font-size: 20px;
-  margin: 6px 0;
-  margin-bottom: 8px;
-  font-weight: 700;
-}
-.right .projects .projectItem .title span {
-  padding: 3px 5px;
-}
-.right .projects .projectItem .title .p_title {
-  padding: 0 5px;
-  color: rgb(49, 51, 42);
-  background-color: rgb(200, 200, 200);
-  white-space: nowrap;
-}
-.right .projects .projectItem .title .p_divider {
-  margin-left: 7px;
-}
-.right .projects .projectItem .title .p_techStack {
-  font-size: 20px;
-  font-weight: 100;
-}
-.right .projects .projectItem .desc {
-  color: rgb(49, 51, 42);
-  background-color: rgb(235, 235, 235);
-  font-size: 18px;
-  font-weight: 500;
-  padding: 10px;
-  margin-left: 25px;
-}
-.right .projects .projectItem .desc .link {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 5px;
-  text-decoration: underline;
-  font-size: 16px;
-}
-.right .projects .projectItem .desc .link button {
-  background-color: rgb(200, 200, 200);
-  color: rgb(49, 51, 42);
-  padding: 2px 20px;
-  letter-spacing: 2px;
-  font-weight: bold;
-}
-.right .langs > .secContent {
+.resume .left .langs > .secContent {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
 }
-.right .langs .lang {
+.resume .left .langs .lang {
   position: relative;
   display: inline-flex;
   justify-content: center;
@@ -1075,16 +824,16 @@
   width: 48%;
   font-family: "Merriweather Sans", sans-serif;
 }
-.right .langs .lang span {
+.resume .left .langs .lang span {
   display: inline;
   margin: 2px 5px;
 }
-.right .langs .lang .title {
+.resume .left .langs .lang .title {
   font-size: 22px;
   font-weight: 700;
   color: white;
 }
-.right .langs .lang .level {
+.resume .left .langs .lang .level {
   padding: 3px 10px;
   font-size: 16px;
   margin: 2px 6px;
@@ -1092,56 +841,216 @@
   color: rgb(49, 51, 42);
   background-color: white;
 }
-.right .langs .lang .level:hover {
+.resume .left .langs .lang .level:hover {
   background-color: rgb(221, 221, 221);
 }
-.right .edus .edu {
+.resume .left .langs.resumeSec {
+  padding-left: 35px;
+  padding-right: 20px;
+}
+.resume .left .contactDetails {
+  font-size: 18px;
+  font-weight: 100;
+  letter-spacing: 1px;
+  color: black;
   font-family: "Merriweather Sans", sans-serif;
+  padding-top: 13px;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+.resume .left .contactDetails h2.sectTitleContact {
   color: white;
-  margin-top: 25px;
+  padding-bottom: 0.7rem;
+  border-bottom: 4px solid white;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
 }
-.right .edus .edu .r1 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 700;
+.resume .left .contactDetails a {
+  background-color: black;
+  color: white !important;
+  font-weight: normal;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  line-height: 25px;
+  color: rgb(0, 0, 0);
+  transition: all 0.2s ease;
+  padding: 1px 0;
+  padding-left: 5px;
 }
-.right .edus .edu .r1 span {
+.resume .left .contactDetails a span:first-child {
+  position: relative;
+  margin-right: 15px;
+}
+.resume .left .contactDetails a span:last-child {
+  position: relative;
+  word-break: break-all;
+}
+.resume .left .contactDetails .bottomBorder {
+  width: 80%;
+  height: 2px;
+  background-color: rgb(0, 0, 0);
+  margin: auto;
+  margin-top: 20px;
+}
+.resume .left .contactDetails.secContent svg {
+  width: 30px;
+  height: 30px;
+}
+.resume .left .personalInfo.resumeSec {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-bottom: 0px;
+  padding-right: 25px;
+  padding-left: 0;
+}
+.resume .left .personalInfo.resumeSec .resumeTitle {
+  font-size: 2.3rem;
+  margin-left: 25px;
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 15px;
+  font-family: "Merriweather", serif;
+  font-style: italic;
+}
+.resume .left .personalInfo.resumeSec .imgboxOuter {
+  width: 100%;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+.resume .left .personalInfo.resumeSec .imgboxOuter .imgboxInner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+}
+.resume .left .personalInfo.resumeSec .imgboxOuter .imgboxInner .imgbox_wrapper {
+  position: relative;
+  width: 250px;
+  height: 250px;
+}
+.resume .left .personalInfo.resumeSec .imgboxOuter .imgboxInner .imgbox_wrapper .imgbox {
+  min-width: 160px;
+  min-height: 160px;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(208, 208, 208);
+  border: 1px solid white;
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+}
+.resume .left .personalInfo.resumeSec .imgboxOuter .imgboxInner .imgbox_wrapper .imgbox img {
+  width: 300px;
+}
+.resume .left .personalInfo.resumeSec .imgboxOuter .imgboxInner .myinfo {
+  text-align: center;
+  margin: auto;
+  padding: 5px;
+  white-space: nowrap;
+}
+.resume .left .personalInfo.resumeSec .imgboxOuter .imgboxInner .myinfo .myName {
+  color: rgb(185, 185, 185);
+  font-size: 50px;
+  padding-bottom: 18px;
+  margin-top: -17px;
+  font-family: "Ubuntu", sans-serif;
+}
+.resume .left .personalInfo.resumeSec .imgboxOuter .imgboxInner .myinfo .profession {
+  color: rgb(240, 240, 240);
+  font-size: 30px;
+  font-weight: 500;
+  font-family: "Merriweather Sans", sans-serif;
+}
+.resume .left .personalInfo.resumeSec .tagline {
+  padding: 15px 0;
+  font-size: 20px;
+  margin-left: 25px;
+  font-weight: 500;
+  color: rgb(49, 51, 42);
+  text-align: center;
+  font-family: "Merriweather Sans", sans-serif;
+}
+.resume .left .technicalSkills .technicalSkill {
+  display: inline-flex;
+  background-color: rgb(43, 52, 61);
+  color: white;
+  padding: 5px 13px;
+  margin: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Merriweather Sans", sans-serif;
+  transition: all 0.2s ease;
+}
+.resume .left .technicalSkills.resumeSec {
+  padding-left: 35px;
+  padding-right: 20px;
+}
+.resume .left .progLangs.resumeSec {
+  padding-left: 35px;
+  padding-right: 20px;
+}
+.resume .left .progLangs .marking {
+  position: relative;
+  width: 70%;
+  margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4px;
+  margin-bottom: -7px;
+  display: none;
+}
+.resume .left .progLangs .marking span {
+  width: 2px;
+  height: 7px;
+  background-color: rgb(40, 40, 40);
+}
+.resume .left .progLangs span {
   display: inline-flex;
 }
-.right .edus .edu .r1 span:nth-child(2) {
-  font-size: 25px;
-}
-.right .edus .edu .r1 .title {
-  background-color: white;
-  white-space: nowrap;
-  color: rgb(49, 51, 42);
-  padding: 5px;
-  margin-right: 10px;
-}
-.right .edus .edu .r1 .institute {
-  position: relative;
-  margin-left: 10px;
-  font-size: 20px;
-  font-weight: 100;
-}
-.right .edus .edu .r2 {
-  padding: 0;
-  margin-top: 10px;
-  font-size: 20px;
-  font-weight: 500;
+.resume .left .progLangs .progLang {
+  margin: 7px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.right .edus .edu .r2 .cgpa {
-  font-size: 23px;
+.resume .left .progLangs .progLang .title {
+  font-size: 18px;
+  font-weight: 700;
+  color: rgb(49, 51, 42);
+  width: 30%;
+  padding: 5px 0;
+  text-transform: uppercase;
+  font-family: "Merriweather Sans", sans-serif;
+  margin-left: 2px;
 }
-.right .edus .edu .r2 .place {
-  margin-right: 5px;
+.resume .left .progLangs .progLang .outer {
+  padding: 1px;
+  border: 2px solid black;
+  width: 70%;
 }
-.right .interests .interest {
+.resume .left .progLangs .progLang .inner {
+  background-color: rgb(43, 52, 61);
+  height: 10px;
+  width: 100%;
+}
+.resume .left .progLangs .progLang form {
+  border: 1px solid white;
+  background: white;
+}
+.resume .left .interests .interest {
   display: inline-flex;
   color: rgb(49, 51, 42);
   background-color: white;
@@ -1150,4 +1059,278 @@
   padding: 5px 9px;
   font-size: 19px;
   margin: 5px;
-}/*# sourceMappingURL=Template1.module.css.map */
+}
+.resume .left .interests.resumeSec {
+  padding-left: 35px;
+  padding-right: 20px;
+}
+.resume .right {
+  width: 65%;
+  background-color: white;
+}
+.resume .right .secTitle {
+  background: transparent;
+  color: black;
+  border-bottom: 4px solid black;
+  text-transform: uppercase;
+  text-align: left;
+}
+.resume .right .personalInfo.resumeSec {
+  text-align: center;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-bottom: 0px;
+  padding-right: 25px;
+  padding-left: 0;
+}
+.resume .right .personalInfo.resumeSec .resumeTitle {
+  font-size: 2.3rem;
+  margin-left: 25px;
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 15px;
+  font-family: "Merriweather", serif;
+  font-style: italic;
+}
+.resume .right .personalInfo.resumeSec .imgboxOuter {
+  width: 100%;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+.resume .right .personalInfo.resumeSec .imgboxOuter .imgboxInner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+}
+.resume .right .personalInfo.resumeSec .imgboxOuter .imgboxInner .imgbox_wrapper {
+  position: relative;
+  width: 250px;
+  height: 250px;
+}
+.resume .right .personalInfo.resumeSec .imgboxOuter .imgboxInner .imgbox_wrapper .imgbox {
+  min-width: 160px;
+  min-height: 160px;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(208, 208, 208);
+  border: 1px solid white;
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+}
+.resume .right .personalInfo.resumeSec .imgboxOuter .imgboxInner .imgbox_wrapper .imgbox img {
+  width: 300px;
+}
+.resume .right .personalInfo.resumeSec .imgboxOuter .imgboxInner .myinfo {
+  text-align: center;
+  margin: auto;
+  padding: 5px;
+  white-space: nowrap;
+}
+.resume .right .personalInfo.resumeSec .imgboxOuter .imgboxInner .myinfo .myName {
+  color: rgb(185, 185, 185);
+  font-size: 50px;
+  padding-bottom: 18px;
+  margin-top: -17px;
+  font-family: "Ubuntu", sans-serif;
+}
+.resume .right .personalInfo.resumeSec .imgboxOuter .imgboxInner .myinfo .profession {
+  color: rgb(240, 240, 240);
+  font-size: 30px;
+  font-weight: 500;
+  font-family: "Merriweather Sans", sans-serif;
+}
+.resume .right .personalInfo.resumeSec .tagline {
+  padding: 15px 0;
+  font-size: 20px;
+  margin-left: 25px;
+  font-weight: 500;
+  color: rgb(49, 51, 42);
+  text-align: center;
+  font-family: "Merriweather Sans", sans-serif;
+}
+.resume .right .myJourney {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+}
+.resume .right .myJourney .myJourneyItem {
+  margin-right: -10px;
+  position: relative;
+  width: 100%;
+  border-left: 5px solid rgb(43, 52, 61);
+  color: rgb(49, 51, 42);
+  padding: 10px;
+  padding-right: 0;
+  padding-bottom: 20px;
+  font-family: "Merriweather Sans", sans-serif;
+  padding-top: 0;
+  padding-left: 2rem;
+}
+.resume .right .myJourney .myJourneyItem .time {
+  font-size: 18px;
+  left: -146px;
+  width: 130px;
+  text-align: right;
+  white-space: wrap;
+}
+.resume .right .myJourney .myJourneyItem .title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  position: relative;
+}
+.resume .right .myJourney .myJourneyItem .title .bullet_point {
+  position: absolute;
+  display: inline-flex;
+  height: 13px;
+  width: 13px;
+  border-radius: 50%;
+  left: -19px;
+  top: 7px;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: rgb(43, 52, 61);
+  height: 20px;
+  width: 20px;
+  left: -43px;
+  top: 0;
+}
+.resume .right .myJourney .myJourneyItem .title .job_title {
+  color: white;
+  padding: 3px 5px;
+  background-color: rgb(43, 52, 61);
+}
+.resume .right .myJourney .myJourneyItem .title .divider {
+  margin: 0 7px;
+}
+.resume .right .myJourney .myJourneyItem .desc {
+  font-size: 18px;
+}
+.resume .right .projects {
+  color: black;
+}
+.resume .right .projects .projectItem:last-child {
+  margin-bottom: 0;
+}
+.resume .right .projects .projectItem:first-child {
+  margin-top: 0;
+}
+.resume .right .projects .projectItem {
+  margin: 20px 0;
+  font-family: "Merriweather Sans", sans-serif;
+}
+.resume .right .projects .projectItem .title {
+  display: flex;
+  align-items: center;
+  white-space: wrap;
+  color: black;
+  font-size: 20px;
+  margin: 6px 0;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.resume .right .projects .projectItem .title span {
+  padding: 3px 5px;
+}
+.resume .right .projects .projectItem .title .p_title {
+  padding: 0 5px;
+  color: rgb(49, 51, 42);
+  background-color: rgb(200, 200, 200);
+  white-space: nowrap;
+}
+.resume .right .projects .projectItem .title .p_divider {
+  margin-left: 7px;
+}
+.resume .right .projects .projectItem .title .p_techStack {
+  font-size: 20px;
+  font-weight: 100;
+}
+.resume .right .projects .projectItem .desc {
+  color: rgb(49, 51, 42);
+  background-color: rgb(235, 235, 235);
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px;
+  margin-left: 25px;
+}
+.resume .right .projects .projectItem .desc .link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  text-decoration: underline;
+  font-size: 16px;
+}
+.resume .right .projects .projectItem .desc .link button {
+  background-color: rgb(200, 200, 200);
+  color: rgb(49, 51, 42);
+  padding: 2px 20px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+.resume .right .edus .edu {
+  font-family: "Merriweather Sans", sans-serif;
+  color: black;
+  margin-top: 25px;
+  padding-left: 10px;
+}
+.resume .right .edus .edu .r1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+.resume .right .edus .edu .r1 span {
+  display: inline-flex;
+}
+.resume .right .edus .edu .r1 span:nth-child(2) {
+  font-size: 25px;
+}
+.resume .right .edus .edu .r1 .title {
+  white-space: nowrap;
+  color: rgb(49, 51, 42);
+  padding: 5px;
+  margin-right: 10px;
+}
+.resume .right .edus .edu .r1 .institute {
+  position: relative;
+  font-size: 20px;
+  font-weight: 100;
+  font-size: 25px;
+  font-weight: bold;
+}
+.resume .right .edus .edu .r1 .cgpa {
+  font-size: 23px;
+}
+.resume .right .edus .edu .r2 {
+  padding: 0;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.resume .right .edus .edu .r2 .place {
+  margin-right: 5px;
+}/*# sourceMappingURL=Template2.module.css.map */

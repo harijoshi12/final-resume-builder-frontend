@@ -12,10 +12,12 @@ import { ContactInput, EducationInput, InterestInput, LangInput, MyJourneyInput,
 import { ContactDetails, Education, Interest, Language, MyJourney, PersonalInfo, ProgLang, Project, TechnicalSkill } from './Items'
 import SecTitle from './SectionTitles'
 
-import styles from '../styles/Template1.module.css'
+import styles from '../styles/Template2.module.css'
 
-const HocSec = (Sec) => {
+const HocSec = (Sec , arg) => {
   const NewSec = (props) => {
+    console.log('props : ', props.showImg);
+    console.log('arg : ', arg);
     const [plusEl, setPlusEl] = useState(false)
     const [addNewItem, setAddNewItem] = useState(false)
 
@@ -78,7 +80,7 @@ const SecProgLangs = (props) => {
   const newItem = { progLang: ``, progLangLevel: 7 }
   return (
     <SecWrapper className="progLangs" secTitle={secTitle} secTitlePlaceholder="Programming Languages" {...props} secName="secProgLangs" arrayName="progLangs" showTitle={true} secId={secId} newItem={newItem}>
-      <Marking />
+      {/* <Marking /> */}
       {progLangs.map((item, idx) => (
         <CommonItemAndForm key={item.id} {...item} idx={idx} secData={progLangs} secName={resumeSecNames.SECPROGLANGS} arrayName={resumeArrayNames.PROGLANGS} secId={secId} ViewItem={ProgLang} {...props} newItem={newItem} />
       ))}
@@ -102,6 +104,7 @@ const SecContactDetails = (props) => {
 
   return (
     <SecWrapper className="contactDetails" secName="secContactDetails" arrayName="contactDetails">
+      <h2 className={`${styles.sectTitleContact} ${styles.secTitle}`}> Contact </h2>
       {showContactInput ? (
         <ContactInput setShowContactInput={setShowContactInput} />
       ) :
@@ -166,7 +169,7 @@ const SecInterests = (props) => {
 }
 
 const NewSecPersonalInfo = HocSec(SecPersonalInfo)
-const NewSecTechnicalSkills = HocSec(SecTechnicalSkills)
+const NewSecTechnicalSkills = HocSec(SecTechnicalSkills, 'i  m here')
 const NewSecProgLangs = HocSec(SecProgLangs)
 const NewSecExperiences = HocSec(SecExperiences)
 const NewSecContactDetails = HocSec(SecContactDetails)
@@ -175,4 +178,4 @@ const NewSecLanguages = HocSec(SecLanguages)
 const NewSecEducations = HocSec(SecEducations)
 const NewSecInterests = HocSec(SecInterests)
 
-export { NewSecPersonalInfo, NewSecTechnicalSkills, NewSecProgLangs, NewSecExperiences, NewSecContactDetails, NewSecProjects, NewSecLanguages, NewSecEducations, NewSecInterests }
+export { NewSecPersonalInfo, NewSecTechnicalSkills, NewSecProgLangs, NewSecExperiences, NewSecContactDetails, NewSecProjects, NewSecLanguages, NewSecEducations, NewSecInterests , Marking }

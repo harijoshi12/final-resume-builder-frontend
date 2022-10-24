@@ -5,7 +5,7 @@ import { resumeInputCodes } from "../../../../constants/constants";
 import { useAuth } from "../../../../contexts/AuthContext";
 import { updateItem, updateResumeAsync } from "../../../../features/resume/resumeSlice";
 // custom styles
-import styles from '../styles/Template1.module.css';
+import styles from '../styles/Template2.module.css';
 
 const SecTitle = (props) => {
   const { setPlusEl, secTitleName, secTitlePlaceholder, secName, showTitle } = props

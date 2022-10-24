@@ -7,13 +7,14 @@ import { BsLinkedin, BsStackOverflow } from "react-icons/bs";
 import { FaQuora } from "react-icons/fa";
 import { IoMdCloudUpload } from "react-icons/io";
 
-import styles from "../styles/Template1.module.css";
+import styles from "../styles/Template2.module.css";
 import { resumeInputCodes } from "../../../../constants/constants";
 import { useDispatch, useSelector } from "react-redux";
 
 import { updateItem, updateResumeAsync } from "../../../../features/resume/resumeSlice";
 import { useAuth } from "../../../../contexts/AuthContext";
 import axios from "axios";
+import { Marking } from "./Sections";
 
 export const CommonForm = (props) => {
   const {
@@ -56,6 +57,7 @@ export const CommonForm = (props) => {
   return (
     <form
       ref={formRef}
+      style={{width: `${className === 'progLangInput' ? '70%' : 'auto'}`}}
       className={styles[className]}
       onSubmit={(e) => {
         onSubmitHandler(e);
@@ -335,6 +337,7 @@ export const ProgLangLevel = (props) => {
 
   return (
     <span ref={outerRef} className={`${styles.outer} ${styles.progLangLevel}`}>
+      {/* <Marking /> */}
       <form action="">
         <span
           ref={innerRef}

@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { addItem } from '../../../../features/resume/resumeSlice'
 
 // custom style
-import styles from '../styles/Template1.module.css'
+import styles from '../styles/Template2.module.css'
 const AddItems = (props) => {
   const { secName, arrayName, newItem: value, setAddNewItem } = props
   const dispatch = useDispatch()
