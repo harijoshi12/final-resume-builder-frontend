@@ -79,10 +79,10 @@ const ResumeTemplates = () => {
                     <div
                       className={`${styles.template2} ${styles.template}`}
                     ></div>
-                    <CustomButton isdisabled={false} templateId={"2"}>
+                    <CustomButton isdisabled={true} templateId={"2"}>
                       Build your CV
                     </CustomButton>
-                    {/* <span className="comming-soon">Comming Soon</span> */}
+                    <span className="comming-soon">Comming Soon</span>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>

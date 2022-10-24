@@ -3,6 +3,7 @@ import axios from "axios";
 import NewLogin from "./Login";
 import NewRegister from "./Register";
 import styles from "./styles/auth.module.css";
+import { ThreeDots } from 'react-loader-spinner'
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,6 +20,8 @@ const Auth = ({ authPage }) => {
     password_register1: "",
     password_register2: "",
   });
+  const [isLoading, setIsLoading] = useState(false)
+
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [formHeight, setFormHeight] = useState("410px");
   const [top, setTop] = useState("");
@@ -89,6 +92,7 @@ const Auth = ({ authPage }) => {
 
   const googleLoginHandler = async () => {
     try {
+      setIsLoading(true)
       const { user } = await handleGoogleLogin();
       const token = await user?.getIdToken();
       const config = {
@@ -102,12 +106,15 @@ const Auth = ({ authPage }) => {
         {},
         config
       );
+      setIsLoading(false)
       router.push("/resume-templates");
+
       toast.success("Successfully login!", {
         position: toast.POSITION.TOP_CENTER,
         className: "custom_toast",
       });
     } catch (error) {
+      setIsLoading(false)
       toast.error(error.message, {
         position: toast.POSITION.TOP_CENTER,
         className: "custom_toast",
@@ -117,6 +124,29 @@ const Auth = ({ authPage }) => {
 
   return (
     <>
+      {isLoading && <div style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "rgba(255, 255,255,.5)",
+        zIndex: "1000"
+      }}>
+        <ThreeDots
+          height="80"
+          width="80"
+          radius="9"
+          color="#4fa94d"
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{}}
+          wrapperClassName=""
+          visible={true}
+        />
+      </div>}
       <ToastContainer position="top-center" />
       <div className={styles.form_container}>
         <div className={styles.slider_container}>

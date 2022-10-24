@@ -7,14 +7,17 @@ import styles from "./styles/auth.module.css";
 import { useAuth } from "../../contexts/AuthContext";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { ThreeDots } from 'react-loader-spinner'
+
 
 import { baseUrl } from "../../constants/constants";
+import { useState } from "react";
 
 const Login = (props) => {
   const { emailRef, password1Ref, isLoginForm, data, handleInputs } = props;
   const { email_login, password_login } = data;
   const loginFormRef = useRef(null);
-
+  const [isLoading, setIsLoading] = useState(false)
   const router = useRouter();
 
   const { handleLogin, currentUser, currentToken } = useAuth();
@@ -29,6 +32,7 @@ const Login = (props) => {
           className: "custom_toast",
         });
       } else {
+        setIsLoading(true)
         const { user } = await handleLogin(email_login, password_login);
         const token = await user?.getIdToken();
         const config = {
@@ -45,6 +49,7 @@ const Login = (props) => {
           position: toast.POSITION.TOP_CENTER,
           className: "custom_toast",
         });
+        setIsLoading(false)
         router.push("/resume-templates");
       }
     } catch (error) {
@@ -52,6 +57,7 @@ const Login = (props) => {
         position: toast.POSITION.TOP_CENTER,
         className: "custom_toast",
       });
+      setIsLoading(false)
     }
   };
 
@@ -67,34 +73,60 @@ const Login = (props) => {
     }
   }, [isLoginForm]);
 
+
+
   return (
-    <form
-      ref={loginFormRef}
-      action=""
-      className={styles.login_form}
-      onSubmit={(e) => onSubmitHandler(e)}
-    >
-      <InputField
-        inputRef={emailRef}
-        type="email"
-        name="email_login"
-        id_htmlFor="id_email_login"
-        label="E-mail"
-        value={email_login}
-        handleInputs={handleInputs}
-      ></InputField>
+    <>
+      {isLoading && <div style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "rgba(255, 255,255,.5)",
+        zIndex: "1000"
+      }}>
+        <ThreeDots
+          height="80"
+          width="80"
+          radius="9"
+          color="#4fa94d"
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{}}
+          wrapperClassName=""
+          visible={true}
+        />
+      </div>}
+      <form
+        ref={loginFormRef}
+        action=""
+        className={styles.login_form}
+        onSubmit={(e) => onSubmitHandler(e)}
+      >
+        <InputField
+          inputRef={emailRef}
+          type="email"
+          name="email_login"
+          id_htmlFor="id_email_login"
+          label="E-mail"
+          value={email_login}
+          handleInputs={handleInputs}
+        ></InputField>
 
-      <InputField
-        inputRef={password1Ref}
-        type="password"
-        name="password_login"
-        id_htmlFor="id_password_login"
-        label="Password"
-        value={password_login}
-        handleInputs={handleInputs}
-      ></InputField>
+        <InputField
+          inputRef={password1Ref}
+          type="password"
+          name="password_login"
+          id_htmlFor="id_password_login"
+          label="Password"
+          value={password_login}
+          handleInputs={handleInputs}
+        ></InputField>
 
-      {/* <div className={styles.etc}>
+        {/* <div className={styles.etc}>
         <div className={styles.remember}>
           <input type="checkbox" name="remember" id="id_remember" />
           <label htmlFor="id_remember">Remember Me</label>
@@ -103,10 +135,11 @@ const Login = (props) => {
           <a className={styles.forget}>Forget Password?</a>
         </Link>
       </div> */}
-      <button className={styles.submit_btn} type="submit">
-        Login
-      </button>
-    </form>
+        <button className={styles.submit_btn} type="submit">
+          Login
+        </button>
+      </form>
+    </>
   );
 };
 const NewLogin = HocForm(Login);
