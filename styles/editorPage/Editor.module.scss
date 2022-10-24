@@ -1,9 +1,9 @@
 .editor_page {
   min-width: 1200px;
-  min-height: 100vh;
   background-color: rgb(45, 45, 45);
 }
 .editor {
+  min-height: calc(100vh - 50px);
   padding: 150px 10px;
   width: 100%;
 }
