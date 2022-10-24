@@ -23,7 +23,7 @@ const CustomButton = ({ isdisabled, templateId }) => {
   const btnClickHanlder = () => {
     if (currentUser) {
       dispatch(getOrCreateResumeAsync(currentToken))
-      router.push("/dashboard/editor/1");
+      router.push(`/dashboard/editor/${templateId}`);
     } else {
       router.push("/login");
     }
@@ -79,10 +79,10 @@ const ResumeTemplates = () => {
                     <div
                       className={`${styles.template2} ${styles.template}`}
                     ></div>
-                    <CustomButton isdisabled={true} templateId={"2"}>
+                    <CustomButton isdisabled={false} templateId={"2"}>
                       Build your CV
                     </CustomButton>
-                    <span className="comming-soon">Comming Soon</span>
+                    {/* <span className="comming-soon">Comming Soon</span> */}
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>

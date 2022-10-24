@@ -1,15 +1,24 @@
 import Link from 'next/link'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { ImUndo2 } from "react-icons/im";
 import { ImRedo2 } from "react-icons/im";
 import styles from './HeaderEditor.module.css'
 import { BsCloudDownload, BsTriangleFill } from 'react-icons/bs'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router';
+import { useAuth } from '../../contexts/AuthContext';
+import { getResumeAsync } from '../../features/resume/resumeSlice';
 
 const HeaderEditor = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const burger = useRef();
+  const dispatch = useDispatch()
+  const { currentToken, currentUser, handleLogout } = useAuth();
+  useEffect(() => {
+    if (currentToken) {
+      dispatch(getResumeAsync(currentToken))
+    }
+  }, [currentToken, dispatch])
   let personalInfo = [];
   let data = useSelector(state => state?.resume?.data?.secPersonalInfo?.personalInfo)
   if (data) {
@@ -18,6 +27,11 @@ const HeaderEditor = () => {
   const imageSrc = data ? personalInfo[0]?.imageSrc : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
 
   const router = useRouter()
+
+  const logoutHandler = (e) => {
+    handleLogout();
+    router.push("/");
+  };
   return (
     <header className={styles.header}>
       <div className={styles.logo}>

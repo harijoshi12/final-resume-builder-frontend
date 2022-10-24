@@ -2,10 +2,11 @@ import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BsTriangleFill } from "react-icons/bs";
 
 import styles from './Header.module.css'
+import { getResumeAsync } from "../../features/resume/resumeSlice";
 function Header({ setIsMousein }) {
   const [toggleMenu, setToggleMenu] = useState(false);
   const progress = useRef();
@@ -161,11 +162,18 @@ function Header({ setIsMousein }) {
     };
   }, []);
 
-  const { currentUser, handleLogout } = useAuth();
+  const { currentToken, currentUser, handleLogout } = useAuth();
   const logoutHandler = (e) => {
     handleLogout();
     router.push("/");
   };
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if (currentToken) {
+      dispatch(getResumeAsync(currentToken))
+    }
+  }, [currentToken, dispatch])
 
   let personalInfo = [];
   let data = useSelector(state => state?.resume?.data?.secPersonalInfo?.personalInfo)

@@ -77,11 +77,34 @@
 //   )
 // }
 
-// export default Template2
-
-import React from 'react'
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux';
+import { useAuth } from '../../../../contexts/AuthContext';
+import { getResumeAsync } from '../../../../features/resume/resumeSlice';
 
 const Template2 = () => {
+  const { currentToken, currentUser } = useAuth();
+
+  const dispatch = useDispatch()
+  const router = useRouter()
+
+  useEffect(() => {
+    const fun = (event) => {
+      console.log("returning")
+      router.push("/dashboard/editor/2")
+    }
+    window.addEventListener('afterprint', fun);
+    return () => window.removeEventListener('afterprint', fun);
+  }, [router])
+
+  useEffect(() => {
+    if (currentToken) {
+      dispatch(getResumeAsync(currentToken))
+      window.print()
+      console.log("printing")
+    }
+  }, [currentToken, dispatch])
   return (
     <h1>View Template 2</h1>
   )
