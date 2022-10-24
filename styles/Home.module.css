@@ -82,6 +82,11 @@
   font-size: 25px;
   background-color: rgb(255, 60, 0);
   color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.hero .container .content .left_section button:hover {
+  transform: scale(1.05);
 }
 .hero .container .content .right_section {
   width: 45%;
@@ -101,7 +106,8 @@
   transform: skew(-7deg);
   position: absolute;
 }
-.hero .container .content .right_section .resumebg .first, .hero .container .content .right_section .resumebg .second {
+.hero .container .content .right_section .resumebg .first,
+.hero .container .content .right_section .resumebg .second {
   position: absolute;
   width: 310px;
   height: 430px;

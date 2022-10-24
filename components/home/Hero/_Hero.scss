@@ -1,14 +1,21 @@
-.hero{
-  background: rgb(255,255,255);
-  background-image:linear-gradient(70deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 40%,rgba(255, 255, 255, 0.05) 65%, rgba(254,254,254,0) 100%), url(../media/images/triangles-bg.png);
+.hero {
+  background: rgb(255, 255, 255);
+  background-image: linear-gradient(
+      70deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.7) 40%,
+      rgba(255, 255, 255, 0.05) 65%,
+      rgba(254, 254, 254, 0) 100%
+    ),
+    url(../media/images/triangles-bg.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   clip-path: polygon(0 0, 100% 0%, 100% 86%, 48% 100%, 0 86%);
-  *{
+  * {
     // border: 1px solid black;
   }
-  .container{
+  .container {
     padding: 10px;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -17,109 +24,115 @@
     align-items: center;
     min-height: 30vh;
     max-width: 100%;
-    .content{
+    .content {
       padding-top: 50px;
       display: flex;
       justify-content: center;
       align-items: center;
-     .left_section{
-      min-height: 450px;
-      min-width: 300px;
-      flex-basis: 55%;
-      max-width: 100%;
-      flex-grow: 1;
-      font-family: sans-serif;
-      letter-spacing: 1px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      align-items: flex-start;
-      h1{
-        text-transform: capitalize;
-        font-size: 70px;
-        font-weight: bold;
-        // line-height: 60px;
-        padding: 20px 0;
+      .left_section {
+        min-height: 450px;
+        min-width: 300px;
+        flex-basis: 55%;
+        max-width: 100%;
+        flex-grow: 1;
+        font-family: sans-serif;
+        letter-spacing: 1px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        h1 {
+          text-transform: capitalize;
+          font-size: 70px;
+          font-weight: bold;
+          // line-height: 60px;
+          padding: 20px 0;
+        }
+        p {
+          padding: 20px 0;
+          font-size: 22px;
+          line-height: 35px;
+        }
+        button {
+          border: 0;
+          outline: none;
+          box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.6);
+          border-radius: 5px;
+          margin: 20px 0;
+          padding: 15px 35px;
+          font-size: 25px;
+          background-color: rgb(255, 60, 0);
+          color: white;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
       }
-      p{
-        padding:20px 0;
-        font-size: 22px;
-        line-height: 35px;
-      }
-      button{
-        border: 0;
-        outline: none;
-        box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.6);
-        border-radius: 5px;
-        margin: 20px 0;
-        padding: 15px 35px;
-        font-size: 25px;
-        background-color: rgb(255, 60, 0);
-        color: white;
-      }
-    }
-    .right_section{
-       width: 45%;
-       display: flex;
-       justify-content: center;
-       align-items: flex-start;
-       position: relative;
-       height: 450px;
-       .resumebg{
+      .right_section {
+        width: 45%;
         display: flex;
         justify-content: center;
-        align-items: center;
-        padding: 5px;
-        width: 400px;
+        align-items: flex-start;
+        position: relative;
         height: 450px;
-        transform: skew(-7deg);
-        position: absolute;
-        // perspective: 1000px;
-        .first, .second{
-          // perspective: 1000px;
+        .resumebg {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 5px;
+          width: 400px;
+          height: 450px;
+          transform: skew(-7deg);
           position: absolute;
-          width: 310px;
-          height: 430px;
-          border: 5px solid orangered;
-          transform-style: preserve-3d;
+          // perspective: 1000px;
+          .first,
+          .second {
+            // perspective: 1000px;
+            position: absolute;
+            width: 310px;
+            height: 430px;
+            border: 5px solid orangered;
+            transform-style: preserve-3d;
+          }
+          .first {
+            z-index: 10;
+            border-bottom: 0;
+            border-right: 0;
+            animation: anim 5s linear infinite;
+          }
+          .second {
+            z-index: 30;
+            border-left: 0;
+            border-top: 0;
+            animation: anim 5s linear infinite;
+          }
+          .imgbox {
+            position: relative;
+            z-index: 20;
+            transform: skew(7deg);
+            height: 400px;
+            background-image: url(../media/images/resumepic.jpg);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 283px;
+          }
         }
-        .first{
-          z-index: 10;
-          border-bottom: 0;
-          border-right: 0;
-          animation: anim 5s linear infinite;
-        }
-        .second{
-          z-index: 30;
-          border-left: 0;
-          border-top: 0;
-          animation: anim 5s linear infinite;
-        }
-        .imgbox{
-          position: relative;
-          z-index: 20;
-          transform: skew(7deg);
-          height: 400px;
-          background-image: url(../media/images/resumepic.jpg);
-          background-position: center;
-          background-size: contain;
-          background-repeat: no-repeat;
-          width: 283px;
-        }
-       }
-     } 
+      }
     }
   }
 }
 @keyframes anim {
-  0%{
+  0% {
     // transform: rotateY(0);
     // transform: rotate3d(1,-2,0,0deg)
     // transform: rotateZ(90deg) ;
     // width: 310px;
     // height: 430px;
   }
-  50%{
+  50% {
     // transform: rotateY(90deg)  ;
     transform: skew(14deg);
     // transform: rotate3d(1,-2,0,180deg);
@@ -127,7 +140,7 @@
     // height: 310px;
     // transform: rotateZ(90deg);
   }
-  100%{
+  100% {
     // transform: rotateX(-180deg);
     // width: 310px;
     // height: 430px;
@@ -138,18 +151,25 @@
 }
 
 @media screen and (max-width: "768px") {
-  .hero{
-    background-image:linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 40%,rgba(255, 255, 255, 0.05) 65%, rgba(254,254,254,0) 100%), url(../media/images/triangles-bg.png);
+  .hero {
+    background-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.7) 40%,
+        rgba(255, 255, 255, 0.05) 65%,
+        rgba(254, 254, 254, 0) 100%
+      ),
+      url(../media/images/triangles-bg.png);
 
-    .container{
+    .container {
       padding-bottom: 150px;
-      .content{
+      .content {
         flex-direction: column;
-        .left_section{
+        .left_section {
           margin-bottom: 30px;
           align-items: center;
           text-align: center;
-          h1{
+          h1 {
             font-size: 50px;
           }
         }
