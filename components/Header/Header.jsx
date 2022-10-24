@@ -202,7 +202,7 @@ function Header({ setIsMousein }) {
               <a className={router.pathname === "/resume-templates" ? "active" : ""} ref={link2}>Templates</a>
             </Link>
             {currentUser && (
-              <Link href="/dashboard">
+              <Link href="/dashboard/editor/1">
                 <a className={router.pathname === "/dashboard" ? "active" : ""} ref={link3}>Dashboard</a>
               </Link>
             )}
