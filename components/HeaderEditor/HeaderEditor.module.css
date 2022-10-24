@@ -51,26 +51,127 @@
 }
 .header .middle .navlinks {
   margin: 2px;
-  padding: 5px;
   white-space: nowrap;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
-  transition: all 0.2s ease;
-}
-.header .middle .navlinks:hover {
-  color: orangered;
 }
 .header .middle .undo,
 .header .middle .redo {
   font-size: 30px;
+  transition: all 0.2s ease;
+}
+.header .middle .undo:hover,
+.header .middle .redo:hover {
+  color: orangered;
+  transform: scale(1.2);
 }
 .header .middle .downloadBtn {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.2s ease;
+}
+.header .middle .downloadBtn:hover {
+  color: orangered;
+  transform: scale(1.05);
 }
 .header .middle .downloadBtn span {
   margin: 5px;
+}
+.header .middle .dd_menu {
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+.header .middle .dd_menu:hover .dd_child_wrapper {
+  visibility: visible;
+}
+.header .middle .dd_menu:hover .dd_parent .dd_arrow {
+  color: orangered;
+}
+.header .middle .dd_menu .dd_parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 5px;
+  transition: all 0.2s ease-in-out;
+}
+.header .middle .dd_menu .dd_parent:hover {
+  transform: scale(1.05);
+}
+.header .middle .dd_menu .dd_parent .dd_arrow {
+  transform: rotate(180deg);
+  font-size: 7px;
+  margin-left: 3px;
+}
+.header .middle .dd_menu .dd_child_wrapper {
+  background-color: transparent;
+  position: absolute;
+  visibility: hidden;
+  padding-top: 15px;
+  transform: translateX(-52%) translateY(0px);
+}
+.header .middle .dd_menu .dd_child {
+  position: relative;
+  padding: 15px 25px;
+  border-radius: 15px;
+  background-color: rgb(76, 83, 87);
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  border: 1px solid black;
+  font-size: 18px;
+}
+.header .middle .dd_menu .dd_child::before {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 0 0 5px 0;
+  border-color: transparent black black transparent;
+  background-color: rgb(76, 83, 87);
+  transform: translateX(100%) rotate(-135deg);
+}
+.header .middle .dd_menu .dd_child .dd_child_link {
+  margin: 7px 0;
+  color: white;
+}
+.header .middle .dd_menu .dd_child .dd_child_link:hover {
+  color: orangered;
+}
+.header .middle .dd_menu .font_size {
+  display: flex;
+}
+.header .middle .dd_menu .font_size .dd_child_link {
+  margin: 0 7px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.header .middle .dd_menu .font_size .dd_child_link:hover .outer {
+  background-color: orangered;
+}
+.header .middle .dd_menu .font_size .dd_child_link .outer {
+  margin-right: 5px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  padding: 4px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 50%;
+}
+.header .middle .dd_menu .font_size .dd_child_link .outer .inner {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background-color: white;
 }
 .header .last {
   display: flex;
@@ -83,8 +184,9 @@
   padding-left: 5px;
 }
 .header .last .myDocs {
-  background-color: rgb(197, 197, 197);
+  background-color: rgb(215, 215, 215);
   color: black;
+  font-size: 18px;
   padding: 15px 10px;
   border-radius: 30px;
   cursor: pointer;
@@ -118,7 +220,7 @@
   background-size: cover;
   background-position: center;
   border-radius: 50%;
-  border: 2px solid black;
+  border: 1px solid rgb(255, 255, 255);
 }
 .header .last .dd_menu .dd_parent .dd_arrow {
   margin: 7px;
@@ -127,6 +229,7 @@
   align-items: center;
   transform: rotate(180deg);
   font-size: 25px;
+  color: white;
 }
 .header .last .dd_menu .dd_child_wrapper {
   background-color: transparent;
@@ -181,7 +284,7 @@
   height: 4px;
   margin: 6px 6px;
   transition: all 0.4s ease;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
 }
 .header .last .burger .line1 {
   margin-top: 7px;

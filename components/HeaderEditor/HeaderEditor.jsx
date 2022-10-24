@@ -9,6 +9,18 @@ import { useRouter } from 'next/router';
 import { useAuth } from '../../contexts/AuthContext';
 import { getResumeAsync } from '../../features/resume/resumeSlice';
 
+const FontSize = ({ size }) => {
+  return (
+    <div className={styles.dd_child_link}>
+      <span className={styles.outer}>
+        <span className={styles.inner}></span>
+      </span>
+      <span>{size}</span>
+    </div>
+  )
+}
+
+
 const HeaderEditor = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const burger = useRef();
@@ -38,16 +50,54 @@ const HeaderEditor = () => {
         <Link href="/"><a><span className={styles.logoicon}></span> <span className={styles.site_name}>metaresume</span></a></Link>
       </div>
       <nav className={styles.middle}>
-        <div className={styles.navlinks}>Font Size</div>
-        <div className={styles.navlinks}>Font Family</div>
-        <div className={styles.navlinks}>Theme</div>
+        <div className={`${styles.navlinks} ${styles.dd_menu}`}>
+          <div className={styles.dd_parent}>
+            Font size
+            <div className={styles.dd_arrow}><BsTriangleFill></BsTriangleFill></div>
+          </div>
+          <div className={styles.dd_child_wrapper}>
+            <div className={`${styles.dd_child} ${styles.font_size}`}>
+              <FontSize size="S" />
+              <FontSize size="M" />
+              <FontSize size="L" />
+            </div>
+          </div>
+        </div>
+        <div className={`${styles.navlinks} ${styles.dd_menu}`}>
+          <div className={styles.dd_parent}>
+            Font family
+            <div className={styles.dd_arrow}><BsTriangleFill></BsTriangleFill></div>
+          </div>
+          <div className={styles.dd_child_wrapper}>
+            <div className={styles.dd_child}>
+              <div className={styles.dd_child_link}>Sanss Sarif</div>
+              <div className={styles.dd_child_link}>Ubuntu</div>
+              <div className={styles.dd_child_link}>Roboto</div>
+              <div className={styles.dd_child_link}>Quicksand</div>
+              <div className={styles.dd_child_link}>Merriweather</div>
+              <div className={styles.dd_child_link}>Merriweather Sans</div>
+            </div>
+          </div>
+        </div>
+        <div className={`${styles.navlinks} ${styles.dd_menu}`}>
+          <div className={styles.dd_parent}>
+            Theme
+            <div className={styles.dd_arrow}><BsTriangleFill></BsTriangleFill></div>
+          </div>
+          <div className={styles.dd_child_wrapper}>
+            <div className={styles.dd_child}>
+              <div className={styles.dd_child_link}>Theme 1</div>
+              <div className={styles.dd_child_link}>Theme 2</div>
+              <div className={styles.dd_child_link}>Theme 3</div>
+            </div>
+          </div>
+        </div>
         <div className={`${styles.navlinks} ${styles.undo}`}><ImUndo2 /></div>
         <div className={`${styles.navlinks} ${styles.redo}`}><ImRedo2 /></div>
         <div className={`${styles.navlinks} ${styles.downloadBtn}`} onClick={() => router.push("/view-resume/1")}><BsCloudDownload /><span>Download</span></div>
       </nav>
       <nav className={styles.last}>
         <div className={styles.myDocs}>My Documents</div>
-
         <div className={styles.dd_menu}>
           <div className={styles.dd_parent}>
             <Link href="#">
