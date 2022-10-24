@@ -45,7 +45,6 @@ $col3: rgb(0, 255, 187);
       transition: width 0.2s ease;
     }
   }
-
   .nav_wrapper {
     max-width: 1200px;
     width: 100%;
@@ -72,7 +71,7 @@ $col3: rgb(0, 255, 187);
         justify-content: center;
         align-items: center;
         color: rgb(0, 0, 0);
-        .logoicon {
+        .logo_icon {
           display: inline-flex;
           min-height: 50px;
           min-width: 50px;
@@ -80,6 +79,10 @@ $col3: rgb(0, 255, 187);
           background-position: center;
           background-size: cover;
           margin-right: 5px;
+        }
+        .logo_name {
+          margin-top: -4px;
+          line-height: 23px;
         }
         span {
           // font-weight: 200;
@@ -248,7 +251,7 @@ $col3: rgb(0, 255, 187);
     .nav_wrapper {
       .logo {
         a {
-          color: white;
+          // color: white;
         }
       }
     }
@@ -314,6 +317,37 @@ $col3: rgb(0, 255, 187);
     }
     nav {
       width: 75%;
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .header {
+    .nav_wrapper {
+      .logo {
+        font-size: 25px;
+        a {
+          .logo_icon {
+            min-height: 35px;
+            min-width: 35px;
+          }
+          .logo_name {
+          }
+        }
+      }
+    }
+    .dd_menu {
+      .dd_parent {
+        .imgbox {
+          height: 40px;
+          width: 40px;
+        }
+        .dd_arrow {
+          font-size: 15px;
+        }
+      }
+    }
+    .burger {
+      margin-left: 4px;
     }
   }
 }

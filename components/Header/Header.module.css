@@ -74,7 +74,7 @@
   align-items: center;
   color: rgb(0, 0, 0);
 }
-.header .nav_wrapper .logo a .logoicon {
+.header .nav_wrapper .logo a .logo_icon {
   display: inline-flex;
   min-height: 50px;
   min-width: 50px;
@@ -82,6 +82,10 @@
   background-position: center;
   background-size: cover;
   margin-right: 5px;
+}
+.header .nav_wrapper .logo a .logo_name {
+  margin-top: -4px;
+  line-height: 23px;
 }
 .header .nav_wrapper .logo a span {
   display: inline-flex;
@@ -224,9 +228,6 @@
 }
 
 @media screen and (max-width: 992px) {
-  .header.toggle .nav_wrapper .logo a {
-    color: white;
-  }
   .header .nav_wrapper {
     padding: 5px 30px 5px 20px;
   }
@@ -279,6 +280,25 @@
   }
   .header nav {
     width: 75%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .header .nav_wrapper .logo {
+    font-size: 25px;
+  }
+  .header .nav_wrapper .logo a .logo_icon {
+    min-height: 35px;
+    min-width: 35px;
+  }
+  .header .dd_menu .dd_parent .imgbox {
+    height: 40px;
+    width: 40px;
+  }
+  .header .dd_menu .dd_parent .dd_arrow {
+    font-size: 15px;
+  }
+  .header .burger {
+    margin-left: 4px;
   }
 }
 @-webkit-keyframes navlinkFadeOpen {

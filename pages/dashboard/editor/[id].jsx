@@ -17,7 +17,7 @@ const EditResume = () => {
     return <h1>loading</h1>
   }
   return (
-    <>
+    <div className={styles.editor_page}>
       <HeaderEditor />
       <main className={styles.editor}>
         {id === "1" ? (
@@ -33,7 +33,7 @@ const EditResume = () => {
         )}
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
 

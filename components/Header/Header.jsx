@@ -192,7 +192,7 @@ function Header({ setIsMousein }) {
         </div>
         <div className={styles.nav_wrapper}>
           <div className={styles.logo}>
-            <Link href="/"><a><span className={styles.logoicon}></span> <span>metaresume</span></a></Link>
+            <Link href="/"><a><span className={styles.logo_icon}></span> <span className={styles.logo_name}>metaresume</span></a></Link>
           </div>
           <nav ref={nav} className={toggleMenu ? `${styles.toggle}` : ""}>
             <Link href="/">

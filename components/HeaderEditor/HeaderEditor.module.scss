@@ -22,7 +22,9 @@
     transition: all 0.3s ease;
     font-family: sans-serif;
     z-index: 400;
-
+    &:hover {
+      transform: scale(1.1);
+    }
     a {
       display: inline-flex;
       justify-content: center;
@@ -182,7 +184,7 @@
     gap: 5px;
     background-color: rgb(76, 83, 87);
     border-radius: 30px;
-    padding: 2px 10px;
+    padding: 5px 10px;
     padding-left: 5px;
     .myDocs {
       background-color: rgb(215, 215, 215);
@@ -198,8 +200,8 @@
       }
     }
     .dd_menu {
+      margin: 0 5px;
       z-index: 100;
-      margin-left: auto;
       position: relative;
       transition: all 0.2s ease-in-out;
       cursor: pointer;
@@ -218,8 +220,8 @@
         justify-content: center;
         align-items: center;
         .imgbox {
-          height: 55px;
-          width: 55px;
+          height: 50px;
+          width: 50px;
           background-size: cover;
           background-position: center;
           border-radius: 50%;
@@ -277,7 +279,6 @@
       cursor: pointer;
       // background-color: rgb(255, 255, 255);
       transition: all 0.3s ease;
-      margin-left: 10px;
       &:hover {
         .line1 {
           transform: translateY(-2px);
