@@ -18,14 +18,14 @@ function MyApp({ Component, pageProps }) {
   return (
     <AuthContextProvider>
       <Provider store={store}>
-        {!isMaintenance ? (
-          <Component {...pageProps} />
-        ) : (
-          <div style={h1Style}>
+        {/* {!isMaintenance ? (
+          ) : (
+            <div style={h1Style}>
             <h1> Site is being updated ...</h1>
             <button style={{ padding: "15px", margin: "15px", cursor: "pointer" }} onClick={() => setIsMaintenance(false)}> Anyway view beta version</button>
           </div>
-        )}
+        )} */}
+        <Component {...pageProps} />
       </Provider>
     </AuthContextProvider>
   )
