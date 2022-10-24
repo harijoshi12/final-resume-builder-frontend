@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import React from 'react'
 import Footer from '../../../components/Footer/Footer'
+import HeaderEditor from '../../../components/HeaderEditor/HeaderEditor'
 import Template1 from '../../../components/templates/template1/edit/Template1'
 import Template2 from '../../../components/templates/template2/edit/Template2'
 import Template3 from '../../../components/templates/template3/edit/Template3'
@@ -15,6 +16,7 @@ const EditResume = () => {
   }
   return (
     <>
+      <HeaderEditor />
       {id === "1" ? (
         <Template1 />
       ) : id === "2" ? (

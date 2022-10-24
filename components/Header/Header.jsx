@@ -4,6 +4,9 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { BsTriangleFill } from "react-icons/bs";
+import logoicon from '../../media/images/logo/logo.png'
+
+import styles from './Header.module.css'
 function Header({ setIsMousein }) {
   const [toggleMenu, setToggleMenu] = useState(false);
   const progress = useRef();
@@ -175,16 +178,16 @@ function Header({ setIsMousein }) {
   return (
     <>
       <div className={toggleMenu ? "nav-overlay toggle" : "nav-overlay"}></div>
-      <div className="pseudo_header"></div>
-      <header className={toggleMenu ? "toggle" : ""}>
-        <div className="progress_wrapper">
-          <div ref={progress} className="progress"></div>
+      <div className={styles.pseudo_header}></div>
+      <header className={toggleMenu ? `${styles.header} ${styles.toggle}` : `${styles.header}`}>
+        <div className={styles.progress_wrapper}>
+          <div ref={progress} className={styles.progress}></div>
         </div>
-        <div className="nav_wrapper">
-          <div className="logo">
-            <Link href="/"><a>Meta <span>Resume</span></a></Link>
+        <div className={styles.nav_wrapper}>
+          <div className={styles.logo}>
+            <Link href="/"><a><span className={styles.logoicon} style={{ backgroundImage: `url(${logoicon})` }}></span> Meta <span>Resume</span></a></Link>
           </div>
-          <nav ref={nav} className={toggleMenu ? "toggle" : ""}>
+          <nav ref={nav} className={toggleMenu ? `${styles.toggle}` : ""}>
             <Link href="/">
               <a className={router.pathname === "/" ? "active" : ""} ref={link1}>Home</a>
             </Link>
@@ -206,31 +209,31 @@ function Header({ setIsMousein }) {
             }
           </nav>
           {currentUser ? (
-            <div className="dd_menu">
-              <div className="dd_parent">
+            <div className={styles.dd_menu}>
+              <div className={styles.dd_parent}>
                 <Link href="#">
-                  <div className="imgbox" style={{ backgroundImage: `url(${imageSrc})` }}></div>
+                  <div className={styles.imgbox} style={{ backgroundImage: `url(${imageSrc})` }}></div>
                 </Link>
-                <div className="dd_arrow"><BsTriangleFill></BsTriangleFill></div>
+                <div className={styles.dd_arrow}><BsTriangleFill></BsTriangleFill></div>
               </div>
-              <div className="dd_child_wrapper">
-                <div className="dd_child">
-                  <Link href="#"><a className="dd_child_link">Account Page</a></Link>
-                  <div className="dd_child_link" onClick={(e) => logoutHandler(e)}>Logout</div>
+              <div className={styles.dd_child_wrapper}>
+                <div className={styles.dd_child}>
+                  <Link href="#"><a className={styles.dd_child_link}>Account Page</a></Link>
+                  <div className={styles.dd_child_link} onClick={(e) => logoutHandler(e)}>Logout</div>
                 </div>
               </div>
             </div>
           ) : null}
           <div
             ref={burger}
-            className={toggleMenu ? "burger toggle" : "burger"}
+            className={toggleMenu ? `${styles.burger} ${styles.toggle}` : `${styles.burger}`}
             onClick={() => {
               setToggleMenu(!toggleMenu);
             }}
           >
-            <div className="line line1"></div>
-            <div className="line line2"></div>
-            <div className="line line3"></div>
+            <div className={`${styles.line} ${styles.line1}`}></div>
+            <div className={`${styles.line} ${styles.line2}`}></div>
+            <div className={`${styles.line} ${styles.line3}`}></div>
           </div>
         </div>
       </header>
