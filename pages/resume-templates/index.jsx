@@ -23,7 +23,7 @@ const CustomButton = ({ isdisabled, templateId }) => {
   const btnClickHanlder = () => {
     if (currentUser) {
       dispatch(getOrCreateResumeAsync(currentToken))
-      router.push("/dashboard");
+      router.push("/dashboard/editor/1");
     } else {
       router.push("/login");
     }

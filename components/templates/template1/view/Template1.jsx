@@ -19,16 +19,16 @@ const Template1 = () => {
   useEffect(() => {
     const fun = (event) => {
       console.log("returning")
-      router.push("/dashboard")
+      router.push("/dashboard/editor/1")
     }
-    // window.addEventListener('afterprint', fun);
-    // return () => window.removeEventListener('afterprint', fun);
+    window.addEventListener('afterprint', fun);
+    return () => window.removeEventListener('afterprint', fun);
   }, [router])
 
   useEffect(() => {
     if (currentToken) {
       dispatch(getResumeAsync(currentToken))
-      // window.print()
+      window.print()
       console.log("printing")
     }
   }, [currentToken, dispatch])

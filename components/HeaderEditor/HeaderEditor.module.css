@@ -1,7 +1,16 @@
 .header {
+  z-index: 200;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  gap: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  min-width: 1000px;
+  padding: 10px;
+  padding-top: 20px;
+  font-family: sans-serif;
 }
 .header .logo {
   display: inline-flex;
@@ -18,7 +27,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 .header .logo a .logoicon {
   display: inline-flex;
@@ -28,31 +37,82 @@
   background-position: center;
   background-size: cover;
   margin-right: 5px;
+  border: 2px solid white;
+  border-radius: 50%;
 }
-.header .logo a span {
-  display: inline-flex;
+.header .middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 30px;
+  background-color: rgb(76, 83, 87);
+  padding: 5px 20px;
+}
+.header .middle .navlinks {
+  margin: 2px;
+  padding: 5px;
+  white-space: nowrap;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.header .middle .navlinks:hover {
+  color: orangered;
+}
+.header .middle .undo,
+.header .middle .redo {
+  font-size: 30px;
+}
+.header .middle .downloadBtn {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.header .dd_menu {
+.header .middle .downloadBtn span {
+  margin: 5px;
+}
+.header .last {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: rgb(76, 83, 87);
+  border-radius: 30px;
+  padding: 2px 10px;
+  padding-left: 5px;
+}
+.header .last .myDocs {
+  background-color: rgb(197, 197, 197);
+  color: black;
+  padding: 15px 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.header .last .myDocs:hover {
+  color: orangered;
+}
+.header .last .dd_menu {
   z-index: 100;
   margin-left: auto;
   position: relative;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
-.header .dd_menu:hover .dd_child_wrapper {
+.header .last .dd_menu:hover .dd_child_wrapper {
   visibility: visible;
 }
-.header .dd_menu:hover .dd_parent .dd_arrow {
+.header .last .dd_menu:hover .dd_parent .dd_arrow {
   color: orangered;
 }
-.header .dd_menu .dd_parent {
+.header .last .dd_menu .dd_parent {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.header .dd_menu .dd_parent .imgbox {
+.header .last .dd_menu .dd_parent .imgbox {
   height: 55px;
   width: 55px;
   background-size: cover;
@@ -60,7 +120,7 @@
   border-radius: 50%;
   border: 2px solid black;
 }
-.header .dd_menu .dd_parent .dd_arrow {
+.header .last .dd_menu .dd_parent .dd_arrow {
   margin: 7px;
   display: flex;
   justify-content: center;
@@ -68,14 +128,14 @@
   transform: rotate(180deg);
   font-size: 25px;
 }
-.header .dd_menu .dd_child_wrapper {
+.header .last .dd_menu .dd_child_wrapper {
   background-color: transparent;
   position: absolute;
   visibility: hidden;
   padding-top: 20px;
   transform: translateX(-52%) translateY(0px);
 }
-.header .dd_menu .dd_child {
+.header .last .dd_menu .dd_child {
   position: relative;
   padding: 15px 25px;
   border-radius: 15px;
@@ -85,7 +145,7 @@
   border: 1px solid black;
   font-size: 25px;
 }
-.header .dd_menu .dd_child::before {
+.header .last .dd_menu .dd_child::before {
   content: "";
   position: absolute;
   top: -11px;
@@ -98,44 +158,50 @@
   background-color: white;
   transform: translateX(100%) rotate(-135deg);
 }
-.header .dd_menu .dd_child .dd_child_link {
+.header .last .dd_menu .dd_child .dd_child_link {
   margin: 7px 0;
   color: black;
 }
-.header .dd_menu .dd_child .dd_child_link:hover {
+.header .last .dd_menu .dd_child .dd_child_link:hover {
   color: orangered;
 }
-.header .burger {
+.header .last .burger {
   cursor: pointer;
   transition: all 0.3s ease;
   margin-left: 10px;
 }
-.header .burger:hover .line1 {
+.header .last .burger:hover .line1 {
   transform: translateY(-2px);
 }
-.header .burger:hover .line3 {
+.header .last .burger:hover .line3 {
   transform: translateY(2px);
 }
-.header .burger .line {
+.header .last .burger .line {
   width: 40px;
   height: 4px;
   margin: 6px 6px;
   transition: all 0.4s ease;
   background-color: rgb(0, 0, 0);
 }
-.header .burger .line1 {
+.header .last .burger .line1 {
   margin-top: 7px;
 }
-.header .burger .line3 {
+.header .last .burger .line3 {
   margin-bottom: 7px;
 }
-.header .burger.toggle .line1 {
+.header .last .burger.toggle .line1 {
   transform: rotate(45deg) translate(6px, 7px);
 }
-.header .burger.toggle .line2 {
+.header .last .burger.toggle .line2 {
   transform: translate(-7px);
   opacity: 0;
 }
-.header .burger.toggle .line3 {
+.header .last .burger.toggle .line3 {
   transform: rotate(-45deg) translate(6px, -7px);
+}
+
+@media screen and (max-width: 1200px) {
+  .header .logo .site_name {
+    display: none;
+  }
 }/*# sourceMappingURL=HeaderEditor.module.css.map */

@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router'
 import React from 'react'
+import styles from "../../../styles/editorPage/Editor.module.css"
+
 import Footer from '../../../components/Footer/Footer'
 import HeaderEditor from '../../../components/HeaderEditor/HeaderEditor'
 import Template1 from '../../../components/templates/template1/edit/Template1'
@@ -17,17 +19,19 @@ const EditResume = () => {
   return (
     <>
       <HeaderEditor />
-      {id === "1" ? (
-        <Template1 />
-      ) : id === "2" ? (
-        <Template2 />
-      ) : id === "3" ? (
-        <Template3 />
-      ) : id === "4" ? (
-        <Template4 />
-      ) : (
-        <FourZeroFourPage />
-      )}
+      <main className={styles.editor}>
+        {id === "1" ? (
+          <Template1 />
+        ) : id === "2" ? (
+          <Template2 />
+        ) : id === "3" ? (
+          <Template3 />
+        ) : id === "4" ? (
+          <Template4 />
+        ) : (
+          <FourZeroFourPage />
+        )}
+      </main>
       <Footer />
     </>
   )
