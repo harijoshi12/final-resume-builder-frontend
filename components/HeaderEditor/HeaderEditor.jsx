@@ -47,7 +47,7 @@ const HeaderEditor = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Link href="/"><a><span className={styles.logoicon}></span> <span className={styles.site_name}>meta resume</span></a></Link>
+        <Link href="/"><a><span className={styles.logoicon}></span> <span className={styles.site_name}>metaresume</span></a></Link>
       </div>
       <nav className={styles.middle}>
         <div className={`${styles.navlinks} ${styles.dd_menu}`}>
